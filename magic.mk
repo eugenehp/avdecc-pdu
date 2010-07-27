@@ -130,6 +130,43 @@ TAR_EXCLUDE_LIST=--exclude '.svn' --exclude '*~' --exclude '.hg' --exclude 'CVS'
 # When we build a config tool script, this is the file name we use. 
 PROJECT_CONFIG_TOOL?=$(PROJECT)-config
 
+COMPILER?=gcc
+
+ifeq ($(COMPILER),intel)
+COMPILE_FLAGS+=
+CXX=icc
+CC=icc
+AR=xiar
+LINK.cpp=icc
+LINK.c=icc
+LINK_FLAGS+=-cxxlib -lstdc++ -lm -lsvml
+endif
+
+ifeq ($(COMPILER),gcc)
+CXX=$(COMPILER_PREFIX)g++
+CC=$(COMPILER_PREFIX)gcc
+AR=$(COMPILER_PREFIX)ar
+RANLIB=$(COMPILER_PREFIX)ranlib
+LINK.cpp?=$(CXX)
+LINK.c?=$(CC)
+endif
+
+ifeq ($(CROSS_COMPILING),1)
+NATIVE_CXX=g++
+NATIVE_CC=gcc
+NATIVE_AR=ar
+NATIVE_RANLIB=ranlib
+endif
+
+ifdef COMPILER_FRONTEND_CC
+CC:=$(COMPILER_FRONTEND_CC) $(CC)
+endif
+
+ifdef COMPILER_FRONTEND_CXX
+CXX:=$(COMPILER_FRONTEND_CXX) $(CXX)
+endif
+
+
 PYTHON?=python
 CHMOD?=chmod
 CHOWN?=chown
@@ -184,7 +221,7 @@ CHECKINSTALL_SHELL:=$(shell which checkinstall)
 CHECKINSTALL?=$(CHEKCINSTALL_SHELL)
 SUDO_CHECKINSTALL?=$(SUDO) $(CHECKINSTALL)
 CHECKINSTALL_OPTIONS+=--install=no --fstrans -y 
-STRIP?=strip 
+STRIP?=$(COMPILER_PREFIX)strip 
 STRIP_OPTIONS?=
 
 ifeq ($(RELEASE),1)
@@ -574,7 +611,7 @@ COMPILE_FLAGS+=$(PROFILE_FLAGS)
 LINK_FLAGS+=$(PROFILE_FLAGS)
 endif
 
-# haviing WARNINGS set to 0 means we do not compile with -Wall. Default is 1
+# having WARNINGS set to 0 means we do not compile with -Wall. Default is 1
 
 WARNINGS?=1
 ifeq ($(WARNINGS),1)
@@ -582,17 +619,7 @@ WARNINGS_FLAGS=-Wall
 COMPILE_FLAGS+=$(WARNINGS_FLAGS)
 endif
 
-COMPILER?=gcc
 
-ifeq ($(COMPILER),intel)
-COMPILE_FLAGS+=
-CXX=icc
-CC=icc
-AR=xiar
-LINK.cpp=icc
-LINK.c=icc
-LINK_FLAGS+=-cxxlib -lstdc++ -lm -lsvml
-endif
 
 ifeq ($(DISABLE_SSE),1)
 SSE_COMPILE_FLAGS=
@@ -987,7 +1014,7 @@ TARGET_MACOSX_SDK?=/Developer/SDKs/MacOSX$(MACOSX_DEPLOYMENT_TARGET).sdk
 ifeq ($(TARGET_PLATFORM_MACOSX_UNIVERSAL),1)
 ENABLE_PRECOMPILED_HEADERS=0
 TARGET_PLATFORM_NAME=macosx-universal
-MACOSX_UNIVERSAL_ARCHS?=i386 ppc x86_64 
+MACOSX_UNIVERSAL_ARCHS?=i386 ppc x86_64 ppc64
 MACOSX_UNIVERSAL_ARCHS_PARAMS=$(foreach a,$(MACOSX_UNIVERSAL_ARCHS),-arch $(a))
 SUFFIXES_TARGET_PLATFORM=POSIX MACOSX MACOSX_UNIVERSAL
 RAW_PLATFORM_DIRS+=posix macosx macosx-ppc macosx-i386
@@ -2278,7 +2305,7 @@ docs-dev : dirs $(wildcard $(LIB_DOCS_DEV_DIR)/Doxyfile)
 
 .PHONY : clean
 
-clean :
+clean : $(CLEAN_TARGETS) 
 	-@$(RM) -r -f $(BUILD_DIR) 2>/dev/null
 
 .PHONY : realclean
@@ -2980,13 +3007,13 @@ package-testresults :
 
 else
 
-package-testresults : $(PACKAGE_TESTRESULTS_PATH)
+package-testresults : $(PACKAGES_DIR)/$(PACKAGETESTRESULTS_BASENAME).tgz
 
 $(PACKAGE_TESTRESULTS_PATH) : test 
 	@-( cd $(OUTPUT_TESTS_DIR) && $(ZIP) -r $(PACKAGE_TESTRESULTS_PATH) . >/dev/null )
 
 $(PACKAGES_DIR)/$(PACKAGETESTRESULTS_BASENAME).tgz : test 
-	@-( cd $(OUTPUT_TESTS_DIR) && $(TAR) cf - . | $(GZIP) >$(PACKAGES_DIR)/$(PACKAGETESTRESULTS_BASENAME).zip )
+	@-( cd $(OUTPUT_TESTS_DIR) && $(TAR) cf - . | $(GZIP) >$(PACKAGES_DIR)/$(PACKAGETESTRESULTS_BASENAME).tgz )
 
 endif
 
