@@ -4,12 +4,11 @@
 # by Jeff Koftinoff <jeffk@jdkoftinoff.com> 
 # and J.D. Koftinoff Software Ltd.
 #
-# Version 7: http://opensource.jdkoftinoff.com/project/wiki/magicmake
+# Version 8: http://wiki.github.com/jdkoftinoff/magicmake/
 #
 # Simplifies the building of a c/c++ library, tests, tools, examples, 
 # and documentation.
 #
-# based on v6: http://opensource.jdkoftinoff.com/project/wiki/autobuild
 #
 # for more information, including license information (GPL). 
 # Note that this tool being GPL does NOT mean that it can only 
