@@ -63,7 +63,7 @@ extern "C" {
     
     typedef uint64_t avdecc_pdu_stream_id_t;
     
-    inline void avdecc_pdu_stream_id_init ( avdecc_pdu_stream_id_t *self )
+    static inline void avdecc_pdu_stream_id_init ( avdecc_pdu_stream_id_t *self )
     {
         *self = 0;
     }

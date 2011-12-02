@@ -86,7 +86,7 @@ extern "C" {
      Set multicast flag
      */
     
-    inline void avdecc_pdu_mac_set_multicast ( avdecc_pdu_mac_t *self, bool multicast )
+    static inline void avdecc_pdu_mac_set_multicast ( avdecc_pdu_mac_t *self, bool multicast )
     {
         *self = AVDECC_BITS_SET_SEXLET_BIT_IF ( *self, 6, multicast );
     }

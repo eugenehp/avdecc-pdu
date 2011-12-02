@@ -32,7 +32,7 @@ extern "C" {
       */
     typedef uint64_t avdecc_pdu_eui64_t;
     
-    inline void avdecc_pdu_eui64_init ( avdecc_pdu_eui64_t *self )
+    static inline void avdecc_pdu_eui64_init ( avdecc_pdu_eui64_t *self )
     {
         *self = 0;
     }
