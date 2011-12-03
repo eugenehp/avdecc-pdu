@@ -599,6 +599,9 @@ extern "C" {
         avdecc_adp_entity_type_t entity_type;
     } avdecc_adp_t;
     
+    void avdecc_adp_init ( avdecc_adp_t *self );
+    bool avdecc_adp_read_pdu ( avdecc_adp_t *self, const void *pdu );
+    size_t avdecc_adp_write_pdu ( const avdecc_adp_t *self, void *pdu );
     
 #ifdef __cplusplus
 }
