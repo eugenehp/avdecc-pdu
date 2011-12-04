@@ -91,6 +91,12 @@ bool avdecc_pdu_print_eui64 (
     const avdecc_pdu_eui64_t *eui64
 )
 {
-    /* @TODO: */
+    bool r=false;
+    char s[32];
+    if( avdecc_pdu_eui64_to_text( eui64, s, sizeof(s) ) )
+    {
+        r=avdecc_pdu_print( buf,offset,len, "%s", s );
+    }
+    return r;
 }
 
