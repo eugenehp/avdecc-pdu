@@ -103,10 +103,18 @@ typedef unsigned char uint8_t;
 #endif
 
 #if defined(AVDECC_PDU_CONFIG_POSIX)
+#ifndef _BSD_SOURCE
 # define _BSD_SOURCE
+#endif
+#ifndef _POSIX_SOURCE
 # define _POSIX_SOURCE 1
+#endif
+#ifndef _POSIX_C_SOURCE
 # define _POSIX_C_SOURCE 1
+#endif
+#ifndef _DARWIN_C_SOURCE
 # define _DARWIN_C_SOURCE 1
+#endif
 # include <locale.h>
 # include <fcntl.h>
 # include <sys/types.h>
@@ -125,7 +133,11 @@ typedef unsigned char uint8_t;
 # include <sys/poll.h>
 # include <errno.h>
 # include <strings.h>
+#ifdef __linux__
+# include <linux/if.h>
+#else
 # include <net/if.h>
+#endif
 # include <stdint.h>
 #endif
 
