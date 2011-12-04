@@ -29,42 +29,42 @@ extern "C" {
     /** \addtogroup ADP ADP */
     /*@{*/
     
-    bool avdecc_adp_print_message_type (
+    bool avdecc_pdu_print_adp_message_type (
         char *buf,
         size_t *offset,
         size_t len,
         avdecc_adp_message_type_t message_type
     );
     
-    bool avdecc_adp_print_control_data_length (
+    bool avdecc_pdu_print_adp_control_data_length (
         char *buf,
         size_t *offset,
         size_t len,
         uint8_t control_data_length
     );
     
-    bool avdecc_adp_print_valid_time (
+    bool avdecc_pdu_print_adp_valid_time (
         char *buf,
         size_t *offset,
         size_t len,
         avdecc_adp_valid_time_t v
     );
     
-    bool avdecc_adp_print_talker_capabilities (
+    bool avdecc_pdu_print_adp_talker_capabilities (
         char *buf,
         size_t *offset,
         size_t len,
         const avdecc_adp_talker_capabilities_t *talker_capabilities
     );
     
-    bool avdecc_adp_print_listener_capabilities (
+    bool avdecc_pdu_print_adp_listener_capabilities (
         char *buf,
         size_t *offset,
         size_t len,
         const avdecc_adp_listener_capabilities_t *listener_capabilities
     );
     
-    bool avdecc_adp_print_entity_capabilities (
+    bool avdecc_pdu_print_adp_entity_capabilities (
         char *buf,
         size_t *offset,
         size_t len,
@@ -72,28 +72,28 @@ extern "C" {
     );
     
     
-    bool avdecc_adp_print_default_audio_format (
+    bool avdecc_pdu_print_adp_default_audio_format (
         char *buf,
         size_t *offset,
         size_t len,
         const avdecc_adp_default_audio_format_t *fmt
     );
     
-    bool print_default_video_format (
+    bool avdecc_pdu_print_adp_default_video_format (
         char *buf,
         size_t *offset,
         size_t len,
         const avdecc_adp_default_video_format_t *fmt
     );
     
-    bool print_entity_type (
+    bool avdecc_pdu_print_adp_entity_type (
         char *buf,
         size_t *offset,
         size_t len,
         const avdecc_adp_entity_type_t *entity_type
     );
     
-    bool avdecc_adp_print_adp (
+    bool avdecc_pdu_print_adp (
         char *buf,
         size_t *offset,
         size_t len,
