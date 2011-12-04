@@ -1,0 +1,343 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BF38CC44148C2EAB00C4B5E7 /* avdecc-pdu_acmp_print.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC2B148C2EAB00C4B5E7 /* avdecc-pdu_acmp_print.c */; };
+		BF38CC45148C2EAB00C4B5E7 /* avdecc-pdu_acmp.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC2C148C2EAB00C4B5E7 /* avdecc-pdu_acmp.c */; };
+		BF38CC46148C2EAB00C4B5E7 /* avdecc-pdu_adp_print.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC2D148C2EAB00C4B5E7 /* avdecc-pdu_adp_print.c */; };
+		BF38CC47148C2EAB00C4B5E7 /* avdecc-pdu_adp.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC2E148C2EAB00C4B5E7 /* avdecc-pdu_adp.c */; };
+		BF38CC48148C2EAB00C4B5E7 /* avdecc-pdu_aecp_print.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC2F148C2EAB00C4B5E7 /* avdecc-pdu_aecp_print.c */; };
+		BF38CC49148C2EAB00C4B5E7 /* avdecc-pdu_aecp.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC30148C2EAB00C4B5E7 /* avdecc-pdu_aecp.c */; };
+		BF38CC4A148C2EAB00C4B5E7 /* avdecc-pdu_aem_commands_print.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC31148C2EAB00C4B5E7 /* avdecc-pdu_aem_commands_print.c */; };
+		BF38CC4B148C2EAB00C4B5E7 /* avdecc-pdu_aem_commands.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC32148C2EAB00C4B5E7 /* avdecc-pdu_aem_commands.c */; };
+		BF38CC4C148C2EAB00C4B5E7 /* avdecc-pdu_aem_descriptors_print.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC33148C2EAB00C4B5E7 /* avdecc-pdu_aem_descriptors_print.c */; };
+		BF38CC4D148C2EAB00C4B5E7 /* avdecc-pdu_aem_descriptors.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC34148C2EAB00C4B5E7 /* avdecc-pdu_aem_descriptors.c */; };
+		BF38CC4E148C2EAB00C4B5E7 /* avdecc-pdu_aem_print.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC35148C2EAB00C4B5E7 /* avdecc-pdu_aem_print.c */; };
+		BF38CC4F148C2EAB00C4B5E7 /* avdecc-pdu_aem.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC36148C2EAB00C4B5E7 /* avdecc-pdu_aem.c */; };
+		BF38CC50148C2EAB00C4B5E7 /* avdecc-pdu_avtp_print.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC37148C2EAB00C4B5E7 /* avdecc-pdu_avtp_print.c */; };
+		BF38CC51148C2EAB00C4B5E7 /* avdecc-pdu_avtp.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC38148C2EAB00C4B5E7 /* avdecc-pdu_avtp.c */; };
+		BF38CC52148C2EAB00C4B5E7 /* avdecc-pdu_bits.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC39148C2EAB00C4B5E7 /* avdecc-pdu_bits.c */; };
+		BF38CC53148C2EAB00C4B5E7 /* avdecc-pdu_eui64_print.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC3A148C2EAB00C4B5E7 /* avdecc-pdu_eui64_print.c */; };
+		BF38CC54148C2EAB00C4B5E7 /* avdecc-pdu_eui64.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC3B148C2EAB00C4B5E7 /* avdecc-pdu_eui64.c */; };
+		BF38CC55148C2EAB00C4B5E7 /* avdecc-pdu_mac_print.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC3C148C2EAB00C4B5E7 /* avdecc-pdu_mac_print.c */; };
+		BF38CC56148C2EAB00C4B5E7 /* avdecc-pdu_mac.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC3D148C2EAB00C4B5E7 /* avdecc-pdu_mac.c */; };
+		BF38CC57148C2EAB00C4B5E7 /* avdecc-pdu_print.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC3E148C2EAB00C4B5E7 /* avdecc-pdu_print.c */; };
+		BF38CC58148C2EAB00C4B5E7 /* avdecc-pdu_stream_print.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC3F148C2EAB00C4B5E7 /* avdecc-pdu_stream_print.c */; };
+		BF38CC59148C2EAB00C4B5E7 /* avdecc-pdu_stream.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC40148C2EAB00C4B5E7 /* avdecc-pdu_stream.c */; };
+		BF38CC5A148C2EAB00C4B5E7 /* avdecc-pdu_testharness.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC41148C2EAB00C4B5E7 /* avdecc-pdu_testharness.c */; };
+		BF38CC5B148C2EAB00C4B5E7 /* avdecc-pdu_world.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC42148C2EAB00C4B5E7 /* avdecc-pdu_world.c */; };
+		BF38CC5C148C2EAB00C4B5E7 /* avdecc-pdu.c in Sources */ = {isa = PBXBuildFile; fileRef = BF38CC43148C2EAB00C4B5E7 /* avdecc-pdu.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BF38CC24148C2E7E00C4B5E7 /* libavdecc-pdu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libavdecc-pdu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF38CC2B148C2EAB00C4B5E7 /* avdecc-pdu_acmp_print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_acmp_print.c"; path = "../../../src/avdecc-pdu_acmp_print.c"; sourceTree = "<group>"; };
+		BF38CC2C148C2EAB00C4B5E7 /* avdecc-pdu_acmp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_acmp.c"; path = "../../../src/avdecc-pdu_acmp.c"; sourceTree = "<group>"; };
+		BF38CC2D148C2EAB00C4B5E7 /* avdecc-pdu_adp_print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_adp_print.c"; path = "../../../src/avdecc-pdu_adp_print.c"; sourceTree = "<group>"; };
+		BF38CC2E148C2EAB00C4B5E7 /* avdecc-pdu_adp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_adp.c"; path = "../../../src/avdecc-pdu_adp.c"; sourceTree = "<group>"; };
+		BF38CC2F148C2EAB00C4B5E7 /* avdecc-pdu_aecp_print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_aecp_print.c"; path = "../../../src/avdecc-pdu_aecp_print.c"; sourceTree = "<group>"; };
+		BF38CC30148C2EAB00C4B5E7 /* avdecc-pdu_aecp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_aecp.c"; path = "../../../src/avdecc-pdu_aecp.c"; sourceTree = "<group>"; };
+		BF38CC31148C2EAB00C4B5E7 /* avdecc-pdu_aem_commands_print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_aem_commands_print.c"; path = "../../../src/avdecc-pdu_aem_commands_print.c"; sourceTree = "<group>"; };
+		BF38CC32148C2EAB00C4B5E7 /* avdecc-pdu_aem_commands.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_aem_commands.c"; path = "../../../src/avdecc-pdu_aem_commands.c"; sourceTree = "<group>"; };
+		BF38CC33148C2EAB00C4B5E7 /* avdecc-pdu_aem_descriptors_print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_aem_descriptors_print.c"; path = "../../../src/avdecc-pdu_aem_descriptors_print.c"; sourceTree = "<group>"; };
+		BF38CC34148C2EAB00C4B5E7 /* avdecc-pdu_aem_descriptors.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_aem_descriptors.c"; path = "../../../src/avdecc-pdu_aem_descriptors.c"; sourceTree = "<group>"; };
+		BF38CC35148C2EAB00C4B5E7 /* avdecc-pdu_aem_print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_aem_print.c"; path = "../../../src/avdecc-pdu_aem_print.c"; sourceTree = "<group>"; };
+		BF38CC36148C2EAB00C4B5E7 /* avdecc-pdu_aem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_aem.c"; path = "../../../src/avdecc-pdu_aem.c"; sourceTree = "<group>"; };
+		BF38CC37148C2EAB00C4B5E7 /* avdecc-pdu_avtp_print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_avtp_print.c"; path = "../../../src/avdecc-pdu_avtp_print.c"; sourceTree = "<group>"; };
+		BF38CC38148C2EAB00C4B5E7 /* avdecc-pdu_avtp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_avtp.c"; path = "../../../src/avdecc-pdu_avtp.c"; sourceTree = "<group>"; };
+		BF38CC39148C2EAB00C4B5E7 /* avdecc-pdu_bits.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_bits.c"; path = "../../../src/avdecc-pdu_bits.c"; sourceTree = "<group>"; };
+		BF38CC3A148C2EAB00C4B5E7 /* avdecc-pdu_eui64_print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_eui64_print.c"; path = "../../../src/avdecc-pdu_eui64_print.c"; sourceTree = "<group>"; };
+		BF38CC3B148C2EAB00C4B5E7 /* avdecc-pdu_eui64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_eui64.c"; path = "../../../src/avdecc-pdu_eui64.c"; sourceTree = "<group>"; };
+		BF38CC3C148C2EAB00C4B5E7 /* avdecc-pdu_mac_print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_mac_print.c"; path = "../../../src/avdecc-pdu_mac_print.c"; sourceTree = "<group>"; };
+		BF38CC3D148C2EAB00C4B5E7 /* avdecc-pdu_mac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_mac.c"; path = "../../../src/avdecc-pdu_mac.c"; sourceTree = "<group>"; };
+		BF38CC3E148C2EAB00C4B5E7 /* avdecc-pdu_print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_print.c"; path = "../../../src/avdecc-pdu_print.c"; sourceTree = "<group>"; };
+		BF38CC3F148C2EAB00C4B5E7 /* avdecc-pdu_stream_print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_stream_print.c"; path = "../../../src/avdecc-pdu_stream_print.c"; sourceTree = "<group>"; };
+		BF38CC40148C2EAB00C4B5E7 /* avdecc-pdu_stream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_stream.c"; path = "../../../src/avdecc-pdu_stream.c"; sourceTree = "<group>"; };
+		BF38CC41148C2EAB00C4B5E7 /* avdecc-pdu_testharness.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_testharness.c"; path = "../../../src/avdecc-pdu_testharness.c"; sourceTree = "<group>"; };
+		BF38CC42148C2EAB00C4B5E7 /* avdecc-pdu_world.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu_world.c"; path = "../../../src/avdecc-pdu_world.c"; sourceTree = "<group>"; };
+		BF38CC43148C2EAB00C4B5E7 /* avdecc-pdu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "avdecc-pdu.c"; path = "../../../src/avdecc-pdu.c"; sourceTree = "<group>"; };
+		BF38CC5D148C2EBC00C4B5E7 /* avdecc-pdu_acmp_print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_acmp_print.h"; path = "../../../include/avdecc-pdu_acmp_print.h"; sourceTree = "<group>"; };
+		BF38CC5E148C2EBC00C4B5E7 /* avdecc-pdu_acmp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_acmp.h"; path = "../../../include/avdecc-pdu_acmp.h"; sourceTree = "<group>"; };
+		BF38CC5F148C2EBC00C4B5E7 /* avdecc-pdu_adp_print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_adp_print.h"; path = "../../../include/avdecc-pdu_adp_print.h"; sourceTree = "<group>"; };
+		BF38CC60148C2EBC00C4B5E7 /* avdecc-pdu_adp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_adp.h"; path = "../../../include/avdecc-pdu_adp.h"; sourceTree = "<group>"; };
+		BF38CC61148C2EBC00C4B5E7 /* avdecc-pdu_aecp_print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_aecp_print.h"; path = "../../../include/avdecc-pdu_aecp_print.h"; sourceTree = "<group>"; };
+		BF38CC62148C2EBC00C4B5E7 /* avdecc-pdu_aecp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_aecp.h"; path = "../../../include/avdecc-pdu_aecp.h"; sourceTree = "<group>"; };
+		BF38CC63148C2EBC00C4B5E7 /* avdecc-pdu_aem_commands_print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_aem_commands_print.h"; path = "../../../include/avdecc-pdu_aem_commands_print.h"; sourceTree = "<group>"; };
+		BF38CC64148C2EBC00C4B5E7 /* avdecc-pdu_aem_commands.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_aem_commands.h"; path = "../../../include/avdecc-pdu_aem_commands.h"; sourceTree = "<group>"; };
+		BF38CC65148C2EBC00C4B5E7 /* avdecc-pdu_aem_descriptors_print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_aem_descriptors_print.h"; path = "../../../include/avdecc-pdu_aem_descriptors_print.h"; sourceTree = "<group>"; };
+		BF38CC66148C2EBC00C4B5E7 /* avdecc-pdu_aem_descriptors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_aem_descriptors.h"; path = "../../../include/avdecc-pdu_aem_descriptors.h"; sourceTree = "<group>"; };
+		BF38CC67148C2EBC00C4B5E7 /* avdecc-pdu_aem_print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_aem_print.h"; path = "../../../include/avdecc-pdu_aem_print.h"; sourceTree = "<group>"; };
+		BF38CC68148C2EBC00C4B5E7 /* avdecc-pdu_aem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_aem.h"; path = "../../../include/avdecc-pdu_aem.h"; sourceTree = "<group>"; };
+		BF38CC69148C2EBC00C4B5E7 /* avdecc-pdu_avtp_print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_avtp_print.h"; path = "../../../include/avdecc-pdu_avtp_print.h"; sourceTree = "<group>"; };
+		BF38CC6A148C2EBC00C4B5E7 /* avdecc-pdu_avtp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_avtp.h"; path = "../../../include/avdecc-pdu_avtp.h"; sourceTree = "<group>"; };
+		BF38CC6B148C2EBC00C4B5E7 /* avdecc-pdu_bits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_bits.h"; path = "../../../include/avdecc-pdu_bits.h"; sourceTree = "<group>"; };
+		BF38CC6C148C2EBC00C4B5E7 /* avdecc-pdu_eui64_print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_eui64_print.h"; path = "../../../include/avdecc-pdu_eui64_print.h"; sourceTree = "<group>"; };
+		BF38CC6D148C2EBC00C4B5E7 /* avdecc-pdu_eui64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_eui64.h"; path = "../../../include/avdecc-pdu_eui64.h"; sourceTree = "<group>"; };
+		BF38CC6E148C2EBC00C4B5E7 /* avdecc-pdu_mac_print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_mac_print.h"; path = "../../../include/avdecc-pdu_mac_print.h"; sourceTree = "<group>"; };
+		BF38CC6F148C2EBC00C4B5E7 /* avdecc-pdu_mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_mac.h"; path = "../../../include/avdecc-pdu_mac.h"; sourceTree = "<group>"; };
+		BF38CC70148C2EBC00C4B5E7 /* avdecc-pdu_print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_print.h"; path = "../../../include/avdecc-pdu_print.h"; sourceTree = "<group>"; };
+		BF38CC71148C2EBC00C4B5E7 /* avdecc-pdu_stream_print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_stream_print.h"; path = "../../../include/avdecc-pdu_stream_print.h"; sourceTree = "<group>"; };
+		BF38CC72148C2EBC00C4B5E7 /* avdecc-pdu_stream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_stream.h"; path = "../../../include/avdecc-pdu_stream.h"; sourceTree = "<group>"; };
+		BF38CC73148C2EBC00C4B5E7 /* avdecc-pdu_testharness.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_testharness.h"; path = "../../../include/avdecc-pdu_testharness.h"; sourceTree = "<group>"; };
+		BF38CC74148C2EBC00C4B5E7 /* avdecc-pdu_world.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu_world.h"; path = "../../../include/avdecc-pdu_world.h"; sourceTree = "<group>"; };
+		BF38CC75148C2EBC00C4B5E7 /* avdecc-pdu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "avdecc-pdu.h"; path = "../../../include/avdecc-pdu.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF38CC21148C2E7D00C4B5E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF38CC19148C2E7D00C4B5E7 = {
+			isa = PBXGroup;
+			children = (
+				BF38CC5D148C2EBC00C4B5E7 /* avdecc-pdu_acmp_print.h */,
+				BF38CC5E148C2EBC00C4B5E7 /* avdecc-pdu_acmp.h */,
+				BF38CC5F148C2EBC00C4B5E7 /* avdecc-pdu_adp_print.h */,
+				BF38CC60148C2EBC00C4B5E7 /* avdecc-pdu_adp.h */,
+				BF38CC61148C2EBC00C4B5E7 /* avdecc-pdu_aecp_print.h */,
+				BF38CC62148C2EBC00C4B5E7 /* avdecc-pdu_aecp.h */,
+				BF38CC63148C2EBC00C4B5E7 /* avdecc-pdu_aem_commands_print.h */,
+				BF38CC64148C2EBC00C4B5E7 /* avdecc-pdu_aem_commands.h */,
+				BF38CC65148C2EBC00C4B5E7 /* avdecc-pdu_aem_descriptors_print.h */,
+				BF38CC66148C2EBC00C4B5E7 /* avdecc-pdu_aem_descriptors.h */,
+				BF38CC67148C2EBC00C4B5E7 /* avdecc-pdu_aem_print.h */,
+				BF38CC68148C2EBC00C4B5E7 /* avdecc-pdu_aem.h */,
+				BF38CC69148C2EBC00C4B5E7 /* avdecc-pdu_avtp_print.h */,
+				BF38CC6A148C2EBC00C4B5E7 /* avdecc-pdu_avtp.h */,
+				BF38CC6B148C2EBC00C4B5E7 /* avdecc-pdu_bits.h */,
+				BF38CC6C148C2EBC00C4B5E7 /* avdecc-pdu_eui64_print.h */,
+				BF38CC6D148C2EBC00C4B5E7 /* avdecc-pdu_eui64.h */,
+				BF38CC6E148C2EBC00C4B5E7 /* avdecc-pdu_mac_print.h */,
+				BF38CC6F148C2EBC00C4B5E7 /* avdecc-pdu_mac.h */,
+				BF38CC70148C2EBC00C4B5E7 /* avdecc-pdu_print.h */,
+				BF38CC71148C2EBC00C4B5E7 /* avdecc-pdu_stream_print.h */,
+				BF38CC72148C2EBC00C4B5E7 /* avdecc-pdu_stream.h */,
+				BF38CC73148C2EBC00C4B5E7 /* avdecc-pdu_testharness.h */,
+				BF38CC74148C2EBC00C4B5E7 /* avdecc-pdu_world.h */,
+				BF38CC75148C2EBC00C4B5E7 /* avdecc-pdu.h */,
+				BF38CC2B148C2EAB00C4B5E7 /* avdecc-pdu_acmp_print.c */,
+				BF38CC2C148C2EAB00C4B5E7 /* avdecc-pdu_acmp.c */,
+				BF38CC2D148C2EAB00C4B5E7 /* avdecc-pdu_adp_print.c */,
+				BF38CC2E148C2EAB00C4B5E7 /* avdecc-pdu_adp.c */,
+				BF38CC2F148C2EAB00C4B5E7 /* avdecc-pdu_aecp_print.c */,
+				BF38CC30148C2EAB00C4B5E7 /* avdecc-pdu_aecp.c */,
+				BF38CC31148C2EAB00C4B5E7 /* avdecc-pdu_aem_commands_print.c */,
+				BF38CC32148C2EAB00C4B5E7 /* avdecc-pdu_aem_commands.c */,
+				BF38CC33148C2EAB00C4B5E7 /* avdecc-pdu_aem_descriptors_print.c */,
+				BF38CC34148C2EAB00C4B5E7 /* avdecc-pdu_aem_descriptors.c */,
+				BF38CC35148C2EAB00C4B5E7 /* avdecc-pdu_aem_print.c */,
+				BF38CC36148C2EAB00C4B5E7 /* avdecc-pdu_aem.c */,
+				BF38CC37148C2EAB00C4B5E7 /* avdecc-pdu_avtp_print.c */,
+				BF38CC38148C2EAB00C4B5E7 /* avdecc-pdu_avtp.c */,
+				BF38CC39148C2EAB00C4B5E7 /* avdecc-pdu_bits.c */,
+				BF38CC3A148C2EAB00C4B5E7 /* avdecc-pdu_eui64_print.c */,
+				BF38CC3B148C2EAB00C4B5E7 /* avdecc-pdu_eui64.c */,
+				BF38CC3C148C2EAB00C4B5E7 /* avdecc-pdu_mac_print.c */,
+				BF38CC3D148C2EAB00C4B5E7 /* avdecc-pdu_mac.c */,
+				BF38CC3E148C2EAB00C4B5E7 /* avdecc-pdu_print.c */,
+				BF38CC3F148C2EAB00C4B5E7 /* avdecc-pdu_stream_print.c */,
+				BF38CC40148C2EAB00C4B5E7 /* avdecc-pdu_stream.c */,
+				BF38CC41148C2EAB00C4B5E7 /* avdecc-pdu_testharness.c */,
+				BF38CC42148C2EAB00C4B5E7 /* avdecc-pdu_world.c */,
+				BF38CC43148C2EAB00C4B5E7 /* avdecc-pdu.c */,
+				BF38CC25148C2E7E00C4B5E7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BF38CC25148C2E7E00C4B5E7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF38CC24148C2E7E00C4B5E7 /* libavdecc-pdu.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BF38CC22148C2E7D00C4B5E7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BF38CC23148C2E7D00C4B5E7 /* avdecc-pdu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF38CC28148C2E7E00C4B5E7 /* Build configuration list for PBXNativeTarget "avdecc-pdu" */;
+			buildPhases = (
+				BF38CC20148C2E7D00C4B5E7 /* Sources */,
+				BF38CC21148C2E7D00C4B5E7 /* Frameworks */,
+				BF38CC22148C2E7D00C4B5E7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "avdecc-pdu";
+			productName = "avdecc-pdu";
+			productReference = BF38CC24148C2E7E00C4B5E7 /* libavdecc-pdu.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF38CC1B148C2E7D00C4B5E7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "J.D. Koftinoff Software, Ltd.";
+			};
+			buildConfigurationList = BF38CC1E148C2E7D00C4B5E7 /* Build configuration list for PBXProject "avdecc-pdu" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BF38CC19148C2E7D00C4B5E7;
+			productRefGroup = BF38CC25148C2E7E00C4B5E7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF38CC23148C2E7D00C4B5E7 /* avdecc-pdu */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF38CC20148C2E7D00C4B5E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF38CC44148C2EAB00C4B5E7 /* avdecc-pdu_acmp_print.c in Sources */,
+				BF38CC45148C2EAB00C4B5E7 /* avdecc-pdu_acmp.c in Sources */,
+				BF38CC46148C2EAB00C4B5E7 /* avdecc-pdu_adp_print.c in Sources */,
+				BF38CC47148C2EAB00C4B5E7 /* avdecc-pdu_adp.c in Sources */,
+				BF38CC48148C2EAB00C4B5E7 /* avdecc-pdu_aecp_print.c in Sources */,
+				BF38CC49148C2EAB00C4B5E7 /* avdecc-pdu_aecp.c in Sources */,
+				BF38CC4A148C2EAB00C4B5E7 /* avdecc-pdu_aem_commands_print.c in Sources */,
+				BF38CC4B148C2EAB00C4B5E7 /* avdecc-pdu_aem_commands.c in Sources */,
+				BF38CC4C148C2EAB00C4B5E7 /* avdecc-pdu_aem_descriptors_print.c in Sources */,
+				BF38CC4D148C2EAB00C4B5E7 /* avdecc-pdu_aem_descriptors.c in Sources */,
+				BF38CC4E148C2EAB00C4B5E7 /* avdecc-pdu_aem_print.c in Sources */,
+				BF38CC4F148C2EAB00C4B5E7 /* avdecc-pdu_aem.c in Sources */,
+				BF38CC50148C2EAB00C4B5E7 /* avdecc-pdu_avtp_print.c in Sources */,
+				BF38CC51148C2EAB00C4B5E7 /* avdecc-pdu_avtp.c in Sources */,
+				BF38CC52148C2EAB00C4B5E7 /* avdecc-pdu_bits.c in Sources */,
+				BF38CC53148C2EAB00C4B5E7 /* avdecc-pdu_eui64_print.c in Sources */,
+				BF38CC54148C2EAB00C4B5E7 /* avdecc-pdu_eui64.c in Sources */,
+				BF38CC55148C2EAB00C4B5E7 /* avdecc-pdu_mac_print.c in Sources */,
+				BF38CC56148C2EAB00C4B5E7 /* avdecc-pdu_mac.c in Sources */,
+				BF38CC57148C2EAB00C4B5E7 /* avdecc-pdu_print.c in Sources */,
+				BF38CC58148C2EAB00C4B5E7 /* avdecc-pdu_stream_print.c in Sources */,
+				BF38CC59148C2EAB00C4B5E7 /* avdecc-pdu_stream.c in Sources */,
+				BF38CC5A148C2EAB00C4B5E7 /* avdecc-pdu_testharness.c in Sources */,
+				BF38CC5B148C2EAB00C4B5E7 /* avdecc-pdu_world.c in Sources */,
+				BF38CC5C148C2EAB00C4B5E7 /* avdecc-pdu.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BF38CC26148C2E7E00C4B5E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BF38CC27148C2E7E00C4B5E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BF38CC29148C2E7E00C4B5E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BF38CC2A148C2E7E00C4B5E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF38CC1E148C2E7D00C4B5E7 /* Build configuration list for PBXProject "avdecc-pdu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF38CC26148C2E7E00C4B5E7 /* Debug */,
+				BF38CC27148C2E7E00C4B5E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF38CC28148C2E7E00C4B5E7 /* Build configuration list for PBXNativeTarget "avdecc-pdu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF38CC29148C2E7E00C4B5E7 /* Debug */,
+				BF38CC2A148C2E7E00C4B5E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BF38CC1B148C2E7D00C4B5E7 /* Project object */;
+}
