@@ -176,15 +176,14 @@ typedef int bool_;
 
 #ifdef AVDECC_PDU_UNUSED
 #elif defined(__GNUC__)
-# define AVDECC_PDU_UNUSED(x) AVDECC_UNUSED_ ## x __attribute__((unused))
+# define AVDECC_PDU_UNUSED(x) AVDECC_PDU_UNUSED_ ## x __attribute__((unused))
 #else
-# define AVDECC_PDU_UNUSED(x) AVDECC_UNUSED_ ## x
+# define AVDECC_PDU_UNUSED(x) AVDECC_PDU_UNUSED_ ## x
 #endif
 
-#define AVDECC_PROTOCOL_VERSION ((uint16_t)0x0001)
 #define AVDECC_AVTP_ETHERTYPE ((uint16_t)0x22f0)
 #define AVDECC_AVTP_OUI ((uint32_t)0x90e0f0L)
-#define AVDECC_MAX_PAYLOAD_SIZE (536) /* See IEEE 1722.1 Section 9.2.1.1.7 */
+#define AVDECC_PDU_MAX_PAYLOAD_SIZE (536) /* See IEEE 1722.1 Section 9.2.1.1.7 */
 
 #ifdef __cplusplus
 extern "C" {
@@ -206,6 +205,9 @@ extern "C" {
         const void *packet,
         size_t packet_len
     );
+    
+    typedef char avdecc_pdu_string64_t[64];
+    typedef char avdecc_pdu_string32_t[32];
     
 #ifndef avdecc_pdu_log_info
 #define avdecc_pdu_log_info(...)

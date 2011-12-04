@@ -26,20 +26,18 @@ bool avdecc_pdu_avtp_print_presentation_time (
     avdecc_avtp_presentation_time_t v
 )
 {
-    /* @TODO: */
-    
+    return avdecc_pdu_print(buf,offset,len, "%016X", v );
 }
 
 
-bool avdecc_print_presentation_time_offset (
+bool avdecc_pdu_print_presentation_time_offset (
     char *buf,
     size_t *offset,
     size_t len,
     avdecc_avtp_presentation_time_offset_t v
 )
 {
-    /* @TODO: */
-    
+    return avdecc_pdu_print(buf,offset,len, "%d", v );
 }
 
 
@@ -51,8 +49,8 @@ bool avdecc_pdu_avtp_print_subtype (
     avdecc_avtp_subtype_t subtype
 )
 {
-    bool r;
-    const char *s=0;
+    char unknown_code[64];
+    const char *s=unknown_code;
     
     switch ( subtype )
     {
@@ -99,16 +97,17 @@ bool avdecc_pdu_avtp_print_subtype (
         case avdecc_avtp_subtype_experimental:
             s= "Experimental";
             break;
+            
+        default:
+            sprintf( unknown_code, "Unknown (0x%02x)", subtype );
     }
     
-    /* @TODO: */
-    
-    return r;
+    return avdecc_pdu_print(buf,offset,len, "%s", s );
 }
 
 
 
-bool avdecc_avtp_print_sv (
+bool avdecc_pdu_avtp_print_sv (
     char *buf,
     size_t *offset,
     size_t len,
@@ -123,15 +122,14 @@ bool avdecc_avtp_print_sv (
         case avdecc_avtp_sv_not_valid:
             s="Not valid";
             break;
-            
+
+        default:
         case avdecc_avtp_sv_valid:
             s="Valid";
             break;
     }
     
-    /* @TODO: */
-    
-    return r;
+    return avdecc_pdu_print(buf,offset,len, "%s", s );
 }
 
 
