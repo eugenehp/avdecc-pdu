@@ -90,10 +90,12 @@ bool avdecc_pdu_print_mac (
 {
     bool r=false;
     char s[24];
-    if( avdecc_pdu_mac_to_text( mac, s, sizeof(s) ) )
+    
+    if ( avdecc_pdu_mac_to_text ( mac, s, sizeof ( s ) ) )
     {
-        r=avdecc_pdu_print( buf,offset,len, "%s", s );
+        r=avdecc_pdu_print ( buf,offset,len, "%s", s );
     }
+    
     return r;
 }
 

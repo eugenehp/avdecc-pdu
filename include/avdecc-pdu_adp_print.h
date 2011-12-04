@@ -65,12 +65,12 @@ extern "C" {
     );
     
     bool avdecc_pdu_print_adp_controller_capabilities (
-                                                       char *buf,
-                                                       size_t *offset,
-                                                       size_t len,
-                                                       const avdecc_adp_controller_capabilities_t *controller_capabilities
-                                                       );
-
+        char *buf,
+        size_t *offset,
+        size_t len,
+        const avdecc_adp_controller_capabilities_t *controller_capabilities
+    );
+    
     
     bool avdecc_pdu_print_adp_entity_capabilities (
         char *buf,

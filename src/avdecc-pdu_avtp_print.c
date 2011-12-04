@@ -26,7 +26,7 @@ bool avdecc_pdu_avtp_print_presentation_time (
     avdecc_avtp_presentation_time_t v
 )
 {
-    return avdecc_pdu_print(buf,offset,len, "%016X", v );
+    return avdecc_pdu_print ( buf,offset,len, "%016X", v );
 }
 
 
@@ -37,7 +37,7 @@ bool avdecc_pdu_print_presentation_time_offset (
     avdecc_avtp_presentation_time_offset_t v
 )
 {
-    return avdecc_pdu_print(buf,offset,len, "%d", v );
+    return avdecc_pdu_print ( buf,offset,len, "%d", v );
 }
 
 
@@ -99,10 +99,10 @@ bool avdecc_pdu_avtp_print_subtype (
             break;
             
         default:
-            sprintf( unknown_code, "Unknown (0x%02x)", subtype );
+            sprintf ( unknown_code, "Unknown (0x%02x)", subtype );
     }
     
-    return avdecc_pdu_print(buf,offset,len, "%s", s );
+    return avdecc_pdu_print ( buf,offset,len, "%s", s );
 }
 
 
@@ -122,14 +122,14 @@ bool avdecc_pdu_avtp_print_sv (
         case avdecc_avtp_sv_not_valid:
             s="Not valid";
             break;
-
+            
         default:
         case avdecc_avtp_sv_valid:
             s="Valid";
             break;
     }
     
-    return avdecc_pdu_print(buf,offset,len, "%s", s );
+    return avdecc_pdu_print ( buf,offset,len, "%s", s );
 }
 
 

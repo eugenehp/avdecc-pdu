@@ -27,36 +27,36 @@ extern "C" {
 
     /** \addtogroup avtp avtp */
     /*@{*/
-
+    
     bool avdecc_pdu_avtp_print_presentation_time (
-                                                  char *buf,
-                                                  size_t *offset,
-                                                  size_t len,
-                                                  avdecc_avtp_presentation_time_t v
-                                                  );
+        char *buf,
+        size_t *offset,
+        size_t len,
+        avdecc_avtp_presentation_time_t v
+    );
     
     
     bool avdecc_pdu_print_presentation_time_offset (
-                                                    char *buf,
-                                                    size_t *offset,
-                                                    size_t len,
-                                                    avdecc_avtp_presentation_time_offset_t v
-                                                    );
-
+        char *buf,
+        size_t *offset,
+        size_t len,
+        avdecc_avtp_presentation_time_offset_t v
+    );
+    
     bool avdecc_pdu_avtp_print_subtype (
-                                        char *buf,
-                                        size_t *offset,
-                                        size_t len,
-                                        avdecc_avtp_subtype_t subtype
-                                        );    
+        char *buf,
+        size_t *offset,
+        size_t len,
+        avdecc_avtp_subtype_t subtype
+    );
     
     
     bool avdecc_pdu_avtp_print_sv (
-                                   char *buf,
-                                   size_t *offset,
-                                   size_t len,
-                                   avdecc_avtp_sv_t v
-                                   );    
+        char *buf,
+        size_t *offset,
+        size_t len,
+        avdecc_avtp_sv_t v
+    );
     
     /*@}*/
     
