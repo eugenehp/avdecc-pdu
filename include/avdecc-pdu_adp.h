@@ -625,7 +625,7 @@ extern "C" {
     /* @} */
     
     
-#define AVDECC_ADP_CONTROL_DATA_LENGTH (52)
+#define AVDECC_ADP_CONTROL_DATA_LENGTH (56)
     
     /* See IEEE 1722.1 Section 6.2.1 */
     
@@ -635,7 +635,7 @@ extern "C" {
     AVDECC_BITS_MAP_OCTET_BITFIELD ( avdecc_adp, version, avdecc_avtp_version_t, 1, 1, 3 );
     AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_adp, message_type, avdecc_adp_message_type_t, 0, 12, 15 );
     AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_adp, valid_time, avdecc_adp_valid_time_t, 0, 16, 20 );
-    AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_adp, control_data_length, uint8_t, 0, 31, 31 );
+    AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_adp, control_data_length, uint8_t, 0, 21, 31 );
     AVDECC_BITS_MAP_OCTLET ( avdecc_adp, entity_guid, avdecc_pdu_eui64_t, 4 );
     AVDECC_BITS_MAP_OCTLET ( avdecc_adp, vendor_model_id, avdecc_pdu_eui64_t, 12 );
     AVDECC_BITS_MAP_QUADLET ( avdecc_adp, entity_capabilities, uint32_t, 20 );

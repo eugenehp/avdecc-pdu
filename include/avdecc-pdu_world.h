@@ -183,6 +183,7 @@ typedef int bool_;
 
 #define AVDECC_AVTP_ETHERTYPE ((uint16_t)0x22f0)
 #define AVDECC_AVTP_OUI ((uint32_t)0x90e0f0L)
+#define AVDECC_PDU_HEADER_SIZE (12) /* See IEEE 1722-2011 Section 5.2 */
 #define AVDECC_PDU_MAX_PAYLOAD_SIZE (536) /* See IEEE 1722.1 Section 9.2.1.1.7 */
 
 #ifdef __cplusplus

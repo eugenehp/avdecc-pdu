@@ -26,21 +26,29 @@
 extern "C" {
 #endif
 
-    int avdecc_acmp_status_print (
+    int avdecc_pdu_print_acmp_status (
         char *buf,
         size_t *pos,
         size_t len,
         avdecc_acmp_status_t v
     );
     
-    int avdecc_acmp_message_type_print (
+    int avdecc_pdu_print_acmp_message_type (
         char *buf,
         size_t *pos,
         size_t len,
         avdecc_acmp_message_type_t v
     );
     
-    int avdecc_acmp_print (
+    int avdecc_pdu_print_acmp_flags (
+                                     char *buf,
+                                     size_t *pos,
+                                     size_t len,
+                                     avdecc_acmp_flags_t v
+                                     );
+    
+    
+    int avdecc_pdu_print_acmp (
         char *buf,
         size_t *pos,
         size_t len,

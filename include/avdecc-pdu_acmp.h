@@ -31,11 +31,19 @@ extern "C" {
     
 #define AVDECC_ACMP_CONTROL_DATA_LENGTH (44) /* See IEEE 1722.1 Section 8.2.1.7 */
     
+    /** \addtogroup timeouts Timeouts, 
+     See IEEE 1722.1 Section 8.2.2 
+     */    
+    
 #define AVDECC_ACMP_TIMEOUT_CONNECT_TX (2000)
+#define AVDECC_ACMP_TIMEOUT_DISCONNECT_TX (200)
+#define AVDECC_ACMP_TIMEOUT_GET_TX_STATE (200)
 #define AVDECC_ACMP_TIMEOUT_CONNECT_RX (4500)
-#define AVDECC_ACMP_TIMEOUT_TX (200)
-#define AVDECC_ACMP_TIMEOUT_RX_STATE (200)
-#define AVDECC_ACMP_TIMEOUT_RX (500)
+#define AVDECC_ACMP_TIMEOUT_DISCONNECT_RX (500)
+#define AVDECC_ACMP_TIMEOUT_GET_RX_STATE (200)
+#define AVDECC_ACMP_TIMEOUT_GET_TX_CONNECTION (200)
+    
+    /*@}*/
     
     
     /** See IEEE 1722.1 Section 8.2.1.6 */
@@ -58,16 +66,20 @@ extern "C" {
         avdecc_acmp_status_talker_default_format_invalid=14,
         avdecc_acmp_status_default_set_different=15,
         avdecc_acmp_status_controller_not_authorized=16,
-        avdecc_acmp_status_incompatible_request=17
-    }
-                                            avdecc_acmp_status_t;
+        avdecc_acmp_status_incompatible_request=17,
+        avdecc_acmp_status_reserved
+    } avdecc_acmp_status_t;
                                             
                                             
     /** See IEEE 1722.1 Section 8.2.1.17 */
 #define AVDECC_ACMP_FLAG_CLASS_B_BIT (15)
+#define AVDECC_ACMP_FLAG_CLASS_B (AVDECC_BITS_DOUBLET_BIT(AVDECC_ACMP_FLAG_CLASS_B_BIT))
 #define AVDECC_ACMP_FLAG_FAST_CONNECT_BIT (14)
+#define AVDECC_ACMP_FLAG_FAST_CONNECT (AVDECC_BITS_DOUBLET_BIT(AVDECC_ACMP_FLAG_FAST_CONNECT_BIT))
 #define AVDECC_ACMP_FLAG_SAVED_STATE_BIT (13)
+#define AVDECC_ACMP_FLAG_SAVED_STATE (AVDECC_BITS_DOUBLET_BIT(AVDECC_ACMP_FLAG_SAVED_STATE_BIT))
 #define AVDECC_ACMP_FLAG_STREAMING_WAIT_BIT (12)
+#define AVDECC_ACMP_FLAG_STREAMING_WAIT (AVDECC_BITS_DOUBLET_BIT(AVDECC_ACMP_FLAG_STREAMING_WAIT_BIT))
     
     typedef struct avdecc_acmp_flags_s
     {
@@ -76,6 +88,31 @@ extern "C" {
         uint8_t saved_state:1;
         uint8_t streaming_wait:1;
     } avdecc_acmp_flags_t;
+    
+    
+    static inline void avdecc_acmp_flags_read (
+                                                    avdecc_acmp_flags_t *self,
+                                                    const uint16_t v
+                                                    )
+    {
+        self->class_b = AVDECC_BITS_GET_DOUBLET_BIT ( v, AVDECC_ACMP_FLAG_CLASS_B_BIT );
+        self->fast_connect = AVDECC_BITS_GET_DOUBLET_BIT ( v, AVDECC_ACMP_FLAG_FAST_CONNECT_BIT );
+        self->saved_state = AVDECC_BITS_GET_DOUBLET_BIT ( v, AVDECC_ACMP_FLAG_SAVED_STATE_BIT );
+        self->streaming_wait = AVDECC_BITS_GET_DOUBLET_BIT ( v, AVDECC_ACMP_FLAG_STREAMING_WAIT_BIT );
+    }
+    
+    static inline uint16_t avdecc_acmp_flags_write(
+                                                   const avdecc_acmp_flags_t *self
+                                                   )
+    {
+        uint16_t v=0;
+        v = AVDECC_BITS_SET_DOUBLET_BIT_IF ( v, AVDECC_ACMP_FLAG_CLASS_B_BIT, self->class_b );
+        v = AVDECC_BITS_SET_DOUBLET_BIT_IF ( v, AVDECC_ACMP_FLAG_FAST_CONNECT_BIT, self->fast_connect );
+        v = AVDECC_BITS_SET_DOUBLET_BIT_IF ( v, AVDECC_ACMP_FLAG_SAVED_STATE_BIT, self->saved_state );
+        v = AVDECC_BITS_SET_DOUBLET_BIT_IF ( v, AVDECC_ACMP_FLAG_STREAMING_WAIT_BIT, self->streaming_wait );
+        return v;
+    }
+                                                   
     
     /** See IEEE 1722.1 Section 8.2.1.5 */
     typedef enum
@@ -93,7 +130,8 @@ extern "C" {
         avdecc_acmp_message_get_rx_state_command = 10,
         avdecc_acmp_message_get_rx_state_response = 11,
         avdecc_acmp_message_get_tx_connection_command = 12,
-        avdecc_acmp_message_get_tx_connection_response = 13
+        avdecc_acmp_message_get_tx_connection_response = 13,
+        avdecc_acmp_message_reserved
     } avdecc_acmp_message_type_t;
     
     
@@ -118,13 +156,13 @@ extern "C" {
     AVDECC_BITS_MAP_DOUBLET ( avdecc_acmp, flags, uint16_t, 50 );
     AVDECC_BITS_MAP_QUADLET ( avdecc_acmp, default_format, uint32_t, 52 );
     
+    /** See IEEE 1722.1 Section 8.2.1 */
     
     typedef struct avdecc_acmp_s
     {
         avdecc_acmp_message_type_t message_type;
         avdecc_acmp_status_t status;
         avdecc_avtp_control_data_length_t control_data_length;
-        avdecc_pdu_eui64_t entity_guid;
         avdecc_pdu_eui64_t controller_guid;
         avdecc_pdu_eui64_t talker_guid;
         avdecc_pdu_eui64_t listener_guid;
@@ -135,14 +173,14 @@ extern "C" {
         uint16_t sequence_id;
         avdecc_acmp_flags_t flags;
         
-        union
-        {
-            avdecc_adp_default_audio_format_t audio;
-            avdecc_adp_default_video_format_t video;
-        } default_format;
+        avdecc_adp_default_audio_format_t default_audio_format;
+        avdecc_adp_default_video_format_t default_video_format;
         
     } avdecc_acmp_t;
     
+    void avdecc_acmp_init ( avdecc_acmp_t *self );
+    bool avdecc_acmp_read_pdu ( avdecc_acmp_t *self, const void *pdu );
+    size_t avdecc_acmp_write_pdu ( const avdecc_acmp_t *self, void *pdu, bool video );
     
     /*@}*/
     

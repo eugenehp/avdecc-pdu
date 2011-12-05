@@ -49,8 +49,7 @@ bool avdecc_pdu_avtp_print_subtype (
     avdecc_avtp_subtype_t subtype
 )
 {
-    char unknown_code[64];
-    const char *s=unknown_code;
+    const char *s=0;
     
     switch ( subtype )
     {
@@ -99,7 +98,8 @@ bool avdecc_pdu_avtp_print_subtype (
             break;
             
         default:
-            sprintf ( unknown_code, "Unknown (0x%02x)", subtype );
+            return avdecc_pdu_print ( buf,offset,len, "Unknown (0x%02x)", (int)subtype );            
+            break;
     }
     
     return avdecc_pdu_print ( buf,offset,len, "%s", s );

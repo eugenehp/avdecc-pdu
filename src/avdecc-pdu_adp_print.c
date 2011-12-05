@@ -548,6 +548,7 @@ bool avdecc_pdu_print_adp (
 )
 {
     bool r=true;
+    r&=avdecc_pdu_print ( buf,offset,len,"ADP:\n" );    
     r&=avdecc_pdu_print ( buf,offset,len,"%-28s", "Message Type:" );
     r&=avdecc_pdu_print_adp_message_type ( buf,offset,len, adp->message_type );
     r&=avdecc_pdu_print ( buf,offset,len,"\n%-28s", "Valid Time:" );

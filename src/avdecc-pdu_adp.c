@@ -20,7 +20,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 void avdecc_adp_init ( avdecc_adp_t *self )
 {
-    memset ( self, 0, sizeof ( avdecc_adp_t ) );
+    memset ( self, 0, sizeof ( *self ) );
 }
 
 bool avdecc_adp_read_pdu ( avdecc_adp_t *self, const void *pdu )
@@ -78,7 +78,7 @@ bool avdecc_adp_read_pdu ( avdecc_adp_t *self, const void *pdu )
 
 size_t avdecc_adp_write_pdu ( const avdecc_adp_t *self, void *pdu )
 {
-    memset ( pdu, 0, AVDECC_ADP_CONTROL_DATA_LENGTH + 16 );
+    memset ( pdu, 0, AVDECC_ADP_CONTROL_DATA_LENGTH + AVDECC_PDU_HEADER_SIZE );
     avdecc_adp_set_cd ( pdu,avdecc_avtp_cd_control );
     avdecc_adp_set_subtype ( pdu,avdecc_avtp_subtype_adp );
     avdecc_adp_set_sv ( pdu,avdecc_avtp_sv_not_valid );
@@ -105,6 +105,6 @@ size_t avdecc_adp_write_pdu ( const avdecc_adp_t *self, void *pdu )
     avdecc_adp_set_association_id ( pdu, self->association_id );
     avdecc_bits_set_quadlet ( pdu, 64, avdecc_adp_entity_type_write ( &self->entity_type ) );
     
-    return 68;
+    return AVDECC_ADP_CONTROL_DATA_LENGTH + AVDECC_PDU_HEADER_SIZE;
 }
 
