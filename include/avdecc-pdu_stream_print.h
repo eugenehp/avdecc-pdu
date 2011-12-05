@@ -25,14 +25,15 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 extern "C" {
 #endif
 
-    bool avdecc_pdu_stream_print_stream_source_state (
+    
+    bool avdecc_pdu_print_stream_source_state (
         char *buf,
         size_t *offset,
         size_t len,
         avdecc_pdu_stream_source_state_t v
     );
     
-    bool avdecc_pdu_print_stream_sink_state (
+    bool avdecc_pdu_print_stream_source_sink_state (
         char *buf,
         size_t *offset,
         size_t len,

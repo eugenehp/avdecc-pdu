@@ -114,7 +114,6 @@ bool avdecc_pdu_avtp_print_sv (
     avdecc_avtp_sv_t v
 )
 {
-    bool r;
     const char *s=0;
     
     switch ( v )

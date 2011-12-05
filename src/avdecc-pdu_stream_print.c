@@ -26,8 +26,7 @@ bool avdecc_pdu_print_stream_source_state (
     avdecc_pdu_stream_source_state_t v
 )
 {
-    bool r;
-    const char *s=0;
+    const char *s="Unknown";
     
     switch ( v )
     {
@@ -45,10 +44,10 @@ bool avdecc_pdu_print_stream_source_state (
             
         case avdecc_pdu_stream_source_state_active:
             s="Active";
-            break;
+            break;            
     }
     
-    /* @TODO: */
+    return avdecc_pdu_print( buf,offset,len, "%s", s );
 }
 
 
@@ -59,8 +58,7 @@ bool avdecc_pdu_print_stream_source_sink_state (
     avdecc_pdu_stream_sink_state_t v
 )
 {
-    bool r;
-    const char *s=0;
+    const char *s="Unknown";
     
     switch ( v )
     {
@@ -77,7 +75,7 @@ bool avdecc_pdu_print_stream_source_sink_state (
             break;
     }
     
-    /* @TODO: */
+    return avdecc_pdu_print( buf,offset,len, "%s", s );
 }
 
 
@@ -88,8 +86,7 @@ bool avdecc_pdu_print_stream_class (
     avdecc_pdu_stream_class_t v
 )
 {
-    bool r;
-    const char *s=0;
+    const char *s="Unknown";
     
     switch ( v )
     {
@@ -102,9 +99,7 @@ bool avdecc_pdu_print_stream_class (
             break;
     }
     
-    /* @TODO: */
-    return r;
-    
+    return avdecc_pdu_print( buf,offset,len, "%s", s );    
 }
 
 
@@ -115,8 +110,15 @@ bool avdecc_pdu_print_stream_id (
     const avdecc_pdu_stream_id_t *stream_id
 )
 {
-    /* @TODO: */
+    bool r=false;
+    char s[32];
     
+    if ( avdecc_pdu_stream_id_to_text ( stream_id, s, sizeof ( s ) ) )
+    {
+        r=avdecc_pdu_print ( buf,offset,len, "%s", s );
+    }
+    
+    return r;
 }
 
 
