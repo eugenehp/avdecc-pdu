@@ -171,12 +171,6 @@ int avdecc_pdu_print_acmp (
     r&=avdecc_pdu_print ( buf,pos,len,"\n%-28s", "Flags:" );
     r&=avdecc_pdu_print_acmp_flags( buf,pos,len, acmp->flags );
 
-    r&=avdecc_pdu_print ( buf,pos,len,"\n%-28s", "Default format (audio):" );
-    r&=avdecc_pdu_print_adp_default_audio_format(buf, pos, len, &acmp->default_audio_format );
-
-    r&=avdecc_pdu_print ( buf,pos,len,"\n%-28s", "Default format (video):" );
-    r&=avdecc_pdu_print_adp_default_video_format(buf, pos, len, &acmp->default_video_format );
-
     return r;
 }
 

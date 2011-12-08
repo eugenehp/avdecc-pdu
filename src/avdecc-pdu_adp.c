@@ -66,9 +66,6 @@ bool avdecc_adp_read_pdu ( avdecc_adp_t *self, const void *pdu )
     
     self->as_grandmaster_id = avdecc_adp_get_as_grandmaster_id ( pdu );
     
-    avdecc_adp_default_audio_format_read ( &self->default_audio_format, avdecc_bits_get_quadlet ( pdu, 48 ) );
-    avdecc_adp_default_video_format_read ( &self->default_video_format, avdecc_bits_get_quadlet ( pdu, 52 ) );
-    
     self->association_id = avdecc_adp_get_association_id ( pdu );
     
     avdecc_adp_entity_type_read ( &self->entity_type, avdecc_bits_get_quadlet ( pdu, 64 ) );
@@ -98,10 +95,7 @@ size_t avdecc_adp_write_pdu ( const avdecc_adp_t *self, void *pdu )
     avdecc_bits_set_quadlet ( pdu, 36, self->available_index );
     
     avdecc_adp_set_as_grandmaster_id ( pdu, self->as_grandmaster_id );
-    
-    avdecc_bits_set_quadlet ( pdu, 48, avdecc_adp_default_audio_format_write ( &self->default_audio_format ) );
-    avdecc_bits_set_quadlet ( pdu, 52, avdecc_adp_default_video_format_write ( &self->default_video_format ) );
-    
+        
     avdecc_adp_set_association_id ( pdu, self->association_id );
     avdecc_bits_set_quadlet ( pdu, 64, avdecc_adp_entity_type_write ( &self->entity_type ) );
     

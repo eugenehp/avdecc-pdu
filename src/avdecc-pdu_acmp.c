@@ -64,14 +64,11 @@ bool avdecc_acmp_read_pdu ( avdecc_acmp_t *self, const void *pdu )
     self->connection_count = avdecc_acmp_get_connection_count(pdu);
     self->sequence_id = avdecc_acmp_get_sequence_id(pdu);
     avdecc_acmp_flags_read(&self->flags, avdecc_acmp_get_flags(pdu));
-    /* Note: PDU has one 32 bit field for either. We interpret it into audio and video forms */
-    avdecc_adp_default_audio_format_read(&self->default_audio_format, avdecc_acmp_get_default_format(pdu));
-    avdecc_adp_default_video_format_read(&self->default_video_format, avdecc_acmp_get_default_format(pdu));    
     
     return true;
 }
 
-size_t avdecc_acmp_write_pdu ( const avdecc_acmp_t *self, void *pdu, bool video )
+size_t avdecc_acmp_write_pdu ( const avdecc_acmp_t *self, void *pdu )
 {
     memset ( pdu, 0, AVDECC_ACMP_CONTROL_DATA_LENGTH + AVDECC_PDU_HEADER_SIZE );
     avdecc_acmp_set_cd ( pdu,avdecc_avtp_cd_control );
@@ -90,14 +87,6 @@ size_t avdecc_acmp_write_pdu ( const avdecc_acmp_t *self, void *pdu, bool video 
     avdecc_acmp_set_connection_count(pdu, self->connection_count);
     avdecc_acmp_set_sequence_id(pdu, self->sequence_id);
     avdecc_acmp_set_flags(pdu, avdecc_acmp_flags_write(&self->flags) );
-    if( video )
-    {
-        avdecc_acmp_set_default_format(pdu, avdecc_adp_default_video_format_write(&self->default_video_format) );        
-    }
-    else
-    {
-        avdecc_acmp_set_default_format(pdu, avdecc_adp_default_audio_format_write(&self->default_audio_format) );        
-    }
     
     return AVDECC_ACMP_CONTROL_DATA_LENGTH + AVDECC_PDU_HEADER_SIZE;    
 }

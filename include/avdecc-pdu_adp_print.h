@@ -79,21 +79,7 @@ extern "C" {
         const avdecc_adp_entity_capabilities_t *entity_capabilities
     );
     
-    
-    bool avdecc_pdu_print_adp_default_audio_format (
-        char *buf,
-        size_t *offset,
-        size_t len,
-        const avdecc_adp_default_audio_format_t *fmt
-    );
-    
-    bool avdecc_pdu_print_adp_default_video_format (
-        char *buf,
-        size_t *offset,
-        size_t len,
-        const avdecc_adp_default_video_format_t *fmt
-    );
-    
+        
     bool avdecc_pdu_print_adp_entity_type (
         char *buf,
         size_t *offset,

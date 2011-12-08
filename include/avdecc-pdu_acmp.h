@@ -173,14 +173,11 @@ extern "C" {
         uint16_t sequence_id;
         avdecc_acmp_flags_t flags;
         
-        avdecc_adp_default_audio_format_t default_audio_format;
-        avdecc_adp_default_video_format_t default_video_format;
-        
     } avdecc_acmp_t;
     
     void avdecc_acmp_init ( avdecc_acmp_t *self );
     bool avdecc_acmp_read_pdu ( avdecc_acmp_t *self, const void *pdu );
-    size_t avdecc_acmp_write_pdu ( const avdecc_acmp_t *self, void *pdu, bool video );
+    size_t avdecc_acmp_write_pdu ( const avdecc_acmp_t *self, void *pdu );
     
     /*@}*/
     
