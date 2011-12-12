@@ -155,7 +155,7 @@ extern "C" {
     AVDECC_BITS_MAP_DOUBLET ( avdecc_acmp, connection_count, uint16_t, 46 );
     AVDECC_BITS_MAP_DOUBLET ( avdecc_acmp, sequence_id, uint16_t, 48 );
     AVDECC_BITS_MAP_DOUBLET ( avdecc_acmp, flags, uint16_t, 50 );
-    AVDECC_BITS_MAP_QUADLET ( avdecc_acmp, default_format, uint32_t, 52 );
+    AVDECC_BITS_MAP_QUADLET ( avdecc_acmp, reserved1, uint32_t, 52 );
     
     /** See IEEE 1722.1 Section 8.2.1 */
     
@@ -173,7 +173,7 @@ extern "C" {
         uint16_t connection_count;
         uint16_t sequence_id;
         avdecc_acmp_flags_t flags;
-        
+        uint32_t reserved1;
     } avdecc_acmp_t;
     
     void avdecc_acmp_init ( avdecc_acmp_t *self );
