@@ -31,9 +31,9 @@ extern "C" {
     
 #define AVDECC_ACMP_CONTROL_DATA_LENGTH (44) /* See IEEE 1722.1 Section 8.2.1.7 */
     
-    /** \addtogroup timeouts Timeouts, 
-     See IEEE 1722.1 Section 8.2.2 
-     */    
+    /** \addtogroup timeouts Timeouts,
+     See IEEE 1722.1 Section 8.2.2
+     */
     
 #define AVDECC_ACMP_TIMEOUT_CONNECT_TX (2000)
 #define AVDECC_ACMP_TIMEOUT_DISCONNECT_TX (200)
@@ -68,9 +68,10 @@ extern "C" {
         avdecc_acmp_status_controller_not_authorized=16,
         avdecc_acmp_status_incompatible_request=17,
         avdecc_acmp_status_reserved
-    } avdecc_acmp_status_t;
-                                            
-                                            
+    }
+    avdecc_acmp_status_t;
+    
+    
     /** See IEEE 1722.1 Section 8.2.1.17 */
 #define AVDECC_ACMP_FLAG_CLASS_B_BIT (15)
 #define AVDECC_ACMP_FLAG_CLASS_B (AVDECC_BITS_DOUBLET_BIT(AVDECC_ACMP_FLAG_CLASS_B_BIT))
@@ -91,9 +92,9 @@ extern "C" {
     
     
     static inline void avdecc_acmp_flags_read (
-                                                    avdecc_acmp_flags_t *self,
-                                                    const uint16_t v
-                                                    )
+        avdecc_acmp_flags_t *self,
+        const uint16_t v
+    )
     {
         self->class_b = AVDECC_BITS_GET_DOUBLET_BIT ( v, AVDECC_ACMP_FLAG_CLASS_B_BIT );
         self->fast_connect = AVDECC_BITS_GET_DOUBLET_BIT ( v, AVDECC_ACMP_FLAG_FAST_CONNECT_BIT );
@@ -101,9 +102,9 @@ extern "C" {
         self->streaming_wait = AVDECC_BITS_GET_DOUBLET_BIT ( v, AVDECC_ACMP_FLAG_STREAMING_WAIT_BIT );
     }
     
-    static inline uint16_t avdecc_acmp_flags_write(
-                                                   const avdecc_acmp_flags_t *self
-                                                   )
+    static inline uint16_t avdecc_acmp_flags_write (
+        const avdecc_acmp_flags_t *self
+    )
     {
         uint16_t v=0;
         v = AVDECC_BITS_SET_DOUBLET_BIT_IF ( v, AVDECC_ACMP_FLAG_CLASS_B_BIT, self->class_b );
@@ -112,7 +113,7 @@ extern "C" {
         v = AVDECC_BITS_SET_DOUBLET_BIT_IF ( v, AVDECC_ACMP_FLAG_STREAMING_WAIT_BIT, self->streaming_wait );
         return v;
     }
-                                                   
+    
     
     /** See IEEE 1722.1 Section 8.2.1.5 */
     typedef enum

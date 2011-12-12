@@ -25,7 +25,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 extern "C" {
 #endif
 
-    
+
     bool avdecc_pdu_print_stream_source_state (
         char *buf,
         size_t *offset,

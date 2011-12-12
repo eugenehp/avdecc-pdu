@@ -31,39 +31,39 @@ bool avdecc_acmp_read_pdu ( avdecc_acmp_t *self, const void *pdu )
     
     if ( avdecc_acmp_get_cd ( pdu ) !=avdecc_avtp_cd_control )
         return false;
-    
+        
     if ( avdecc_acmp_get_subtype ( pdu ) !=avdecc_avtp_subtype_acmp )
         return false;
-
+        
     if ( avdecc_acmp_get_sv ( pdu ) !=avdecc_avtp_sv_not_valid )
         return false;
-    
+        
     if ( avdecc_acmp_get_version ( pdu ) !=0 )
         return false;
-
+        
     self->control_data_length = avdecc_acmp_get_control_data_length ( pdu );
     
     if ( self->control_data_length < AVDECC_ACMP_CONTROL_DATA_LENGTH )
     {
         avdecc_pdu_log_error (
-                              "acmp control data length (%d) < %d",
-                              self->control_data_length,
-                              AVDECC_ACMP_CONTROL_DATA_LENGTH
-                              );
+            "acmp control data length (%d) < %d",
+            self->control_data_length,
+            AVDECC_ACMP_CONTROL_DATA_LENGTH
+        );
         return false;
     }
     
-    self->message_type = avdecc_acmp_get_message_type ( pdu );    
-    self->status = avdecc_acmp_get_status(pdu);
-    self->controller_guid = avdecc_acmp_get_controller_guid(pdu);
-    self->talker_guid = avdecc_acmp_get_talker_guid(pdu);
-    self->listener_guid = avdecc_acmp_get_listener_guid(pdu);
-    self->talker_unique_id = avdecc_acmp_get_talker_unique_id(pdu);
-    self->listener_unique_id = avdecc_acmp_get_listener_unique_id(pdu);
-    self->dest_mac = avdecc_acmp_get_dest_mac(pdu);
-    self->connection_count = avdecc_acmp_get_connection_count(pdu);
-    self->sequence_id = avdecc_acmp_get_sequence_id(pdu);
-    avdecc_acmp_flags_read(&self->flags, avdecc_acmp_get_flags(pdu));
+    self->message_type = avdecc_acmp_get_message_type ( pdu );
+    self->status = avdecc_acmp_get_status ( pdu );
+    self->controller_guid = avdecc_acmp_get_controller_guid ( pdu );
+    self->talker_guid = avdecc_acmp_get_talker_guid ( pdu );
+    self->listener_guid = avdecc_acmp_get_listener_guid ( pdu );
+    self->talker_unique_id = avdecc_acmp_get_talker_unique_id ( pdu );
+    self->listener_unique_id = avdecc_acmp_get_listener_unique_id ( pdu );
+    self->dest_mac = avdecc_acmp_get_dest_mac ( pdu );
+    self->connection_count = avdecc_acmp_get_connection_count ( pdu );
+    self->sequence_id = avdecc_acmp_get_sequence_id ( pdu );
+    avdecc_acmp_flags_read ( &self->flags, avdecc_acmp_get_flags ( pdu ) );
     
     return true;
 }
@@ -81,13 +81,13 @@ size_t avdecc_acmp_write_pdu ( const avdecc_acmp_t *self, void *pdu )
     avdecc_acmp_set_controller_guid ( pdu, self->controller_guid );
     avdecc_acmp_set_talker_guid ( pdu, self->talker_guid );
     avdecc_acmp_set_listener_guid ( pdu, self->listener_guid );
-    avdecc_acmp_set_talker_unique_id(pdu, self->talker_unique_id);
-    avdecc_acmp_set_listener_unique_id(pdu, self->listener_unique_id);
-    avdecc_acmp_set_dest_mac(pdu, self->dest_mac);
-    avdecc_acmp_set_connection_count(pdu, self->connection_count);
-    avdecc_acmp_set_sequence_id(pdu, self->sequence_id);
-    avdecc_acmp_set_flags(pdu, avdecc_acmp_flags_write(&self->flags) );
+    avdecc_acmp_set_talker_unique_id ( pdu, self->talker_unique_id );
+    avdecc_acmp_set_listener_unique_id ( pdu, self->listener_unique_id );
+    avdecc_acmp_set_dest_mac ( pdu, self->dest_mac );
+    avdecc_acmp_set_connection_count ( pdu, self->connection_count );
+    avdecc_acmp_set_sequence_id ( pdu, self->sequence_id );
+    avdecc_acmp_set_flags ( pdu, avdecc_acmp_flags_write ( &self->flags ) );
     
-    return AVDECC_ACMP_CONTROL_DATA_LENGTH + AVDECC_PDU_HEADER_SIZE;    
+    return AVDECC_ACMP_CONTROL_DATA_LENGTH + AVDECC_PDU_HEADER_SIZE;
 }
 

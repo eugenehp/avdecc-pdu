@@ -41,11 +41,11 @@ extern "C" {
     );
     
     int avdecc_pdu_print_acmp_flags (
-                                     char *buf,
-                                     size_t *pos,
-                                     size_t len,
-                                     avdecc_acmp_flags_t v
-                                     );
+        char *buf,
+        size_t *pos,
+        size_t len,
+        avdecc_acmp_flags_t v
+    );
     
     
     int avdecc_pdu_print_acmp (

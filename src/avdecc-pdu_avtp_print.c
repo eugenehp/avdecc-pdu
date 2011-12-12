@@ -98,7 +98,7 @@ bool avdecc_pdu_avtp_print_subtype (
             break;
             
         default:
-            return avdecc_pdu_print ( buf,offset,len, "Unknown (0x%02x)", (int)subtype );            
+            return avdecc_pdu_print ( buf,offset,len, "Unknown (0x%02x)", ( int ) subtype );
             break;
     }
     

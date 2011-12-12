@@ -79,7 +79,7 @@ extern "C" {
         const avdecc_adp_entity_capabilities_t *entity_capabilities
     );
     
-        
+    
     bool avdecc_pdu_print_adp_entity_type (
         char *buf,
         size_t *offset,

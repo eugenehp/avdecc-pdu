@@ -44,10 +44,10 @@ bool avdecc_pdu_print_stream_source_state (
             
         case avdecc_pdu_stream_source_state_active:
             s="Active";
-            break;            
+            break;
     }
     
-    return avdecc_pdu_print( buf,offset,len, "%s", s );
+    return avdecc_pdu_print ( buf,offset,len, "%s", s );
 }
 
 
@@ -75,7 +75,7 @@ bool avdecc_pdu_print_stream_source_sink_state (
             break;
     }
     
-    return avdecc_pdu_print( buf,offset,len, "%s", s );
+    return avdecc_pdu_print ( buf,offset,len, "%s", s );
 }
 
 
@@ -99,7 +99,7 @@ bool avdecc_pdu_print_stream_class (
             break;
     }
     
-    return avdecc_pdu_print( buf,offset,len, "%s", s );    
+    return avdecc_pdu_print ( buf,offset,len, "%s", s );
 }
 
 
