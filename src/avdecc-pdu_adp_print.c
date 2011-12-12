@@ -214,9 +214,9 @@ bool avdecc_pdu_print_adp_entity_capabilities (
     bool r=true;
     r&=avdecc_pdu_print ( buf,offset,len, " [ " );
     
-    if ( entity_capabilities->avdecc_ip )
+    if ( entity_capabilities->dfu_mode )
     {
-        r&=avdecc_pdu_print ( buf,offset,len, "AVDECC_IP " );
+        r&=avdecc_pdu_print ( buf,offset,len, "DFU_MODE " );
     }
     
     if ( entity_capabilities->zero_conf )
@@ -398,6 +398,8 @@ bool avdecc_pdu_print_adp (
     r&=avdecc_pdu_print_eui64 ( buf,offset,len, &adp->as_grandmaster_id );
     r&=avdecc_pdu_print ( buf,offset,len,"\n%-28s", "Association ID:" );
     r&=avdecc_pdu_print_eui64 ( buf,offset,len, &adp->association_id );
+    r&=avdecc_pdu_print ( buf,offset,len,"\n%-28s0x%08x", "reserved1:", adp->reserved1 );
+    r&=avdecc_pdu_print ( buf,offset,len,"\n%-28s0x%08x", "reserved2:", adp->reserved2 );
     r&=avdecc_pdu_print ( buf,offset,len,"\n%-28s", "Entity Type:" );
     r&=avdecc_pdu_print_adp_entity_type ( buf,offset,len, &adp->entity_type );
     r&=avdecc_pdu_print ( buf,offset,len,"\n" );
