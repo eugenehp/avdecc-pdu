@@ -219,11 +219,6 @@ bool avdecc_pdu_print_adp_entity_capabilities (
         r&=avdecc_pdu_print ( buf,offset,len, "DFU_MODE " );
     }
     
-    if ( entity_capabilities->zero_conf )
-    {
-        r&=avdecc_pdu_print ( buf,offset,len, "ZERO_CONF " );
-    }
-    
     if ( entity_capabilities->gateway_entity )
     {
         r&=avdecc_pdu_print ( buf,offset,len, "GATEWAY_ENTITY " );

@@ -172,8 +172,6 @@ extern "C" {
     /* @{ */
 #define AVDECC_ADP_ENTITY_CAP_DFU_MODE_BIT (31)
 #define AVDECC_ADP_ENTITY_CAP_DFU_MODE_IP (AVDECC_BITS_QUADLET_BIT(AVDECC_ADP_ENTITY_CAP_DFU_MODE_BIT))
-#define AVDECC_ADP_ENTITY_CAP_ZERO_CONF_BIT (30)
-#define AVDECC_ADP_ENTITY_CAP_ZERO_CONF (AVDECC_BITS_QUADLET_BIT(AVDECC_ADP_ENTITY_CAP_ZERO_CONF_BIT))
 #define AVDECC_ADP_ENTITY_CAP_GATEWAY_ENTITY_BIT (29)
 #define AVDECC_ADP_ENTITY_CAP_GATEWAY_ENTITY (AVDECC_BITS_QUADLET_BIT(AVDECC_ADP_ENTITY_CAP_GATEWAY_ENTITY_BIT))
 #define AVDECC_ADP_ENTITY_CAP_AVDECC_CONTROL_BIT (28)
@@ -188,7 +186,6 @@ extern "C" {
     typedef struct avdecc_adp_entity_capabilities_s
     {
         unsigned dfu_mode:1;
-        unsigned zero_conf:1;
         unsigned gateway_entity:1;
         unsigned avdecc_control:1;
         unsigned legacy_avc:1;
@@ -207,7 +204,6 @@ extern "C" {
     )
     {
         self->dfu_mode= AVDECC_BITS_GET_QUADLET_BIT ( v, AVDECC_ADP_ENTITY_CAP_DFU_MODE_BIT );
-        self->zero_conf = AVDECC_BITS_GET_QUADLET_BIT ( v, AVDECC_ADP_ENTITY_CAP_ZERO_CONF_BIT );
         self->gateway_entity = AVDECC_BITS_GET_QUADLET_BIT ( v, AVDECC_ADP_ENTITY_CAP_GATEWAY_ENTITY_BIT );
         self->avdecc_control = AVDECC_BITS_GET_QUADLET_BIT ( v, AVDECC_ADP_ENTITY_CAP_AVDECC_CONTROL_BIT );
         self->legacy_avc = AVDECC_BITS_GET_QUADLET_BIT ( v, AVDECC_ADP_ENTITY_CAP_LEGACY_AVC_BIT );
@@ -221,7 +217,6 @@ extern "C" {
     {
         uint32_t v=0;
         v = AVDECC_BITS_SET_QUADLET_BIT_IF ( v, AVDECC_ADP_ENTITY_CAP_DFU_MODE_BIT, self->dfu_mode );
-        v = AVDECC_BITS_SET_QUADLET_BIT_IF ( v, AVDECC_ADP_ENTITY_CAP_ZERO_CONF_BIT, self->zero_conf );
         v = AVDECC_BITS_SET_QUADLET_BIT_IF ( v, AVDECC_ADP_ENTITY_CAP_GATEWAY_ENTITY_BIT, self->gateway_entity );
         v = AVDECC_BITS_SET_QUADLET_BIT_IF ( v, AVDECC_ADP_ENTITY_CAP_AVDECC_CONTROL_BIT, self->avdecc_control );
         v = AVDECC_BITS_SET_QUADLET_BIT_IF ( v, AVDECC_ADP_ENTITY_CAP_LEGACY_AVC_BIT, self->legacy_avc );

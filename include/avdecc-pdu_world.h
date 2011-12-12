@@ -197,8 +197,7 @@ extern "C" {
         const char *fmt,
         ...
     );
-    
-    
+        
     bool avdecc_pdu_print_block (
         char *buf,
         size_t *offset,
@@ -207,8 +206,15 @@ extern "C" {
         size_t packet_len
     );
     
-    typedef char avdecc_pdu_string64_t[64];
-    typedef char avdecc_pdu_string32_t[32];
+    typedef struct avdecc_pdu_string64_s
+    {
+        char buf[65];
+    } avdecc_pdu_string64_t;
+
+    typedef struct avdecc_pdu_string32_s
+    {
+        char buf[33];
+    } avdecc_pdu_string32_t;
     
 #ifndef avdecc_pdu_log_info
 #define avdecc_pdu_log_info(...)
