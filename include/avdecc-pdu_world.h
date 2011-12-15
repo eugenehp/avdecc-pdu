@@ -190,7 +190,7 @@ typedef int bool_;
 extern "C" {
 #endif
 
-    bool avdecc_pdu_print (
+    bool avdecc_print (
         char *buf,
         size_t *offset,
         size_t len,
@@ -198,7 +198,7 @@ extern "C" {
         ...
     );
     
-    bool avdecc_pdu_print_block (
+    bool avdecc_print_block (
         char *buf,
         size_t *offset,
         size_t len,
@@ -206,26 +206,26 @@ extern "C" {
         size_t packet_len
     );
     
-    typedef struct avdecc_pdu_string64_s
+    typedef struct avdecc_string64_s
     {
         char buf[65];
-    } avdecc_pdu_string64_t;
+    } avdecc_string64_t;
     
-    typedef struct avdecc_pdu_string32_s
+    typedef struct avdecc_string32_s
     {
         char buf[33];
-    } avdecc_pdu_string32_t;
+    } avdecc_string32_t;
     
-#ifndef avdecc_pdu_log_info
-#define avdecc_pdu_log_info(...)
+#ifndef avdecc_log_info
+#define avdecc_log_info(...)
 #endif
     
-#ifndef avdecc_pdu_log_error
-#define avdecc_pdu_log_error(...)
+#ifndef avdecc_log_error
+#define avdecc_log_error(...)
 #endif
     
-#ifndef avdecc_pdu_log_warning
-#define avdecc_pdu_log_warning(...)
+#ifndef avdecc_log_warning
+#define avdecc_log_warning(...)
 #endif
     
 #ifdef __cplusplus

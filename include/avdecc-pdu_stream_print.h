@@ -26,38 +26,38 @@ extern "C" {
 #endif
 
 
-    bool avdecc_pdu_print_stream_source_state (
+    bool avdecc_print_stream_source_state (
         char *buf,
         size_t *offset,
         size_t len,
-        avdecc_pdu_stream_source_state_t v
+        avdecc_stream_source_state_t v
     );
     
-    bool avdecc_pdu_print_stream_source_sink_state (
+    bool avdecc_print_stream_source_sink_state (
         char *buf,
         size_t *offset,
         size_t len,
-        avdecc_pdu_stream_sink_state_t v
+        avdecc_stream_sink_state_t v
     );
     
-    bool avdecc_pdu_print_stream_class (
+    bool avdecc_print_stream_class (
         char *buf,
         size_t *offset,
         size_t len,
-        avdecc_pdu_stream_class_t v
+        avdecc_stream_class_t v
     );
     
     
-    bool avdecc_pdu_print_stream_id (
+    bool avdecc_print_stream_id (
         char *buf,
         size_t *offset,
         size_t len,
-        const avdecc_pdu_stream_id_t *stream_id
+        const avdecc_stream_id_t *stream_id
     );
     
-    bool avdecc_pdu_stream_id_to_text ( const avdecc_pdu_stream_id_t *sid, char *buf, int buf_len );
+    bool avdecc_stream_id_to_text ( const avdecc_stream_id_t *sid, char *buf, int buf_len );
     
-    bool avdecc_pdu_stream_id_from_text ( avdecc_pdu_stream_id_t *sid, const char *buf );
+    bool avdecc_stream_id_from_text ( avdecc_stream_id_t *sid, const char *buf );
     
     
     

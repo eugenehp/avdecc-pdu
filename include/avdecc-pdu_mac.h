@@ -32,12 +32,12 @@ extern "C" {
     /**
      Structure to hold a MAC address
      */
-    typedef uint64_t avdecc_pdu_mac_t;
+    typedef uint64_t avdecc_mac_t;
     
     /**
      Set the OUI from the lower 24 bits from a 32 bit word
      */
-    static inline void avdecc_pdu_mac_set_oui24_lsb ( avdecc_pdu_mac_t *self, uint32_t oui )
+    static inline void avdecc_mac_set_oui24_lsb ( avdecc_mac_t *self, uint32_t oui )
     {
         uint64_t v = *self & 0xFFFFFFL;
         v |= ( ( uint64_t ) AVDECC_BITS_GET_OCTET_2 ( oui ) ) << 40;
@@ -45,7 +45,7 @@ extern "C" {
         v |= ( ( uint64_t ) AVDECC_BITS_GET_OCTET_0 ( oui ) ) << 24;
     }
     
-    static inline void avdecc_pdu_mac_set_oui24_msb ( avdecc_pdu_mac_t *self, uint32_t oui )
+    static inline void avdecc_mac_set_oui24_msb ( avdecc_mac_t *self, uint32_t oui )
     {
         uint64_t v = *self & 0xFFFFFFL;
         v |= ( ( uint64_t ) AVDECC_BITS_GET_OCTET_3 ( oui ) ) << 40;
@@ -56,7 +56,7 @@ extern "C" {
     /**
      Check if MAC address is locally administered
      */
-    static inline bool avdecc_pdu_mac_is_localadmin ( const avdecc_pdu_mac_t *self )
+    static inline bool avdecc_mac_is_localadmin ( const avdecc_mac_t *self )
     {
         /* IEEE BIT 6 of MAC address means locally administrated */
         return ( bool ) AVDECC_BITS_IS_SEXLET_BIT_SET ( *self, 6 );
@@ -67,7 +67,7 @@ extern "C" {
      Set localadmin flag
      */
     
-    static inline void avdecc_pdu_mac_set_localadmin ( avdecc_pdu_mac_t *self, bool localadmin )
+    static inline void avdecc_mac_set_localadmin ( avdecc_mac_t *self, bool localadmin )
     {
         *self = AVDECC_BITS_SET_SEXLET_BIT_IF ( *self, 6, localadmin );
     }
@@ -76,7 +76,7 @@ extern "C" {
      Check if MAC address is multicast
      */
     
-    static inline bool avdecc_pdu_mac_is_multicast ( const avdecc_pdu_mac_t *self )
+    static inline bool avdecc_mac_is_multicast ( const avdecc_mac_t *self )
     {
         /* IEEE BIT 7 of MAC address means multicast */
         return ( bool ) AVDECC_BITS_IS_SEXLET_BIT_SET ( *self, 7 );
@@ -86,7 +86,7 @@ extern "C" {
      Set multicast flag
      */
     
-    static inline void avdecc_pdu_mac_set_multicast ( avdecc_pdu_mac_t *self, bool multicast )
+    static inline void avdecc_mac_set_multicast ( avdecc_mac_t *self, bool multicast )
     {
         *self = AVDECC_BITS_SET_SEXLET_BIT_IF ( *self, 6, multicast );
     }

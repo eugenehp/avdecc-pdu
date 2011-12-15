@@ -27,23 +27,23 @@ bool avdecc_adp_read_pdu ( avdecc_adp_t *self, const void *pdu )
 {
     avdecc_adp_init ( self );
     
-    if ( avdecc_pdu_avtp_get_cd ( pdu ) !=avdecc_avtp_cd_control )
+    if ( avdecc_avtp_get_cd ( pdu ) !=avdecc_avtp_cd_control )
         return false;
         
-    if ( avdecc_pdu_avtp_get_subtype ( pdu ) !=avdecc_avtp_subtype_adp )
+    if ( avdecc_avtp_get_subtype ( pdu ) !=avdecc_avtp_subtype_adp )
         return false;
         
-    if ( avdecc_pdu_avtp_get_sv ( pdu ) !=avdecc_avtp_sv_not_valid )
+    if ( avdecc_avtp_get_sv ( pdu ) !=avdecc_avtp_sv_not_valid )
         return false;
         
-    if ( avdecc_pdu_avtp_get_version ( pdu ) !=0 )
+    if ( avdecc_avtp_get_version ( pdu ) !=0 )
         return false;
         
-    if ( avdecc_pdu_avtp_get_control_data_length ( pdu ) < AVDECC_ADP_CONTROL_DATA_LENGTH )
+    if ( avdecc_avtp_get_control_data_length ( pdu ) < AVDECC_ADP_CONTROL_DATA_LENGTH )
     {
-        avdecc_pdu_log_error (
+        avdecc_log_error (
             "adp control data length (%d) < %d",
-            avdecc_pdu_avtp_get_control_data_length ( pdu ),
+            avdecc_avtp_get_control_data_length ( pdu ),
             AVDECC_ADP_CONTROL_DATA_LENGTH
         );
         return false;

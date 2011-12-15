@@ -25,15 +25,15 @@
 extern "C" {
 #endif
 
-    bool avdecc_pdu_eui64_to_text ( const avdecc_pdu_eui64_t *eui64, char *buf, int buf_len );
-    bool avdecc_pdu_eui64_from_text ( avdecc_pdu_eui64_t *eui64, const char *buf );
+    bool avdecc_eui64_to_text ( const avdecc_eui64_t *eui64, char *buf, int buf_len );
+    bool avdecc_eui64_from_text ( avdecc_eui64_t *eui64, const char *buf );
     
     
-    bool avdecc_pdu_print_eui64 (
+    bool avdecc_print_eui64 (
         char *buf,
         size_t *offset,
         size_t len,
-        const avdecc_pdu_eui64_t *eui64
+        const avdecc_eui64_t *eui64
     );
     
 #ifdef __cplusplus

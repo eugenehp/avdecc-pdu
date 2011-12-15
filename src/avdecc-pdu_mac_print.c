@@ -18,7 +18,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_world.h"
 #include "avdecc-pdu_mac_print.h"
 
-bool avdecc_pdu_mac_to_text ( const avdecc_pdu_mac_t *mac, char *buf, int buf_len )
+bool avdecc_mac_to_text ( const avdecc_mac_t *mac, char *buf, int buf_len )
 {
     bool r=false;
     uint64_t v= *mac;
@@ -50,7 +50,7 @@ bool avdecc_pdu_mac_to_text ( const avdecc_pdu_mac_t *mac, char *buf, int buf_le
     return r;
 }
 
-bool avdecc_pdu_mac_from_text ( avdecc_pdu_mac_t *mac, const char *buf )
+bool avdecc_mac_from_text ( avdecc_mac_t *mac, const char *buf )
 {
     bool r=false;
     int cnt;
@@ -81,19 +81,19 @@ bool avdecc_pdu_mac_from_text ( avdecc_pdu_mac_t *mac, const char *buf )
 
 
 
-bool avdecc_pdu_print_mac (
+bool avdecc_print_mac (
     char *buf,
     size_t *offset,
     size_t len,
-    const avdecc_pdu_mac_t *mac
+    const avdecc_mac_t *mac
 )
 {
     bool r=false;
     char s[24];
     
-    if ( avdecc_pdu_mac_to_text ( mac, s, sizeof ( s ) ) )
+    if ( avdecc_mac_to_text ( mac, s, sizeof ( s ) ) )
     {
-        r=avdecc_pdu_print ( buf,offset,len, "%s", s );
+        r=avdecc_print ( buf,offset,len, "%s", s );
     }
     
     return r;

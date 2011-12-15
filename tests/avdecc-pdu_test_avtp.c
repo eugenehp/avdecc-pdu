@@ -23,19 +23,19 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_avtp_print.h"
 #include "avdecc-pdu_stream_print.h"
 
-bool test_avdecc_pdu_mac ( avdecc_pdu_mac_t *mac, const char *mac_as_text );
-bool test_avdecc_pdu_stream_id ( avdecc_pdu_stream_id_t *mac, const char *stream_id_as_text );
-bool test_avdecc_pdu_macs ( void );
-bool test_avdecc_pdu_stream_ids ( void );
+bool test_avdecc_mac ( avdecc_mac_t *mac, const char *mac_as_text );
+bool test_avdecc_stream_id ( avdecc_stream_id_t *mac, const char *stream_id_as_text );
+bool test_avdecc_macs ( void );
+bool test_avdecc_stream_ids ( void );
 bool test_avtpdu ( void );
 
-bool test_avdecc_pdu_mac ( avdecc_pdu_mac_t *mac, const char *mac_as_text )
+bool test_avdecc_mac ( avdecc_mac_t *mac, const char *mac_as_text )
 {
     bool r = true;
     char buf[18];
-    avdecc_pdu_mac_t mac1;
+    avdecc_mac_t mac1;
     START_TEST();
-    avdecc_pdu_mac_to_text ( mac, buf, sizeof ( buf ) );
+    avdecc_mac_to_text ( mac, buf, sizeof ( buf ) );
     
     if ( strcmp ( buf, mac_as_text ) != 0 )
     {
@@ -44,14 +44,14 @@ bool test_avdecc_pdu_mac ( avdecc_pdu_mac_t *mac, const char *mac_as_text )
     }
     
     mac1 = 0;
-    avdecc_pdu_mac_from_text ( &mac1, mac_as_text );
+    avdecc_mac_from_text ( &mac1, mac_as_text );
     
     if ( *mac!=mac1 )
     {
         char mac_as_text[18];
         char mac1_as_text[18];
-        avdecc_pdu_mac_to_text ( mac, mac_as_text, sizeof ( mac_as_text ) );
-        avdecc_pdu_mac_to_text ( &mac1, mac1_as_text, sizeof ( mac_as_text ) );
+        avdecc_mac_to_text ( mac, mac_as_text, sizeof ( mac_as_text ) );
+        avdecc_mac_to_text ( &mac1, mac1_as_text, sizeof ( mac_as_text ) );
         printf ( "macs did not compare: %s %s\n", mac_as_text, mac1_as_text );
         r = false;
     }
@@ -60,13 +60,13 @@ bool test_avdecc_pdu_mac ( avdecc_pdu_mac_t *mac, const char *mac_as_text )
     return r;
 }
 
-bool test_avdecc_pdu_eui64 ( avdecc_pdu_eui64_t *eui64, const char *eui64_as_text )
+bool test_avdecc_eui64 ( avdecc_eui64_t *eui64, const char *eui64_as_text )
 {
     bool r = true;
     char buf[22];
-    avdecc_pdu_eui64_t eui641;
+    avdecc_eui64_t eui641;
     START_TEST();
-    avdecc_pdu_eui64_to_text ( eui64, buf, sizeof ( buf ) );
+    avdecc_eui64_to_text ( eui64, buf, sizeof ( buf ) );
     
     if ( strcmp ( buf, eui64_as_text ) != 0 )
     {
@@ -74,14 +74,14 @@ bool test_avdecc_pdu_eui64 ( avdecc_pdu_eui64_t *eui64, const char *eui64_as_tex
         r = false;
     }
     
-    avdecc_pdu_eui64_from_text ( &eui641, eui64_as_text );
+    avdecc_eui64_from_text ( &eui641, eui64_as_text );
     
     if ( *eui64 != eui641 )
     {
         char eui64_as_text[18];
         char eui641_as_text[18];
-        avdecc_pdu_eui64_to_text ( eui64, eui64_as_text, sizeof ( eui64_as_text ) );
-        avdecc_pdu_eui64_to_text ( &eui641, eui641_as_text, sizeof ( eui64_as_text ) );
+        avdecc_eui64_to_text ( eui64, eui64_as_text, sizeof ( eui64_as_text ) );
+        avdecc_eui64_to_text ( &eui641, eui641_as_text, sizeof ( eui64_as_text ) );
         printf ( "eui64s did not compare: %s %s\n", eui64_as_text, eui64_as_text );
         r = false;
     }
@@ -92,13 +92,13 @@ bool test_avdecc_pdu_eui64 ( avdecc_pdu_eui64_t *eui64, const char *eui64_as_tex
 
 
 
-bool test_avdecc_pdu_stream_id ( avdecc_pdu_stream_id_t *sid, const char *stream_id_as_text )
+bool test_avdecc_stream_id ( avdecc_stream_id_t *sid, const char *stream_id_as_text )
 {
     bool r = true;
     char buf[24];
-    avdecc_pdu_stream_id_t sid1;
+    avdecc_stream_id_t sid1;
     START_TEST();
-    avdecc_pdu_stream_id_to_text ( sid, buf, sizeof ( buf ) );
+    avdecc_stream_id_to_text ( sid, buf, sizeof ( buf ) );
     
     if ( strcmp ( buf, stream_id_as_text ) != 0 )
     {
@@ -106,14 +106,14 @@ bool test_avdecc_pdu_stream_id ( avdecc_pdu_stream_id_t *sid, const char *stream
         r = false;
     }
     
-    avdecc_pdu_stream_id_from_text ( &sid1, stream_id_as_text );
+    avdecc_stream_id_from_text ( &sid1, stream_id_as_text );
     
     if ( *sid != sid1 )
     {
         char sid_as_text[24];
         char sid1_as_text[24];
-        avdecc_pdu_stream_id_to_text ( sid, sid_as_text, sizeof ( sid_as_text ) );
-        avdecc_pdu_stream_id_to_text ( &sid1, sid1_as_text, sizeof ( sid1_as_text ) );
+        avdecc_stream_id_to_text ( sid, sid_as_text, sizeof ( sid_as_text ) );
+        avdecc_stream_id_to_text ( &sid1, sid1_as_text, sizeof ( sid1_as_text ) );
         printf ( "stream_ids did not compare: %s %s\n", sid_as_text, sid1_as_text );
         r = false;
     }
@@ -123,35 +123,35 @@ bool test_avdecc_pdu_stream_id ( avdecc_pdu_stream_id_t *sid, const char *stream
 }
 
 
-bool test_avdecc_pdu_macs ( void )
+bool test_avdecc_macs ( void )
 {
     bool r = true;
-    avdecc_pdu_mac_t mac;
+    avdecc_mac_t mac;
     START_TEST();
     mac=0x123456789abc;
-    r &= test_avdecc_pdu_mac ( &mac, "12:34:56:78:9a:bc" );
+    r &= test_avdecc_mac ( &mac, "12:34:56:78:9a:bc" );
     END_TEST ( r );
     return r;
 }
 
-bool test_avdecc_pdu_eui64s ( void )
+bool test_avdecc_eui64s ( void )
 {
     bool r = true;
-    avdecc_pdu_eui64_t eui64;
+    avdecc_eui64_t eui64;
     START_TEST();
     eui64 = 0x123456789abcdef0;
-    r &= test_avdecc_pdu_eui64 ( &eui64, "12:34:56:78:9a:bc:de:f0" );
+    r &= test_avdecc_eui64 ( &eui64, "12:34:56:78:9a:bc:de:f0" );
     END_TEST ( r );
     return r;
 }
 
-bool test_avdecc_pdu_stream_ids ( void )
+bool test_avdecc_stream_ids ( void )
 {
     bool r = true;
-    avdecc_pdu_stream_id_t sid;
+    avdecc_stream_id_t sid;
     START_TEST();
     sid = 0x123456789abcface;
-    r &= test_avdecc_pdu_stream_id ( &sid, "12:34:56:78:9a:bc:fa:ce" );
+    r &= test_avdecc_stream_id ( &sid, "12:34:56:78:9a:bc:fa:ce" );
     END_TEST ( r );
     return r;
 }
@@ -160,9 +160,9 @@ bool test_avtpdu ( void )
 {
     bool r = true;
     START_TEST();
-    r &= test_avdecc_pdu_macs();
-    r &= test_avdecc_pdu_eui64s();
-    r &= test_avdecc_pdu_stream_ids();
+    r &= test_avdecc_macs();
+    r &= test_avdecc_eui64s();
+    r &= test_avdecc_stream_ids();
     END_TEST ( r );
     return r;
 }

@@ -45,7 +45,7 @@ bool avdecc_acmp_read_pdu ( avdecc_acmp_t *self, const void *pdu )
     
     if ( self->control_data_length < AVDECC_ACMP_CONTROL_DATA_LENGTH )
     {
-        avdecc_pdu_log_error (
+        avdecc_log_error (
             "acmp control data length (%d) < %d",
             self->control_data_length,
             AVDECC_ACMP_CONTROL_DATA_LENGTH

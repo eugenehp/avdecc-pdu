@@ -19,103 +19,103 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_stream_print.h"
 
 
-bool avdecc_pdu_print_stream_source_state (
+bool avdecc_print_stream_source_state (
     char *buf,
     size_t *offset,
     size_t len,
-    avdecc_pdu_stream_source_state_t v
+    avdecc_stream_source_state_t v
 )
 {
     const char *s="Unknown";
     
     switch ( v )
     {
-        case avdecc_pdu_stream_source_state_none:
+        case avdecc_stream_source_state_none:
             s="None";
             break;
             
-        case avdecc_pdu_stream_source_state_potential:
+        case avdecc_stream_source_state_potential:
             s="Potential";
             break;
             
-        case avdecc_pdu_stream_source_state_reserved:
+        case avdecc_stream_source_state_reserved:
             s="Reserved";
             break;
             
-        case avdecc_pdu_stream_source_state_active:
+        case avdecc_stream_source_state_active:
             s="Active";
             break;
     }
     
-    return avdecc_pdu_print ( buf,offset,len, "%s", s );
+    return avdecc_print ( buf,offset,len, "%s", s );
 }
 
 
-bool avdecc_pdu_print_stream_source_sink_state (
+bool avdecc_print_stream_source_sink_state (
     char *buf,
     size_t *offset,
     size_t len,
-    avdecc_pdu_stream_sink_state_t v
+    avdecc_stream_sink_state_t v
 )
 {
     const char *s="Unknown";
     
     switch ( v )
     {
-        case avdecc_pdu_stream_sink_state_inactive:
+        case avdecc_stream_sink_state_inactive:
             s="Inactive";
             break;
             
-        case avdecc_pdu_stream_sink_state_active:
+        case avdecc_stream_sink_state_active:
             s="Active";
             break;
             
-        case avdecc_pdu_stream_sink_state_error:
+        case avdecc_stream_sink_state_error:
             s="Error";
             break;
     }
     
-    return avdecc_pdu_print ( buf,offset,len, "%s", s );
+    return avdecc_print ( buf,offset,len, "%s", s );
 }
 
 
-bool avdecc_pdu_print_stream_class (
+bool avdecc_print_stream_class (
     char *buf,
     size_t *offset,
     size_t len,
-    avdecc_pdu_stream_class_t v
+    avdecc_stream_class_t v
 )
 {
     const char *s="Unknown";
     
     switch ( v )
     {
-        case avdecc_pdu_stream_class_a:
+        case avdecc_stream_class_a:
             s="Class A";
             break;
             
-        case avdecc_pdu_stream_class_b:
+        case avdecc_stream_class_b:
             s="Class B";
             break;
     }
     
-    return avdecc_pdu_print ( buf,offset,len, "%s", s );
+    return avdecc_print ( buf,offset,len, "%s", s );
 }
 
 
-bool avdecc_pdu_print_stream_id (
+bool avdecc_print_stream_id (
     char *buf,
     size_t *offset,
     size_t len,
-    const avdecc_pdu_stream_id_t *stream_id
+    const avdecc_stream_id_t *stream_id
 )
 {
     bool r=false;
     char s[32];
     
-    if ( avdecc_pdu_stream_id_to_text ( stream_id, s, sizeof ( s ) ) )
+    if ( avdecc_stream_id_to_text ( stream_id, s, sizeof ( s ) ) )
     {
-        r=avdecc_pdu_print ( buf,offset,len, "%s", s );
+        r=avdecc_print ( buf,offset,len, "%s", s );
     }
     
     return r;
@@ -123,7 +123,7 @@ bool avdecc_pdu_print_stream_id (
 
 
 
-bool avdecc_pdu_stream_id_to_text ( const avdecc_pdu_stream_id_t *sid, char *buf, int buf_len )
+bool avdecc_stream_id_to_text ( const avdecc_stream_id_t *sid, char *buf, int buf_len )
 {
     bool r=false;
     uint64_t v= *sid;
@@ -157,7 +157,7 @@ bool avdecc_pdu_stream_id_to_text ( const avdecc_pdu_stream_id_t *sid, char *buf
     return r;
 }
 
-bool avdecc_pdu_stream_id_from_text ( avdecc_pdu_stream_id_t *sid, const char *buf )
+bool avdecc_stream_id_from_text ( avdecc_stream_id_t *sid, const char *buf )
 {
     bool r=false;
     int cnt;

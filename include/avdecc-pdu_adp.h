@@ -401,8 +401,8 @@ extern "C" {
     AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_adp, message_type, avdecc_adp_message_type_t, 0, 12, 15 );
     AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_adp, valid_time, avdecc_adp_valid_time_t, 0, 16, 20 );
     AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_adp, control_data_length, uint8_t, 0, 21, 31 );
-    AVDECC_BITS_MAP_OCTLET ( avdecc_adp, entity_guid, avdecc_pdu_eui64_t, 4 );
-    AVDECC_BITS_MAP_OCTLET ( avdecc_adp, vendor_model_id, avdecc_pdu_eui64_t, 12 );
+    AVDECC_BITS_MAP_OCTLET ( avdecc_adp, entity_guid, avdecc_eui64_t, 4 );
+    AVDECC_BITS_MAP_OCTLET ( avdecc_adp, vendor_model_id, avdecc_eui64_t, 12 );
     AVDECC_BITS_MAP_QUADLET ( avdecc_adp, entity_capabilities, uint32_t, 20 );
     AVDECC_BITS_MAP_DOUBLET ( avdecc_adp, talker_streasources, uint16_t, 24 );
     AVDECC_BITS_MAP_DOUBLET ( avdecc_adp, talker_capabilities, uint16_t, 26 );
@@ -410,18 +410,18 @@ extern "C" {
     AVDECC_BITS_MAP_DOUBLET ( avdecc_adp, listener_capabilities, uint16_t, 30 );
     AVDECC_BITS_MAP_QUADLET ( avdecc_adp, controller_capabilities, uint32_t, 32 );
     AVDECC_BITS_MAP_QUADLET ( avdecc_adp, available_index, uint32_t, 36 );
-    AVDECC_BITS_MAP_OCTLET ( avdecc_adp, as_grandmaster_id, avdecc_pdu_eui64_t, 40 );
+    AVDECC_BITS_MAP_OCTLET ( avdecc_adp, as_grandmaster_id, avdecc_eui64_t, 40 );
     AVDECC_BITS_MAP_QUADLET ( avdecc_adp, reserved1, uint32_t, 48 );
     AVDECC_BITS_MAP_QUADLET ( avdecc_adp, reserved2, uint32_t, 52 );
-    AVDECC_BITS_MAP_OCTLET ( avdecc_adp, association_id, avdecc_pdu_eui64_t, 56 );
+    AVDECC_BITS_MAP_OCTLET ( avdecc_adp, association_id, avdecc_eui64_t, 56 );
     AVDECC_BITS_MAP_QUADLET ( avdecc_adp, entity_type, uint32_t, 64 );
     
     typedef struct avdecc_adp_s
     {
         avdecc_adp_message_type_t message_type;
         avdecc_adp_valid_time_t valid_time;
-        avdecc_pdu_eui64_t entity_guid;
-        avdecc_pdu_eui64_t vendor_model_id;
+        avdecc_eui64_t entity_guid;
+        avdecc_eui64_t vendor_model_id;
         avdecc_adp_entity_capabilities_t entity_capabilities;
         uint16_t talker_stream_sources;
         avdecc_adp_talker_capabilities_t talker_capabilities;
@@ -429,8 +429,8 @@ extern "C" {
         avdecc_adp_listener_capabilities_t listener_capabilities;
         avdecc_adp_controller_capabilities_t controller_capabilities;
         uint32_t available_index;
-        avdecc_pdu_eui64_t as_grandmaster_id;
-        avdecc_pdu_eui64_t association_id;
+        avdecc_eui64_t as_grandmaster_id;
+        avdecc_eui64_t association_id;
         uint32_t reserved1;
         uint32_t reserved2;
         avdecc_adp_entity_type_t entity_type;

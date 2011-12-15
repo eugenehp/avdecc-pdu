@@ -30,14 +30,14 @@ extern "C" {
       * Structure to hold a EUI-64 address
       * @{
       */
-    typedef uint64_t avdecc_pdu_eui64_t;
+    typedef uint64_t avdecc_eui64_t;
     
-    static inline void avdecc_pdu_eui64_init ( avdecc_pdu_eui64_t *self )
+    static inline void avdecc_eui64_init ( avdecc_eui64_t *self )
     {
         *self = 0;
     }
     
-    void avdecc_pdu_eui64_convert_mac ( avdecc_pdu_eui64_t *eui64, const avdecc_pdu_mac_t *mac, bool is_eui48 );
+    void avdecc_eui64_convert_mac ( avdecc_eui64_t *eui64, const avdecc_mac_t *mac, bool is_eui48 );
     
     /*@}*/
     

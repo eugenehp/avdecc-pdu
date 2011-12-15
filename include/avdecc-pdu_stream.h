@@ -34,36 +34,36 @@ extern "C" {
     */
     typedef enum
     {
-        avdecc_pdu_stream_source_state_none,
-        avdecc_pdu_stream_source_state_potential,
-        avdecc_pdu_stream_source_state_reserved,
-        avdecc_pdu_stream_source_state_active
+        avdecc_stream_source_state_none,
+        avdecc_stream_source_state_potential,
+        avdecc_stream_source_state_reserved,
+        avdecc_stream_source_state_active
     }
-    avdecc_pdu_stream_source_state_t;
+    avdecc_stream_source_state_t;
     
     /**
        The possible states for a stream sink
     */
     typedef enum
     {
-        avdecc_pdu_stream_sink_state_inactive,
-        avdecc_pdu_stream_sink_state_active,
-        avdecc_pdu_stream_sink_state_error
-    } avdecc_pdu_stream_sink_state_t;
+        avdecc_stream_sink_state_inactive,
+        avdecc_stream_sink_state_active,
+        avdecc_stream_sink_state_error
+    } avdecc_stream_sink_state_t;
     
     /**
         The possible stream classes
     */
     typedef enum
     {
-        avdecc_pdu_stream_class_a,
-        avdecc_pdu_stream_class_b
-    } avdecc_pdu_stream_class_t;
+        avdecc_stream_class_a,
+        avdecc_stream_class_b
+    } avdecc_stream_class_t;
     
     
-    typedef uint64_t avdecc_pdu_stream_id_t;
+    typedef uint64_t avdecc_stream_id_t;
     
-    static inline void avdecc_pdu_stream_id_init ( avdecc_pdu_stream_id_t *self )
+    static inline void avdecc_stream_id_init ( avdecc_stream_id_t *self )
     {
         *self = 0;
     }

@@ -18,7 +18,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_world.h"
 #include "avdecc-pdu_eui64_print.h"
 
-bool avdecc_pdu_eui64_to_text ( const avdecc_pdu_eui64_t *eui64, char *buf, int buf_len )
+bool avdecc_eui64_to_text ( const avdecc_eui64_t *eui64, char *buf, int buf_len )
 {
     bool r=false;
     uint64_t v= *eui64;
@@ -52,7 +52,7 @@ bool avdecc_pdu_eui64_to_text ( const avdecc_pdu_eui64_t *eui64, char *buf, int 
     return r;
 }
 
-bool avdecc_pdu_eui64_from_text ( avdecc_pdu_eui64_t *eui64, const char *buf )
+bool avdecc_eui64_from_text ( avdecc_eui64_t *eui64, const char *buf )
 {
     bool r=false;
     int cnt;
@@ -84,19 +84,19 @@ bool avdecc_pdu_eui64_from_text ( avdecc_pdu_eui64_t *eui64, const char *buf )
 }
 
 
-bool avdecc_pdu_print_eui64 (
+bool avdecc_print_eui64 (
     char *buf,
     size_t *offset,
     size_t len,
-    const avdecc_pdu_eui64_t *eui64
+    const avdecc_eui64_t *eui64
 )
 {
     bool r=false;
     char s[32];
     
-    if ( avdecc_pdu_eui64_to_text ( eui64, s, sizeof ( s ) ) )
+    if ( avdecc_eui64_to_text ( eui64, s, sizeof ( s ) ) )
     {
-        r=avdecc_pdu_print ( buf,offset,len, "%s", s );
+        r=avdecc_print ( buf,offset,len, "%s", s );
     }
     
     return r;

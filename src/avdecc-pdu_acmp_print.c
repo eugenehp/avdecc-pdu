@@ -18,7 +18,7 @@
 #include "avdecc-pdu_world.h"
 #include "avdecc-pdu_acmp_print.h"
 
-int avdecc_pdu_print_acmp_status (
+int avdecc_print_acmp_status (
     char *buf,
     size_t *pos,
     size_t len,
@@ -50,18 +50,18 @@ int avdecc_pdu_print_acmp_status (
     
     if ( v<= avdecc_acmp_status_reserved )
     {
-        r = avdecc_pdu_print ( buf,pos,len,"%s", text[ ( int ) v ] );
+        r = avdecc_print ( buf,pos,len,"%s", text[ ( int ) v ] );
     }
     else
     {
-        r = avdecc_pdu_print ( buf,pos,len,"Unknown(%d)", ( int ) v );
+        r = avdecc_print ( buf,pos,len,"Unknown(%d)", ( int ) v );
     }
     
     return r;
     
 }
 
-int avdecc_pdu_print_acmp_message_type (
+int avdecc_print_acmp_message_type (
     char *buf,
     size_t *pos,
     size_t len,
@@ -89,17 +89,17 @@ int avdecc_pdu_print_acmp_message_type (
     
     if ( v<= avdecc_acmp_message_reserved )
     {
-        r = avdecc_pdu_print ( buf,pos,len,"%s", text[ ( int ) v ] );
+        r = avdecc_print ( buf,pos,len,"%s", text[ ( int ) v ] );
     }
     else
     {
-        r = avdecc_pdu_print ( buf,pos,len,"Unknown(%d)", ( int ) v );
+        r = avdecc_print ( buf,pos,len,"Unknown(%d)", ( int ) v );
     }
     
     return r;
 }
 
-int avdecc_pdu_print_acmp_flags (
+int avdecc_print_acmp_flags (
     char *buf,
     size_t *pos,
     size_t len,
@@ -107,34 +107,34 @@ int avdecc_pdu_print_acmp_flags (
 )
 {
     bool r=true;
-    r&=avdecc_pdu_print ( buf,pos,len, " [ " );
+    r&=avdecc_print ( buf,pos,len, " [ " );
     
     if ( v.fast_connect )
     {
-        r&=avdecc_pdu_print ( buf,pos,len, "FAST_CONNECT " );
+        r&=avdecc_print ( buf,pos,len, "FAST_CONNECT " );
     }
     
     if ( v.saved_state )
     {
-        r&=avdecc_pdu_print ( buf,pos,len, "SAVED_STATE " );
+        r&=avdecc_print ( buf,pos,len, "SAVED_STATE " );
     }
     
     if ( v.class_b )
     {
-        r&=avdecc_pdu_print ( buf,pos,len, "CLASS_B " );
+        r&=avdecc_print ( buf,pos,len, "CLASS_B " );
     }
     
     if ( v.streaming_wait )
     {
-        r&=avdecc_pdu_print ( buf,pos,len, "STREAMING_WAIT " );
+        r&=avdecc_print ( buf,pos,len, "STREAMING_WAIT " );
     }
     
-    r&=avdecc_pdu_print ( buf,pos,len, " ] " );
+    r&=avdecc_print ( buf,pos,len, " ] " );
     
     return r;
 }
 
-int avdecc_pdu_print_acmp (
+int avdecc_print_acmp (
     char *buf,
     size_t *pos,
     size_t len,
@@ -142,35 +142,35 @@ int avdecc_pdu_print_acmp (
 )
 {
     bool r=true;
-    r&=avdecc_pdu_print ( buf,pos,len,"ACMP:\n" );
-    r&=avdecc_pdu_print ( buf,pos,len,"%-28s", "Message Type:" );
-    r&=avdecc_pdu_print_acmp_message_type ( buf,pos,len, acmp->message_type );
+    r&=avdecc_print ( buf,pos,len,"ACMP:\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "Message Type:" );
+    r&=avdecc_print_acmp_message_type ( buf,pos,len, acmp->message_type );
     
-    r&=avdecc_pdu_print ( buf,pos,len,"\n%-28s", "Status:" );
-    r&=avdecc_pdu_print_acmp_status ( buf,pos,len,acmp->status );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s", "Status:" );
+    r&=avdecc_print_acmp_status ( buf,pos,len,acmp->status );
     
-    r&=avdecc_pdu_print ( buf,pos,len,"\n%-28s%d", "Control Data Length:", &acmp->control_data_length );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s%d", "Control Data Length:", &acmp->control_data_length );
     
-    r&=avdecc_pdu_print ( buf,pos,len,"\n%-28s", "Controller GUID:" );
-    r&=avdecc_pdu_print_eui64 ( buf,pos,len, &acmp->controller_guid );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s", "Controller GUID:" );
+    r&=avdecc_print_eui64 ( buf,pos,len, &acmp->controller_guid );
     
-    r&=avdecc_pdu_print ( buf,pos,len,"\n%-28s", "Talker GUID:" );
-    r&=avdecc_pdu_print_eui64 ( buf,pos,len, &acmp->talker_guid );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s", "Talker GUID:" );
+    r&=avdecc_print_eui64 ( buf,pos,len, &acmp->talker_guid );
     
-    r&=avdecc_pdu_print ( buf,pos,len,"\n%-28s", "Listener GUID:" );
-    r&=avdecc_pdu_print_eui64 ( buf,pos,len, &acmp->listener_guid );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s", "Listener GUID:" );
+    r&=avdecc_print_eui64 ( buf,pos,len, &acmp->listener_guid );
     
-    r&=avdecc_pdu_print ( buf,pos,len,"\n%-28s%0x04x", "Talker Unique ID:", acmp->talker_unique_id );
-    r&=avdecc_pdu_print ( buf,pos,len,"\n%-28s%0x04x", "Listener Unique ID:", acmp->listener_unique_id );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s%0x04x", "Talker Unique ID:", acmp->talker_unique_id );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s%0x04x", "Listener Unique ID:", acmp->listener_unique_id );
     
-    r&=avdecc_pdu_print ( buf,pos,len,"\n%-28s", "Destination MAC:" );
-    r&=avdecc_pdu_print_mac ( buf,pos,len, &acmp->dest_mac );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s", "Destination MAC:" );
+    r&=avdecc_print_mac ( buf,pos,len, &acmp->dest_mac );
     
-    r&=avdecc_pdu_print ( buf,pos,len,"\n%-28s%0x04x", "Connection Count:", acmp->connection_count );
-    r&=avdecc_pdu_print ( buf,pos,len,"\n%-28s%0x04x", "Sequence ID:", acmp->sequence_id );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s%0x04x", "Connection Count:", acmp->connection_count );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s%0x04x", "Sequence ID:", acmp->sequence_id );
     
-    r&=avdecc_pdu_print ( buf,pos,len,"\n%-28s", "Flags:" );
-    r&=avdecc_pdu_print_acmp_flags ( buf,pos,len, acmp->flags );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s", "Flags:" );
+    r&=avdecc_print_acmp_flags ( buf,pos,len, acmp->flags );
     
     return r;
 }

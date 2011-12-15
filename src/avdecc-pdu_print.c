@@ -19,7 +19,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_print.h"
 
 
-bool avdecc_pdu_print (
+bool avdecc_print (
     char *buf,
     size_t *offset,
     size_t len,
@@ -52,7 +52,7 @@ bool avdecc_pdu_print (
 }
 
 
-bool avdecc_pdu_print_block (
+bool avdecc_print_block (
     char *buf,
     size_t *offset,
     size_t len,
@@ -64,16 +64,16 @@ bool avdecc_pdu_print_block (
     const uint8_t *data = ( const uint8_t * ) packet;
     size_t i;
     
-    r&=avdecc_pdu_print ( buf,offset,len,"ADP:\n" );
+    r&=avdecc_print ( buf,offset,len,"ADP:\n" );
     
     for ( i=0; i<packet_len; i+=4 )
     {
-        r&=avdecc_pdu_print ( buf,offset,len, " %04x:  %02x %02x %02x %02x\n",
-                              i, data[i], data[i+1], data[i+2], data[i+3]
-                            );
+        r&=avdecc_print ( buf,offset,len, " %04x:  %02x %02x %02x %02x\n",
+                          i, data[i], data[i+1], data[i+2], data[i+3]
+                        );
     }
     
-    r&=avdecc_pdu_print ( buf,offset,len, "\n" );
+    r&=avdecc_print ( buf,offset,len, "\n" );
     
     return r;
 }

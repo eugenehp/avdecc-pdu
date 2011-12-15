@@ -19,7 +19,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_eui64.h"
 
 
-void avdecc_pdu_eui64_convert_mac ( avdecc_pdu_eui64_t *eui64, const avdecc_pdu_mac_t *mac, bool is_eui48 )
+void avdecc_eui64_convert_mac ( avdecc_eui64_t *eui64, const avdecc_mac_t *mac, bool is_eui48 )
 {
     uint8_t bytes[8];
     uint64_t mac_v = *mac;

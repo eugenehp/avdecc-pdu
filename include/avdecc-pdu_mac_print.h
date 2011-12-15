@@ -25,15 +25,15 @@
 extern "C" {
 #endif
 
-    bool avdecc_pdu_mac_to_text ( const avdecc_pdu_mac_t *mac, char *buf, int buf_len );
-    bool avdecc_pdu_mac_from_text ( avdecc_pdu_mac_t *mac, const char *buf );
+    bool avdecc_mac_to_text ( const avdecc_mac_t *mac, char *buf, int buf_len );
+    bool avdecc_mac_from_text ( avdecc_mac_t *mac, const char *buf );
     
     
-    bool avdecc_pdu_print_mac (
+    bool avdecc_print_mac (
         char *buf,
         size_t *offset,
         size_t len,
-        const avdecc_pdu_mac_t *mac
+        const avdecc_mac_t *mac
     );
     
 #ifdef __cplusplus

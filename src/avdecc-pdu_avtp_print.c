@@ -19,30 +19,30 @@
 #include "avdecc-pdu_avtp_print.h"
 
 
-bool avdecc_pdu_avtp_print_presentation_time (
+bool avdecc_avtp_print_presentation_time (
     char *buf,
     size_t *offset,
     size_t len,
     avdecc_avtp_presentation_time_t v
 )
 {
-    return avdecc_pdu_print ( buf,offset,len, "%016X", v );
+    return avdecc_print ( buf,offset,len, "%016X", v );
 }
 
 
-bool avdecc_pdu_print_presentation_time_offset (
+bool avdecc_print_presentation_time_offset (
     char *buf,
     size_t *offset,
     size_t len,
     avdecc_avtp_presentation_time_offset_t v
 )
 {
-    return avdecc_pdu_print ( buf,offset,len, "%d", v );
+    return avdecc_print ( buf,offset,len, "%d", v );
 }
 
 
 
-bool avdecc_pdu_avtp_print_subtype (
+bool avdecc_avtp_print_subtype (
     char *buf,
     size_t *offset,
     size_t len,
@@ -98,16 +98,16 @@ bool avdecc_pdu_avtp_print_subtype (
             break;
             
         default:
-            return avdecc_pdu_print ( buf,offset,len, "Unknown (0x%02x)", ( int ) subtype );
+            return avdecc_print ( buf,offset,len, "Unknown (0x%02x)", ( int ) subtype );
             break;
     }
     
-    return avdecc_pdu_print ( buf,offset,len, "%s", s );
+    return avdecc_print ( buf,offset,len, "%s", s );
 }
 
 
 
-bool avdecc_pdu_avtp_print_sv (
+bool avdecc_avtp_print_sv (
     char *buf,
     size_t *offset,
     size_t len,
@@ -128,7 +128,7 @@ bool avdecc_pdu_avtp_print_sv (
             break;
     }
     
-    return avdecc_pdu_print ( buf,offset,len, "%s", s );
+    return avdecc_print ( buf,offset,len, "%s", s );
 }
 
 
