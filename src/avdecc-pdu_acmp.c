@@ -64,7 +64,7 @@ bool avdecc_acmp_read_pdu ( avdecc_acmp_t *self, const void *pdu )
     self->connection_count = avdecc_acmp_get_connection_count ( pdu );
     self->sequence_id = avdecc_acmp_get_sequence_id ( pdu );
     avdecc_acmp_flags_read ( &self->flags, avdecc_acmp_get_flags ( pdu ) );
-    self->reserved1 = avdecc_acmp_get_reserved1(pdu);
+    self->reserved1 = avdecc_acmp_get_reserved1 ( pdu );
     
     return true;
 }
@@ -88,7 +88,7 @@ size_t avdecc_acmp_write_pdu ( const avdecc_acmp_t *self, void *pdu )
     avdecc_acmp_set_connection_count ( pdu, self->connection_count );
     avdecc_acmp_set_sequence_id ( pdu, self->sequence_id );
     avdecc_acmp_set_flags ( pdu, avdecc_acmp_flags_write ( &self->flags ) );
-    avdecc_acmp_set_reserved1(pdu, self->reserved1 );
+    avdecc_acmp_set_reserved1 ( pdu, self->reserved1 );
     
     return AVDECC_ACMP_CONTROL_DATA_LENGTH + AVDECC_PDU_HEADER_SIZE;
 }

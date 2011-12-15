@@ -197,7 +197,7 @@ extern "C" {
         const char *fmt,
         ...
     );
-        
+    
     bool avdecc_pdu_print_block (
         char *buf,
         size_t *offset,
@@ -210,7 +210,7 @@ extern "C" {
     {
         char buf[65];
     } avdecc_pdu_string64_t;
-
+    
     typedef struct avdecc_pdu_string32_s
     {
         char buf[33];
