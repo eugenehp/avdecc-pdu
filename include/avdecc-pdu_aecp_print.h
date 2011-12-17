@@ -20,7 +20,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include "avdecc-pdu_world.h"
 #include "avdecc-pdu_avtp_print.h"
-#include "avdecc-pdu_adp_print.h"
+#include "avdecc-pdu_aecp.h"
 
 
 #ifdef __cplusplus
@@ -29,6 +29,27 @@ extern "C" {
 
     /** \addtogroup aecp aecp */
     /*@{*/
+    
+    bool avdecc_print_aecp_message_type (
+        char *buf,
+        size_t *offset,
+        size_t len,
+        avdecc_aecp_message_type_t message_type
+    );
+    
+    bool avdecc_print_aecp_control_data_length (
+        char *buf,
+        size_t *offset,
+        size_t len,
+        avdecc_aecp_control_data_length_t control_data_length
+    );
+    
+    bool avdecc_print_aecp (
+        char *buf,
+        size_t *offset,
+        size_t len,
+        const avdecc_aecp_t *aecp
+    );
     
     
     
