@@ -35,42 +35,42 @@ extern "C" {
     
     typedef enum
     {
-        avdecc_aem_descriptortype_entity= 0x0000, /* descriptor defining the entity. */
-        avdecc_aem_descriptortype_configuration= 0x0001,  /* descriptor defining a configuration of the entity. */
-        avdecc_aem_descriptortype_audio= 0x0002,  /* descriptor defining an audio unit. */
-        avdecc_aem_descriptortype_video= 0x0003,  /* descriptor defining a video unit. */
-        avdecc_aem_descriptortype_sensor= 0x0004, /* descriptor defining a sensor unit, containing one or more sensors sampled with the same clock. */
-        avdecc_aem_descriptortype_stream_input= 0x0005,   /* descriptor defining an input stream to the entity. */
-        avdecc_aem_descriptortype_stream_output= 0x0006,  /* descriptor defining an output stream from the entity. */
-        avdecc_aem_descriptortype_external_jack_input= 0x0007,    /* descriptor defining an external input jack on the entity. */
-        avdecc_aem_descriptortype_external_jack_output= 0x0008,   /* descriptor defining an external output jack on the entity. */
-        avdecc_aem_descriptortype_audio_port_input= 0x0009,   /* descriptor defining an input port on an audio unit. */
-        avdecc_aem_descriptortype_audio_port_output= 0x000a,  /* descriptor defining an output port on an audio unit. */
-        avdecc_aem_descriptortype_video_port_input= 0x000b,   /* descriptor defining an input port on a video unit. */
-        avdecc_aem_descriptortype_video_port_output= 0x000c,  /* descriptor defining an output port on a video unit. */
-        avdecc_aem_descriptortype_external_port_input= 0x000d,    /* descriptor defining an input external port on a unit. */
-        avdecc_aem_descriptortype_external_port_output= 0x000e,   /* descriptor defining an output external port on a unit. */
-        avdecc_aem_descriptortype_sensor_port_input= 0x000f,  /* descriptor defining an input port on a sensor unit. */
-        avdecc_aem_descriptortype_sensor_port_output= 0x0010, /* descriptor defining an output port on a sensor unit. */
-        avdecc_aem_descriptortype_internal_port_input= 0x0011,    /* descriptor defining an input port on a unit sourced from another unit within the entity. */
-        avdecc_aem_descriptortype_internal_port_output= 0x0012,   /* descriptor defining an output port on a unit sinked to another unit within the entity. */
-        avdecc_aem_descriptortype_avb_interface= 0x0013,  /* descriptor defining an avb interface. */
-        avdecc_aem_descriptortype_clock_source= 0x0014,   /* descriptor describing a clock source. */
-        avdecc_aem_descriptortype_audio_map= 0x0015,  /* descriptor defining the mapping between the channels of an audio stream and the channels of the audio port. */
-        avdecc_aem_descriptortype_audio_cluster= 0x0016,  /* descriptor defining a cluster of channels within an audio port. */
-        avdecc_aem_descriptortype_control= 0x0017,    /* descriptor defining a generic control. */
-        avdecc_aem_descriptortype_signal_selector= 0x0018,    /* descriptor defining a signal selector control. */
-        avdecc_aem_descriptortype_mixer= 0x0019,  /* descriptor defining a mixer control. */
-        avdecc_aem_descriptortype_matrix= 0x001a, /* descriptor defining a matrix control. */
-        avdecc_aem_descriptortype_locale= 0x001b, /* descriptor defining a locale. */
-        avdecc_aem_descriptortype_strings= 0x001c,    /* descriptor defining localized strings. */
+        avdecc_aem_descriptor_entity= 0x0000, /* descriptor defining the entity. */
+        avdecc_aem_descriptor_configuration= 0x0001,  /* descriptor defining a configuration of the entity. */
+        avdecc_aem_descriptor_audio= 0x0002,  /* descriptor defining an audio unit. */
+        avdecc_aem_descriptor_video= 0x0003,  /* descriptor defining a video unit. */
+        avdecc_aem_descriptor_sensor= 0x0004, /* descriptor defining a sensor unit, containing one or more sensors sampled with the same clock. */
+        avdecc_aem_descriptor_stream_input= 0x0005,   /* descriptor defining an input stream to the entity. */
+        avdecc_aem_descriptor_stream_output= 0x0006,  /* descriptor defining an output stream from the entity. */
+        avdecc_aem_descriptor_external_jack_input= 0x0007,    /* descriptor defining an external input jack on the entity. */
+        avdecc_aem_descriptor_external_jack_output= 0x0008,   /* descriptor defining an external output jack on the entity. */
+        avdecc_aem_descriptor_audio_port_input= 0x0009,   /* descriptor defining an input port on an audio unit. */
+        avdecc_aem_descriptor_audio_port_output= 0x000a,  /* descriptor defining an output port on an audio unit. */
+        avdecc_aem_descriptor_video_port_input= 0x000b,   /* descriptor defining an input port on a video unit. */
+        avdecc_aem_descriptor_video_port_output= 0x000c,  /* descriptor defining an output port on a video unit. */
+        avdecc_aem_descriptor_external_port_input= 0x000d,    /* descriptor defining an input external port on a unit. */
+        avdecc_aem_descriptor_external_port_output= 0x000e,   /* descriptor defining an output external port on a unit. */
+        avdecc_aem_descriptor_sensor_port_input= 0x000f,  /* descriptor defining an input port on a sensor unit. */
+        avdecc_aem_descriptor_sensor_port_output= 0x0010, /* descriptor defining an output port on a sensor unit. */
+        avdecc_aem_descriptor_internal_port_input= 0x0011,    /* descriptor defining an input port on a unit sourced from another unit within the entity. */
+        avdecc_aem_descriptor_internal_port_output= 0x0012,   /* descriptor defining an output port on a unit sinked to another unit within the entity. */
+        avdecc_aem_descriptor_avb_interface= 0x0013,  /* descriptor defining an avb interface. */
+        avdecc_aem_descriptor_clock_source= 0x0014,   /* descriptor describing a clock source. */
+        avdecc_aem_descriptor_audio_map= 0x0015,  /* descriptor defining the mapping between the channels of an audio stream and the channels of the audio port. */
+        avdecc_aem_descriptor_audio_cluster= 0x0016,  /* descriptor defining a cluster of channels within an audio port. */
+        avdecc_aem_descriptor_control= 0x0017,    /* descriptor defining a generic control. */
+        avdecc_aem_descriptor_signal_selector= 0x0018,    /* descriptor defining a signal selector control. */
+        avdecc_aem_descriptor_mixer= 0x0019,  /* descriptor defining a mixer control. */
+        avdecc_aem_descriptor_matrix= 0x001a, /* descriptor defining a matrix control. */
+        avdecc_aem_descriptor_locale= 0x001b, /* descriptor defining a locale. */
+        avdecc_aem_descriptor_strings= 0x001c,    /* descriptor defining localized strings. */
         avdecc_aem_descriptortypes=0x001d
     }
-                               avdecc_aem_descriptortype_t;
+                               avdecc_aem_descriptor_t;
                                
     typedef struct avdecc_aem_descriptor_s
     {
-        avdecc_aem_descriptortype_t descriptor_type;
+        avdecc_aem_descriptor_t descriptor_type;
         uint16_t descriptor_id;
     } avdecc_aem_descriptor_t;
     

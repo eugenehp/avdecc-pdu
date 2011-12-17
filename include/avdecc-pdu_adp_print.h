@@ -40,7 +40,7 @@ extern "C" {
         char *buf,
         size_t *offset,
         size_t len,
-        uint8_t control_data_length
+        avdecc_adp_control_data_length_t control_data_length
     );
     
     bool avdecc_print_adp_valid_time (
