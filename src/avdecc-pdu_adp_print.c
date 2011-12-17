@@ -63,7 +63,7 @@ bool avdecc_print_adp_control_data_length (
     char *buf,
     size_t *offset,
     size_t len,
-    uint8_t control_data_length
+    avdecc_adp_control_data_length_t control_data_length
 )
 {
     return avdecc_print ( buf, offset, len, "%d", control_data_length );

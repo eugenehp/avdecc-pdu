@@ -65,12 +65,11 @@ extern "C" {
         avdecc_aem_descriptor_locale= 0x001b, /* descriptor defining a locale. */
         avdecc_aem_descriptor_strings= 0x001c,    /* descriptor defining localized strings. */
         avdecc_aem_descriptortypes=0x001d
-    }
-                               avdecc_aem_descriptor_t;
+    } avdecc_aem_descriptor_type_t;
                                
     typedef struct avdecc_aem_descriptor_s
     {
-        avdecc_aem_descriptor_t descriptor_type;
+        avdecc_aem_descriptor_type_t descriptor_type;
         uint16_t descriptor_id;
     } avdecc_aem_descriptor_t;
     
