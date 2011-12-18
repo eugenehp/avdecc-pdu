@@ -34,7 +34,7 @@ extern "C" {
     /* @{ */
     
     
-    /** See IEEE 1722.1 Section 9.2.1.1.5 */
+    /** See IEEE 1722.1 Clause 9.2.1.1.5 */
     typedef enum
     {
         avdecc_aecp_message_type_aem_command=0,
@@ -55,7 +55,7 @@ extern "C" {
     /** \addtogroup AECP Status type */
     /* @{ */
     
-    /** See IEEE 1722.1 Section 9.2.1.1.6 */
+    /** See IEEE 1722.1 Clause 9.2.1.1.6 */
     typedef enum
     {
         avdecc_aecp_status_success = 0,
@@ -64,17 +64,17 @@ extern "C" {
     
     /* @} */
     
-    /** See IEEE 1722.1 Section 9.2.1.1.7 */
+    /** See IEEE 1722.1 Clause 9.2.1.1.7 */
     typedef avdecc_avtp_control_data_length_t avdecc_aecp_control_data_length_t;
     
-#define AVDECC_AECP_MAX_CONTROL_DATA_LENGTH ((avdecc_aecp_control_data_length_t)(524)) /** See IEEE 1722.1 Section 9.2.1.1.7 */
+#define AVDECC_AECP_MAX_CONTROL_DATA_LENGTH ((avdecc_aecp_control_data_length_t)(524)) /** See IEEE 1722.1 Clause 9.2.1.1.7 */
     
-#define AVDECC_AECP_MAX_PAYLOAD_SPECIFIC_DATA (AVDECC_AECP_MAX_CONTROL_DATA_LENGTH-10) /** See IEEE 1722.1 Section 9.2.1.1.7 */
+#define AVDECC_AECP_MAX_PAYLOAD_SPECIFIC_DATA (AVDECC_AECP_MAX_CONTROL_DATA_LENGTH-10) /** See IEEE 1722.1 Clause 9.2.1.1.7 */
     
-    /** See IEEE 1722.1 Section 9.2.1.1.8 */
+    /** See IEEE 1722.1 Clause 9.2.1.1.8 */
     typedef uint16_t avdecc_aecp_sequence_id_t;
     
-    /* See IEEE 1722.1 Section 9.2.1 */
+    /* See IEEE 1722.1 Clause 9.2.1 */
     
     AVDECC_BITS_MAP_OCTET_BIT ( avdecc_aecp, cd, avdecc_avtp_cd_t, 0, 0 );
     AVDECC_BITS_MAP_OCTET_BITFIELD ( avdecc_aecp, subtype, avdecc_avtp_subtype_t, 0, 1, 7 );

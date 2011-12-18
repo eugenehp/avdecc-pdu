@@ -29,10 +29,10 @@ extern "C" {
     /** \addtogroup acmp acmp */
     /*@{*/
     
-#define AVDECC_ACMP_CONTROL_DATA_LENGTH (44) /* See IEEE 1722.1 Section 8.2.1.7 */
+#define AVDECC_ACMP_CONTROL_DATA_LENGTH (44) /* See IEEE 1722.1 Clause 8.2.1.7 */
     
     /** \addtogroup timeouts Timeouts,
-     See IEEE 1722.1 Section 8.2.2
+     See IEEE 1722.1 Clause 8.2.2
      */
     
 #define AVDECC_ACMP_TIMEOUT_CONNECT_TX (2000)
@@ -46,7 +46,7 @@ extern "C" {
     /*@}*/
     
     
-    /** See IEEE 1722.1 Section 8.2.1.6 */
+    /** See IEEE 1722.1 Clause 8.2.1.6 */
     typedef enum
     {
         avdecc_acmp_status_success = 0,
@@ -72,7 +72,7 @@ extern "C" {
     avdecc_acmp_status_t;
     
     
-    /** See IEEE 1722.1 Section 8.2.1.17 */
+    /** See IEEE 1722.1 Clause 8.2.1.17 */
 #define AVDECC_ACMP_FLAG_CLASS_B_BIT (15)
 #define AVDECC_ACMP_FLAG_CLASS_B (AVDECC_BITS_DOUBLET_BIT(AVDECC_ACMP_FLAG_CLASS_B_BIT))
 #define AVDECC_ACMP_FLAG_FAST_CONNECT_BIT (14)
@@ -115,7 +115,7 @@ extern "C" {
     }
     
     
-    /** See IEEE 1722.1 Section 8.2.1.5 */
+    /** See IEEE 1722.1 Clause 8.2.1.5 */
     typedef enum
     {
         avdecc_acmp_message_connect_tx_command = 0,
@@ -136,7 +136,7 @@ extern "C" {
     } avdecc_acmp_message_type_t;
     
     
-    /* See IEEE 1722.1 Section 8.2.1 */
+    /* See IEEE 1722.1 Clause 8.2.1 */
     
     AVDECC_BITS_MAP_OCTET_BIT ( avdecc_acmp, cd, avdecc_avtp_cd_t, 0, 0 );
     AVDECC_BITS_MAP_OCTET_BITFIELD ( avdecc_acmp, subtype, avdecc_avtp_subtype_t, 0, 1, 7 );
@@ -157,7 +157,7 @@ extern "C" {
     AVDECC_BITS_MAP_DOUBLET ( avdecc_acmp, flags, uint16_t, 50 );
     AVDECC_BITS_MAP_QUADLET ( avdecc_acmp, reserved1, uint32_t, 52 );
     
-    /** See IEEE 1722.1 Section 8.2.1 */
+    /** See IEEE 1722.1 Clause 8.2.1 */
     
     typedef struct avdecc_acmp_s
     {

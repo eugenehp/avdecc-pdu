@@ -392,10 +392,10 @@ extern "C" {
     
     typedef avdecc_avtp_control_data_length_t avdecc_adp_control_data_length_t;
     
-#define AVDECC_ADP_CONTROL_DATA_LENGTH ((avdecc_adp_control_data_length_t)(56))     /* See IEEE 1722.1 Section 6.2.1.7 */
+#define AVDECC_ADP_CONTROL_DATA_LENGTH ((avdecc_adp_control_data_length_t)(56))     /* See IEEE 1722.1 Clause 6.2.1.7 */
     
     
-    /* See IEEE 1722.1 Section 6.2.1 */
+    /* See IEEE 1722.1 Clause 6.2.1 */
     
     AVDECC_BITS_MAP_OCTET_BIT ( avdecc_adp, cd, avdecc_avtp_cd_t, 0, 0 );
     AVDECC_BITS_MAP_OCTET_BITFIELD ( avdecc_adp, subtype, avdecc_avtp_subtype_t, 0, 1, 7 );
