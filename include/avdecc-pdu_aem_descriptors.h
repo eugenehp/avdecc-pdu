@@ -409,6 +409,7 @@ extern "C" {
     
     typedef struct avdecc_aem_clock_source_flags_s
     {
+        bool todo;
     } avdecc_aem_clock_source_flags_t;
     
     /** See IEEE 1722.1 Clause 7.2.14.2 */
