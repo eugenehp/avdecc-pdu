@@ -5,7 +5,7 @@
 
 TARGET=avdecc-pdu_test_mac
 
-SOURCES += $$TOPDIR/tests/avdecc-pdu_test_mac.cpp
+SOURCES += $$TOPDIR/tests/avdecc-pdu_test_mac.c
 
 HEADERS += $$TOPDIR/include/*.hpp
 

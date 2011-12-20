@@ -4,7 +4,7 @@ CONFIG += create_prl
 TOPDIR = ../../../
 
 
-INCLUDEPATH += $$TOPDIR/include $
+INCLUDEPATH += $$TOPDIR/include 
 DEPENDPATH += $$INCLUDEPATH
 TARGET = avdecc-pdu
 TEMPLATE = lib

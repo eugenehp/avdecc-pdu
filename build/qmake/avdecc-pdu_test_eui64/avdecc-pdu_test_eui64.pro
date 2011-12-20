@@ -5,7 +5,7 @@
 
 TARGET=avdecc-pdu_test_eui64
 
-SOURCES += $$TOPDIR/tests/avdecc-pdu_test_eui64.cpp
+SOURCES += $$TOPDIR/tests/avdecc-pdu_test_eui64.c
 
 HEADERS += $$TOPDIR/include/*.hpp
 

@@ -5,7 +5,7 @@
 
 TARGET=avdecc-pdu_test_aecp
 
-SOURCES += $$TOPDIR/tests/avdecc-pdu_test_aecp.cpp
+SOURCES += $$TOPDIR/tests/avdecc-pdu_test_aecp.c
 
 HEADERS += $$TOPDIR/include/*.hpp
 
