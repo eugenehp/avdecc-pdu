@@ -35,7 +35,7 @@ bool avdecc_mac_to_text ( const avdecc_mac_t *mac, char *buf, int buf_len )
         
         snprintf (
             buf, buf_len,
-            "%02X:%02X:%02X:%02X:%02X:%02X",
+            "%02X-%02X-%02X-%02X-%02X-%02X",
             bytes[0], bytes[1], bytes[2], bytes[3], bytes[4], bytes[5]
         );
         
@@ -58,7 +58,7 @@ bool avdecc_mac_from_text ( avdecc_mac_t *mac, const char *buf )
     
     cnt=sscanf (
             buf,
-            "%02X:%02X:%02X:%02X:%02X:%02X",
+            "%02X-%02X-%02X-%02X-%02X-%02X",
             &bytes[0],
             &bytes[1],
             &bytes[2],

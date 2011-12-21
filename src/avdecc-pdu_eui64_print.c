@@ -37,7 +37,7 @@ bool avdecc_eui64_to_text ( const avdecc_eui64_t *eui64, char *buf, int buf_len 
         
         snprintf (
             buf, buf_len,
-            "%02X:%02X:%02X:%02X:%02X:%02X:%02X:%02X",
+            "%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X",
             bytes[0], bytes[1], bytes[2], bytes[3], bytes[4], bytes[5], bytes[6], bytes[7]
         );
         
@@ -60,7 +60,7 @@ bool avdecc_eui64_from_text ( avdecc_eui64_t *eui64, const char *buf )
     
     
     cnt=sscanf ( buf,
-                 "%02X:%02X:%02X:%02X:%02X:%02X:%02X:%02X",
+                 "%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X",
                  &bytes[0],
                  &bytes[1],
                  &bytes[2],

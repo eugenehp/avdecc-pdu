@@ -142,7 +142,7 @@ bool avdecc_stream_id_to_text ( const avdecc_stream_id_t *sid, char *buf, int bu
         
         snprintf (
             buf, buf_len,
-            "%02X:%02X:%02X:%02X:%02X:%02X:%02X:%02X",
+            "%02X-%02X-%02X-%02X-%02X-%02X.%02X-%02X",
             bytes[0], bytes[1], bytes[2], bytes[3], bytes[4], bytes[5], bytes[6], bytes[7]
         );
         
@@ -164,7 +164,7 @@ bool avdecc_stream_id_from_text ( avdecc_stream_id_t *sid, const char *buf )
     unsigned int bytes[8];
     
     cnt=sscanf ( buf,
-                 "%02X:%02X:%02X:%02X:%02X:%02X:%02X:%02X",
+                 "%02X-%02X-%02X-%02X-%02X-%02X.%02X-%02X",
                  &bytes[0],
                  &bytes[1],
                  &bytes[2],
