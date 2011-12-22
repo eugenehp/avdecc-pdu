@@ -352,7 +352,8 @@ extern "C" {
         uint16_t audio_channels;
         uint16_t number_of_clusters;
         uint16_t base_cluster;
-        uint16_t audio_map_id;
+        uint16_t base_audio_map;
+        uint16_t number_of_audio_maps;
     } avdecc_aem_descriptor_audio_port_t;
     
     /** See IEEE 1722.1 Clause 7.3.2 */
