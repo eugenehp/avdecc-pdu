@@ -219,14 +219,19 @@ bool avdecc_print_adp_entity_capabilities (
         r&=avdecc_print ( buf,offset,len, "DFU_MODE " );
     }
     
+    if ( entity_capabilities->address_access_supported )
+    {
+        r&=avdecc_print ( buf,offset,len, "ADDRESS_ACCESS_SUPPORTED " );
+    }
+    
     if ( entity_capabilities->gateway_entity )
     {
         r&=avdecc_print ( buf,offset,len, "GATEWAY_ENTITY " );
     }
     
-    if ( entity_capabilities->avdecc_control )
+    if ( entity_capabilities->aem_supported )
     {
-        r&=avdecc_print ( buf,offset,len, "AVDECC_CONTROL " );
+        r&=avdecc_print ( buf,offset,len, "AEM_SUPPORTED " );
     }
     
     if ( entity_capabilities->legacy_avc )
@@ -243,7 +248,12 @@ bool avdecc_print_adp_entity_capabilities (
     {
         r&=avdecc_print ( buf,offset,len, "ASSOCIATION_ID_VALID " );
     }
-    
+
+    if ( entity_capabilities->vendor_unique_supported )
+    {
+        r&=avdecc_print ( buf,offset,len, "VENDOR_UNIQUE_SUPPORTED " );
+    }
+     
     r&=avdecc_print ( buf,offset,len, "]" );
     return r;
 }
