@@ -48,13 +48,13 @@ int avdecc_print_acmp_status (
         "incompatible_request"
     };
     
-    if ( v<= avdecc_acmp_status_reserved )
+    if ( v< avdecc_acmp_status_reserved )
     {
         r = avdecc_print ( buf,pos,len,"%s", text[ ( int ) v ] );
     }
     else
     {
-        r = avdecc_print ( buf,pos,len,"Unknown(%d)", ( int ) v );
+        r = avdecc_print ( buf,pos,len,"reserved (%d)", ( int ) v );
     }
     
     return r;
@@ -87,13 +87,13 @@ int avdecc_print_acmp_message_type (
         "get_tx_connection_response"
     };
     
-    if ( v<= avdecc_acmp_message_reserved )
+    if ( v< avdecc_acmp_message_reserved )
     {
         r = avdecc_print ( buf,pos,len,"%s", text[ ( int ) v ] );
     }
     else
     {
-        r = avdecc_print ( buf,pos,len,"Unknown(%d)", ( int ) v );
+        r = avdecc_print ( buf,pos,len,"reserved (%d)", ( int ) v );
     }
     
     return r;
