@@ -133,11 +133,7 @@ typedef unsigned char uint8_t;
 # include <sys/poll.h>
 # include <errno.h>
 # include <strings.h>
-#ifdef __linux__
-# include <linux/if.h>
-#else
 # include <net/if.h>
-#endif
 # include <stdint.h>
 #endif
 
