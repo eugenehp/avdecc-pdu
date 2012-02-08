@@ -31,7 +31,7 @@ extern "C" {
     /*@{*/
     
     
-#define AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE (AVDECC_PDU_MAX_PAYLOAD_SIZE-28) /*!< See IEEE 1722.1 Clause 7.4.2.1 */
+#define AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE (AVDECC_PDU_MAX_PAYLOAD_SIZE-28) /*!< See IEEE 1722.1 Clause 7.4.2.2 */
     
     typedef enum
     {
@@ -70,6 +70,20 @@ extern "C" {
     }
     avdecc_aem_descriptor_type_t;
     
+    int avdecc_flatten_aem_descriptor_type (
+        char *buf,
+        size_t *pos,
+        size_t len,
+        avdecc_aem_descriptor_type_t v
+    );
+    
+    int avdecc_unflatten_aem_descriptor_type (
+        char *buf,
+        size_t *pos,
+        size_t len,
+        avdecc_aem_descriptor_type_t *v
+    );
+    
     /** See IEEE 1722.1 Clause 7.2.3.1.1 */
     typedef enum
     {
@@ -87,6 +101,31 @@ extern "C" {
         uint32_t base_frequency;
         avdecc_aem_audio_pull_t pull;
     } avdecc_aem_audio_sample_rate_t;
+    
+    int avdecc_flatten_aem_audio_sample_rate (
+        char *buf,
+        size_t *pos,
+        size_t len,
+        const avdecc_aem_audio_sample_rate_t *v
+    );
+    
+    int avdecc_unflatten_aem_audio_sample_rate (
+        char *buf,
+        size_t *pos,
+        size_t len,
+        avdecc_aem_audio_sample_rate_t *v
+    );
+    
+#define AVDECC_PDU_AEM_DESCRIPTOR_MAX_CONTENT_SIZE  (AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE-4) /*!< See IEEE 1722.1 Clause 7.4.2.2 */
+    
+    /** See IEEE 1722.1 Clause 7.4.2.2 */
+    
+    typedef struct avdecc_aem_descriptor_s
+    {
+        avdecc_aem_descriptor_type_t descriptor_type;
+        uint16_t descriptor_id;
+        uint8_t padding[ AVDECC_PDU_AEM_DESCRIPTOR_MAX_CONTENT_SIZE ];
+    } avdecc_aem_descriptor_t;
     
     /** See IEEE 1722.1 Clause 7.2.1 */
     
@@ -124,7 +163,7 @@ extern "C" {
         uint16_t descriptor_count;
     } avdecc_aem_descriptor_configuration_counts_t;
     
-#define AVDECC_PDU_AEM_DESCRIPTOR_CONFIGURATION_MAX_COUNTS (( AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE - 74 ) / 4 ) /*!< See IEEE 1722.1 Clause 7.2.2 */
+#define AVDECC_PDU_AEM_DESCRIPTOR_CONFIGURATION_MAX_COUNTS (108) /*!< See IEEE 1722.1 Clause 7.2.2 */
     
     /** See IEEE 1722.1 Clause 7.2.2 */
     typedef struct avdecc_aem_descriptor_configuration_s
@@ -137,10 +176,10 @@ extern "C" {
         avdecc_aem_descriptor_configuration_counts_t descriptor_counts[AVDECC_PDU_AEM_DESCRIPTOR_CONFIGURATION_MAX_COUNTS];
     } avdecc_aem_descriptor_configuration_t;
     
-#define AVDECC_PDU_AEM_DESCRIPTOR_AUDIO_MAX_SAMPLE_RATES (( AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE - 120 ) / 4 ) /*!< See IEEE 1722.1 Clause 7.2.3 */
+#define AVDECC_PDU_AEM_DESCRIPTOR_AUDIO_MAX_SAMPLE_RATES (97) /*!< See IEEE 1722.1 Clause 7.2.3 */
     
     /** See IEEE 1722.1 Clause 7.2.3 */
-    typedef struct avdecc_aem_descriptor_audio_s
+    typedef struct avdecc_aem_descriptor_audio_unit_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
         uint16_t descriptor_id;
@@ -170,11 +209,11 @@ extern "C" {
         avdecc_aem_audio_sample_rate_t current_sample_rate;
         uint16_t sample_rates_count;
         avdecc_aem_audio_sample_rate_t sample_rates[AVDECC_PDU_AEM_DESCRIPTOR_AUDIO_MAX_SAMPLE_RATES];
-    } avdecc_aem_descriptor_audio_t;
+    } avdecc_aem_descriptor_audio_unit_t;
     
     
     /** See IEEE 1722.1 Clause 7.2.4 */
-    typedef struct avdecc_aem_descriptor_video_s
+    typedef struct avdecc_aem_descriptor_video_unit_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
         uint16_t descriptor_id;
@@ -201,11 +240,11 @@ extern "C" {
         uint16_t base_mixer;
         uint16_t number_of_matrices;
         uint16_t base_matrix;
-    } avdecc_aem_descriptor_video_t;
+    } avdecc_aem_descriptor_video_unit_t;
     
     
     /** See IEEE 1722.1 Clause 7.2.5 */
-    typedef struct avdecc_aem_descriptor_sensor_s
+    typedef struct avdecc_aem_descriptor_sensor_unit_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
         uint16_t descriptor_id;
@@ -232,7 +271,7 @@ extern "C" {
         uint16_t base_mixer;
         uint16_t number_of_matrices;
         uint16_t base_matrix;
-    } avdecc_aem_descriptor_sensor_t;
+    } avdecc_aem_descriptor_sensor_unit_t;
     
     /** See IEEE 1722.1 Clause 7.2.6.1 */
     typedef struct avdecc_aem_stream_flags_s
@@ -249,7 +288,7 @@ extern "C" {
         uint64_t format;
     } avdecc_aem_stream_format_t;
     
-#define AVDECC_PDU_AEM_DESCRIPTOR_STREAM_MAX_FORMATS (( AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE - 130 ) / 8 ) /*!< See IEEE 1722.1 Clause 7.2.6 */
+#define AVDECC_PDU_AEM_DESCRIPTOR_STREAM_MAX_FORMATS (47) /*!< See IEEE 1722.1 Clause 7.2.6 */
     
     /** See IEEE 1722.1 Clause 7.2.6 */
     typedef struct avdecc_aem_descriptor_stream_s
@@ -260,7 +299,7 @@ extern "C" {
         uint16_t stream_name_string;
         avdecc_aem_stream_flags_t stream_flags;
         uint16_t stream_channels;
-        avdecc_eui64_t clock_source_id;
+        uint16_t clock_source_id;
         avdecc_aem_stream_format_t current_format;
         uint16_t number_of_formats;
         avdecc_eui64_t backup_talker_guid_0;
@@ -324,7 +363,7 @@ extern "C" {
     
     
     /** See IEEE 1722.1 Clause 7.2.7 */
-    typedef struct avdecc_aem_descriptor_external_jack_s
+    typedef struct avdecc_aem_descriptor_jack_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
         uint16_t descriptor_id;
@@ -332,7 +371,7 @@ extern "C" {
         uint16_t jack_name_string;
         avdecc_aem_jack_flags_t jack_flags;
         avdecc_aem_jack_type_t jack_type;
-    } avdecc_aem_descriptor_external_jack_t;
+    } avdecc_aem_descriptor_jack_t;
     
     
     /** See IEEE 1722.1 Clause 7.2.8.1 */
@@ -363,7 +402,7 @@ extern "C" {
         uint64_t raw[2]; /* TODO: */
     } avdecc_aem_media_format_t;
     
-#define AVDECC_PDU_AEM_DESCRIPTOR_VIDEO_PORT_MAX_FORMATS (( AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE - 36 ) / 16 ) /*!< See IEEE 1722.1 Clause 7.2.9 */
+#define AVDECC_PDU_AEM_DESCRIPTOR_VIDEO_PORT_MAX_FORMATS (29) /*!< See IEEE 1722.1 Clause 7.2.9 */
     
     /** See IEEE 1722.1 Clause 7.2.9 */
     typedef struct avdecc_aem_descriptor_video_port_s
@@ -427,7 +466,7 @@ extern "C" {
         uint16_t vlan_id;
     } avdecc_aem_msrp_mappings_t;
     
-#define AVDECC_PDU_AEM_DESCRIPTOR_AVB_INTERFACE_MAX_MAPPINGS (( AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE - 88 ) / 4 ) /*!< See IEEE 1722.1 Clause 7.2.13 */
+#define AVDECC_PDU_AEM_DESCRIPTOR_AVB_INTERFACE_MAX_MAPPINGS (105) /*!< See IEEE 1722.1 Clause 7.2.13 */
     
     /** See IEEE 1722.1 Clause 7.2.13 */
     typedef struct avdecc_aem_descriptor_avb_interface_s
@@ -486,7 +525,7 @@ extern "C" {
         uint16_t mapping_audio_channel;
     } avdecc_aem_audio_mapping_t;
     
-#define AVDECC_PDU_AEM_DESCRIPTOR_AUDIO_MAP_MAX_MAPPINGS (( AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE - 8 ) / 6 ) /*!< See IEEE 1722.1 Clause 7.2.26 */
+#define AVDECC_PDU_AEM_DESCRIPTOR_AUDIO_MAP_MAX_MAPPINGS (83) /*!< See IEEE 1722.1 Clause 7.2.26 */
     
     /** See IEEE 1722.1 Clause 7.2.15 */
     typedef struct avdecc_aem_descriptor_audio_map_s
@@ -513,7 +552,7 @@ extern "C" {
         uint32_t block_latency;
     } avdecc_aem_descriptor_audio_cluster_t;
     
-#define AVDECC_PDU_AEM_CONTROL_DESCRIPTOR_MAX_PAYLOAD_SIZE (AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE-102) /** See IEEE 1722.1 Clause 7.2.17 */
+#define AVDECC_PDU_AEM_CONTROL_DESCRIPTOR_MAX_PAYLOAD_SIZE (406) /** See IEEE 1722.1 Clause 7.2.17 */
     
     /** See IEEE 1722.1 Clause 7.3.4 */
     typedef enum
@@ -639,7 +678,7 @@ extern "C" {
         avdecc_aem_units_level_dbc =0xc9, /*!< "dB(C)", "C-weighted level in decibels" */
         avdecc_aem_units_level_dbspl =0xca, /*!< "dB(SPL)", "Sound pressure level in decibels" */
         avdecc_aem_units_level_lu =0xcb, /*!< "LU", "ITU-R. BS. 1770-2 loudness level" */
-        avdecc_aem_units_level_lufs =0xcc, /*!< "LUFS", "ITU-R. BS. 1770-2 full scale loudness level" */
+        avdecc_aem_units_level_lufs =0xcc /*!< "LUFS", "ITU-R. BS. 1770-2 full scale loudness level" */
     } avdecc_aem_units_t;
     
     extern const char *avdecc_aem_units_symbol[256];
@@ -995,9 +1034,9 @@ extern "C" {
     {
         uint16_t array_size;
         int8_t minimum_value;
-        int8_t  maximum_value;
-        int8_t  step;
-        int8_t  default_value;
+        int8_t maximum_value;
+        int8_t step;
+        int8_t default_value;
         avdecc_aem_units_t unit;
         int8_t current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT8_MAX_ITEMS ];
     } avdecc_aem_control_value_type_array_format_int8_t;
@@ -1008,9 +1047,9 @@ extern "C" {
     {
         uint16_t array_size;
         uint8_t minimum_value;
-        uint8_t  maximum_value;
-        uint8_t  step;
-        uint8_t  default_value;
+        uint8_t maximum_value;
+        uint8_t step;
+        uint8_t default_value;
         avdecc_aem_units_t unit;
         uint8_t current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_UINT8_MAX_ITEMS ];
     } avdecc_aem_control_value_type_array_format_uint8_t;
@@ -1021,9 +1060,9 @@ extern "C" {
     {
         uint16_t array_size;
         int16_t minimum_value;
-        int16_t  maximum_value;
-        int16_t  step;
-        int16_t  default_value;
+        int16_t maximum_value;
+        int16_t step;
+        int16_t default_value;
         avdecc_aem_units_t unit;
         int16_t current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT16_MAX_ITEMS ];
     } avdecc_aem_control_value_type_array_format_int16_t;
@@ -1035,9 +1074,9 @@ extern "C" {
     {
         uint16_t array_size;
         uint16_t minimum_value;
-        uint16_t  maximum_value;
-        uint16_t  step;
-        uint16_t  default_value;
+        uint16_t maximum_value;
+        uint16_t step;
+        uint16_t default_value;
         avdecc_aem_units_t unit;
         uint16_t current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_UINT16_MAX_ITEMS ];
     } avdecc_aem_control_value_type_array_format_uint16_t;
@@ -1048,9 +1087,9 @@ extern "C" {
     {
         uint16_t array_size;
         int32_t minimum_value;
-        int32_t  maximum_value;
-        int32_t  step;
-        int32_t  default_value;
+        int32_t maximum_value;
+        int32_t step;
+        int32_t default_value;
         avdecc_aem_units_t unit;
         int32_t current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT32_MAX_ITEMS ];
     } avdecc_aem_control_value_type_array_format_int32_t;
@@ -1061,9 +1100,9 @@ extern "C" {
     {
         uint16_t array_size;
         uint32_t minimum_value;
-        uint32_t  maximum_value;
-        uint32_t  step;
-        uint32_t  default_value;
+        uint32_t maximum_value;
+        uint32_t step;
+        uint32_t default_value;
         avdecc_aem_units_t unit;
         uint32_t current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_UINT32_MAX_ITEMS ];
     } avdecc_aem_control_value_type_array_format_uint32_t;
@@ -1074,9 +1113,9 @@ extern "C" {
     {
         uint16_t array_size;
         int64_t minimum_value;
-        int64_t  maximum_value;
-        int64_t  step;
-        int64_t  default_value;
+        int64_t maximum_value;
+        int64_t step;
+        int64_t default_value;
         avdecc_aem_units_t unit;
         int64_t current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT64_MAX_ITEMS ];
     } avdecc_aem_control_value_type_array_format_int64_t;
@@ -1087,9 +1126,9 @@ extern "C" {
     {
         uint16_t array_size;
         uint64_t minimum_value;
-        uint64_t  maximum_value;
-        uint64_t  step;
-        uint64_t  default_value;
+        uint64_t maximum_value;
+        uint64_t step;
+        uint64_t default_value;
         avdecc_aem_units_t unit;
         uint64_t current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT64_MAX_ITEMS ];
     } avdecc_aem_control_value_type_array_format_uint64_t;
@@ -1100,9 +1139,9 @@ extern "C" {
     {
         uint16_t array_size;
         float minimum_value;
-        float  maximum_value;
-        float  step;
-        float  default_value;
+        float maximum_value;
+        float step;
+        float default_value;
         avdecc_aem_units_t unit;
         float current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_FLOAT_MAX_ITEMS ];
     } avdecc_aem_control_value_type_array_format_float_t;
@@ -1113,9 +1152,9 @@ extern "C" {
     {
         uint16_t array_size;
         double minimum_value;
-        double  maximum_value;
-        double  step;
-        double  default_value;
+        double maximum_value;
+        double step;
+        double default_value;
         avdecc_aem_units_t unit;
         double current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_DOUBLE_MAX_ITEMS ];
     } avdecc_aem_control_value_type_array_format_double_t;
@@ -1134,7 +1173,7 @@ extern "C" {
     } avdecc_aem_control_value_type_selector_format_string_t;
     
     
-#define AVDECC_PDU_AEM_CONTROL_VENDOR_FORMAT_MAX_BLOB (AVDECC_PDU_AEM_CONTROL_DESCRIPTOR_MAX_PAYLOAD_SIZE-8)
+#define AVDECC_PDU_AEM_CONTROL_VENDOR_FORMAT_MAX_BLOB (394) /*!< See IEEE 1722 D18 Clause 7.2.17.2.9 */
     
     /** See IEEE 1722.1 Clause 7.2.17.2.6 */
     
@@ -1218,7 +1257,7 @@ extern "C" {
         uint16_t source_id;
     } avdecc_aem_sources_t;
     
-#define AVDECC_PDU_AEM_DESCRIPTOR_SIGNAL_SELECTOR_MAX_SOURCES (( AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE - 96 ) / 4 ) /*!< See IEEE 1722.1 D18 Clause 7.2.18 */
+#define AVDECC_PDU_AEM_DESCRIPTOR_SIGNAL_SELECTOR_MAX_SOURCES (103) /*!< See IEEE 1722.1 D18 Clause 7.2.18 */
     
     /** See IEEE 1722.1 D18 Clause 7.2.18 */
     
@@ -1241,7 +1280,7 @@ extern "C" {
         avdecc_aem_sources_t sources[AVDECC_PDU_AEM_DESCRIPTOR_SIGNAL_SELECTOR_MAX_SOURCES];
     } avdecc_aem_descriptor_signal_selector_t;
     
-#define AVDECC_PDU_AEM_DESCRIPTOR_MIXER_MAX_SOURCES (( AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE - 92 ) / 4 ) /*!<  See IEEE 1722.1 Clause 7.2.19  */
+#define AVDECC_PDU_AEM_DESCRIPTOR_MIXER_MAX_SOURCES (101) /*!<  See IEEE 1722.1 Clause 7.2.19  */
     
     /** See IEEE 1722.1 Clause 7.2.19 */
     typedef struct avdecc_aem_descriptor_mixer_s
@@ -1310,7 +1349,7 @@ extern "C" {
     
     
     
-#define AVDECC_PDU_AEM_DESCRIPTOR_MATRIX_SIGNAL_MAX_SIGNALS (( AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE - 8 ) / 4 ) /*!< See IEEE Clause 7.2.23 */
+#define AVDECC_PDU_AEM_DESCRIPTOR_MATRIX_SIGNAL_MAX_SIGNALS (125) /*!< See IEEE Clause 7.2.23 */
     
     /** See IEEE 1722.1 Clause 7.2.23.1 */
     typedef struct avdecc_aem_descriptor_matrix_signal_entry_s
@@ -1326,7 +1365,7 @@ extern "C" {
         uint16_t descriptor_id;
         uint16_t signals_count;
         uint16_t signals_offset;
-        avdecc_aem_descriptor_matrix_signal_entry_t signals[ AVDECC_PDU_AEM_DESCRIPTOR_MATRIX_SIGNAL_MAX_SIGNALS ];
+        avdecc_aem_descriptor_matrix_signal_entry_t signals_list[ AVDECC_PDU_AEM_DESCRIPTOR_MATRIX_SIGNAL_MAX_SIGNALS ];
     } avdecc_aem_descriptor_matrix_signal_t;
     
     /** See IEEE 1722.1 Clause 7.2.24.1 */

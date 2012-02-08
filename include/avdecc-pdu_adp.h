@@ -225,7 +225,7 @@ extern "C" {
     {
         uint32_t v=0;
         v = AVDECC_BITS_SET_QUADLET_BIT_IF ( v, AVDECC_ADP_ENTITY_CAP_DFU_MODE_BIT, self->dfu_mode );
-        v = AVDECC_BITS_SET_QUADLET_BIT_IF ( v, AVDECC_ADP_ENTITY_CAP_ADDRESS_ACCESS_SUPPORTED_BIT, self->address_access_supported);
+        v = AVDECC_BITS_SET_QUADLET_BIT_IF ( v, AVDECC_ADP_ENTITY_CAP_ADDRESS_ACCESS_SUPPORTED_BIT, self->address_access_supported );
         v = AVDECC_BITS_SET_QUADLET_BIT_IF ( v, AVDECC_ADP_ENTITY_CAP_GATEWAY_ENTITY_BIT, self->gateway_entity );
         v = AVDECC_BITS_SET_QUADLET_BIT_IF ( v, AVDECC_ADP_ENTITY_CAP_AEM_SUPPORTED_BIT, self->aem_supported );
         v = AVDECC_BITS_SET_QUADLET_BIT_IF ( v, AVDECC_ADP_ENTITY_CAP_LEGACY_AVC_BIT, self->legacy_avc );

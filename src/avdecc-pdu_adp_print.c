@@ -248,12 +248,12 @@ bool avdecc_print_adp_entity_capabilities (
     {
         r&=avdecc_print ( buf,offset,len, "ASSOCIATION_ID_VALID " );
     }
-
+    
     if ( entity_capabilities->vendor_unique_supported )
     {
         r&=avdecc_print ( buf,offset,len, "VENDOR_UNIQUE_SUPPORTED " );
     }
-     
+    
     r&=avdecc_print ( buf,offset,len, "]" );
     return r;
 }

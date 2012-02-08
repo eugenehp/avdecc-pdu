@@ -116,6 +116,49 @@ extern "C" {
     AVDECC_BITS_MAP_DOUBLET ( avdecc_avtp, stream_data_length, avdecc_avtp_stream_data_length_t, 20 );
     AVDECC_BITS_MAP_DOUBLET ( avdecc_avtp, stream_protocol_specific_header, avdecc_avtp_stream_protocol_specific_header_t, 22 );
     
+    
+    typedef struct avdecc_avtp_common_s
+    {
+        avdecc_avtp_cd_t cd;
+        avdecc_avtp_subtype_t subtype;
+        avdecc_avtp_sv_t sv;
+        avdecc_avtp_version_t version;
+        avdecc_avtp_type_specific_data_t type_specific_data;
+        avdecc_stream_id_t stream_id;
+    } avdecc_avtp_common_t;
+    
+    typedef struct avdecc_avtp_control_s
+    {
+        avdecc_avtp_cd_t cd;
+        avdecc_avtp_subtype_t subtype;
+        avdecc_avtp_sv_t sv;
+        avdecc_avtp_version_t version;
+        avdecc_avtp_control_data_t control_data;
+        avdecc_avtp_control_status_t control_status;
+        avdecc_avtp_control_data_length_t control_data_length;
+        avdecc_stream_id_t stream_id;
+    } avdecc_avtp_control_t;
+    
+    typedef struct avdecc_avtp_stream_s
+    {
+        avdecc_avtp_cd_t cd;
+        avdecc_avtp_subtype_t subtype;
+        avdecc_avtp_sv_t sv;
+        avdecc_avtp_version_t version;
+        avdecc_avtp_stream_mr_t mr;
+        avdecc_avtp_stream_r_t r;
+        avdecc_avtp_stream_gv_t gv;
+        avdecc_avtp_stream_tv_t tv;
+        avdecc_avtp_stream_sequence_num_t sequence_num;
+        avdecc_avtp_stream_reserved_t reserved;
+        avdecc_avtp_stream_tu_t tu;
+        avdecc_stream_id_t stream_id;
+        avdecc_avtp_stream_timestamp_t avtp_timestamp;
+        avdecc_avtp_stream_gateway_info_t gateway_info;
+        avdecc_avtp_stream_data_length_t stream_data_length;
+        avdecc_avtp_stream_protocol_specific_header_t protocol_specific_header;
+    } avdecc_avtp_stream_t;
+    
     /*@}*/
     
 #ifdef __cplusplus
