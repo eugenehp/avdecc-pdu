@@ -34,6 +34,20 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 """
 
+
+eui64_types = [
+    ("avdecc_eui64_t","eui64")
+]
+
+mac_types = [
+    ("avdecc_mac_t","mac")
+]
+
+stream_types = [
+    ("avdecc_stream_t","stream")
+]
+
+
 adp_types = [
     ( "avdecc_adp_t","adp" )
 ]
@@ -43,7 +57,11 @@ acmp_types = [
 ]
 
 aecp_types = [
-    ( "avdecc_aecp_t","aecp" )
+    ( "avdecc_aecp_t","aecp" ),
+    ( "avdecc_aecp_aem_t","aecp_aem" ),
+    ( "avdecc_aecp_aa_t","aecp_aa" ),
+    ( "avdecc_aecp_avc_t","aecp_avc" ),
+    ( "avdecc_aecp_vu_t","aecp_vu" ),
 ]
 
 avtp_types = [
@@ -53,7 +71,7 @@ avtp_types = [
 ]
 
 aem_descriptor_types = [
-     ( "avdecc_aem_descriptor_type_t", "descriptor_type" ),
+#     ( "avdecc_aem_descriptor_type_t", "descriptor_type" ),
      ( "avdecc_aem_audio_pull_t", "audio_pull" ),
      ( "avdecc_aem_audio_sample_rate_t", "audio_sample_rate" ),
      ( "avdecc_aem_descriptor_t", "descriptor" ),
@@ -237,16 +255,38 @@ aem_command_types = [
    ( "avdecc_aem_response_auth_revoke_key_t", "response_auth_revoke_key" )
 ]
 
+top_list = [
+    ("avdecc-pdu_mac_t","mac",mac_types),
+    ("avdecc-pdu_eui64_t","eui64",eui64_types),
+    ("avdecc-pdu_stream_id_t","stream_id_t",stream_types),
+    ("avdecc-pdu_aem_descriptor","aem_descriptor",aem_descriptor_types),
+    ("avdecc-pdu_aem_command","aem_command",aem_command_types),
+    ("avdecc-pdu_avtp","avtp",avtp_types),
+    ("avdecc-pdu_aecp","aecp",aecp_types),
+    ("avdecc-pdu_acmp","acmp",acmp_types),
+    ("avdecc-pdu_adp","adp",adp_types)
+    ]
+
 def generate_h_print(f,module,sect,v): 
     v = { "module" : module, "sect" : sect, "name" : v[1], "type" : v[0] }
     f.write("""
-bool avdecc%(sect)s_%(name)s_print( char *buf, size_t *pos, size_t len, const %(type)s *self ); 
+bool avdecc%(sect)s_%(name)s_print( 
+   char *buf, 
+   size_t *pos, 
+   size_t len, 
+   const %(type)s *self 
+   ); 
 """ % v)
 
 def generate_c_print(f,module,sect,v): 
     v = { "module" : module, "sect" : sect, "name" : v[1], "type" : v[0] }
     f.write( """
-bool avdecc%(sect)s_%(name)s_print( char *buf, size_t *pos, size_t len, const %(type)s *self )
+bool avdecc%(sect)s_%(name)s_print( i
+    char *buf, 
+    size_t *pos, 
+    size_t len, 
+    const %(type)s *self 
+    )
 {
     bool r=true;
 
@@ -302,7 +342,12 @@ def generate_h_read(f,module,sect,v):
  *  @param offset offset from base of pdu in octets to start reading from
  */
 
-bool avdecc%(sect)s_%(name)s_read( %(type)s *self, const void *pdu, size_t offset ); 
+bool avdecc%(sect)s_%(name)s_read( 
+    %(type)s *self, 
+    const void *pdu, 
+    size_t offset 
+    );
+
 """ % v )
 
 def generate_h_write(f,module,sect,v): 
@@ -317,7 +362,12 @@ def generate_h_write(f,module,sect,v):
  *  @param offset offset from base of pdu in octets to start writing to
  */
 
-bool avdecc%(sect)s_%(name)s_write( const %(type)s *self, void *pdu, size_t offset ); 
+bool avdecc%(sect)s_%(name)s_write( 
+    const %(type)s *self, 
+    void *pdu, 
+    size_t offset 
+    );
+
 """ % v )
 
 def generate_c_init(f,module,sect,v): 
@@ -327,13 +377,18 @@ void avdecc%(sect)s_%(name)s_init( %(type)s *self )
 {
     bzero( (void *)self, sizeof(%(type)s) );
 }
+
 """ % v )
 
 
 def generate_c_read(f,module,sect,v): 
     v = { "module" : module, "sect" : sect, "name" : v[1], "type" : v[0] }
     f.write( """
-bool avdecc%(sect)s_%(name)s_read( %(type)s *self, const void *pdu, size_t offset )
+bool avdecc%(sect)s_%(name)s_read( 
+    %(type)s *self, 
+    const void *pdu, 
+    size_t offset 
+    )
 {
     bool r=true;
 
@@ -341,12 +396,17 @@ bool avdecc%(sect)s_%(name)s_read( %(type)s *self, const void *pdu, size_t offse
 
     return r;
 }
+
 """ % v )
 
 def generate_c_write(f,module,sect,v): 
     v = { "module" : module, "sect" : sect, "name" : v[1], "type" : v[0] }
     f.write( """
-bool avdecc%(sect)s_%(name)s_write( const %(type)s *self, void *pdu, size_t offset  )
+bool avdecc%(sect)s_%(name)s_write( 
+    const %(type)s *self, 
+    void *pdu, 
+    size_t offset
+    )
 {
     bool r=true;
 
@@ -358,7 +418,7 @@ bool avdecc%(sect)s_%(name)s_write( const %(type)s *self, void *pdu, size_t offs
 """ % v )
 
 def prefix_h_print_with_inc(f,module,sect):
-    guard = "AVDECC_PDU_%s%s_PRINT_H" % (module.upper(),sect.upper(),)
+    guard = "AVDECC_PDU_%s%s_PRINT_H_" % (module.upper(),sect.upper(),)
     v={"copyright" : copyright, "guard" : guard, "module" : module, "sect" : sect }
     
     f.write("""#ifndef %(guard)s
@@ -372,10 +432,16 @@ def prefix_h_print_with_inc(f,module,sect):
 extern "C" {
 #endif
 
+    /**
+    \\addtogroup %(module)s%(sect)s
+    */
+    /* @{ */
+
+
 """ % v)
 
 def prefix_h(f,module,sect):
-    guard = "AVDECC_PDU_%s%s_H" % (module.upper(),sect.upper(),)
+    guard = "AVDECC_PDU_%s%s_H_" % (module.upper(),sect.upper(),)
     v={"copyright" : copyright, "guard" : guard, "module" : module, "sect" : sect }
     
     f.write("""#ifndef %(guard)s
@@ -387,14 +453,21 @@ def prefix_h(f,module,sect):
 extern "C" {
 #endif
 
+    /**
+    \\addtogroup %(module)s%(sect)s
+    */
+    /* @{ */
+
 """ % v)
 
 def suffix_h(f,module,sect):
-    guard = "AVDECC_PDU_%s%s_H" % (module.upper(),sect.upper(),)
+    guard = "AVDECC_PDU_%s%s_H_" % (module.upper(),sect.upper(),)
     v={"guard" : guard, "module" : module, "sect" : sect }
     
 
     f.write("""
+
+    /* @} */
 
 #ifdef __cplusplus
 }
@@ -450,11 +523,8 @@ def generate(filename,module,items):
     generate_module(filename,module,"print",items)
     generate_all_module(filename,module,"",items)
 
-generate("avdecc-pdu_aem_descriptor","aem_descriptor",aem_descriptor_types)
-generate("avdecc-pdu_aem_command","aem_command",aem_command_types)
 
-generate("avdecc-pdu_avtp","avtp",avtp_types)
-generate("avdecc-pdu_aecp","aecp",aecp_types)
-generate("avdecc-pdu_acmp","acmp",acmp_types)
-generate("avdecc-pdu_adp","adp",adp_types)
+for filename,module,items in top_list:
+    generate(filename,module,items)
+    
 
