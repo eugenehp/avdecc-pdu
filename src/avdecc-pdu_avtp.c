@@ -1,5 +1,10 @@
+
+#include "avdecc-pdu_world.h"
+#include "avdecc-pdu_avtp.h"
+
+
 /*
-Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
+Copyright (c) 2012, Jeff Koftinoff <jeff.koftinoff@ieee.org>
 All rights reserved.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -15,9 +20,108 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "avdecc-pdu_world.h"
-#include "avdecc-pdu_avtp.h"
 
+
+void avdecc_avtp_common_init ( avdecc_avtp_common_t *self )
+{
+    bzero ( ( void * ) self, sizeof ( avdecc_avtp_common_t ) );
+}
+
+
+bool avdecc_avtp_common_read (
+    avdecc_avtp_common_t *self,
+    const void *pdu,
+    size_t offset
+)
+{
+    bool r=true;
+    
+    r&=false; /* TODO */
+    
+    return r;
+}
+
+
+bool avdecc_avtp_common_write (
+    const avdecc_avtp_common_t *self,
+    void *pdu,
+    size_t offset
+)
+{
+    bool r=true;
+    
+    r&=false; /* TODO */
+    
+    return r;
+}
+
+
+void avdecc_avtp_stream_init ( avdecc_avtp_stream_t *self )
+{
+    bzero ( ( void * ) self, sizeof ( avdecc_avtp_stream_t ) );
+}
+
+
+bool avdecc_avtp_stream_read (
+    avdecc_avtp_stream_t *self,
+    const void *pdu,
+    size_t offset
+)
+{
+    bool r=true;
+    
+    r&=false; /* TODO */
+    
+    return r;
+}
+
+
+bool avdecc_avtp_stream_write (
+    const avdecc_avtp_stream_t *self,
+    void *pdu,
+    size_t offset
+)
+{
+    bool r=true;
+    
+    r&=false; /* TODO */
+    
+    return r;
+}
+
+
+void avdecc_avtp_control_init ( avdecc_avtp_control_t *self )
+{
+    bzero ( ( void * ) self, sizeof ( avdecc_avtp_control_t ) );
+}
+
+
+bool avdecc_avtp_control_read (
+    avdecc_avtp_control_t *self,
+    const void *pdu,
+    size_t offset
+)
+{
+    bool r=true;
+    
+    r&=false; /* TODO */
+    
+    return r;
+}
+
+
+bool avdecc_avtp_control_write (
+    const avdecc_avtp_control_t *self,
+    void *pdu,
+    size_t offset
+)
+{
+    bool r=true;
+    
+    r&=false; /* TODO */
+    
+    return r;
+}
 
 
 

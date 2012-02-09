@@ -1,5 +1,5 @@
-#ifndef AVDECC_ADP_AEM_H_
-#define AVDECC_ADP_AEM_H_
+#ifndef AVDECC_PDU_AEM_H_
+#define AVDECC_PDU_AEM_H_
 
 /*
 Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
@@ -19,6 +19,9 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
 #include "avdecc-pdu_world.h"
+#include "avdecc-pdu_aecp.h"
+#include "avdecc-pdu_aem_descriptor.h"
+#include "avdecc-pdu_aem_command.h"
 
 #ifdef __cplusplus
 extern "C" {

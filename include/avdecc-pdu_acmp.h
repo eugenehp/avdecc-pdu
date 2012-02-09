@@ -1,8 +1,9 @@
 #ifndef AVDECC_PDU_ACMP_H_
 #define AVDECC_PDU_ACMP_H_
 
+
 /*
-Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
+Copyright (c) 2012, Jeff Koftinoff <jeff.koftinoff@ieee.org>
 All rights reserved.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -19,6 +20,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
 #include "avdecc-pdu_world.h"
+#include "avdecc-pdu_bits.h"
 #include "avdecc-pdu_avtp.h"
 #include "avdecc-pdu_adp.h"
 
@@ -26,8 +28,10 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 extern "C" {
 #endif
 
-    /** \addtogroup acmp acmp */
-    /*@{*/
+    /**
+    \addtogroup acmp
+    */
+    /* @{ */
     
 #define AVDECC_ACMP_CONTROL_DATA_LENGTH (44) /* See IEEE 1722.1 Clause 8.2.1.7 */
     
@@ -92,9 +96,9 @@ extern "C" {
     
     
     static inline void avdecc_acmp_flags_read (
-        avdecc_acmp_flags_t *self,
-        const uint16_t v
-    )
+                                               avdecc_acmp_flags_t *self,
+                                               const uint16_t v
+                                               )
     {
         self->class_b = AVDECC_BITS_GET_DOUBLET_BIT ( v, AVDECC_ACMP_FLAG_CLASS_B_BIT );
         self->fast_connect = AVDECC_BITS_GET_DOUBLET_BIT ( v, AVDECC_ACMP_FLAG_FAST_CONNECT_BIT );
@@ -103,8 +107,8 @@ extern "C" {
     }
     
     static inline uint16_t avdecc_acmp_flags_write (
-        const avdecc_acmp_flags_t *self
-    )
+                                                    const avdecc_acmp_flags_t *self
+                                                    )
     {
         uint16_t v=0;
         v = AVDECC_BITS_SET_DOUBLET_BIT_IF ( v, AVDECC_ACMP_FLAG_CLASS_B_BIT, self->class_b );
@@ -157,6 +161,10 @@ extern "C" {
     AVDECC_BITS_MAP_DOUBLET ( avdecc_acmp, flags, uint16_t, 50 );
     AVDECC_BITS_MAP_QUADLET ( avdecc_acmp, reserved1, uint32_t, 52 );
     
+    
+    /** avdecc_acmp_t
+    */
+    
     /** See IEEE 1722.1 Clause 8.2.1 */
     
     typedef struct avdecc_acmp_s
@@ -176,15 +184,56 @@ extern "C" {
         uint32_t reserved1;
     } avdecc_acmp_t;
     
-    void avdecc_acmp_init ( avdecc_acmp_t *self );
-    bool avdecc_acmp_read_pdu ( avdecc_acmp_t *self, const void *pdu );
-    size_t avdecc_acmp_write_pdu ( const avdecc_acmp_t *self, void *pdu );
     
-    /*@}*/
+    
+    /** avdecc_acmp_init
+     *
+     *  Initialize a avdecc_acmp_t
+     *
+     *  @param self pointer to object to initialize
+     *  @returns void
+     */
+    
+    void avdecc_acmp_init ( avdecc_acmp_t *self );
+    
+    
+    /** avdecc_acmp_read
+     *
+     *  Read a avdecc_acmp_t from a PDU
+     *
+     *  @param self pointer to object to fill
+     *  @param pdu pointer to base of pdu to read
+     *  @param offset offset from base of pdu in octets to start reading from
+     */
+    
+    bool avdecc_acmp_read (
+        avdecc_acmp_t *self,
+        const void *pdu,
+        size_t offset
+    );
+    
+    
+    /** avdecc_acmp_write
+     *
+     *  write a avdecc_acmp_t into a pdu
+     *
+     *  @param self pointer to object to store into pdu
+     *  @param pdu pointer to base of pdu to write to
+     *  @param offset offset from base of pdu in octets to start writing to
+     */
+    
+    bool avdecc_acmp_write (
+        const avdecc_acmp_t *self,
+        void *pdu,
+        size_t offset
+    );
+    
+    
+    
+    /* @} */
     
 #ifdef __cplusplus
 }
 #endif
 
 #endif
-

@@ -29,8 +29,8 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_acmp.h"
 #include "avdecc-pdu_aecp.h"
 #include "avdecc-pdu_aem.h"
-#include "avdecc-pdu_aem_commands.h"
-#include "avdecc-pdu_aem_descriptors.h"
+#include "avdecc-pdu_aem_command.h"
+#include "avdecc-pdu_aem_descriptor.h"
 
 #endif
 

@@ -27,7 +27,7 @@
 #include "avdecc-pdu_acmp_print.h"
 #include "avdecc-pdu_aecp_print.h"
 #include "avdecc-pdu_aem_print.h"
-#include "avdecc-pdu_aem_commands_print.h"
-#include "avdecc-pdu_aem_descriptors_print.h"
+#include "avdecc-pdu_aem_command_print.h"
+#include "avdecc-pdu_aem_descriptor_print.h"
 
 #endif

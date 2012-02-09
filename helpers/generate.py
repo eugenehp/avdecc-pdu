@@ -256,9 +256,9 @@ aem_command_types = [
 ]
 
 top_list = [
-    ("avdecc-pdu_mac_t","mac",mac_types),
-    ("avdecc-pdu_eui64_t","eui64",eui64_types),
-    ("avdecc-pdu_stream_id_t","stream_id_t",stream_types),
+    ("avdecc-pdu_mac","mac",mac_types),
+    ("avdecc-pdu_eui64","eui64",eui64_types),
+    ("avdecc-pdu_stream","stream",stream_types),
     ("avdecc-pdu_aem_descriptor","aem_descriptor",aem_descriptor_types),
     ("avdecc-pdu_aem_command","aem_command",aem_command_types),
     ("avdecc-pdu_avtp","avtp",avtp_types),
@@ -281,7 +281,7 @@ bool avdecc%(sect)s_%(name)s_print(
 def generate_c_print(f,module,sect,v): 
     v = { "module" : module, "sect" : sect, "name" : v[1], "type" : v[0] }
     f.write( """
-bool avdecc%(sect)s_%(name)s_print( i
+bool avdecc%(sect)s_%(name)s_print( 
     char *buf, 
     size_t *pos, 
     size_t len, 

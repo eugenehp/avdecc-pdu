@@ -1,8 +1,9 @@
 #ifndef AVDECC_PDU_AVTP_H_
 #define AVDECC_PDU_AVTP_H_
 
+
 /*
-Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
+Copyright (c) 2012, Jeff Koftinoff <jeff.koftinoff@ieee.org>
 All rights reserved.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -26,7 +27,12 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 extern "C" {
 #endif
 
+    /**
+    \addtogroup avtp
+    */
+    /* @{ */
 
+    
     /** full 64 bit presentation time value type */
     typedef uint64_t avdecc_avtp_presentation_time_t;
     
@@ -117,6 +123,10 @@ extern "C" {
     AVDECC_BITS_MAP_DOUBLET ( avdecc_avtp, stream_protocol_specific_header, avdecc_avtp_stream_protocol_specific_header_t, 22 );
     
     
+    
+    /** avdecc_avtp_common_t
+    */
+    
     typedef struct avdecc_avtp_common_s
     {
         avdecc_avtp_cd_t cd;
@@ -127,17 +137,53 @@ extern "C" {
         avdecc_stream_id_t stream_id;
     } avdecc_avtp_common_t;
     
-    typedef struct avdecc_avtp_control_s
-    {
-        avdecc_avtp_cd_t cd;
-        avdecc_avtp_subtype_t subtype;
-        avdecc_avtp_sv_t sv;
-        avdecc_avtp_version_t version;
-        avdecc_avtp_control_data_t control_data;
-        avdecc_avtp_control_status_t control_status;
-        avdecc_avtp_control_data_length_t control_data_length;
-        avdecc_stream_id_t stream_id;
-    } avdecc_avtp_control_t;
+    
+    
+    /** avdecc_avtp_common_init
+     *
+     *  Initialize a avdecc_avtp_common_t
+     *
+     *  @param self pointer to object to initialize
+     *  @returns void
+     */
+    
+    void avdecc_avtp_common_init ( avdecc_avtp_common_t *self );
+    
+    
+    /** avdecc_avtp_common_read
+     *
+     *  Read a avdecc_avtp_common_t from a PDU
+     *
+     *  @param self pointer to object to fill
+     *  @param pdu pointer to base of pdu to read
+     *  @param offset offset from base of pdu in octets to start reading from
+     */
+    
+    bool avdecc_avtp_common_read (
+        avdecc_avtp_common_t *self,
+        const void *pdu,
+        size_t offset
+    );
+    
+    
+    /** avdecc_avtp_common_write
+     *
+     *  write a avdecc_avtp_common_t into a pdu
+     *
+     *  @param self pointer to object to store into pdu
+     *  @param pdu pointer to base of pdu to write to
+     *  @param offset offset from base of pdu in octets to start writing to
+     */
+    
+    bool avdecc_avtp_common_write (
+        const avdecc_avtp_common_t *self,
+        void *pdu,
+        size_t offset
+    );
+    
+    
+    /** avdecc_avtp_stream_t
+    */
     
     typedef struct avdecc_avtp_stream_s
     {
@@ -157,13 +203,116 @@ extern "C" {
         avdecc_avtp_stream_gateway_info_t gateway_info;
         avdecc_avtp_stream_data_length_t stream_data_length;
         avdecc_avtp_stream_protocol_specific_header_t protocol_specific_header;
-    } avdecc_avtp_stream_t;
+    } avdecc_avtp_stream_t;    
     
-    /*@}*/
+    
+    /** avdecc_avtp_stream_init
+     *
+     *  Initialize a avdecc_avtp_stream_t
+     *
+     *  @param self pointer to object to initialize
+     *  @returns void
+     */
+    
+    void avdecc_avtp_stream_init ( avdecc_avtp_stream_t *self );
+    
+    
+    /** avdecc_avtp_stream_read
+     *
+     *  Read a avdecc_avtp_stream_t from a PDU
+     *
+     *  @param self pointer to object to fill
+     *  @param pdu pointer to base of pdu to read
+     *  @param offset offset from base of pdu in octets to start reading from
+     */
+    
+    bool avdecc_avtp_stream_read (
+        avdecc_avtp_stream_t *self,
+        const void *pdu,
+        size_t offset
+    );
+    
+    
+    /** avdecc_avtp_stream_write
+     *
+     *  write a avdecc_avtp_stream_t into a pdu
+     *
+     *  @param self pointer to object to store into pdu
+     *  @param pdu pointer to base of pdu to write to
+     *  @param offset offset from base of pdu in octets to start writing to
+     */
+    
+    bool avdecc_avtp_stream_write (
+        const avdecc_avtp_stream_t *self,
+        void *pdu,
+        size_t offset
+    );
+    
+    
+    /** avdecc_avtp_control_t
+    */
+    
+    typedef struct avdecc_avtp_control_s
+    {
+        avdecc_avtp_cd_t cd;
+        avdecc_avtp_subtype_t subtype;
+        avdecc_avtp_sv_t sv;
+        avdecc_avtp_version_t version;
+        avdecc_avtp_control_data_t control_data;
+        avdecc_avtp_control_status_t control_status;
+        avdecc_avtp_control_data_length_t control_data_length;
+        avdecc_stream_id_t stream_id;
+    } avdecc_avtp_control_t;    
+    
+    
+    /** avdecc_avtp_control_init
+     *
+     *  Initialize a avdecc_avtp_control_t
+     *
+     *  @param self pointer to object to initialize
+     *  @returns void
+     */
+    
+    void avdecc_avtp_control_init ( avdecc_avtp_control_t *self );
+    
+    
+    /** avdecc_avtp_control_read
+     *
+     *  Read a avdecc_avtp_control_t from a PDU
+     *
+     *  @param self pointer to object to fill
+     *  @param pdu pointer to base of pdu to read
+     *  @param offset offset from base of pdu in octets to start reading from
+     */
+    
+    bool avdecc_avtp_control_read (
+        avdecc_avtp_control_t *self,
+        const void *pdu,
+        size_t offset
+    );
+    
+    
+    /** avdecc_avtp_control_write
+     *
+     *  write a avdecc_avtp_control_t into a pdu
+     *
+     *  @param self pointer to object to store into pdu
+     *  @param pdu pointer to base of pdu to write to
+     *  @param offset offset from base of pdu in octets to start writing to
+     */
+    
+    bool avdecc_avtp_control_write (
+        const avdecc_avtp_control_t *self,
+        void *pdu,
+        size_t offset
+    );
+    
+    
+    
+    /* @} */
     
 #ifdef __cplusplus
 }
 #endif
 
 #endif
-

@@ -1,8 +1,9 @@
 #ifndef AVDECC_PDU_EUI64_H_
 #define AVDECC_PDU_EUI64_H_
 
+
 /*
-Copyright (c) 2010, Jeff Koftinoff <jeff.koftinoff@ieee.org>
+Copyright (c) 2012, Jeff Koftinoff <jeff.koftinoff@ieee.org>
 All rights reserved.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -18,33 +19,75 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "avdecc-pdu_world.h"
-#include "avdecc-pdu_mac.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-
-    /** \addtogroup EUI64 EUI64
-      * Structure to hold a EUI-64 address
-      * @{
-      */
-    typedef uint64_t avdecc_eui64_t;
+    /**
+    \addtogroup eui64
+    */
+    /* @{ */
     
-    static inline void avdecc_eui64_init ( avdecc_eui64_t *self )
+    
+    /** avdecc_eui64_t
+    */
+    
+    typedef struct avdecc_eui64_s
     {
-        *self = 0;
-    }
+        /* TODO */
+    } avdecc_eui64_t;
     
-    void avdecc_eui64_convert_mac ( avdecc_eui64_t *eui64, const avdecc_mac_t *mac, bool is_eui48 );
     
-    /*@}*/
     
+    /** avdecc_eui64_init
+     *
+     *  Initialize a avdecc_eui64_t
+     *
+     *  @param self pointer to object to initialize
+     *  @returns void
+     */
+    
+    void avdecc_eui64_init ( avdecc_eui64_t *self );
+    
+    
+    /** avdecc_eui64_read
+     *
+     *  Read a avdecc_eui64_t from a PDU
+     *
+     *  @param self pointer to object to fill
+     *  @param pdu pointer to base of pdu to read
+     *  @param offset offset from base of pdu in octets to start reading from
+     */
+    
+    bool avdecc_eui64_read (
+        avdecc_eui64_t *self,
+        const void *pdu,
+        size_t offset
+    );
+    
+    
+    /** avdecc_eui64_write
+     *
+     *  write a avdecc_eui64_t into a pdu
+     *
+     *  @param self pointer to object to store into pdu
+     *  @param pdu pointer to base of pdu to write to
+     *  @param offset offset from base of pdu in octets to start writing to
+     */
+    
+    bool avdecc_eui64_write (
+        const avdecc_eui64_t *self,
+        void *pdu,
+        size_t offset
+    );
+    
+    
+    
+    /* @} */
     
 #ifdef __cplusplus
 }
 #endif
 
 #endif
-

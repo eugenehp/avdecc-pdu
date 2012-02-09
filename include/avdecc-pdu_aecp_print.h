@@ -1,8 +1,9 @@
 #ifndef AVDECC_PDU_AECP_PRINT_H_
 #define AVDECC_PDU_AECP_PRINT_H_
 
+
 /*
-Copyright (c) 2010, Jeff Koftinoff <jeff.koftinoff@ieee.org>
+Copyright (c) 2012, Jeff Koftinoff <jeff.koftinoff@ieee.org>
 All rights reserved.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -18,47 +19,83 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "avdecc-pdu_world.h"
-#include "avdecc-pdu_avtp_print.h"
-#include "avdecc-pdu_aecp.h"
 
+#include "avdecc-pdu_aecp.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    /** \addtogroup aecp aecp */
-    /*@{*/
+    /**
+    \addtogroup aecp
+    */
+    /* @{ */
     
-    bool avdecc_print_aecp_message_type (
+    
+    
+    bool avdecc_aecp_print (
         char *buf,
-        size_t *offset,
+        size_t *pos,
         size_t len,
-        avdecc_aecp_message_type_t message_type
+        const avdecc_aecp_t *self
+    );
+
+    /* @} */
+    /**
+     \addtogroup aecp_aem
+     */
+    /* @{ */
+    
+    bool avdecc_aecp_aem_print (
+        char *buf,
+        size_t *pos,
+        size_t len,
+        const avdecc_aecp_aem_t *self
+    );
+
+    /* @} */
+    /**
+     \addtogroup aecp_aa
+     */
+    /* @{ */
+    
+    bool avdecc_aecp_aa_print (
+        char *buf,
+        size_t *pos,
+        size_t len,
+        const avdecc_aecp_aa_t *self
     );
     
-    bool avdecc_print_aecp_control_data_length (
+    /* @} */
+    /**
+     \addtogroup aecp_avc
+     */
+    /* @{ */
+    
+    bool avdecc_aecp_avc_print (
         char *buf,
-        size_t *offset,
+        size_t *pos,
         size_t len,
-        avdecc_aecp_control_data_length_t control_data_length
+        const avdecc_aecp_avc_t *self
+    );
+
+    /* @} */
+    /**
+     \addtogroup aecp_vu
+     */
+    /* @{ */
+    
+    bool avdecc_aecp_vu_print (
+        char *buf,
+        size_t *pos,
+        size_t len,
+        const avdecc_aecp_vu_t *self
     );
     
-    bool avdecc_print_aecp (
-        char *buf,
-        size_t *offset,
-        size_t len,
-        const avdecc_aecp_t *aecp
-    );
-    
-    
-    
-    /*@}*/
+    /* @} */
     
 #ifdef __cplusplus
 }
 #endif
-
-
 
 #endif

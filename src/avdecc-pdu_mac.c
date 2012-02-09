@@ -1,5 +1,10 @@
+
+#include "avdecc-pdu_world.h"
+#include "avdecc-pdu_mac.h"
+
+
 /*
-Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
+Copyright (c) 2012, Jeff Koftinoff <jeff.koftinoff@ieee.org>
 All rights reserved.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -15,7 +20,40 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "avdecc-pdu_world.h"
-#include "avdecc-pdu_mac.h"
+
+
+void avdecc_mac_init ( avdecc_mac_t *self )
+{
+    bzero ( ( void * ) self, sizeof ( avdecc_mac_t ) );
+}
+
+
+bool avdecc_mac_read (
+    avdecc_mac_t *self,
+    const void *pdu,
+    size_t offset
+)
+{
+    bool r=true;
+    
+    r&=false; /* TODO */
+    
+    return r;
+}
+
+
+bool avdecc_mac_write (
+    const avdecc_mac_t *self,
+    void *pdu,
+    size_t offset
+)
+{
+    bool r=true;
+    
+    r&=false; /* TODO */
+    
+    return r;
+}
+
 
 

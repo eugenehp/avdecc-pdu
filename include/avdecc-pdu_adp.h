@@ -1,8 +1,9 @@
 #ifndef AVDECC_PDU_ADP_H_
 #define AVDECC_PDU_ADP_H_
 
+
 /*
-Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
+Copyright (c) 2012, Jeff Koftinoff <jeff.koftinoff@ieee.org>
 All rights reserved.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -18,18 +19,15 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "avdecc-pdu_world.h"
-#include "avdecc-pdu_mac.h"
-#include "avdecc-pdu_eui64.h"
-#include "avdecc-pdu_stream.h"
-#include "avdecc-pdu_avtp.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    /** \addtogroup adp adp */
-    /*@{*/
+    /**
+    \addtogroup adp
+    */
+    /* @{ */
     
     typedef uint8_t avdecc_adp_valid_time_t;
     
@@ -205,9 +203,9 @@ extern "C" {
     }
     
     static inline void avdecc_adp_entity_capabilities_read (
-        avdecc_adp_entity_capabilities_t *self,
-        const uint32_t v
-    )
+                                                            avdecc_adp_entity_capabilities_t *self,
+                                                            const uint32_t v
+                                                            )
     {
         self->dfu_mode= AVDECC_BITS_GET_QUADLET_BIT ( v, AVDECC_ADP_ENTITY_CAP_DFU_MODE_BIT );
         self->address_access_supported= AVDECC_BITS_GET_QUADLET_BIT ( v, AVDECC_ADP_ENTITY_CAP_ADDRESS_ACCESS_SUPPORTED_BIT );
@@ -220,8 +218,8 @@ extern "C" {
     }
     
     static inline uint32_t avdecc_adp_entity_capabilities_write (
-        const avdecc_adp_entity_capabilities_t *self
-    )
+                                                                 const avdecc_adp_entity_capabilities_t *self
+                                                                 )
     {
         uint32_t v=0;
         v = AVDECC_BITS_SET_QUADLET_BIT_IF ( v, AVDECC_ADP_ENTITY_CAP_DFU_MODE_BIT, self->dfu_mode );
@@ -344,9 +342,9 @@ extern "C" {
     }
     
     static inline void avdecc_adp_entity_type_read (
-        avdecc_adp_entity_type_t *self,
-        const uint32_t v
-    )
+                                                    avdecc_adp_entity_type_t *self,
+                                                    const uint32_t v
+                                                    )
     {
         self->other = AVDECC_BITS_GET_QUADLET_BIT ( v,AVDECC_ADP_ENTITY_TYPE_OTHER_BIT );
         self->multifunction = AVDECC_BITS_GET_QUADLET_BIT ( v,AVDECC_ADP_ENTITY_TYPE_MULTIFUNCTION_BIT );
@@ -370,8 +368,8 @@ extern "C" {
     }
     
     static inline uint32_t avdecc_adp_entity_type_write (
-        const avdecc_adp_entity_type_t *self
-    )
+                                                         const avdecc_adp_entity_type_t *self
+                                                         )
     {
         uint32_t v=0;
         v = AVDECC_BITS_SET_QUADLET_BIT_IF ( v, AVDECC_ADP_ENTITY_TYPE_OTHER_BIT, self->other );
@@ -429,6 +427,9 @@ extern "C" {
     AVDECC_BITS_MAP_OCTLET ( avdecc_adp, association_id, avdecc_eui64_t, 56 );
     AVDECC_BITS_MAP_QUADLET ( avdecc_adp, entity_type, uint32_t, 64 );
     
+    /** avdecc_adp_t
+    */
+    
     typedef struct avdecc_adp_s
     {
         avdecc_adp_message_type_t message_type;
@@ -449,14 +450,56 @@ extern "C" {
         avdecc_adp_entity_type_t entity_type;
     } avdecc_adp_t;
     
+    
+    
+    /** avdecc_adp_init
+     *
+     *  Initialize a avdecc_adp_t
+     *
+     *  @param self pointer to object to initialize
+     *  @returns void
+     */
+    
     void avdecc_adp_init ( avdecc_adp_t *self );
-    bool avdecc_adp_read_pdu ( avdecc_adp_t *self, const void *pdu );
-    size_t avdecc_adp_write_pdu ( const avdecc_adp_t *self, void *pdu );
+    
+    
+    /** avdecc_adp_read
+     *
+     *  Read a avdecc_adp_t from a PDU
+     *
+     *  @param self pointer to object to fill
+     *  @param pdu pointer to base of pdu to read
+     *  @param offset offset from base of pdu in octets to start reading from
+     */
+    
+    bool avdecc_adp_read (
+        avdecc_adp_t *self,
+        const void *pdu,
+        size_t offset
+    );
+    
+    
+    /** avdecc_adp_write
+     *
+     *  write a avdecc_adp_t into a pdu
+     *
+     *  @param self pointer to object to store into pdu
+     *  @param pdu pointer to base of pdu to write to
+     *  @param offset offset from base of pdu in octets to start writing to
+     */
+    
+    bool avdecc_adp_write (
+        const avdecc_adp_t *self,
+        void *pdu,
+        size_t offset
+    );
+    
+    
+    
+    /* @} */
     
 #ifdef __cplusplus
 }
 #endif
-
-/*@}*/
 
 #endif
