@@ -96,9 +96,9 @@ extern "C" {
     
     
     static inline void avdecc_acmp_flags_read (
-                                               avdecc_acmp_flags_t *self,
-                                               const uint16_t v
-                                               )
+        avdecc_acmp_flags_t *self,
+        const uint16_t v
+    )
     {
         self->class_b = AVDECC_BITS_GET_DOUBLET_BIT ( v, AVDECC_ACMP_FLAG_CLASS_B_BIT );
         self->fast_connect = AVDECC_BITS_GET_DOUBLET_BIT ( v, AVDECC_ACMP_FLAG_FAST_CONNECT_BIT );
@@ -107,8 +107,8 @@ extern "C" {
     }
     
     static inline uint16_t avdecc_acmp_flags_write (
-                                                    const avdecc_acmp_flags_t *self
-                                                    )
+        const avdecc_acmp_flags_t *self
+    )
     {
         uint16_t v=0;
         v = AVDECC_BITS_SET_DOUBLET_BIT_IF ( v, AVDECC_ACMP_FLAG_CLASS_B_BIT, self->class_b );

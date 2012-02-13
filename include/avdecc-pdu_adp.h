@@ -203,9 +203,9 @@ extern "C" {
     }
     
     static inline void avdecc_adp_entity_capabilities_read (
-                                                            avdecc_adp_entity_capabilities_t *self,
-                                                            const uint32_t v
-                                                            )
+        avdecc_adp_entity_capabilities_t *self,
+        const uint32_t v
+    )
     {
         self->dfu_mode= AVDECC_BITS_GET_QUADLET_BIT ( v, AVDECC_ADP_ENTITY_CAP_DFU_MODE_BIT );
         self->address_access_supported= AVDECC_BITS_GET_QUADLET_BIT ( v, AVDECC_ADP_ENTITY_CAP_ADDRESS_ACCESS_SUPPORTED_BIT );
@@ -218,8 +218,8 @@ extern "C" {
     }
     
     static inline uint32_t avdecc_adp_entity_capabilities_write (
-                                                                 const avdecc_adp_entity_capabilities_t *self
-                                                                 )
+        const avdecc_adp_entity_capabilities_t *self
+    )
     {
         uint32_t v=0;
         v = AVDECC_BITS_SET_QUADLET_BIT_IF ( v, AVDECC_ADP_ENTITY_CAP_DFU_MODE_BIT, self->dfu_mode );
@@ -342,9 +342,9 @@ extern "C" {
     }
     
     static inline void avdecc_adp_entity_type_read (
-                                                    avdecc_adp_entity_type_t *self,
-                                                    const uint32_t v
-                                                    )
+        avdecc_adp_entity_type_t *self,
+        const uint32_t v
+    )
     {
         self->other = AVDECC_BITS_GET_QUADLET_BIT ( v,AVDECC_ADP_ENTITY_TYPE_OTHER_BIT );
         self->multifunction = AVDECC_BITS_GET_QUADLET_BIT ( v,AVDECC_ADP_ENTITY_TYPE_MULTIFUNCTION_BIT );
@@ -368,8 +368,8 @@ extern "C" {
     }
     
     static inline uint32_t avdecc_adp_entity_type_write (
-                                                         const avdecc_adp_entity_type_t *self
-                                                         )
+        const avdecc_adp_entity_type_t *self
+    )
     {
         uint32_t v=0;
         v = AVDECC_BITS_SET_QUADLET_BIT_IF ( v, AVDECC_ADP_ENTITY_TYPE_OTHER_BIT, self->other );

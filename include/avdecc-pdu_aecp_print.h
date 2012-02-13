@@ -39,7 +39,7 @@ extern "C" {
         size_t len,
         const avdecc_aecp_t *self
     );
-
+    
     /* @} */
     /**
      \addtogroup aecp_aem
@@ -52,7 +52,7 @@ extern "C" {
         size_t len,
         const avdecc_aecp_aem_t *self
     );
-
+    
     /* @} */
     /**
      \addtogroup aecp_aa
@@ -78,7 +78,7 @@ extern "C" {
         size_t len,
         const avdecc_aecp_avc_t *self
     );
-
+    
     /* @} */
     /**
      \addtogroup aecp_vu

@@ -31,7 +31,7 @@ extern "C" {
     \addtogroup avtp
     */
     /* @{ */
-
+    
     
     /** full 64 bit presentation time value type */
     typedef uint64_t avdecc_avtp_presentation_time_t;
@@ -203,7 +203,7 @@ extern "C" {
         avdecc_avtp_stream_gateway_info_t gateway_info;
         avdecc_avtp_stream_data_length_t stream_data_length;
         avdecc_avtp_stream_protocol_specific_header_t protocol_specific_header;
-    } avdecc_avtp_stream_t;    
+    } avdecc_avtp_stream_t;
     
     
     /** avdecc_avtp_stream_init
@@ -262,7 +262,7 @@ extern "C" {
         avdecc_avtp_control_status_t control_status;
         avdecc_avtp_control_data_length_t control_data_length;
         avdecc_stream_id_t stream_id;
-    } avdecc_avtp_control_t;    
+    } avdecc_avtp_control_t;
     
     
     /** avdecc_avtp_control_init

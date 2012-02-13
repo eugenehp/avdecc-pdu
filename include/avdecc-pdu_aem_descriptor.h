@@ -19,16 +19,21 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#include "avdecc-pdu.h"
+#include "avdecc-pdu_stream.h"
+#include "avdecc-pdu_mac.h"
+#include "avdecc-pdu_avtp.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
     /**
-    \addtogroup aem_descriptor
+    \addtogroup aem_descriptor AEM Descriptor
     */
     /* @{ */
-
+    
+    
 #define AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE (AVDECC_PDU_MAX_PAYLOAD_SIZE-28) /*!< See IEEE 1722.1 Clause 7.4.2.2 */
     
     typedef enum
@@ -68,17 +73,354 @@ extern "C" {
     }
     avdecc_aem_descriptor_type_t;
     
-    bool avdecc_aem_descriptor_type_write(
-                                          const avdecc_aem_descriptor_type_t *self,
-                                          void *pdu,
-                                          size_t offset                                          
-                                          );
+    typedef struct
+    {
+        avdecc_aem_descriptor_type_t descriptor_type;
+        uint16_t descriptor_index;
+    } avdecc_aem_descriptor_list_item_t;
     
-    bool avdecc_aem_descriptor_type_read(
-                                         avdecc_aem_descriptor_type_t *self,
-                                         const void *pdu,
-                                         size_t offset
-                                         );
+    
+    bool avdecc_aem_descriptor_type_write (
+        const avdecc_aem_descriptor_type_t *self,
+        void *pdu,
+        size_t offset
+    );
+    
+    bool avdecc_aem_descriptor_type_read (
+        avdecc_aem_descriptor_type_t *self,
+        const void *pdu,
+        size_t offset
+    );
+    
+#define AVDECC_PDU_AEM_DESCRIPTOR_MAX_CONTENT_SIZE  (AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE-4) /*!< See IEEE 1722.1 Clause 7.4.2.2 */
+    
+    /** See IEEE 1722.1 Clause 7.4.2.2 */
+    
+    typedef struct avdecc_aem_descriptor_s
+    {
+        avdecc_aem_descriptor_type_t descriptor_type;
+        uint16_t descriptor_index;
+        uint8_t padding[ AVDECC_PDU_AEM_DESCRIPTOR_MAX_CONTENT_SIZE ];
+    } avdecc_aem_descriptor_t;
+    
+    
+    /** avdecc_descriptor_init
+     *
+     *  Initialize a avdecc_aem_descriptor_t
+     *
+     *  @param self pointer to object to initialize
+     *  @returns void
+     */
+    
+    void avdecc_descriptor_init ( avdecc_aem_descriptor_t *self );
+    
+    
+    /** avdecc_descriptor_read
+     *
+     *  Read a avdecc_aem_descriptor_t from a PDU
+     *
+     *  @param self pointer to object to fill
+     *  @param pdu pointer to base of pdu to read
+     *  @param offset offset from base of pdu in octets to start reading from
+     */
+    
+    bool avdecc_descriptor_read (
+        avdecc_aem_descriptor_t *self,
+        const void *pdu,
+        size_t offset
+    );
+    
+    
+    /** avdecc_descriptor_write
+     *
+     *  write a avdecc_aem_descriptor_t into a pdu
+     *
+     *  @param self pointer to object to store into pdu
+     *  @param pdu pointer to base of pdu to write to
+     *  @param offset offset from base of pdu in octets to start writing to
+     */
+    
+    bool avdecc_descriptor_write (
+        const avdecc_aem_descriptor_t *self,
+        void *pdu,
+        size_t offset
+    );
+    
+    /**
+     * \addtogroup aem_descriptor_localized_string_reference Localized String Reference
+     */
+    /* @{ */
+    
+    typedef struct avdecc_aem_localized_string_ref_s
+    {
+        uint16_t offset:13;
+        uint16_t index:3;
+    } avdecc_aem_localized_string_ref_t;
+    
+    /** avdecc_localized_string_ref_init
+     *
+     *  Initialize a avdecc_aem_localized_string_ref_t
+     *
+     *  @param self pointer to object to initialize
+     *  @returns void
+     */
+    
+    void avdecc_localized_string_ref_init ( avdecc_aem_localized_string_ref_t *self );
+    
+    /** avdecc_localized_string_is_empty
+     *
+     *  Test if the string reference is empty
+     *
+     *  @param self pointer to object to test
+     *  @returns bool true if string ref is NO_STRING (Clause 7.3.5)
+     */
+    
+    static inline avdecc_localized_string_ref_is_empty ( const avdecc_aem_localized_string_ref_t *self )
+    {
+        return self->offset==0 && self->index==7;
+    }
+    
+    /** avdecc_localized_string_ref_read
+     *
+     *  Read a avdecc_aem_localized_string_ref_t from a PDU
+     *
+     *  @param self pointer to object to fill
+     *  @param pdu pointer to base of pdu to read
+     *  @param offset offset from base of pdu in octets to start reading from
+     */
+    
+    bool avdecc_localized_string_ref_read (
+        avdecc_aem_localized_string_ref_t *self,
+        const void *pdu,
+        size_t offset
+    );
+    
+    
+    /** avdecc_localized_string_ref_write
+     *
+     *  write a avdecc_aem_localized_string_ref_t into a pdu
+     *
+     *  @param self pointer to object to store into pdu
+     *  @param pdu pointer to base of pdu to write to
+     *  @param offset offset from base of pdu in octets to start writing to
+     */
+    
+    bool avdecc_localized_string_ref_write (
+        const avdecc_aem_localized_string_ref_t *self,
+        void *pdu,
+        size_t offset
+    );
+    
+    /* @} */
+    /** \addtogroup aem_descriptor_entity entity */
+    /* @{ */
+    /** avdecc_aem_descriptor_entity_t
+    */
+    
+    /** See IEEE 1722.1 Clause 7.2.1 */
+    
+    typedef struct avdecc_aem_descriptor_entity_s
+    {
+        avdecc_aem_descriptor_type_t descriptor_type;
+        uint16_t descriptor_index;
+        avdecc_eui64_t entity_guid;
+        avdecc_eui64_t vendor_model_id;
+        avdecc_adp_entity_capabilities_t entity_capabilities;
+        uint16_t talker_stream_sources;
+        avdecc_adp_talker_capabilities_t talker_capabilities;
+        uint16_t listener_stream_sinks;
+        avdecc_adp_listener_capabilities_t listener_capabilities;
+        avdecc_adp_controller_capabilities_t controller_capabilities;
+        uint32_t available_index;
+        avdecc_eui64_t as_grandmaster_id;
+        avdecc_eui64_t association_id;
+        avdecc_adp_entity_type_t entity_type;
+        avdecc_string64_t entity_name;
+        avdecc_aem_localized_string_ref_t vendor_name_string;
+        avdecc_aem_localized_string_ref_t model_name_string;
+        avdecc_string64_t firmware_version;
+        avdecc_string64_t group_name;
+        avdecc_string64_t serial_number;
+        uint16_t configurations_count;
+        uint16_t current_configuration;
+    } avdecc_aem_descriptor_entity_t;
+    
+    
+    
+    /** avdecc_descriptor_entity_init
+     *
+     *  Initialize a avdecc_aem_descriptor_entity_t
+     *
+     *  @param self pointer to object to initialize
+     *  @returns void
+     */
+    
+    void avdecc_descriptor_entity_init ( avdecc_aem_descriptor_entity_t *self );
+    
+    
+    /** avdecc_descriptor_entity_read
+     *
+     *  Read a avdecc_aem_descriptor_entity_t from a PDU
+     *
+     *  @param self pointer to object to fill
+     *  @param pdu pointer to base of pdu to read
+     *  @param offset offset from base of pdu in octets to start reading from
+     */
+    
+    bool avdecc_descriptor_entity_read (
+        avdecc_aem_descriptor_entity_t *self,
+        const void *pdu,
+        size_t offset
+    );
+    
+    
+    /** avdecc_descriptor_entity_write
+     *
+     *  write a avdecc_aem_descriptor_entity_t into a pdu
+     *
+     *  @param self pointer to object to store into pdu
+     *  @param pdu pointer to base of pdu to write to
+     *  @param offset offset from base of pdu in octets to start writing to
+     */
+    
+    bool avdecc_descriptor_entity_write (
+        const avdecc_aem_descriptor_entity_t *self,
+        void *pdu,
+        size_t offset
+    );
+    
+    /* @} */
+    /** \addtogroup aem_descriptor_configuration configuration */
+    /* @{ */
+    
+    /** \addtogroup aem_descriptor_configuration_counts configuration_counts */
+    /* @{ */
+    
+    /** avdecc_aem_descriptor_configuration_counts_t
+    */
+    
+    /** See IEEE 1722.1 Clause 7.2.2.1 */
+    typedef struct avdecc_aem_descriptor_configuration_counts_s
+    {
+        avdecc_aem_descriptor_type_t descriptor_type;
+        uint16_t descriptor_count;
+    } avdecc_aem_descriptor_configuration_counts_t;
+    
+    
+    /** avdecc_descriptor_configuration_counts_init
+     *
+     *  Initialize a avdecc_aem_descriptor_configuration_counts_t
+     *
+     *  @param self pointer to object to initialize
+     *  @returns void
+     */
+    
+    void avdecc_descriptor_configuration_counts_init ( avdecc_aem_descriptor_configuration_counts_t *self );
+    
+    
+    /** avdecc_descriptor_configuration_counts_read
+     *
+     *  Read a avdecc_aem_descriptor_configuration_counts_t from a PDU
+     *
+     *  @param self pointer to object to fill
+     *  @param pdu pointer to base of pdu to read
+     *  @param offset offset from base of pdu in octets to start reading from
+     */
+    
+    bool avdecc_descriptor_configuration_counts_read (
+        avdecc_aem_descriptor_configuration_counts_t *self,
+        const void *pdu,
+        size_t offset
+    );
+    
+    
+    /** avdecc_descriptor_configuration_counts_write
+     *
+     *  write a avdecc_aem_descriptor_configuration_counts_t into a pdu
+     *
+     *  @param self pointer to object to store into pdu
+     *  @param pdu pointer to base of pdu to write to
+     *  @param offset offset from base of pdu in octets to start writing to
+     */
+    
+    bool avdecc_descriptor_configuration_counts_write (
+        const avdecc_aem_descriptor_configuration_counts_t *self,
+        void *pdu,
+        size_t offset
+    );
+    
+    /* @} */
+    
+    /** avdecc_aem_descriptor_configuration_t
+    */
+    
+#define AVDECC_PDU_AEM_DESCRIPTOR_CONFIGURATION_MAX_COUNTS (108) /*!< See IEEE 1722.1 Clause 7.2.2 */
+    
+    /** See IEEE 1722.1 Clause 7.2.2 */
+    typedef struct avdecc_aem_descriptor_configuration_s
+    {
+        avdecc_aem_descriptor_type_t descriptor_type;
+        uint16_t descriptor_index;
+        avdecc_string64_t configuration_name;
+        avdecc_aem_localized_string_ref_t configuration_name_string;
+        uint16_t descriptor_counts_count;
+        avdecc_aem_descriptor_configuration_counts_t descriptor_counts[AVDECC_PDU_AEM_DESCRIPTOR_CONFIGURATION_MAX_COUNTS];
+    } avdecc_aem_descriptor_configuration_t;
+    
+    
+    
+    /** avdecc_descriptor_configuration_init
+     *
+     *  Initialize a avdecc_aem_descriptor_configuration_t
+     *
+     *  @param self pointer to object to initialize
+     *  @returns void
+     */
+    
+    void avdecc_descriptor_configuration_init ( avdecc_aem_descriptor_configuration_t *self );
+    
+    
+    /** avdecc_descriptor_configuration_read
+     *
+     *  Read a avdecc_aem_descriptor_configuration_t from a PDU
+     *
+     *  @param self pointer to object to fill
+     *  @param pdu pointer to base of pdu to read
+     *  @param offset offset from base of pdu in octets to start reading from
+     */
+    
+    bool avdecc_descriptor_configuration_read (
+        avdecc_aem_descriptor_configuration_t *self,
+        const void *pdu,
+        size_t offset
+    );
+    
+    
+    /** avdecc_descriptor_configuration_write
+     *
+     *  write a avdecc_aem_descriptor_configuration_t into a pdu
+     *
+     *  @param self pointer to object to store into pdu
+     *  @param pdu pointer to base of pdu to write to
+     *  @param offset offset from base of pdu in octets to start writing to
+     */
+    
+    bool avdecc_descriptor_configuration_write (
+        const avdecc_aem_descriptor_configuration_t *self,
+        void *pdu,
+        size_t offset
+    );
+    
+    /* @} */
+    /**
+    \addtogroup aem_descriptor_audio_unit audio_unit
+    */
+    /* @{ */
+    
+    /**
+    \addtogroup aem_descriptor_sample_rate sample_rate
+    */
+    /* @{ */
     
     
     /** avdecc_aem_audio_pull_t
@@ -93,7 +435,7 @@ extern "C" {
         avdecc_aem_audio_pull_mul_24_div_25,
         avdecc_aem_audio_pull_mul_25_div_24
     } avdecc_aem_audio_pull_t;
-            
+    
     /** avdecc_audio_pull_init
      *
      *  Initialize a avdecc_aem_audio_pull_t
@@ -190,252 +532,7 @@ extern "C" {
         size_t offset
     );
     
-
-#define AVDECC_PDU_AEM_DESCRIPTOR_MAX_CONTENT_SIZE  (AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE-4) /*!< See IEEE 1722.1 Clause 7.4.2.2 */
-    
-    /** See IEEE 1722.1 Clause 7.4.2.2 */
-    
-    typedef struct avdecc_aem_descriptor_s
-    {
-        avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
-        uint8_t padding[ AVDECC_PDU_AEM_DESCRIPTOR_MAX_CONTENT_SIZE ];
-    } avdecc_aem_descriptor_t;
-    
-    
-    /** avdecc_descriptor_init
-     *
-     *  Initialize a avdecc_aem_descriptor_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-    
-    void avdecc_descriptor_init ( avdecc_aem_descriptor_t *self );
-    
-    
-    /** avdecc_descriptor_read
-     *
-     *  Read a avdecc_aem_descriptor_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-    
-    bool avdecc_descriptor_read (
-        avdecc_aem_descriptor_t *self,
-        const void *pdu,
-        size_t offset
-    );
-    
-    
-    /** avdecc_descriptor_write
-     *
-     *  write a avdecc_aem_descriptor_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-    
-    bool avdecc_descriptor_write (
-        const avdecc_aem_descriptor_t *self,
-        void *pdu,
-        size_t offset
-    );
-    
-    
-    /** avdecc_aem_descriptor_entity_t
-    */
-    
-    /** See IEEE 1722.1 Clause 7.2.1 */
-    
-    typedef struct avdecc_aem_descriptor_entity_s
-    {
-        avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
-        avdecc_eui64_t entity_guid;
-        avdecc_eui64_t vendor_model_id;
-        avdecc_adp_entity_capabilities_t entity_capabilities;
-        uint16_t talker_stream_sources;
-        avdecc_adp_talker_capabilities_t talker_capabilities;
-        uint16_t listener_stream_sinks;
-        avdecc_adp_listener_capabilities_t listener_capabilities;
-        avdecc_adp_controller_capabilities_t controller_capabilities;
-        uint32_t available_index;
-        avdecc_eui64_t as_grandmaster_id;
-        avdecc_eui64_t association_id;
-        avdecc_adp_entity_type_t entity_type;
-        avdecc_string64_t entity_name;
-        uint16_t vendor_name_string;
-        uint16_t model_name_string;
-        avdecc_string64_t firmware_version;
-        avdecc_string64_t group_name;
-        avdecc_string64_t serial_number;
-        uint16_t configurations_count;
-        uint16_t current_configuration;
-    } avdecc_aem_descriptor_entity_t;
-    
-    
-    
-    /** avdecc_descriptor_entity_init
-     *
-     *  Initialize a avdecc_aem_descriptor_entity_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-    
-    void avdecc_descriptor_entity_init ( avdecc_aem_descriptor_entity_t *self );
-    
-    
-    /** avdecc_descriptor_entity_read
-     *
-     *  Read a avdecc_aem_descriptor_entity_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-    
-    bool avdecc_descriptor_entity_read (
-        avdecc_aem_descriptor_entity_t *self,
-        const void *pdu,
-        size_t offset
-    );
-    
-    
-    /** avdecc_descriptor_entity_write
-     *
-     *  write a avdecc_aem_descriptor_entity_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-    
-    bool avdecc_descriptor_entity_write (
-        const avdecc_aem_descriptor_entity_t *self,
-        void *pdu,
-        size_t offset
-    );
-    
-    
-    /** avdecc_aem_descriptor_configuration_counts_t
-    */
-    
-    /** See IEEE 1722.1 Clause 7.2.2.1 */
-    typedef struct avdecc_aem_descriptor_configuration_counts_s
-    {
-        uint16_t descriptor_type;
-        uint16_t descriptor_count;
-    } avdecc_aem_descriptor_configuration_counts_t;    
-    
-    
-    /** avdecc_descriptor_configuration_counts_init
-     *
-     *  Initialize a avdecc_aem_descriptor_configuration_counts_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-    
-    void avdecc_descriptor_configuration_counts_init ( avdecc_aem_descriptor_configuration_counts_t *self );
-    
-    
-    /** avdecc_descriptor_configuration_counts_read
-     *
-     *  Read a avdecc_aem_descriptor_configuration_counts_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-    
-    bool avdecc_descriptor_configuration_counts_read (
-        avdecc_aem_descriptor_configuration_counts_t *self,
-        const void *pdu,
-        size_t offset
-    );
-    
-    
-    /** avdecc_descriptor_configuration_counts_write
-     *
-     *  write a avdecc_aem_descriptor_configuration_counts_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-    
-    bool avdecc_descriptor_configuration_counts_write (
-        const avdecc_aem_descriptor_configuration_counts_t *self,
-        void *pdu,
-        size_t offset
-    );
-    
-    
-    /** avdecc_aem_descriptor_configuration_t
-    */
-    
-#define AVDECC_PDU_AEM_DESCRIPTOR_CONFIGURATION_MAX_COUNTS (108) /*!< See IEEE 1722.1 Clause 7.2.2 */
-    
-    /** See IEEE 1722.1 Clause 7.2.2 */
-    typedef struct avdecc_aem_descriptor_configuration_s
-    {
-        avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
-        avdecc_string64_t configuration_name;
-        uint16_t configuration_name_string;
-        uint16_t descriptor_counts_count;
-        avdecc_aem_descriptor_configuration_counts_t descriptor_counts[AVDECC_PDU_AEM_DESCRIPTOR_CONFIGURATION_MAX_COUNTS];
-    } avdecc_aem_descriptor_configuration_t;
-    
-    
-    
-    /** avdecc_descriptor_configuration_init
-     *
-     *  Initialize a avdecc_aem_descriptor_configuration_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-    
-    void avdecc_descriptor_configuration_init ( avdecc_aem_descriptor_configuration_t *self );
-    
-    
-    /** avdecc_descriptor_configuration_read
-     *
-     *  Read a avdecc_aem_descriptor_configuration_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-    
-    bool avdecc_descriptor_configuration_read (
-        avdecc_aem_descriptor_configuration_t *self,
-        const void *pdu,
-        size_t offset
-    );
-    
-    
-    /** avdecc_descriptor_configuration_write
-     *
-     *  write a avdecc_aem_descriptor_configuration_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-    
-    bool avdecc_descriptor_configuration_write (
-        const avdecc_aem_descriptor_configuration_t *self,
-        void *pdu,
-        size_t offset
-    );
-    
+    /* @} */
     
     /** avdecc_aem_descriptor_audio_unit_t
     */
@@ -446,7 +543,7 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_audio_unit_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         uint16_t number_of_stream_input_ports;
         uint16_t base_stream_input_port;
         uint16_t number_of_stream_output_ports;
@@ -459,11 +556,11 @@ extern "C" {
         uint16_t base_internal_input_port;
         uint16_t number_of_internal_output_ports;
         uint16_t base_internal_output_port;
-        uint16_t clock_source_id;
+        uint16_t clock_source_index;
         uint16_t number_of_controls;
         uint16_t base_control;
         avdecc_string64_t unit_name;
-        uint16_t unit_name_string;
+        avdecc_aem_localized_string_ref_t unit_name_string;
         uint16_t number_of_signal_selectors;
         uint16_t base_signal_selector;
         uint16_t number_of_mixers;
@@ -519,6 +616,9 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
+    /** \addtogroup aem_descriptor_video_unit video_unit */
+    /* @{ */
     
     /** avdecc_aem_descriptor_video_unit_t
     */
@@ -527,7 +627,7 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_video_unit_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         uint16_t number_of_stream_input_ports;
         uint16_t base_stream_input_port;
         uint16_t number_of_stream_output_ports;
@@ -540,18 +640,18 @@ extern "C" {
         uint16_t base_internal_input_port;
         uint16_t number_of_internal_output_ports;
         uint16_t base_internal_output_port;
-        uint16_t clock_source_id;
+        uint16_t clock_source_index;
         uint16_t number_of_controls;
         uint16_t base_control;
         avdecc_string64_t unit_name;
-        uint16_t unit_name_string;
+        avdecc_aem_localized_string_ref_t unit_name_string;
         uint16_t number_of_signal_selectors;
         uint16_t base_signal_selector;
         uint16_t number_of_mixers;
         uint16_t base_mixer;
         uint16_t number_of_matrices;
         uint16_t base_matrix;
-    } avdecc_aem_descriptor_video_unit_t;    
+    } avdecc_aem_descriptor_video_unit_t;
     
     
     /** avdecc_descriptor_video_unit_init
@@ -596,6 +696,9 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
+    /** \addtogroup aem_descriptor_sensor_unit sensor_unit */
+    /* @{ */
     
     /** avdecc_aem_descriptor_sensor_unit_t
     */
@@ -604,7 +707,7 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_sensor_unit_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         uint16_t number_of_stream_input_ports;
         uint16_t base_stream_input_port;
         uint16_t number_of_stream_output_ports;
@@ -617,11 +720,11 @@ extern "C" {
         uint16_t base_internal_input_port;
         uint16_t number_of_internal_output_ports;
         uint16_t base_internal_output_port;
-        uint16_t clock_source_id;
+        uint16_t clock_source_index;
         uint16_t number_of_controls;
         uint16_t base_control;
         avdecc_string64_t unit_name;
-        uint16_t unit_name_string;
+        avdecc_aem_localized_string_ref_t unit_name_string;
         uint16_t number_of_signal_selectors;
         uint16_t base_signal_selector;
         uint16_t number_of_mixers;
@@ -674,6 +777,9 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
+    /** \addtogroup aem_descriptor_stream_format stream_format */
+    /* @{ */
     
     /** avdecc_aem_stream_format_t
     */
@@ -692,7 +798,7 @@ extern "C" {
     {
         uint64_t format;
     } avdecc_aem_stream_format_t;
-     
+    
     
     
     /** avdecc_stream_format_init
@@ -737,6 +843,9 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
+    /** \addtogroup aem_descriptor_stream stream */
+    /* @{ */
     
     /** avdecc_aem_descriptor_stream_t
     */
@@ -748,12 +857,12 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_stream_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         avdecc_string64_t stream_name;
-        uint16_t stream_name_string;
+        avdecc_aem_localized_string_ref_t stream_name_string;
         avdecc_aem_stream_flags_t stream_flags;
         uint16_t stream_channels;
-        uint16_t clock_source_id;
+        uint16_t clock_source_index;
         avdecc_aem_stream_format_t current_format;
         uint16_t number_of_formats;
         avdecc_eui64_t backup_talker_guid_0;
@@ -766,7 +875,7 @@ extern "C" {
         uint16_t backedup_talker_unique;
         uint16_t avb_interface_id;
         avdecc_aem_stream_format_t formats[AVDECC_PDU_AEM_DESCRIPTOR_STREAM_MAX_FORMATS];
-    } avdecc_aem_descriptor_stream_t;    
+    } avdecc_aem_descriptor_stream_t;
     
     
     /** avdecc_descriptor_stream_init
@@ -810,6 +919,7 @@ extern "C" {
         void *pdu,
         size_t offset
     );
+    /* @} */
     
     
     /** avdecc_aem_jack_flags_t
@@ -823,6 +933,12 @@ extern "C" {
     } avdecc_aem_jack_flags_t;
     
     
+    /* @} */
+    /** \addtogroup aem_descriptor_jack descriptor_jack */
+    /* @{ */
+    
+    /** \addtogroup aem_jack_flags jack_flags */
+    /* @{ */
     
     /** avdecc_jack_flags_init
      *
@@ -866,6 +982,9 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
+    /** \addtogroup aem_jack_type jack_type */
+    /* @{ */
     
     /** avdecc_aem_jack_type_t
     */
@@ -907,7 +1026,7 @@ extern "C" {
         avdecc_aem_jack_type_sata,
         avdecc_aem_jack_type_smpte_ltc,
         avdecc_aem_jack_type_digital_microphone
-    } avdecc_aem_jack_type_t;    
+    } avdecc_aem_jack_type_t;
     
     
     /** avdecc_jack_type_init
@@ -952,6 +1071,7 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
     
     /** avdecc_aem_descriptor_jack_t
     */
@@ -960,9 +1080,9 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_jack_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         avdecc_string64_t jack_name;
-        uint16_t jack_name_string;
+        avdecc_aem_localized_string_ref_t jack_name_string;
         avdecc_aem_jack_flags_t jack_flags;
         avdecc_aem_jack_type_t jack_type;
     } avdecc_aem_descriptor_jack_t;
@@ -1011,6 +1131,12 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
+    /* \addtogroup aem_descriptor_port descriptor_port */
+    /* @{ */
+    
+    /* \addtogroup aem_port_flags port_flags */
+    /* @{ */
     
     /** avdecc_aem_port_flags_t
     */
@@ -1067,6 +1193,7 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
     
     /** avdecc_aem_descriptor_audio_port_t
     */
@@ -1075,7 +1202,7 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_audio_port_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         avdecc_aem_port_flags_t port_flags;
         uint16_t audio_channels;
         uint16_t number_of_clusters;
@@ -1128,6 +1255,13 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
+    
+    /* \addtogroup aem_descriptor_video_port video_port */
+    /* @{ */
+    
+    /* \addtogroup aem_media_format media_format */
+    /* @{ */
     
     /** avdecc_aem_media_format_t
     */
@@ -1183,6 +1317,7 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
     
     /** avdecc_aem_descriptor_video_port_t
     */
@@ -1192,11 +1327,11 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_video_port_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         avdecc_aem_port_flags_t port_flags;
         avdecc_aem_media_format_t current_format;
-        uint16_t source_type;
-        uint16_t source_id;
+        avdecc_aem_descriptor_type_t source_type;
+        uint16_t source_index;
         uint16_t stream_id;
         uint16_t formats_count;
         uint32_t block_latency;
@@ -1247,6 +1382,9 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
+    /* \addtogroup aem_descriptor_external_port external_port */
+    /* @{ */
     
     /** avdecc_aem_descriptor_external_port_t
     */
@@ -1255,10 +1393,10 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_external_port_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         avdecc_aem_port_flags_t port_flags;
-        uint16_t source_type;
-        uint16_t source_id;
+        avdecc_aem_descriptor_type_t source_type;
+        uint16_t source_index;
         uint32_t block_latency;
     } avdecc_aem_descriptor_external_port_t;
     
@@ -1306,6 +1444,10 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
+    
+    /* \addtogroup aem_descriptor_sensor_port sensor_port */
+    /* @{ */
     
     /** avdecc_aem_descriptor_sensor_port_t
     */
@@ -1314,10 +1456,10 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_sensor_port_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         avdecc_aem_port_flags_t port_flags;
-        uint16_t source_type;
-        uint16_t source_id;
+        avdecc_aem_descriptor_type_t source_type;
+        uint16_t source_index;
         uint16_t stream_id;
         uint32_t block_latency;
     } avdecc_aem_descriptor_sensor_port_t;
@@ -1366,6 +1508,10 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
+    /* \addtogroup aem_descriptor_internal_port internal_port */
+    /* @{ */
+    
     
     /** avdecc_aem_descriptor_internal_port_t
     */
@@ -1374,10 +1520,10 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_internal_port_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         avdecc_aem_port_flags_t port_flags;
-        uint16_t source_type;
-        uint16_t source_id;
+        avdecc_aem_descriptor_type_t source_type;
+        uint16_t source_index;
         uint16_t internal_id;
         uint32_t block_latency;
     } avdecc_aem_descriptor_internal_port_t;
@@ -1427,6 +1573,11 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
+    /* \addtogroup aem_descriptor_avb_interface avb_interface */
+    /* @{ */
+    /* \addtogroup aem_msrp_mappings msrp_mappings */
+    /* @{ */
     
     /** avdecc_aem_msrp_mappings_t
     */
@@ -1483,6 +1634,8 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
+    
     
     /** avdecc_aem_descriptor_avb_interface_t
     */
@@ -1493,12 +1646,12 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_avb_interface_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         avdecc_mac_t mac_address;
         avdecc_eui64_t as_grandmaster_id;
         uint16_t msrp_mappings_count;
         avdecc_string64_t interface_name;
-        uint16_t interface_name_string;
+        avdecc_aem_localized_string_ref_t interface_name_string;
         avdecc_aem_msrp_mappings_t msrp_mappings[AVDECC_PDU_AEM_DESCRIPTOR_AVB_INTERFACE_MAX_MAPPINGS];
     } avdecc_aem_descriptor_avb_interface_t;
     
@@ -1546,6 +1699,12 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
+    /* \addtogroup aem_descriptor_clock_source clock_source */
+    /* @{ */
+    
+    /* \addtogroup aem_clock_source_flags clock_source_flags */
+    /* @{ */
     
     /** avdecc_aem_clock_source_flags_t
     */
@@ -1601,6 +1760,9 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
+    /* \addtogroup aem_clock_source_type clock_source_type */
+    /* @{ */
     
     /** avdecc_aem_clock_source_type_t
     */
@@ -1662,6 +1824,7 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
     
     /** avdecc_aem_descriptor_clock_source_t
     */
@@ -1671,12 +1834,12 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_clock_source_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         avdecc_string64_t clock_source_name;
-        uint16_t clock_source_name_string;
+        avdecc_aem_localized_string_ref_t clock_source_name_string;
         avdecc_aem_clock_source_flags_t clock_source_flags;
         avdecc_aem_clock_source_type_t clock_source_type;
-        avdecc_eui64_t clock_source_id;
+        avdecc_eui64_t clock_source_index;
         uint16_t clock_source_location_type;
         uint16_t clock_source_location_id;
     } avdecc_aem_descriptor_clock_source_t;
@@ -1725,6 +1888,13 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
+    
+    /* \addtogroup aem_descriptor_audio_map audio_map */
+    /* @{ */
+    
+    /* \addtogroup aem_audio_mapping audio_mapping */
+    /* @{ */
     
     /** avdecc_aem_audio_mapping_t
     */
@@ -1781,7 +1951,7 @@ extern "C" {
         void *pdu,
         size_t offset
     );
-    
+    /* @} */
     
     /** avdecc_aem_descriptor_audio_map_t
     */
@@ -1792,7 +1962,7 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_audio_map_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         uint16_t number_of_mappings;
         avdecc_aem_audio_mapping_t mappings[AVDECC_PDU_AEM_DESCRIPTOR_AUDIO_MAP_MAX_MAPPINGS];
     } avdecc_aem_descriptor_audio_map_t;
@@ -1840,6 +2010,9 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
+    /* \addtogroup aem_descriptor_audio_cluster audio_cluster */
+    /* @{ */
     
     /** avdecc_aem_descriptor_audio_cluster_t
     */
@@ -1849,14 +2022,14 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_audio_cluster_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         uint16_t channel_count;
         uint32_t latency;
         uint8_t am824_label;
         avdecc_string64_t cluster_name;
-        uint16_t cluster_name_string;
-        uint16_t source_type;
-        uint16_t source_id;
+        avdecc_aem_localized_string_ref_t cluster_name_string;
+        avdecc_aem_descriptor_type_t source_type;
+        uint16_t source_index;
         uint32_t block_latency;
     } avdecc_aem_descriptor_audio_cluster_t;
     
@@ -1904,6 +2077,7 @@ extern "C" {
         size_t offset
     );
     
+    /* @} */
     
     /** avdecc_aem_control_type_t
     */
@@ -2085,7 +2259,7 @@ extern "C" {
         avdecc_aem_units_level_lufs =0xcc /*!< "LUFS", "ITU-R. BS. 1770-2 full scale loudness level" */
     } avdecc_aem_units_t;
     
-    extern const char *avdecc_aem_units_symbol[256];    
+    extern const char *avdecc_aem_units_symbol[256];
     
     
     /** avdecc_units_init
@@ -2412,7 +2586,7 @@ extern "C" {
         uint16_t current_value;
         avdecc_aem_units_t units;
         uint16_t string_id;
-    } avdecc_aem_control_value_type_linear_format_uint16_t;    
+    } avdecc_aem_control_value_type_linear_format_uint16_t;
     
     
     /** avdecc_control_value_type_linear_format_uint16_init
@@ -3375,7 +3549,7 @@ extern "C" {
         uint16_t number_of_options;
         double option[ AVDECC_PDU_AEM_CONTROL_SELECTOR_DOUBLE_MAX_OPTIONS ];
         avdecc_aem_units_t unit;
-    } avdecc_aem_control_value_type_selector_format_double_t;    
+    } avdecc_aem_control_value_type_selector_format_double_t;
     
     /** avdecc_control_value_type_selector_format_double_init
      *
@@ -4432,18 +4606,18 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_control_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         bool read_only;
         bool unknown_value;
         avdecc_aem_control_type_t control_type;
         uint16_t control_location_id;
-        uint16_t control_value_type;
+        avdecc_aem_control_value_type_t control_value_type;
         uint16_t control_domain;
         avdecc_string64_t control_name;
-        uint16_t control_name_string;
+        avdecc_aem_localized_string_ref_t control_name_string;
         uint16_t number_of_values;
-        uint16_t source_type;
-        uint16_t source_id;
+        avdecc_aem_descriptor_type_t source_type;
+        uint16_t source_index;
         uint32_t block_latency;
         uint32_t control_latency;
         avdecc_aem_control_value_format_union_t format;
@@ -4500,8 +4674,8 @@ extern "C" {
     
     typedef struct avdecc_aem_sources_s
     {
-        uint16_t source_type;
-        uint16_t source_id;
+        avdecc_aem_descriptor_type_t source_type;
+        uint16_t source_index;
     } avdecc_aem_sources_t;
     
     
@@ -4559,17 +4733,17 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_signal_selector_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         uint16_t control_location_type;
         uint16_t control_location_id;
         uint16_t control_domain;
         avdecc_string64_t control_name;
-        uint16_t control_name_string;
+        avdecc_aem_localized_string_ref_t control_name_string;
         uint16_t number_of_sources;
-        uint16_t current_source_type;
-        uint16_t current_source_id;
-        uint16_t default_source_type;
-        uint16_t default_source_id;
+        avdecc_aem_descriptor_type_t current_source_type;
+        uint16_t current_source_index;
+        avdecc_aem_descriptor_type_t default_source_type;
+        uint16_t default_source_index;
         uint32_t block_latency;
         uint32_t control_latency;
         avdecc_aem_sources_t sources[AVDECC_PDU_AEM_DESCRIPTOR_SIGNAL_SELECTOR_MAX_SOURCES];
@@ -4628,20 +4802,20 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_mixer_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         bool read_only;
         uint16_t control_location_type;
         uint16_t control_location_id;
         uint16_t control_value_type;
         uint16_t control_domain;
         avdecc_string64_t control_name;
-        uint16_t control_name_string;
+        avdecc_aem_localized_string_ref_t control_name_string;
         uint16_t number_of_sources;
         uint32_t block_latency;
         uint32_t control_latency;
         avdecc_aem_sources_t sources[AVDECC_PDU_AEM_DESCRIPTOR_MIXER_MAX_SOURCES];
         avdecc_aem_control_value_format_union_t formats;
-    } avdecc_aem_descriptor_mixer_t;    
+    } avdecc_aem_descriptor_mixer_t;
     
     
     /** avdecc_descriptor_mixer_init
@@ -4694,14 +4868,14 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_matrix_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         bool read_only;
         avdecc_aem_control_type_t control_type;
         uint16_t control_location_id;
         uint16_t control_value_type;
         uint16_t control_domain;
         avdecc_string64_t control_name;
-        uint16_t control_name_string;
+        avdecc_aem_localized_string_ref_t control_name_string;
         uint16_t width;
         uint16_t height;
         uint16_t number_of_values;
@@ -4767,7 +4941,7 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_locale_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         avdecc_string64_t locale_identifier;
         uint16_t number_of_strings;
         uint16_t base_strings;
@@ -4827,7 +5001,7 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_strings_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         avdecc_string64_t string[AVDECC_PDU_AEM_DESCRIPTOR_STRING_MAX_STRINGS];
     } avdecc_aem_descriptor_strings_t;
     
@@ -4930,6 +5104,7 @@ extern "C" {
         size_t offset
     );
     
+#define AVDECC_PDU_AEM_DESCRIPTOR_MATRIX_SIGNAL_MAX_SIGNALS (125) /*!< See IEEE Clause 7.2.23 */
     
     /** avdecc_aem_descriptor_matrix_signal_t
     */
@@ -4938,7 +5113,7 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_matrix_signal_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         uint16_t signals_count;
         uint16_t signals_offset;
         avdecc_aem_descriptor_matrix_signal_entry_t signals_list[ AVDECC_PDU_AEM_DESCRIPTOR_MATRIX_SIGNAL_MAX_SIGNALS ];
@@ -5108,12 +5283,12 @@ extern "C" {
     typedef struct avdecc_aem_descriptor_memory_object_s
     {
         avdecc_aem_descriptor_type_t descriptor_type;
-        uint16_t descriptor_id;
+        uint16_t descriptor_index;
         avdecc_aem_memory_object_type_t mem_obj_type;
         uint16_t target_descriptor_type;
-        uint16_t target_descriptor_id;
+        uint16_t target_descriptor_index;
         avdecc_string64_t object_name;
-        uint16_t object_name_string;
+        avdecc_aem_localized_string_ref_t object_name_string;
         uint64_t start_address;
         uint64_t length;
     } avdecc_aem_descriptor_memory_object_t;

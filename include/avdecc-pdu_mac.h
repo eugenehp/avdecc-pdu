@@ -33,10 +33,7 @@ extern "C" {
     /** avdecc_mac_t
     */
     
-    typedef struct avdecc_mac_s
-    {
-        /* TODO */
-    } avdecc_mac_t;
+    typedef uint64_t avdecc_mac_t;
     
     
     

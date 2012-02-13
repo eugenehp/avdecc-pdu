@@ -33,10 +33,7 @@ extern "C" {
     /** avdecc_eui64_t
     */
     
-    typedef struct avdecc_eui64_s
-    {
-        /* TODO */
-    } avdecc_eui64_t;
+    typedef uint64_t avdecc_eui64_t;
     
     
     

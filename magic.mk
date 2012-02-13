@@ -143,6 +143,15 @@ PROJECT_CONFIG_TOOL?=$(PROJECT)-config
 
 COMPILER?=gcc
 
+ifeq ($(COMPILER),clang)
+CXX=$(COMPILER_PREFIX)clang++
+CC=$(COMPILER_PREFIX)clang
+AR=$(COMPILER_PREFIX)ar
+RANLIB=$(COMPILER_PREFIX)ranlib
+LINK.cpp?=$(CXX)
+LINK.c?=$(CC)
+endif
+
 ifeq ($(COMPILER),intel)
 COMPILE_FLAGS+=
 CXX=icc
