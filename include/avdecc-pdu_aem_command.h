@@ -23,6 +23,9 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_aecp.h"
 #include "avdecc-pdu_aem_descriptor.h"
 
+
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -243,6 +246,7 @@ extern "C" {
         size_t offset
     )
     {
+
         return avdecc_command_lock_entity_read ( self, pdu, offset );
     }
     
@@ -274,7 +278,7 @@ extern "C" {
     /** avdecc_aem_command_read_descriptor_t
     * See Clause 7.4.2.1
     */
-    
+
     typedef struct avdecc_aem_command_read_descriptor_s
     {
         avdecc_aem_command_t base;
@@ -447,7 +451,7 @@ extern "C" {
     /** avdecc_aem_response_write_descriptor_t
     */
     
-    typedef struct avdecc_aem_response_write_descriptor_s avdecc_aem_response_write_descriptor_t;
+    typedef struct avdecc_aem_command_write_descriptor_s avdecc_aem_response_write_descriptor_t;
     
     
     /** avdecc_response_write_descriptor_init

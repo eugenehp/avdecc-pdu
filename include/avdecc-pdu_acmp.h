@@ -20,6 +20,8 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
 #include "avdecc-pdu_world.h"
+#include "avdecc-pdu_mac.h"
+#include "avdecc-pdu_eui64.h"
 #include "avdecc-pdu_bits.h"
 #include "avdecc-pdu_avtp.h"
 #include "avdecc-pdu_adp.h"

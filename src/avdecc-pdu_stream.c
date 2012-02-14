@@ -22,14 +22,8 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
 
-void avdecc_stream_init ( avdecc_stream_t *self )
-{
-    bzero ( ( void * ) self, sizeof ( avdecc_stream_t ) );
-}
-
-
-bool avdecc_stream_read (
-    avdecc_stream_t *self,
+bool avdecc_stream_id_read (
+    avdecc_stream_id_t *self,
     const void *pdu,
     size_t offset
 )
@@ -42,8 +36,8 @@ bool avdecc_stream_read (
 }
 
 
-bool avdecc_stream_write (
-    const avdecc_stream_t *self,
+bool avdecc_stream_wid_rite (
+    const avdecc_stream_id_t *self,
     void *pdu,
     size_t offset
 )

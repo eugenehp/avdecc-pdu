@@ -56,39 +56,6 @@ bool avdecc_command_lock_entity_write (
 }
 
 
-void avdecc_response_lock_entity_init ( avdecc_aem_response_lock_entity_t *self )
-{
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_lock_entity_t ) );
-}
-
-
-bool avdecc_response_lock_entity_read (
-    avdecc_aem_response_lock_entity_t *self,
-    const void *pdu,
-    size_t offset
-)
-{
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
-    return r;
-}
-
-
-bool avdecc_response_lock_entity_write (
-    const avdecc_aem_response_lock_entity_t *self,
-    void *pdu,
-    size_t offset
-)
-{
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
-    return r;
-}
-
 
 void avdecc_command_read_descriptor_init ( avdecc_aem_command_read_descriptor_t *self )
 {
@@ -192,38 +159,6 @@ bool avdecc_command_write_descriptor_write (
 }
 
 
-void avdecc_response_write_descriptor_init ( avdecc_aem_response_write_descriptor_t *self )
-{
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_write_descriptor_t ) );
-}
-
-
-bool avdecc_response_write_descriptor_read (
-    avdecc_aem_response_write_descriptor_t *self,
-    const void *pdu,
-    size_t offset
-)
-{
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
-    return r;
-}
-
-
-bool avdecc_response_write_descriptor_write (
-    const avdecc_aem_response_write_descriptor_t *self,
-    void *pdu,
-    size_t offset
-)
-{
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
-    return r;
-}
 
 
 void avdecc_command_acquire_entity_init ( avdecc_aem_command_acquire_entity_t *self )
@@ -259,39 +194,6 @@ bool avdecc_command_acquire_entity_write (
     return r;
 }
 
-
-void avdecc_response_acquire_entity_init ( avdecc_aem_response_acquire_entity_t *self )
-{
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_acquire_entity_t ) );
-}
-
-
-bool avdecc_response_acquire_entity_read (
-    avdecc_aem_response_acquire_entity_t *self,
-    const void *pdu,
-    size_t offset
-)
-{
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
-    return r;
-}
-
-
-bool avdecc_response_acquire_entity_write (
-    const avdecc_aem_response_acquire_entity_t *self,
-    void *pdu,
-    size_t offset
-)
-{
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
-    return r;
-}
 
 
 void avdecc_command_controller_available_init ( avdecc_aem_command_controller_available_t *self )
@@ -2606,39 +2508,6 @@ bool avdecc_response_deregister_query_notification_write (
 }
 
 
-void avdecc_command_identify_notification_init ( avdecc_aem_command_identify_notification_t *self )
-{
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_identify_notification_t ) );
-}
-
-
-bool avdecc_command_identify_notification_read (
-    avdecc_aem_command_identify_notification_t *self,
-    const void *pdu,
-    size_t offset
-)
-{
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
-    return r;
-}
-
-
-bool avdecc_command_identify_notification_write (
-    const avdecc_aem_command_identify_notification_t *self,
-    void *pdu,
-    size_t offset
-)
-{
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
-    return r;
-}
-
 
 void avdecc_response_identify_notification_init ( avdecc_aem_response_identify_notification_t *self )
 {
@@ -2674,38 +2543,6 @@ bool avdecc_response_identify_notification_write (
 }
 
 
-void avdecc_command_state_change_notification_init ( avdecc_aem_command_state_change_notification_t *self )
-{
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_state_change_notification_t ) );
-}
-
-
-bool avdecc_command_state_change_notification_read (
-    avdecc_aem_command_state_change_notification_t *self,
-    const void *pdu,
-    size_t offset
-)
-{
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
-    return r;
-}
-
-
-bool avdecc_command_state_change_notification_write (
-    const avdecc_aem_command_state_change_notification_t *self,
-    void *pdu,
-    size_t offset
-)
-{
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
-    return r;
-}
 
 
 void avdecc_response_state_change_notification_init ( avdecc_aem_response_state_change_notification_t *self )
@@ -3013,39 +2850,6 @@ bool avdecc_response_abort_operation_write (
     return r;
 }
 
-
-void avdecc_command_operation_status_init ( avdecc_aem_command_operation_status_t *self )
-{
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_operation_status_t ) );
-}
-
-
-bool avdecc_command_operation_status_read (
-    avdecc_aem_command_operation_status_t *self,
-    const void *pdu,
-    size_t offset
-)
-{
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
-    return r;
-}
-
-
-bool avdecc_command_operation_status_write (
-    const avdecc_aem_command_operation_status_t *self,
-    void *pdu,
-    size_t offset
-)
-{
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
-    return r;
-}
 
 
 void avdecc_response_operation_status_init ( avdecc_aem_response_operation_status_t *self )

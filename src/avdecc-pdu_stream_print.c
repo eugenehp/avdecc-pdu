@@ -26,7 +26,7 @@ bool avdecc_stream_print (
     char *buf,
     size_t *pos,
     size_t len,
-    const avdecc_stream_t *self
+    const avdecc_stream_id_t *self
 )
 {
     bool r=true;

@@ -565,13 +565,6 @@ extern "C" {
         const avdecc_aem_response_deregister_query_notification_t *self
     );
     
-    bool avdecc_command_identify_notification_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        const avdecc_aem_command_identify_notification_t *self
-    );
-    
     bool avdecc_response_identify_notification_print (
         char *buf,
         size_t *pos,
@@ -579,12 +572,6 @@ extern "C" {
         const avdecc_aem_response_identify_notification_t *self
     );
     
-    bool avdecc_command_state_change_notification_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        const avdecc_aem_command_state_change_notification_t *self
-    );
     
     bool avdecc_response_state_change_notification_print (
         char *buf,
@@ -649,12 +636,6 @@ extern "C" {
         const avdecc_aem_response_abort_operation_t *self
     );
     
-    bool avdecc_command_operation_status_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        const avdecc_aem_command_operation_status_t *self
-    );
     
     bool avdecc_response_operation_status_print (
         char *buf,

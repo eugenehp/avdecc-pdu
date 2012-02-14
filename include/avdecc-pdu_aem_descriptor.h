@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_AEM_DESCRIPTOR_H_
-#define AVDECC_PDU_AEM_DESCRIPTOR_H_
+#ifndef AVDECC_PDU_AEM_DESCRIPTOR_H_XXX
+#define AVDECC_PDU_AEM_DESCRIPTOR_H_XXX
 
 
 /*
@@ -19,10 +19,12 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "avdecc-pdu.h"
+#include "avdecc-pdu_world.h"
 #include "avdecc-pdu_stream.h"
 #include "avdecc-pdu_mac.h"
+#include "avdecc-pdu_eui64.h"
 #include "avdecc-pdu_avtp.h"
+#include "avdecc-pdu_adp.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -36,7 +38,7 @@ extern "C" {
     
 #define AVDECC_PDU_AEM_DESCRIPTOR_MAX_PAYLOAD_SIZE (AVDECC_PDU_MAX_PAYLOAD_SIZE-28) /*!< See IEEE 1722.1 Clause 7.4.2.2 */
     
-    typedef enum
+    typedef enum avdecc_aem_descriptor_type_e
     {
         avdecc_aem_descriptor_entity= 0x0000, /*!< descriptor defining the entity. */
         avdecc_aem_descriptor_configuration= 0x0001,  /*!< descriptor defining a configuration of the entity. */
@@ -72,7 +74,8 @@ extern "C" {
         avdecc_aem_max_descriptor_type
     }
     avdecc_aem_descriptor_type_t;
-    
+
+
     typedef struct
     {
         avdecc_aem_descriptor_type_t descriptor_type;
@@ -166,7 +169,7 @@ extern "C" {
      */
     
     void avdecc_localized_string_ref_init ( avdecc_aem_localized_string_ref_t *self );
-    
+
     /** avdecc_localized_string_is_empty
      *
      *  Test if the string reference is empty
@@ -175,7 +178,7 @@ extern "C" {
      *  @returns bool true if string ref is NO_STRING (Clause 7.3.5)
      */
     
-    static inline avdecc_localized_string_ref_is_empty ( const avdecc_aem_localized_string_ref_t *self )
+    static inline bool avdecc_localized_string_ref_is_empty ( const avdecc_aem_localized_string_ref_t *self )
     {
         return self->offset==0 && self->index==7;
     }
