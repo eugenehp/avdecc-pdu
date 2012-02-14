@@ -36,7 +36,7 @@ bool avdecc_stream_id_read (
 }
 
 
-bool avdecc_stream_wid_rite (
+bool avdecc_stream_id_write (
     const avdecc_stream_id_t *self,
     void *pdu,
     size_t offset

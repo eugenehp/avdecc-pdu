@@ -74,8 +74,8 @@ extern "C" {
         avdecc_aem_max_descriptor_type
     }
     avdecc_aem_descriptor_type_t;
-
-
+    
+    
     typedef struct
     {
         avdecc_aem_descriptor_type_t descriptor_type;
@@ -169,7 +169,7 @@ extern "C" {
      */
     
     void avdecc_localized_string_ref_init ( avdecc_aem_localized_string_ref_t *self );
-
+    
     /** avdecc_localized_string_is_empty
      *
      *  Test if the string reference is empty

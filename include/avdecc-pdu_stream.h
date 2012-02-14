@@ -69,6 +69,18 @@ extern "C" {
         *self = 0;
     }
     
+    bool avdecc_stream_id_read (
+        avdecc_stream_id_t *self,
+        const void *pdu,
+        size_t offset
+    );
+    
+    bool avdecc_stream_id_write (
+        const avdecc_stream_id_t *self,
+        void *pdu,
+        size_t offset
+    );
+    
     /* @} */
     
 #ifdef __cplusplus

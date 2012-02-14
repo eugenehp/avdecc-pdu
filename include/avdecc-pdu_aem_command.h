@@ -246,7 +246,7 @@ extern "C" {
         size_t offset
     )
     {
-
+    
         return avdecc_command_lock_entity_read ( self, pdu, offset );
     }
     
@@ -278,7 +278,7 @@ extern "C" {
     /** avdecc_aem_command_read_descriptor_t
     * See Clause 7.4.2.1
     */
-
+    
     typedef struct avdecc_aem_command_read_descriptor_s
     {
         avdecc_aem_command_t base;
