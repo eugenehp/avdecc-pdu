@@ -33,12 +33,39 @@ extern "C" {
     
     
     
-    bool avdecc_stream_print (
+    bool avdecc_stream_source_state_print (
         char *buf,
-        size_t *pos,
+        size_t *offset,
         size_t len,
-        const avdecc_stream_id_t *self
+        avdecc_stream_source_state_t v
     );
+    
+    bool avdecc_stream_source_sink_state_print (
+        char *buf,
+        size_t *offset,
+        size_t len,
+        avdecc_stream_sink_state_t v
+    );
+    
+    bool avdecc_stream_class_print (
+        char *buf,
+        size_t *offset,
+        size_t len,
+        avdecc_stream_class_t v
+    );
+    
+    
+    bool avdecc_stream_id_print (
+        char *buf,
+        size_t *offset,
+        size_t len,
+        const avdecc_stream_id_t *stream_id
+    );
+    
+    bool avdecc_stream_id_to_text ( const avdecc_stream_id_t *sid, char *buf, int buf_len );
+    
+    bool avdecc_stream_id_from_text ( avdecc_stream_id_t *sid, const char *buf );
+    
     
     
     /* @} */

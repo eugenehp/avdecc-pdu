@@ -87,7 +87,8 @@ extern "C" {
         avdecc_aem_command_deauthenticate = 0x002f, /*!< release authenticated permissions. */
         avdecc_aem_command_auth_revoke_key = 0x0030, /*!< revoke a key from a keychain. */
         avdecc_aem_command_expansion = 0x7fff /*!< reserved for future use. */
-    } avdecc_aem_command_type_t;
+    }
+                                   avdecc_aem_command_type_t;
                                    
                                    
                                    

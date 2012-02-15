@@ -31,6 +31,8 @@ extern "C" {
     */
     /* @{ */
     
+    bool avdecc_eui64_to_text ( const avdecc_eui64_t *eui64, char *buf, int buf_len );
+    bool avdecc_eui64_from_text ( avdecc_eui64_t *eui64, const char *buf );
     
     
     bool avdecc_eui64_print (

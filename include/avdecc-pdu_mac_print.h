@@ -31,6 +31,8 @@ extern "C" {
     */
     /* @{ */
     
+    bool avdecc_mac_to_text ( const avdecc_mac_t *mac, char *buf, int buf_len );
+    bool avdecc_mac_from_text ( avdecc_mac_t *mac, const char *buf );
     
     
     bool avdecc_mac_print (

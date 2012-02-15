@@ -22,19 +22,84 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
 
-bool avdecc_mac_print (
-    char *buf,
-    size_t *pos,
-    size_t len,
-    const avdecc_mac_t *self
-)
+bool avdecc_mac_to_text ( const avdecc_mac_t *mac, char *buf, int buf_len )
 {
-    bool r=true;
+    bool r=false;
+    uint64_t v= *mac;
     
-    r&=false; /* TODO */
+    if ( buf_len>17 )
+    {
+        uint8_t bytes[6];
+        bytes[0] = AVDECC_BITS_GET_OCTET_7 ( v );
+        bytes[1] = AVDECC_BITS_GET_OCTET_6 ( v );
+        bytes[2] = AVDECC_BITS_GET_OCTET_5 ( v );
+        bytes[3] = AVDECC_BITS_GET_OCTET_4 ( v );
+        bytes[4] = AVDECC_BITS_GET_OCTET_3 ( v );
+        bytes[5] = AVDECC_BITS_GET_OCTET_2 ( v );
+        
+        snprintf (
+            buf, buf_len,
+            "%02X-%02X-%02X-%02X-%02X-%02X",
+            bytes[0], bytes[1], bytes[2], bytes[3], bytes[4], bytes[5]
+        );
+        
+        r=true;
+    }
+    
+    if ( !r )
+    {
+        *buf='\0';
+    }
+    
+    return r;
+}
+
+bool avdecc_mac_from_text ( avdecc_mac_t *mac, const char *buf )
+{
+    bool r=false;
+    int cnt;
+    unsigned int bytes[6];
+    
+    cnt=sscanf (
+            buf,
+            "%02X-%02X-%02X-%02X-%02X-%02X",
+            &bytes[0],
+            &bytes[1],
+            &bytes[2],
+            &bytes[3],
+            &bytes[4],
+            &bytes[5]
+        );
+        
+    if ( cnt==6 )
+    {
+        *mac = AVDECC_BITS_MAKE_OCTLET (
+                   bytes[0], bytes[1], bytes[2], bytes[3],
+                   bytes[4], bytes[5], 0, 0
+               );
+        r=true;
+    }
     
     return r;
 }
 
 
+
+bool avdecc_mac_print (
+    char *buf,
+    size_t *offset,
+    size_t len,
+    const avdecc_mac_t *mac
+)
+{
+    bool r=false;
+    char s[24];
+    
+    if ( avdecc_mac_to_text ( mac, s, sizeof ( s ) ) )
+    {
+        r=avdecc_print ( buf,offset,len, "%s", s );
+    }
+    
+    return r;
+}
 

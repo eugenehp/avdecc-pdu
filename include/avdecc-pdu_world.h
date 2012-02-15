@@ -168,6 +168,8 @@ typedef int bool_;
 # endif
 #endif
 
+#include "avdecc-pdu_bits.h"
+
 #define AVDECC_PDU_COUNTOF(x) (sizeof(x)/sizeof(x[0]))
 
 #ifdef AVDECC_PDU_UNUSED
