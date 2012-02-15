@@ -87,8 +87,7 @@ extern "C" {
         avdecc_aem_command_deauthenticate = 0x002f, /*!< release authenticated permissions. */
         avdecc_aem_command_auth_revoke_key = 0x0030, /*!< revoke a key from a keychain. */
         avdecc_aem_command_expansion = 0x7fff /*!< reserved for future use. */
-    }
-                                   avdecc_aem_command_type_t;
+    } avdecc_aem_command_type_t;
                                    
                                    
                                    
@@ -585,7 +584,7 @@ extern "C" {
     
     static inline void avdecc_response_acquire_entity_init ( avdecc_aem_response_acquire_entity_t *self )
     {
-        return avdecc_command_acquire_entity_init ( self );
+        avdecc_command_acquire_entity_init ( self );
     }
     
     
@@ -749,7 +748,10 @@ extern "C" {
     
     typedef struct avdecc_aem_command_set_clock_source_s
     {
-        /* TODO */
+        avdecc_aem_command_t base;
+        avdecc_aem_descriptor_type_t descriptor_type;
+        uint16_t descriptor_index;
+        uint16_t clock_source_id;
     } avdecc_aem_command_set_clock_source_t;
     
     
@@ -800,12 +802,7 @@ extern "C" {
     /** avdecc_aem_response_set_clock_source_t
     */
     
-    typedef struct avdecc_aem_response_set_clock_source_s
-    {
-        /* TODO */
-    } avdecc_aem_response_set_clock_source_t;
-    
-    
+    typedef struct avdecc_aem_command_set_clock_source_s avdecc_aem_response_set_clock_source_t;
     
     /** avdecc_response_set_clock_source_init
      *
@@ -858,10 +855,7 @@ extern "C" {
     /** avdecc_aem_command_get_clock_source_t
     */
     
-    typedef struct avdecc_aem_command_get_clock_source_s
-    {
-        /* TODO */
-    } avdecc_aem_command_get_clock_source_t;
+    typedef struct avdecc_aem_command_set_clock_source_s avdecc_aem_command_get_clock_source_t;
     
     
     
@@ -911,10 +905,7 @@ extern "C" {
     /** avdecc_aem_response_get_clock_source_t
     */
     
-    typedef struct avdecc_aem_response_get_clock_source_s
-    {
-        /* TODO */
-    } avdecc_aem_response_get_clock_source_t;
+    typedef struct avdecc_aem_command_set_clock_source_s avdecc_aem_response_get_clock_source_t;
     
     
     
@@ -971,7 +962,10 @@ extern "C" {
     
     typedef struct avdecc_aem_command_set_stream_format_s
     {
-        /* TODO */
+        avdecc_aem_command_t base;
+        avdecc_aem_descriptor_type_t descriptor_type;
+        uint16_t descriptor_index;
+        avdecc_aem_stream_format_t stream_format;
     } avdecc_aem_command_set_stream_format_t;
     
     
@@ -1022,10 +1016,7 @@ extern "C" {
     /** avdecc_aem_response_set_stream_format_t
     */
     
-    typedef struct avdecc_aem_response_set_stream_format_s
-    {
-        /* TODO */
-    } avdecc_aem_response_set_stream_format_t;
+    typedef struct avdecc_aem_command_set_stream_format_s avdecc_aem_response_set_stream_format_t;
     
     
     
@@ -1080,10 +1071,7 @@ extern "C" {
     /** avdecc_aem_command_get_stream_format_t
     */
     
-    typedef struct avdecc_aem_command_get_stream_format_s
-    {
-        /* TODO */
-    } avdecc_aem_command_get_stream_format_t;
+    typedef struct avdecc_aem_command_set_stream_format_s avdecc_aem_command_get_stream_format_t;
     
     
     
@@ -1133,10 +1121,7 @@ extern "C" {
     /** avdecc_aem_response_get_stream_format_t
     */
     
-    typedef struct avdecc_aem_response_get_stream_format_s
-    {
-        /* TODO */
-    } avdecc_aem_response_get_stream_format_t;
+    typedef struct avdecc_aem_command_set_stream_format_s avdecc_aem_response_get_stream_format_t;
     
     
     
@@ -1193,7 +1178,8 @@ extern "C" {
     
     typedef struct avdecc_aem_command_set_configuration_s
     {
-        /* TODO */
+        avdecc_aem_command_t base;
+        uint16_t configuration;
     } avdecc_aem_command_set_configuration_t;
     
     
@@ -1244,10 +1230,7 @@ extern "C" {
     /** avdecc_aem_response_set_configuration_t
     */
     
-    typedef struct avdecc_aem_response_set_configuration_s
-    {
-        /* TODO */
-    } avdecc_aem_response_set_configuration_t;
+    typedef struct avdecc_aem_command_set_configuration_s avdecc_aem_response_set_configuration_t;
     
     
     
@@ -1302,10 +1285,7 @@ extern "C" {
     /** avdecc_aem_command_get_configuration_t
     */
     
-    typedef struct avdecc_aem_command_get_configuration_s
-    {
-        /* TODO */
-    } avdecc_aem_command_get_configuration_t;
+    typedef struct avdecc_aem_command_set_configuration_s avdecc_aem_command_get_configuration_t;
     
     
     
@@ -1355,10 +1335,7 @@ extern "C" {
     /** avdecc_aem_response_get_configuration_t
     */
     
-    typedef struct avdecc_aem_response_get_configuration_s
-    {
-        /* TODO */
-    } avdecc_aem_response_get_configuration_t;
+    typedef struct avdecc_aem_command_set_configuration_s avdecc_aem_response_get_configuration_t;
     
     
     
@@ -1415,7 +1392,10 @@ extern "C" {
     
     typedef struct avdecc_aem_command_set_control_value_s
     {
-        /* TODO */
+        avdecc_aem_command_t base;
+        avdecc_aem_descriptor_type_t descriptor_type;
+        uint16_t descriptor_index;
+        avdecc_aem_control_value_format_union_t values;
     } avdecc_aem_command_set_control_value_t;
     
     
@@ -1466,10 +1446,7 @@ extern "C" {
     /** avdecc_aem_response_set_control_value_t
     */
     
-    typedef struct avdecc_aem_response_set_control_value_s
-    {
-        /* TODO */
-    } avdecc_aem_response_set_control_value_t;
+    typedef struct avdecc_aem_command_set_control_value_s avdecc_aem_response_set_control_value_t;
     
     
     
@@ -1525,10 +1502,7 @@ extern "C" {
     /** avdecc_aem_command_get_control_value_t
     */
     
-    typedef struct avdecc_aem_command_get_control_value_s
-    {
-        /* TODO */
-    } avdecc_aem_command_get_control_value_t;
+    typedef struct avdecc_aem_command_set_control_value_s avdecc_aem_command_get_control_value_t;
     
     
     
@@ -1578,10 +1552,7 @@ extern "C" {
     /** avdecc_aem_response_get_control_value_t
     */
     
-    typedef struct avdecc_aem_response_get_control_value_s
-    {
-        /* TODO */
-    } avdecc_aem_response_get_control_value_t;
+    typedef struct avdecc_aem_command_set_control_value_s avdecc_aem_response_get_control_value_t;
     
     
     
@@ -1638,7 +1609,9 @@ extern "C" {
     
     typedef struct avdecc_aem_command_set_signal_selector_s
     {
-        /* TODO */
+        avdecc_aem_command_t base;
+        avdecc_aem_descriptor_type_t signal_type;
+        uint16_t signal_index;
     } avdecc_aem_command_set_signal_selector_t;
     
     
@@ -1689,10 +1662,7 @@ extern "C" {
     /** avdecc_aem_response_set_signal_selector_t
     */
     
-    typedef struct avdecc_aem_response_set_signal_selector_s
-    {
-        /* TODO */
-    } avdecc_aem_response_set_signal_selector_t;
+    typedef struct avdecc_aem_command_set_signal_selector_s avdecc_aem_response_set_signal_selector_t;
     
     
     
@@ -1747,10 +1717,7 @@ extern "C" {
     /** avdecc_aem_command_get_signal_selector_t
     */
     
-    typedef struct avdecc_aem_command_get_signal_selector_s
-    {
-        /* TODO */
-    } avdecc_aem_command_get_signal_selector_t;
+    typedef struct avdecc_aem_command_set_signal_selector_s avdecc_aem_command_get_signal_selector_t;
     
     
     
@@ -1800,10 +1767,7 @@ extern "C" {
     /** avdecc_aem_response_get_signal_selector_t
     */
     
-    typedef struct avdecc_aem_response_get_signal_selector_s
-    {
-        /* TODO */
-    } avdecc_aem_response_get_signal_selector_t;
+    typedef struct avdecc_aem_command_set_signal_selector_s avdecc_aem_response_get_signal_selector_t;
     
     
     
@@ -1858,10 +1822,7 @@ extern "C" {
     /** avdecc_aem_command_set_mixer_t
     */
     
-    typedef struct avdecc_aem_command_set_mixer_s
-    {
-        /* TODO */
-    } avdecc_aem_command_set_mixer_t;
+    typedef struct avdecc_aem_command_set_control_value_s avdecc_aem_command_set_mixer_t;
     
     
     
@@ -1911,10 +1872,7 @@ extern "C" {
     /** avdecc_aem_response_set_mixer_t
     */
     
-    typedef struct avdecc_aem_response_set_mixer_s
-    {
-        /* TODO */
-    } avdecc_aem_response_set_mixer_t;
+    typedef struct avdecc_aem_command_set_control_value_s avdecc_aem_response_set_mixer_t;
     
     
     
@@ -1969,10 +1927,7 @@ extern "C" {
     /** avdecc_aem_command_get_mixer_t
     */
     
-    typedef struct avdecc_aem_command_get_mixer_s
-    {
-        /* TODO */
-    } avdecc_aem_command_get_mixer_t;
+    typedef struct avdecc_aem_command_set_control_value_s avdecc_aem_command_get_mixer_t;
     
     
     
@@ -2022,10 +1977,7 @@ extern "C" {
     /** avdecc_aem_response_get_mixer_t
     */
     
-    typedef struct avdecc_aem_response_get_mixer_s
-    {
-        /* TODO */
-    } avdecc_aem_response_get_mixer_t;
+    typedef struct avdecc_aem_command_set_control_value_s avdecc_aem_response_get_mixer_t;
     
     
     
