@@ -155,6 +155,15 @@ extern "C" {
     
 #define AVDECC_AECP_AEM_MAX_PAYLOAD_SPECIFIC_DATA (AVDECC_AECP_MAX_PAYLOAD_SPECIFIC_DATA-2)
     
+    
+    /** See IEEE 1722.1 Clause 9.2.1.2 */
+    
+    AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_aecp_aem, u, bool, 20, 16, 16 );
+    AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_aecp_aem, command_type, uint16_t, 20, 17, 31 );
+    
+    //AVDECC_BITS_MAP_DOUBLET_BITFIELD
+    //( avdecc_aecp_aem, , uint16_t, 20 );
+    
     /** avdecc_aecp_aem_t
     */
     
