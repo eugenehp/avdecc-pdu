@@ -87,7 +87,8 @@ extern "C" {
         avdecc_aem_command_deauthenticate = 0x002f, /*!< release authenticated permissions. */
         avdecc_aem_command_auth_revoke_key = 0x0030, /*!< revoke a key from a keychain. */
         avdecc_aem_command_expansion = 0x7fff /*!< reserved for future use. */
-    } avdecc_aem_command_type_t;
+    }
+                                   avdecc_aem_command_type_t;
                                    
                                    
                                    
@@ -98,6 +99,7 @@ extern "C" {
     {
         avdecc_aecp_message_type_t message_type;
         avdecc_aecp_status_t status;
+        avdecc_eui64_t target_guid;
         avdecc_eui64_t controller_guid;
         avdecc_aecp_control_data_length_t control_data_length;
         avdecc_aecp_sequence_id_t sequence_id;
@@ -122,13 +124,12 @@ extern "C" {
      *
      *  @param self pointer to object to fill
      *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
+     *  @returns bool true if pdu is a command
      */
     
     bool avdecc_command_read (
         avdecc_aem_command_t *self,
-        const void *pdu,
-        size_t offset
+        const void *pdu
     );
     
     
@@ -138,13 +139,58 @@ extern "C" {
      *
      *  @param self pointer to object to store into pdu
      *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
+     *  @returns bool true if pdu is formed
      */
     
     bool avdecc_command_write (
         const avdecc_aem_command_t *self,
-        void *pdu,
-        size_t offset
+        void *pdu
+    );
+    
+    
+    /** avdecc_aem_response_t
+     */
+    
+    typedef struct avdecc_aem_command_s avdecc_aem_response_t;
+    
+    /** avdecc_response_init
+     *
+     *  Initialize a avdecc_aem_response_t
+     *
+     *  @param self pointer to object to initialize
+     *  @returns void
+     */
+    
+    void avdecc_response_init ( avdecc_aem_response_t *self );
+    
+    
+    /** avdecc_response_read
+     *
+     *  Read a avdecc_aem_response_t from a PDU
+     *
+     *  @param self pointer to object to fill
+     *  @param pdu pointer to base of pdu to read
+     *  @returns bool true if pdu is an aecp aem response
+     */
+    
+    bool avdecc_response_read (
+        avdecc_aem_response_t *self,
+        const void *pdu
+    );
+    
+    
+    /** avdecc_response_write
+     *
+     *  write a avdecc_aem_command_t into a pdu
+     *
+     *  @param self pointer to object to store into pdu
+     *  @param pdu pointer to base of pdu to write to
+     *  @returns bool true if pdu is formed
+     */
+    
+    bool avdecc_response_write (
+        const avdecc_aem_response_t *self,
+        void *pdu
     );
     
     /**
@@ -159,7 +205,7 @@ extern "C" {
     typedef struct avdecc_aem_command_lock_entity_s
     {
         avdecc_aem_command_t base;
-        unsigned int lock:1;
+        uint32_t flags;
         avdecc_eui64_t locked_guid;
     } avdecc_aem_command_lock_entity_t;
     
@@ -187,8 +233,7 @@ extern "C" {
     
     bool avdecc_command_lock_entity_read (
         avdecc_aem_command_lock_entity_t *self,
-        const void *pdu,
-        size_t offset
+        const void *pdu
     );
     
     
@@ -203,8 +248,7 @@ extern "C" {
     
     bool avdecc_command_lock_entity_write (
         const avdecc_aem_command_lock_entity_t *self,
-        void *pdu,
-        size_t offset
+        void *pdu
     );
     
     
@@ -224,10 +268,7 @@ extern "C" {
      *  @returns void
      */
     
-    static inline void avdecc_response_lock_entity_init ( avdecc_aem_response_lock_entity_t *self )
-    {
-        avdecc_command_lock_entity_init ( self );
-    }
+    void avdecc_response_lock_entity_init ( avdecc_aem_response_lock_entity_t *self );
     
     
     /** avdecc_response_lock_entity_read
@@ -236,18 +277,13 @@ extern "C" {
      *
      *  @param self pointer to object to fill
      *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
+     *  @returns bool true if pdu is lock_entity response
      */
     
-    static inline bool avdecc_response_lock_entity_read (
+    bool avdecc_response_lock_entity_read (
         avdecc_aem_response_lock_entity_t *self,
-        const void *pdu,
-        size_t offset
-    )
-    {
-    
-        return avdecc_command_lock_entity_read ( self, pdu, offset );
-    }
+        const void *pdu
+    );
     
     
     /** avdecc_response_lock_entity_write
@@ -256,17 +292,13 @@ extern "C" {
      *
      *  @param self pointer to object to store into pdu
      *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
+     *  @returns bool true if pdu is formed
      */
     
-    static inline bool avdecc_response_lock_entity_write (
+    bool avdecc_response_lock_entity_write (
         const avdecc_aem_response_lock_entity_t *self,
-        void *pdu,
-        size_t offset
-    )
-    {
-        return avdecc_command_lock_entity_write ( self, pdu, offset );
-    }
+        void *pdu
+    );
     
     /* @} */
     /**
