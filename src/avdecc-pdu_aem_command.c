@@ -24,7 +24,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 void avdecc_command_lock_entity_init ( avdecc_aem_command_lock_entity_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_lock_entity_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_lock_entity_t ) );
 }
 
 
@@ -59,7 +59,7 @@ bool avdecc_command_lock_entity_write (
 
 void avdecc_command_read_descriptor_init ( avdecc_aem_command_read_descriptor_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_read_descriptor_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_read_descriptor_t ) );
 }
 
 
@@ -93,7 +93,7 @@ bool avdecc_command_read_descriptor_write (
 
 void avdecc_response_read_descriptor_init ( avdecc_aem_response_read_descriptor_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_read_descriptor_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_read_descriptor_t ) );
 }
 
 
@@ -127,7 +127,7 @@ bool avdecc_response_read_descriptor_write (
 
 void avdecc_command_write_descriptor_init ( avdecc_aem_command_write_descriptor_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_write_descriptor_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_write_descriptor_t ) );
 }
 
 
@@ -163,7 +163,7 @@ bool avdecc_command_write_descriptor_write (
 
 void avdecc_command_acquire_entity_init ( avdecc_aem_command_acquire_entity_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_acquire_entity_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_acquire_entity_t ) );
 }
 
 
@@ -198,7 +198,7 @@ bool avdecc_command_acquire_entity_write (
 
 void avdecc_command_controller_available_init ( avdecc_aem_command_controller_available_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_controller_available_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_controller_available_t ) );
 }
 
 
@@ -232,7 +232,7 @@ bool avdecc_command_controller_available_write (
 
 void avdecc_response_controller_available_init ( avdecc_aem_response_controller_available_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_controller_available_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_controller_available_t ) );
 }
 
 
@@ -266,7 +266,7 @@ bool avdecc_response_controller_available_write (
 
 void avdecc_command_set_clock_source_init ( avdecc_aem_command_set_clock_source_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_set_clock_source_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_set_clock_source_t ) );
 }
 
 
@@ -300,7 +300,7 @@ bool avdecc_command_set_clock_source_write (
 
 void avdecc_response_set_clock_source_init ( avdecc_aem_response_set_clock_source_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_set_clock_source_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_set_clock_source_t ) );
 }
 
 
@@ -334,7 +334,7 @@ bool avdecc_response_set_clock_source_write (
 
 void avdecc_command_get_clock_source_init ( avdecc_aem_command_get_clock_source_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_get_clock_source_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_get_clock_source_t ) );
 }
 
 
@@ -368,7 +368,7 @@ bool avdecc_command_get_clock_source_write (
 
 void avdecc_response_get_clock_source_init ( avdecc_aem_response_get_clock_source_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_get_clock_source_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_get_clock_source_t ) );
 }
 
 
@@ -402,7 +402,7 @@ bool avdecc_response_get_clock_source_write (
 
 void avdecc_command_set_stream_format_init ( avdecc_aem_command_set_stream_format_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_set_stream_format_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_set_stream_format_t ) );
 }
 
 
@@ -436,7 +436,7 @@ bool avdecc_command_set_stream_format_write (
 
 void avdecc_response_set_stream_format_init ( avdecc_aem_response_set_stream_format_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_set_stream_format_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_set_stream_format_t ) );
 }
 
 
@@ -470,7 +470,7 @@ bool avdecc_response_set_stream_format_write (
 
 void avdecc_command_get_stream_format_init ( avdecc_aem_command_get_stream_format_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_get_stream_format_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_get_stream_format_t ) );
 }
 
 
@@ -504,7 +504,7 @@ bool avdecc_command_get_stream_format_write (
 
 void avdecc_response_get_stream_format_init ( avdecc_aem_response_get_stream_format_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_get_stream_format_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_get_stream_format_t ) );
 }
 
 
@@ -538,7 +538,7 @@ bool avdecc_response_get_stream_format_write (
 
 void avdecc_command_set_configuration_init ( avdecc_aem_command_set_configuration_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_set_configuration_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_set_configuration_t ) );
 }
 
 
@@ -572,7 +572,7 @@ bool avdecc_command_set_configuration_write (
 
 void avdecc_response_set_configuration_init ( avdecc_aem_response_set_configuration_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_set_configuration_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_set_configuration_t ) );
 }
 
 
@@ -606,7 +606,7 @@ bool avdecc_response_set_configuration_write (
 
 void avdecc_command_get_configuration_init ( avdecc_aem_command_get_configuration_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_get_configuration_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_get_configuration_t ) );
 }
 
 
@@ -640,7 +640,7 @@ bool avdecc_command_get_configuration_write (
 
 void avdecc_response_get_configuration_init ( avdecc_aem_response_get_configuration_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_get_configuration_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_get_configuration_t ) );
 }
 
 
@@ -674,7 +674,7 @@ bool avdecc_response_get_configuration_write (
 
 void avdecc_command_set_control_value_init ( avdecc_aem_command_set_control_value_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_set_control_value_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_set_control_value_t ) );
 }
 
 
@@ -708,7 +708,7 @@ bool avdecc_command_set_control_value_write (
 
 void avdecc_response_set_control_value_init ( avdecc_aem_response_set_control_value_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_set_control_value_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_set_control_value_t ) );
 }
 
 
@@ -742,7 +742,7 @@ bool avdecc_response_set_control_value_write (
 
 void avdecc_command_get_control_value_init ( avdecc_aem_command_get_control_value_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_get_control_value_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_get_control_value_t ) );
 }
 
 
@@ -776,7 +776,7 @@ bool avdecc_command_get_control_value_write (
 
 void avdecc_response_get_control_value_init ( avdecc_aem_response_get_control_value_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_get_control_value_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_get_control_value_t ) );
 }
 
 
@@ -810,7 +810,7 @@ bool avdecc_response_get_control_value_write (
 
 void avdecc_command_set_signal_selector_init ( avdecc_aem_command_set_signal_selector_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_set_signal_selector_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_set_signal_selector_t ) );
 }
 
 
@@ -844,7 +844,7 @@ bool avdecc_command_set_signal_selector_write (
 
 void avdecc_response_set_signal_selector_init ( avdecc_aem_response_set_signal_selector_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_set_signal_selector_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_set_signal_selector_t ) );
 }
 
 
@@ -878,7 +878,7 @@ bool avdecc_response_set_signal_selector_write (
 
 void avdecc_command_get_signal_selector_init ( avdecc_aem_command_get_signal_selector_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_get_signal_selector_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_get_signal_selector_t ) );
 }
 
 
@@ -912,7 +912,7 @@ bool avdecc_command_get_signal_selector_write (
 
 void avdecc_response_get_signal_selector_init ( avdecc_aem_response_get_signal_selector_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_get_signal_selector_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_get_signal_selector_t ) );
 }
 
 
@@ -946,7 +946,7 @@ bool avdecc_response_get_signal_selector_write (
 
 void avdecc_command_set_mixer_init ( avdecc_aem_command_set_mixer_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_set_mixer_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_set_mixer_t ) );
 }
 
 
@@ -980,7 +980,7 @@ bool avdecc_command_set_mixer_write (
 
 void avdecc_response_set_mixer_init ( avdecc_aem_response_set_mixer_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_set_mixer_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_set_mixer_t ) );
 }
 
 
@@ -1014,7 +1014,7 @@ bool avdecc_response_set_mixer_write (
 
 void avdecc_command_get_mixer_init ( avdecc_aem_command_get_mixer_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_get_mixer_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_get_mixer_t ) );
 }
 
 
@@ -1048,7 +1048,7 @@ bool avdecc_command_get_mixer_write (
 
 void avdecc_response_get_mixer_init ( avdecc_aem_response_get_mixer_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_get_mixer_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_get_mixer_t ) );
 }
 
 
@@ -1082,7 +1082,7 @@ bool avdecc_response_get_mixer_write (
 
 void avdecc_command_set_matrix_init ( avdecc_aem_command_set_matrix_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_set_matrix_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_set_matrix_t ) );
 }
 
 
@@ -1116,7 +1116,7 @@ bool avdecc_command_set_matrix_write (
 
 void avdecc_response_set_matrix_init ( avdecc_aem_response_set_matrix_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_set_matrix_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_set_matrix_t ) );
 }
 
 
@@ -1150,7 +1150,7 @@ bool avdecc_response_set_matrix_write (
 
 void avdecc_command_get_matrix_init ( avdecc_aem_command_get_matrix_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_get_matrix_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_get_matrix_t ) );
 }
 
 
@@ -1184,7 +1184,7 @@ bool avdecc_command_get_matrix_write (
 
 void avdecc_response_get_matrix_init ( avdecc_aem_response_get_matrix_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_get_matrix_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_get_matrix_t ) );
 }
 
 
@@ -1218,7 +1218,7 @@ bool avdecc_response_get_matrix_write (
 
 void avdecc_command_start_streaming_init ( avdecc_aem_command_start_streaming_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_start_streaming_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_start_streaming_t ) );
 }
 
 
@@ -1252,7 +1252,7 @@ bool avdecc_command_start_streaming_write (
 
 void avdecc_response_start_streaming_init ( avdecc_aem_response_start_streaming_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_start_streaming_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_start_streaming_t ) );
 }
 
 
@@ -1286,7 +1286,7 @@ bool avdecc_response_start_streaming_write (
 
 void avdecc_command_stop_streaming_init ( avdecc_aem_command_stop_streaming_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_stop_streaming_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_stop_streaming_t ) );
 }
 
 
@@ -1320,7 +1320,7 @@ bool avdecc_command_stop_streaming_write (
 
 void avdecc_response_stop_streaming_init ( avdecc_aem_response_stop_streaming_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_stop_streaming_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_stop_streaming_t ) );
 }
 
 
@@ -1354,7 +1354,7 @@ bool avdecc_response_stop_streaming_write (
 
 void avdecc_command_set_stream_info_init ( avdecc_aem_command_set_stream_info_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_set_stream_info_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_set_stream_info_t ) );
 }
 
 
@@ -1388,7 +1388,7 @@ bool avdecc_command_set_stream_info_write (
 
 void avdecc_response_set_stream_info_init ( avdecc_aem_response_set_stream_info_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_set_stream_info_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_set_stream_info_t ) );
 }
 
 
@@ -1422,7 +1422,7 @@ bool avdecc_response_set_stream_info_write (
 
 void avdecc_command_get_stream_info_init ( avdecc_aem_command_get_stream_info_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_get_stream_info_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_get_stream_info_t ) );
 }
 
 
@@ -1456,7 +1456,7 @@ bool avdecc_command_get_stream_info_write (
 
 void avdecc_response_get_stream_info_init ( avdecc_aem_response_get_stream_info_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_get_stream_info_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_get_stream_info_t ) );
 }
 
 
@@ -1490,7 +1490,7 @@ bool avdecc_response_get_stream_info_write (
 
 void avdecc_command_set_name_init ( avdecc_aem_command_set_name_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_set_name_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_set_name_t ) );
 }
 
 
@@ -1524,7 +1524,7 @@ bool avdecc_command_set_name_write (
 
 void avdecc_response_set_name_init ( avdecc_aem_response_set_name_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_set_name_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_set_name_t ) );
 }
 
 
@@ -1558,7 +1558,7 @@ bool avdecc_response_set_name_write (
 
 void avdecc_command_get_name_init ( avdecc_aem_command_get_name_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_get_name_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_get_name_t ) );
 }
 
 
@@ -1592,7 +1592,7 @@ bool avdecc_command_get_name_write (
 
 void avdecc_response_get_name_init ( avdecc_aem_response_get_name_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_get_name_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_get_name_t ) );
 }
 
 
@@ -1626,7 +1626,7 @@ bool avdecc_response_get_name_write (
 
 void avdecc_command_set_association_id_init ( avdecc_aem_command_set_association_id_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_set_association_id_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_set_association_id_t ) );
 }
 
 
@@ -1660,7 +1660,7 @@ bool avdecc_command_set_association_id_write (
 
 void avdecc_response_set_association_id_init ( avdecc_aem_response_set_association_id_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_set_association_id_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_set_association_id_t ) );
 }
 
 
@@ -1694,7 +1694,7 @@ bool avdecc_response_set_association_id_write (
 
 void avdecc_command_get_association_id_init ( avdecc_aem_command_get_association_id_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_get_association_id_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_get_association_id_t ) );
 }
 
 
@@ -1728,7 +1728,7 @@ bool avdecc_command_get_association_id_write (
 
 void avdecc_response_get_association_id_init ( avdecc_aem_response_get_association_id_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_get_association_id_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_get_association_id_t ) );
 }
 
 
@@ -1762,7 +1762,7 @@ bool avdecc_response_get_association_id_write (
 
 void avdecc_command_auth_add_key_init ( avdecc_aem_command_auth_add_key_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_auth_add_key_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_auth_add_key_t ) );
 }
 
 
@@ -1796,7 +1796,7 @@ bool avdecc_command_auth_add_key_write (
 
 void avdecc_response_auth_add_key_init ( avdecc_aem_response_auth_add_key_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_auth_add_key_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_auth_add_key_t ) );
 }
 
 
@@ -1830,7 +1830,7 @@ bool avdecc_response_auth_add_key_write (
 
 void avdecc_command_auth_get_key_init ( avdecc_aem_command_auth_get_key_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_auth_get_key_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_auth_get_key_t ) );
 }
 
 
@@ -1864,7 +1864,7 @@ bool avdecc_command_auth_get_key_write (
 
 void avdecc_response_auth_get_key_init ( avdecc_aem_response_auth_get_key_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_auth_get_key_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_auth_get_key_t ) );
 }
 
 
@@ -1898,7 +1898,7 @@ bool avdecc_response_auth_get_key_write (
 
 void avdecc_command_authenticate_init ( avdecc_aem_command_authenticate_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_authenticate_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_authenticate_t ) );
 }
 
 
@@ -1932,7 +1932,7 @@ bool avdecc_command_authenticate_write (
 
 void avdecc_response_authenticate_init ( avdecc_aem_response_authenticate_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_authenticate_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_authenticate_t ) );
 }
 
 
@@ -1966,7 +1966,7 @@ bool avdecc_response_authenticate_write (
 
 void avdecc_command_get_counters_init ( avdecc_aem_command_get_counters_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_get_counters_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_get_counters_t ) );
 }
 
 
@@ -2000,7 +2000,7 @@ bool avdecc_command_get_counters_write (
 
 void avdecc_response_get_counters_init ( avdecc_aem_response_get_counters_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_get_counters_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_get_counters_t ) );
 }
 
 
@@ -2034,7 +2034,7 @@ bool avdecc_response_get_counters_write (
 
 void avdecc_command_reboot_init ( avdecc_aem_command_reboot_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_reboot_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_reboot_t ) );
 }
 
 
@@ -2068,7 +2068,7 @@ bool avdecc_command_reboot_write (
 
 void avdecc_response_reboot_init ( avdecc_aem_response_reboot_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_reboot_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_reboot_t ) );
 }
 
 
@@ -2102,7 +2102,7 @@ bool avdecc_response_reboot_write (
 
 void avdecc_command_set_media_format_init ( avdecc_aem_command_set_media_format_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_set_media_format_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_set_media_format_t ) );
 }
 
 
@@ -2136,7 +2136,7 @@ bool avdecc_command_set_media_format_write (
 
 void avdecc_response_set_media_format_init ( avdecc_aem_response_set_media_format_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_set_media_format_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_set_media_format_t ) );
 }
 
 
@@ -2170,7 +2170,7 @@ bool avdecc_response_set_media_format_write (
 
 void avdecc_command_get_media_format_init ( avdecc_aem_command_get_media_format_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_get_media_format_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_get_media_format_t ) );
 }
 
 
@@ -2204,7 +2204,7 @@ bool avdecc_command_get_media_format_write (
 
 void avdecc_response_get_media_format_init ( avdecc_aem_response_get_media_format_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_get_media_format_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_get_media_format_t ) );
 }
 
 
@@ -2238,7 +2238,7 @@ bool avdecc_response_get_media_format_write (
 
 void avdecc_command_register_state_notification_init ( avdecc_aem_command_register_state_notification_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_register_state_notification_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_register_state_notification_t ) );
 }
 
 
@@ -2272,7 +2272,7 @@ bool avdecc_command_register_state_notification_write (
 
 void avdecc_response_register_state_notification_init ( avdecc_aem_response_register_state_notification_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_register_state_notification_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_register_state_notification_t ) );
 }
 
 
@@ -2306,7 +2306,7 @@ bool avdecc_response_register_state_notification_write (
 
 void avdecc_command_deregister_state_notification_init ( avdecc_aem_command_deregister_state_notification_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_deregister_state_notification_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_deregister_state_notification_t ) );
 }
 
 
@@ -2340,7 +2340,7 @@ bool avdecc_command_deregister_state_notification_write (
 
 void avdecc_response_deregister_state_notification_init ( avdecc_aem_response_deregister_state_notification_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_deregister_state_notification_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_deregister_state_notification_t ) );
 }
 
 
@@ -2374,7 +2374,7 @@ bool avdecc_response_deregister_state_notification_write (
 
 void avdecc_command_register_query_notification_init ( avdecc_aem_command_register_query_notification_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_register_query_notification_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_register_query_notification_t ) );
 }
 
 
@@ -2408,7 +2408,7 @@ bool avdecc_command_register_query_notification_write (
 
 void avdecc_response_register_query_notification_init ( avdecc_aem_response_register_query_notification_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_register_query_notification_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_register_query_notification_t ) );
 }
 
 
@@ -2442,7 +2442,7 @@ bool avdecc_response_register_query_notification_write (
 
 void avdecc_command_deregister_query_notification_init ( avdecc_aem_command_deregister_query_notification_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_deregister_query_notification_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_deregister_query_notification_t ) );
 }
 
 
@@ -2476,7 +2476,7 @@ bool avdecc_command_deregister_query_notification_write (
 
 void avdecc_response_deregister_query_notification_init ( avdecc_aem_response_deregister_query_notification_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_deregister_query_notification_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_deregister_query_notification_t ) );
 }
 
 
@@ -2511,7 +2511,7 @@ bool avdecc_response_deregister_query_notification_write (
 
 void avdecc_response_identify_notification_init ( avdecc_aem_response_identify_notification_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_identify_notification_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_identify_notification_t ) );
 }
 
 
@@ -2547,7 +2547,7 @@ bool avdecc_response_identify_notification_write (
 
 void avdecc_response_state_change_notification_init ( avdecc_aem_response_state_change_notification_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_state_change_notification_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_state_change_notification_t ) );
 }
 
 
@@ -2581,7 +2581,7 @@ bool avdecc_response_state_change_notification_write (
 
 void avdecc_command_increment_control_value_init ( avdecc_aem_command_increment_control_value_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_increment_control_value_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_increment_control_value_t ) );
 }
 
 
@@ -2615,7 +2615,7 @@ bool avdecc_command_increment_control_value_write (
 
 void avdecc_response_increment_control_value_init ( avdecc_aem_response_increment_control_value_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_increment_control_value_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_increment_control_value_t ) );
 }
 
 
@@ -2649,7 +2649,7 @@ bool avdecc_response_increment_control_value_write (
 
 void avdecc_command_decrement_control_value_init ( avdecc_aem_command_decrement_control_value_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_decrement_control_value_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_decrement_control_value_t ) );
 }
 
 
@@ -2683,7 +2683,7 @@ bool avdecc_command_decrement_control_value_write (
 
 void avdecc_response_decrement_control_value_init ( avdecc_aem_response_decrement_control_value_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_decrement_control_value_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_decrement_control_value_t ) );
 }
 
 
@@ -2717,7 +2717,7 @@ bool avdecc_response_decrement_control_value_write (
 
 void avdecc_command_start_operation_init ( avdecc_aem_command_start_operation_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_start_operation_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_start_operation_t ) );
 }
 
 
@@ -2751,7 +2751,7 @@ bool avdecc_command_start_operation_write (
 
 void avdecc_response_start_operation_init ( avdecc_aem_response_start_operation_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_start_operation_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_start_operation_t ) );
 }
 
 
@@ -2785,7 +2785,7 @@ bool avdecc_response_start_operation_write (
 
 void avdecc_command_abort_operation_init ( avdecc_aem_command_abort_operation_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_abort_operation_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_abort_operation_t ) );
 }
 
 
@@ -2819,7 +2819,7 @@ bool avdecc_command_abort_operation_write (
 
 void avdecc_response_abort_operation_init ( avdecc_aem_response_abort_operation_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_abort_operation_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_abort_operation_t ) );
 }
 
 
@@ -2854,7 +2854,7 @@ bool avdecc_response_abort_operation_write (
 
 void avdecc_response_operation_status_init ( avdecc_aem_response_operation_status_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_operation_status_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_operation_status_t ) );
 }
 
 
@@ -2888,7 +2888,7 @@ bool avdecc_response_operation_status_write (
 
 void avdecc_command_auth_get_key_count_init ( avdecc_aem_command_auth_get_key_count_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_auth_get_key_count_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_auth_get_key_count_t ) );
 }
 
 
@@ -2922,7 +2922,7 @@ bool avdecc_command_auth_get_key_count_write (
 
 void avdecc_response_auth_get_key_count_init ( avdecc_aem_response_auth_get_key_count_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_auth_get_key_count_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_auth_get_key_count_t ) );
 }
 
 
@@ -2956,7 +2956,7 @@ bool avdecc_response_auth_get_key_count_write (
 
 void avdecc_command_get_as_path_init ( avdecc_aem_command_get_as_path_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_get_as_path_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_get_as_path_t ) );
 }
 
 
@@ -2990,7 +2990,7 @@ bool avdecc_command_get_as_path_write (
 
 void avdecc_response_get_as_path_init ( avdecc_aem_response_get_as_path_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_get_as_path_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_get_as_path_t ) );
 }
 
 
@@ -3024,7 +3024,7 @@ bool avdecc_response_get_as_path_write (
 
 void avdecc_command_deauthenticate_init ( avdecc_aem_command_deauthenticate_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_deauthenticate_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_deauthenticate_t ) );
 }
 
 
@@ -3058,7 +3058,7 @@ bool avdecc_command_deauthenticate_write (
 
 void avdecc_response_deauthenticate_init ( avdecc_aem_response_deauthenticate_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_deauthenticate_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_deauthenticate_t ) );
 }
 
 
@@ -3092,7 +3092,7 @@ bool avdecc_response_deauthenticate_write (
 
 void avdecc_command_auth_revoke_key_init ( avdecc_aem_command_auth_revoke_key_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_command_auth_revoke_key_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_command_auth_revoke_key_t ) );
 }
 
 
@@ -3126,7 +3126,7 @@ bool avdecc_command_auth_revoke_key_write (
 
 void avdecc_response_auth_revoke_key_init ( avdecc_aem_response_auth_revoke_key_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aem_response_auth_revoke_key_t ) );
+    memset( ( void * ) self, 0, sizeof ( avdecc_aem_response_auth_revoke_key_t ) );
 }
 
 
