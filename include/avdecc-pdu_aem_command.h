@@ -35,7 +35,7 @@ extern "C" {
     */
     /* @{ */
     
-    typedef enum
+    enum avdecc_aem_command_type_e
     {
         avdecc_aem_command_lock_entity = 0x0000, /*!< lock or unlock the entity for atomic access. */
         avdecc_aem_command_read_descriptor = 0x0001, /*!< read a descriptor from the entity. */
@@ -87,10 +87,28 @@ extern "C" {
         avdecc_aem_command_deauthenticate = 0x002f, /*!< release authenticated permissions. */
         avdecc_aem_command_auth_revoke_key = 0x0030, /*!< revoke a key from a keychain. */
         avdecc_aem_command_expansion = 0x7fff /*!< reserved for future use. */
-    }
-                                   avdecc_aem_command_type_t;
+    };
+
+    typedef enum avdecc_aem_command_type_e avdecc_aem_command_type_t;
                                    
-                                   
+
+    /** See IEEE 1722.1 Clause 7.4 */
+    enum avdecc_aem_command_status_e
+    {
+        avdecc_aem_status_success = 0,
+        avdecc_aem_status_not_implemented = 1,
+        avdecc_aem_status_no_such_descriptor = 2,
+        avdecc_aem_status_entity_locked = 3,
+        avdecc_aem_status_entity_acquired = 4,
+        avdecc_aem_status_not_authorized = 5,
+        avdecc_aem_status_insufficient_privileges = 6,
+        avdecc_aem_status_bad_arguments = 7,
+        avdecc_aem_status_no_resources = 8,
+        avdecc_aem_status_in_progress = 9
+    };
+
+    typedef enum avdecc_aem_command_status_e avdecc_aem_command_status_t;
+
                                    
     /** avdecc_aem_command_t
      */
@@ -98,7 +116,7 @@ extern "C" {
     typedef struct avdecc_aem_command_s
     {
         avdecc_aecp_message_type_t message_type;
-        avdecc_aecp_status_t status;
+        avdecc_aem_command_status_t status;
         avdecc_eui64_t target_guid;
         avdecc_eui64_t controller_guid;
         avdecc_aecp_control_data_length_t control_data_length;
@@ -358,8 +376,7 @@ extern "C" {
     
     bool avdecc_command_read_descriptor_write (
         const avdecc_aem_command_read_descriptor_t *self,
-        void *pdu,
-        size_t offset
+        void *pdu
     );
     
     

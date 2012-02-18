@@ -38,7 +38,7 @@ extern "C" {
     
     
     /** See IEEE 1722.1 Clause 9.2.1.1.5 */
-    typedef enum
+    enum avdecc_aecp_message_type_e
     {
         avdecc_aecp_message_type_aem_command=0,
         avdecc_aecp_message_type_aem_response=1,
@@ -50,20 +50,22 @@ extern "C" {
         avdecc_aecp_message_type_vendor_unique_respone=7,
         avdecc_aecp_message_type_extended_command=14,
         avdecc_aecp_message_type_extended_response=15
-    }
-            avdecc_aecp_message_type_t;
+    };
             
+    typedef enum avdecc_aecp_message_type_e avdecc_aecp_message_type_t;
             
     /** \addtogroup AECP Status type */
     /* @{ */
     
     /** See IEEE 1722.1 Clause 9.2.1.1.6 */
-    typedef enum
+    enum avdecc_aecp_status_t
     {
         avdecc_aecp_status_success = 0,
         avdecc_aecp_status_not_implemented = 1
-    } avdecc_aecp_status_t;
+    };
     
+    typedef enum avdecc_aecp_status_e avdecc_aecp_status_t;
+
     /* @} */
     
     /** See IEEE 1722.1 Clause 9.2.1.1.7 */
@@ -78,16 +80,16 @@ extern "C" {
     
     /* See IEEE 1722.1 Clause 9.2.1 */
     
-    AVDECC_BITS_MAP_OCTET_BIT ( avdecc_aecp, cd, avdecc_avtp_cd_t, 0, 0 );
-    AVDECC_BITS_MAP_OCTET_BITFIELD ( avdecc_aecp, subtype, avdecc_avtp_subtype_t, 0, 1, 7 );
-    AVDECC_BITS_MAP_OCTET_BIT ( avdecc_aecp, sv, avdecc_avtp_sv_t, 1, 0 );
-    AVDECC_BITS_MAP_OCTET_BITFIELD ( avdecc_aecp, version, avdecc_avtp_version_t, 1, 1, 3 );
-    AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_aecp, message_type, avdecc_aecp_message_type_t, 0, 12, 15 );
-    AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_aecp, status, avdecc_aecp_status_t, 0, 16, 20 );
-    AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_aecp, control_data_length, avdecc_aecp_control_data_length_t, 0, 21, 31 );
-    AVDECC_BITS_MAP_OCTLET ( avdecc_aecp, target_guid, avdecc_eui64_t, 4 );
-    AVDECC_BITS_MAP_OCTLET ( avdecc_aecp, controller_guid, avdecc_eui64_t, 12 );
-    AVDECC_BITS_MAP_DOUBLET ( avdecc_aecp, sequence_id, uint16_t, 20 );
+    AVDECC_BITS_MAP_OCTET_BIT ( avdecc_aecp, cd, avdecc_avtp_cd_t, 0, 0 )
+    AVDECC_BITS_MAP_OCTET_BITFIELD ( avdecc_aecp, subtype, avdecc_avtp_subtype_t, 0, 1, 7 )
+    AVDECC_BITS_MAP_OCTET_BIT ( avdecc_aecp, sv, avdecc_avtp_sv_t, 1, 0 )
+    AVDECC_BITS_MAP_OCTET_BITFIELD ( avdecc_aecp, version, avdecc_avtp_version_t, 1, 1, 3 )
+    AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_aecp, message_type, avdecc_aecp_message_type_t, 0, 12, 15 )
+    AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_aecp, status, avdecc_aecp_status_t, 0, 16, 20 )
+    AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_aecp, control_data_length, avdecc_aecp_control_data_length_t, 0, 21, 31 )
+    AVDECC_BITS_MAP_OCTLET ( avdecc_aecp, target_guid, avdecc_eui64_t, 4 )
+    AVDECC_BITS_MAP_OCTLET ( avdecc_aecp, controller_guid, avdecc_eui64_t, 12 )
+    AVDECC_BITS_MAP_DOUBLET ( avdecc_aecp, sequence_id, uint16_t, 20 )
     
     /** avdecc_aecp_t
     */

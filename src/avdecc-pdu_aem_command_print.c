@@ -21,6 +21,34 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
 
+bool avdecc_command_type_print(
+        char *buf,
+        size_t *pos,
+        size_t len,
+        avdecc_aem_command_type_t command
+        )
+{
+    bool r=true;
+
+    r&=false; /* TODO */
+
+    return r;
+}
+
+bool avdecc_command_status_print(
+        char *buf,
+        size_t *pos,
+        size_t len,
+        avdecc_aem_command_status_t status
+        )
+{
+    bool r=true;
+
+    r&=false; /* TODO */
+
+    return r;
+}
+
 
 bool avdecc_command_lock_entity_print (
     char *buf,

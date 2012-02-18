@@ -30,9 +30,21 @@ extern "C" {
     \addtogroup aem_command
     */
     /* @{ */
-    
-    
-    
+
+bool avdecc_command_type_print(
+        char *buf,
+        size_t *pos,
+        size_t len,
+        avdecc_aem_command_type_t command
+        );
+
+bool avdecc_command_status_print(
+        char *buf,
+        size_t *pos,
+        size_t len,
+        avdecc_aem_command_status_t status
+        );
+
     bool avdecc_command_lock_entity_print (
         char *buf,
         size_t *pos,

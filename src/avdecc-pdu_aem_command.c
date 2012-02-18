@@ -244,7 +244,11 @@ bool avdecc_response_lock_entity_write (
 
 void avdecc_command_read_descriptor_init ( avdecc_aem_command_read_descriptor_t *self )
 {
-    memset ( ( void * ) self, 0, sizeof ( avdecc_aem_command_read_descriptor_t ) );
+    avdecc_command_init ( &self->base );
+    self->base.message_type = avdecc_aem_command_read_descriptor;
+    self->configuration = 0;
+    self->descriptor_index = 0;
+    self->descriptor_type = avdecc_aem_descriptor_entity;
 }
 
 
@@ -254,20 +258,43 @@ bool avdecc_command_read_descriptor_read (
     size_t offset
 )
 {
-    return false;
+    bool r=true;
+
+    if ( avdecc_command_read ( &self->base, pdu ) )
+    {
+        if ( self->base.command_type == avdecc_aem_command_read_descriptor )
+        {
+            const uint8_t *base = ( const uint8_t * ) pdu;
+            self->configuration = avdecc_bits_get_doublet( base, 24 );
+            self->descriptor_type = (avdecc_aem_descriptor_type_t)avdecc_bits_get_doublet( base, 28 );
+            self->descriptor_index = avdecc_bits_get_doublet( base, 30 );
+        }
+        else
+        {
+            r=false;
+        }
+    }
+
+    return r;
 }
 
 
 bool avdecc_command_read_descriptor_write (
     const avdecc_aem_command_read_descriptor_t *self,
-    void *pdu,
-    size_t offset
+    void *pdu
 )
 {
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
+    bool r=avdecc_command_write ( &self->base, pdu );
+
+    if ( r )
+    {
+        uint8_t *base = ( uint8_t * ) pdu;
+        avdecc_bits_set_doublet( base, 24, self->configuration );
+        avdecc_bits_set_doublet( base, 26, 0 );
+        avdecc_bits_set_doublet ( base,28,(uint16_t)self->descriptor_type );
+        avdecc_bits_set_doublet ( base,30,self->descriptor_index );
+    }
+
     return r;
 }
 
