@@ -32,7 +32,7 @@ bool avdecc_aecp_read (
     avdecc_aecp_t *self,
     const void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -46,7 +46,7 @@ bool avdecc_aecp_write (
     const avdecc_aecp_t *self,
     void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -66,7 +66,7 @@ bool avdecc_aecp_aem_read (
     avdecc_aecp_aem_t *self,
     const void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -80,7 +80,7 @@ bool avdecc_aecp_aem_write (
     const avdecc_aecp_aem_t *self,
     void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -100,7 +100,7 @@ bool avdecc_aecp_aa_read (
     avdecc_aecp_aa_t *self,
     const void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -114,7 +114,7 @@ bool avdecc_aecp_aa_write (
     const avdecc_aecp_aa_t *self,
     void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -134,7 +134,7 @@ bool avdecc_aecp_avc_read (
     avdecc_aecp_avc_t *self,
     const void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -148,7 +148,7 @@ bool avdecc_aecp_avc_write (
     const avdecc_aecp_avc_t *self,
     void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -168,7 +168,7 @@ bool avdecc_aecp_vu_read (
     avdecc_aecp_vu_t *self,
     const void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -182,7 +182,7 @@ bool avdecc_aecp_vu_write (
     const avdecc_aecp_vu_t *self,
     void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     

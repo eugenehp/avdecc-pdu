@@ -24,31 +24,31 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 extern "C" {
 #endif
 
-    /**
+/**
     \addtogroup eui64
     */
-    /* @{ */
-    
-    
-    /** avdecc_eui64_t
+/* @{ */
+
+
+/** avdecc_eui64_t
     */
-    
-    typedef uint64_t avdecc_eui64_t;
-    
-    
-    
-    /** avdecc_eui64_init
+
+typedef uint64_t avdecc_eui64_t;
+
+
+
+/** avdecc_eui64_init
      *
      *  Initialize a avdecc_eui64_t
      *
      *  @param self pointer to object to initialize
      *  @returns void
      */
-    
-    void avdecc_eui64_init ( avdecc_eui64_t *self );
-    
-    
-    /** avdecc_eui64_read
+
+void avdecc_eui64_init ( avdecc_eui64_t *self );
+
+
+/** avdecc_eui64_read
      *
      *  Read a avdecc_eui64_t from a PDU
      *
@@ -56,15 +56,15 @@ extern "C" {
      *  @param pdu pointer to base of pdu to read
      *  @param offset offset from base of pdu in octets to start reading from
      */
-    
-    bool avdecc_eui64_read (
-        avdecc_eui64_t *self,
-        const void *pdu,
-        size_t offset
+
+bool avdecc_eui64_read (
+    avdecc_eui64_t *self,
+    const void *pdu,
+    size_t offset
     );
-    
-    
-    /** avdecc_eui64_write
+
+
+/** avdecc_eui64_write
      *
      *  write a avdecc_eui64_t into a pdu
      *
@@ -72,17 +72,17 @@ extern "C" {
      *  @param pdu pointer to base of pdu to write to
      *  @param offset offset from base of pdu in octets to start writing to
      */
-    
-    bool avdecc_eui64_write (
-        const avdecc_eui64_t *self,
-        void *pdu,
-        size_t offset
+
+bool avdecc_eui64_write (
+    const avdecc_eui64_t *self,
+    void *pdu,
+    size_t offset
     );
-    
-    
-    
-    /* @} */
-    
+
+
+
+/* @} */
+
 #ifdef __cplusplus
 }
 #endif

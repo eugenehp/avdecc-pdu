@@ -188,44 +188,44 @@ typedef int bool_;
 extern "C" {
 #endif
 
-    bool avdecc_print (
-        char *buf,
-        size_t *offset,
-        size_t len,
-        const char *fmt,
-        ...
+bool avdecc_print (
+    char *buf,
+    size_t *offset,
+    size_t len,
+    const char *fmt,
+    ...
     );
-    
-    bool avdecc_print_block (
-        char *buf,
-        size_t *offset,
-        size_t len,
-        const void *packet,
-        size_t packet_len
+
+bool avdecc_print_block (
+    char *buf,
+    size_t *offset,
+    size_t len,
+    const void *packet,
+    size_t packet_len
     );
-    
-    typedef struct avdecc_string64_s
-    {
-        char buf[65];
-    } avdecc_string64_t;
-    
-    typedef struct avdecc_string32_s
-    {
-        char buf[33];
-    } avdecc_string32_t;
-    
+
+typedef struct avdecc_string64_s
+{
+    char buf[65];
+} avdecc_string64_t;
+
+typedef struct avdecc_string32_s
+{
+    char buf[33];
+} avdecc_string32_t;
+
 #ifndef avdecc_log_info
 #define avdecc_log_info(...)
 #endif
-    
+
 #ifndef avdecc_log_error
 #define avdecc_log_error(...)
 #endif
-    
+
 #ifndef avdecc_log_warning
 #define avdecc_log_warning(...)
 #endif
-    
+
 #ifdef __cplusplus
 }
 #endif

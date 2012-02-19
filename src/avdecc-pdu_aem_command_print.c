@@ -90,11 +90,11 @@ const char *avdecc_command_type_string( avdecc_aem_command_type_t v )
 
 
 bool avdecc_command_type_print(
-        char *buf,
-        size_t *pos,
-        size_t len,
-        avdecc_aem_command_type_t command
-        )
+    char *buf,
+    size_t *pos,
+    size_t len,
+    avdecc_aem_command_type_t command
+    )
 {
     bool r=true;
 
@@ -104,11 +104,11 @@ bool avdecc_command_type_print(
 }
 
 bool avdecc_command_status_print(
-        char *buf,
-        size_t *pos,
-        size_t len,
-        avdecc_aem_command_status_t status
-        )
+    char *buf,
+    size_t *pos,
+    size_t len,
+    avdecc_aem_command_status_t status
+    )
 {
     bool r=false;
     static const char *text[] =
@@ -138,11 +138,11 @@ bool avdecc_command_status_print(
 }
 
 bool avdecc_command_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        const avdecc_aem_command_t *self
-        )
+    char *buf,
+    size_t *pos,
+    size_t len,
+    const avdecc_aem_command_t *self
+    )
 {
     bool r=true;
     r&=avdecc_print (buf,pos,len,"AECP AEM Command:\n");
@@ -174,7 +174,7 @@ bool avdecc_command_lock_entity_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_lock_entity_t *self
-)
+    )
 {
     bool r=true;
     
@@ -191,7 +191,7 @@ bool avdecc_response_lock_entity_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_lock_entity_t *self
-)
+    )
 {
     return avdecc_command_lock_entity_print( buf,pos,len,self);
 }
@@ -202,7 +202,7 @@ bool avdecc_command_read_descriptor_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_read_descriptor_t *self
-)
+    )
 {
     bool r=true;
     
@@ -217,7 +217,7 @@ bool avdecc_response_read_descriptor_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_read_descriptor_t *self
-)
+    )
 {
     bool r=true;
     
@@ -232,7 +232,7 @@ bool avdecc_command_write_descriptor_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_write_descriptor_t *self
-)
+    )
 {
     bool r=true;
     
@@ -247,7 +247,7 @@ bool avdecc_response_write_descriptor_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_write_descriptor_t *self
-)
+    )
 {
     bool r=true;
     
@@ -262,7 +262,7 @@ bool avdecc_command_acquire_entity_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_acquire_entity_t *self
-)
+    )
 {
     bool r=true;
     
@@ -277,7 +277,7 @@ bool avdecc_response_acquire_entity_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_acquire_entity_t *self
-)
+    )
 {
     bool r=true;
     
@@ -292,7 +292,7 @@ bool avdecc_command_controller_available_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_controller_available_t *self
-)
+    )
 {
     bool r=true;
     
@@ -307,7 +307,7 @@ bool avdecc_response_controller_available_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_controller_available_t *self
-)
+    )
 {
     bool r=true;
     
@@ -322,7 +322,7 @@ bool avdecc_command_set_clock_source_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_set_clock_source_t *self
-)
+    )
 {
     bool r=true;
     
@@ -337,7 +337,7 @@ bool avdecc_response_set_clock_source_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_set_clock_source_t *self
-)
+    )
 {
     bool r=true;
     
@@ -352,7 +352,7 @@ bool avdecc_command_get_clock_source_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_get_clock_source_t *self
-)
+    )
 {
     bool r=true;
     
@@ -367,7 +367,7 @@ bool avdecc_response_get_clock_source_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_get_clock_source_t *self
-)
+    )
 {
     bool r=true;
     
@@ -382,7 +382,7 @@ bool avdecc_command_set_stream_format_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_set_stream_format_t *self
-)
+    )
 {
     bool r=true;
     
@@ -397,7 +397,7 @@ bool avdecc_response_set_stream_format_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_set_stream_format_t *self
-)
+    )
 {
     bool r=true;
     
@@ -412,7 +412,7 @@ bool avdecc_command_get_stream_format_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_get_stream_format_t *self
-)
+    )
 {
     bool r=true;
     
@@ -427,7 +427,7 @@ bool avdecc_response_get_stream_format_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_get_stream_format_t *self
-)
+    )
 {
     bool r=true;
     
@@ -442,7 +442,7 @@ bool avdecc_command_set_configuration_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_set_configuration_t *self
-)
+    )
 {
     bool r=true;
     
@@ -457,7 +457,7 @@ bool avdecc_response_set_configuration_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_set_configuration_t *self
-)
+    )
 {
     bool r=true;
     
@@ -472,7 +472,7 @@ bool avdecc_command_get_configuration_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_get_configuration_t *self
-)
+    )
 {
     bool r=true;
     
@@ -487,7 +487,7 @@ bool avdecc_response_get_configuration_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_get_configuration_t *self
-)
+    )
 {
     bool r=true;
     
@@ -502,7 +502,7 @@ bool avdecc_command_set_control_value_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_set_control_value_t *self
-)
+    )
 {
     bool r=true;
     
@@ -517,7 +517,7 @@ bool avdecc_response_set_control_value_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_set_control_value_t *self
-)
+    )
 {
     bool r=true;
     
@@ -532,7 +532,7 @@ bool avdecc_command_get_control_value_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_get_control_value_t *self
-)
+    )
 {
     bool r=true;
     
@@ -547,7 +547,7 @@ bool avdecc_response_get_control_value_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_get_control_value_t *self
-)
+    )
 {
     bool r=true;
     
@@ -562,7 +562,7 @@ bool avdecc_command_set_signal_selector_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_set_signal_selector_t *self
-)
+    )
 {
     bool r=true;
     
@@ -577,7 +577,7 @@ bool avdecc_response_set_signal_selector_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_set_signal_selector_t *self
-)
+    )
 {
     bool r=true;
     
@@ -592,7 +592,7 @@ bool avdecc_command_get_signal_selector_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_get_signal_selector_t *self
-)
+    )
 {
     bool r=true;
     
@@ -607,7 +607,7 @@ bool avdecc_response_get_signal_selector_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_get_signal_selector_t *self
-)
+    )
 {
     bool r=true;
     
@@ -622,7 +622,7 @@ bool avdecc_command_set_mixer_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_set_mixer_t *self
-)
+    )
 {
     bool r=true;
     
@@ -637,7 +637,7 @@ bool avdecc_response_set_mixer_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_set_mixer_t *self
-)
+    )
 {
     bool r=true;
     
@@ -652,7 +652,7 @@ bool avdecc_command_get_mixer_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_get_mixer_t *self
-)
+    )
 {
     bool r=true;
     
@@ -667,7 +667,7 @@ bool avdecc_response_get_mixer_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_get_mixer_t *self
-)
+    )
 {
     bool r=true;
     
@@ -682,7 +682,7 @@ bool avdecc_command_set_matrix_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_set_matrix_t *self
-)
+    )
 {
     bool r=true;
     
@@ -697,7 +697,7 @@ bool avdecc_response_set_matrix_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_set_matrix_t *self
-)
+    )
 {
     bool r=true;
     
@@ -712,7 +712,7 @@ bool avdecc_command_get_matrix_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_get_matrix_t *self
-)
+    )
 {
     bool r=true;
     
@@ -727,7 +727,7 @@ bool avdecc_response_get_matrix_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_get_matrix_t *self
-)
+    )
 {
     bool r=true;
     
@@ -742,7 +742,7 @@ bool avdecc_command_start_streaming_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_start_streaming_t *self
-)
+    )
 {
     bool r=true;
     
@@ -757,7 +757,7 @@ bool avdecc_response_start_streaming_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_start_streaming_t *self
-)
+    )
 {
     bool r=true;
     
@@ -772,7 +772,7 @@ bool avdecc_command_stop_streaming_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_stop_streaming_t *self
-)
+    )
 {
     bool r=true;
     
@@ -787,7 +787,7 @@ bool avdecc_response_stop_streaming_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_stop_streaming_t *self
-)
+    )
 {
     bool r=true;
     
@@ -802,7 +802,7 @@ bool avdecc_command_set_stream_info_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_set_stream_info_t *self
-)
+    )
 {
     bool r=true;
     
@@ -817,7 +817,7 @@ bool avdecc_response_set_stream_info_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_set_stream_info_t *self
-)
+    )
 {
     bool r=true;
     
@@ -832,7 +832,7 @@ bool avdecc_command_get_stream_info_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_get_stream_info_t *self
-)
+    )
 {
     bool r=true;
     
@@ -847,7 +847,7 @@ bool avdecc_response_get_stream_info_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_get_stream_info_t *self
-)
+    )
 {
     bool r=true;
     
@@ -862,7 +862,7 @@ bool avdecc_command_set_name_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_set_name_t *self
-)
+    )
 {
     bool r=true;
     
@@ -877,7 +877,7 @@ bool avdecc_response_set_name_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_set_name_t *self
-)
+    )
 {
     bool r=true;
     
@@ -892,7 +892,7 @@ bool avdecc_command_get_name_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_get_name_t *self
-)
+    )
 {
     bool r=true;
     
@@ -907,7 +907,7 @@ bool avdecc_response_get_name_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_get_name_t *self
-)
+    )
 {
     bool r=true;
     
@@ -922,7 +922,7 @@ bool avdecc_command_set_association_id_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_set_association_id_t *self
-)
+    )
 {
     bool r=true;
     
@@ -937,7 +937,7 @@ bool avdecc_response_set_association_id_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_set_association_id_t *self
-)
+    )
 {
     bool r=true;
     
@@ -952,7 +952,7 @@ bool avdecc_command_get_association_id_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_get_association_id_t *self
-)
+    )
 {
     bool r=true;
     
@@ -967,7 +967,7 @@ bool avdecc_response_get_association_id_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_get_association_id_t *self
-)
+    )
 {
     bool r=true;
     
@@ -982,7 +982,7 @@ bool avdecc_command_auth_add_key_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_auth_add_key_t *self
-)
+    )
 {
     bool r=true;
     
@@ -997,7 +997,7 @@ bool avdecc_response_auth_add_key_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_auth_add_key_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1012,7 +1012,7 @@ bool avdecc_command_auth_get_key_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_auth_get_key_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1027,7 +1027,7 @@ bool avdecc_response_auth_get_key_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_auth_get_key_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1042,7 +1042,7 @@ bool avdecc_command_authenticate_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_authenticate_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1057,7 +1057,7 @@ bool avdecc_response_authenticate_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_authenticate_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1072,7 +1072,7 @@ bool avdecc_command_get_counters_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_get_counters_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1087,7 +1087,7 @@ bool avdecc_response_get_counters_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_get_counters_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1102,7 +1102,7 @@ bool avdecc_command_reboot_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_reboot_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1117,7 +1117,7 @@ bool avdecc_response_reboot_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_reboot_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1132,7 +1132,7 @@ bool avdecc_command_set_media_format_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_set_media_format_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1147,7 +1147,7 @@ bool avdecc_response_set_media_format_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_set_media_format_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1162,7 +1162,7 @@ bool avdecc_command_get_media_format_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_get_media_format_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1177,7 +1177,7 @@ bool avdecc_response_get_media_format_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_get_media_format_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1192,7 +1192,7 @@ bool avdecc_command_register_state_notification_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_register_state_notification_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1207,7 +1207,7 @@ bool avdecc_response_register_state_notification_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_register_state_notification_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1222,7 +1222,7 @@ bool avdecc_command_deregister_state_notification_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_deregister_state_notification_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1237,7 +1237,7 @@ bool avdecc_response_deregister_state_notification_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_deregister_state_notification_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1252,7 +1252,7 @@ bool avdecc_command_register_query_notification_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_register_query_notification_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1267,7 +1267,7 @@ bool avdecc_response_register_query_notification_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_register_query_notification_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1282,7 +1282,7 @@ bool avdecc_command_deregister_query_notification_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_deregister_query_notification_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1297,7 +1297,7 @@ bool avdecc_response_deregister_query_notification_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_deregister_query_notification_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1313,7 +1313,7 @@ bool avdecc_response_identify_notification_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_identify_notification_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1329,7 +1329,7 @@ bool avdecc_response_state_change_notification_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_state_change_notification_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1344,7 +1344,7 @@ bool avdecc_command_increment_control_value_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_increment_control_value_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1359,7 +1359,7 @@ bool avdecc_response_increment_control_value_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_increment_control_value_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1374,7 +1374,7 @@ bool avdecc_command_decrement_control_value_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_decrement_control_value_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1389,7 +1389,7 @@ bool avdecc_response_decrement_control_value_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_decrement_control_value_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1404,7 +1404,7 @@ bool avdecc_command_start_operation_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_start_operation_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1419,7 +1419,7 @@ bool avdecc_response_start_operation_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_start_operation_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1434,7 +1434,7 @@ bool avdecc_command_abort_operation_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_abort_operation_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1449,7 +1449,7 @@ bool avdecc_response_abort_operation_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_abort_operation_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1465,7 +1465,7 @@ bool avdecc_response_operation_status_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_operation_status_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1480,7 +1480,7 @@ bool avdecc_command_auth_get_key_count_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_auth_get_key_count_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1495,7 +1495,7 @@ bool avdecc_response_auth_get_key_count_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_auth_get_key_count_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1510,7 +1510,7 @@ bool avdecc_command_get_as_path_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_get_as_path_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1525,7 +1525,7 @@ bool avdecc_response_get_as_path_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_get_as_path_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1540,7 +1540,7 @@ bool avdecc_command_deauthenticate_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_deauthenticate_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1555,7 +1555,7 @@ bool avdecc_response_deauthenticate_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_deauthenticate_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1570,7 +1570,7 @@ bool avdecc_command_auth_revoke_key_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_command_auth_revoke_key_t *self
-)
+    )
 {
     bool r=true;
     
@@ -1585,7 +1585,7 @@ bool avdecc_response_auth_revoke_key_print (
     size_t *pos,
     size_t len,
     const avdecc_aem_response_auth_revoke_key_t *self
-)
+    )
 {
     bool r=true;
     

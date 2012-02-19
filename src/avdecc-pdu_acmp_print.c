@@ -29,7 +29,7 @@ int avdecc_acmp_status_print (
     size_t *pos,
     size_t len,
     avdecc_acmp_status_t v
-)
+    )
 {
     bool r=false;
     static const char *text[] =
@@ -72,7 +72,7 @@ bool avdecc_acmp_message_type_print (
     size_t *pos,
     size_t len,
     avdecc_acmp_message_type_t v
-)
+    )
 {
     bool r=false;
     static const char *text[] =
@@ -110,7 +110,7 @@ int avdecc_acmp_flags_print (
     size_t *pos,
     size_t len,
     avdecc_acmp_flags_t v
-)
+    )
 {
     bool r=true;
     r&=avdecc_print ( buf,pos,len, " [ " );
@@ -145,7 +145,7 @@ int avdecc_acmp_print (
     size_t *pos,
     size_t len,
     const avdecc_acmp_t *acmp
-)
+    )
 {
     bool r=true;
     r&=avdecc_print ( buf,pos,len,"ACMP:\n" );

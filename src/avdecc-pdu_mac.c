@@ -32,7 +32,7 @@ bool avdecc_mac_read (
     avdecc_mac_t *self,
     const void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -46,7 +46,7 @@ bool avdecc_mac_write (
     const avdecc_mac_t *self,
     void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     

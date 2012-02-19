@@ -25,12 +25,12 @@
 extern "C" {
 #endif
 
-    /** \addtogroup AEM AEM */
-    /*@{*/
-    
-    
-    /*@}*/
-    
+/** \addtogroup AEM AEM */
+/*@{*/
+
+
+/*@}*/
+
 #ifdef __cplusplus
 }
 #endif

@@ -26,25 +26,25 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 extern "C" {
 #endif
 
-    /**
+/**
     \addtogroup mac
     */
-    /* @{ */
-    
-    bool avdecc_mac_to_text ( const avdecc_mac_t *mac, char *buf, int buf_len );
-    bool avdecc_mac_from_text ( avdecc_mac_t *mac, const char *buf );
-    
-    
-    bool avdecc_mac_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        const avdecc_mac_t *self
+/* @{ */
+
+bool avdecc_mac_to_text ( const avdecc_mac_t *mac, char *buf, int buf_len );
+bool avdecc_mac_from_text ( avdecc_mac_t *mac, const char *buf );
+
+
+bool avdecc_mac_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    const avdecc_mac_t *self
     );
-    
-    
-    /* @} */
-    
+
+
+/* @} */
+
 #ifdef __cplusplus
 }
 #endif

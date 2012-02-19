@@ -47,7 +47,7 @@ bool avdecc_avtp_presentation_time_print (
     size_t *offset,
     size_t len,
     avdecc_avtp_presentation_time_t v
-)
+    )
 {
     return avdecc_print ( buf,offset,len, "%016X", v );
 }
@@ -58,7 +58,7 @@ bool avdecc_presentation_time_offset_print (
     size_t *offset,
     size_t len,
     avdecc_avtp_presentation_time_offset_t v
-)
+    )
 {
     return avdecc_print ( buf,offset,len, "%d", v );
 }
@@ -70,59 +70,59 @@ bool avdecc_print_subtype_print (
     size_t *offset,
     size_t len,
     avdecc_avtp_subtype_t subtype
-)
+    )
 {
     const char *s=0;
 
     switch ( subtype )
     {
-        case avdecc_avtp_subtype_61883_IICD:
-            s= "61883 IICD";
-            break;
+    case avdecc_avtp_subtype_61883_IICD:
+        s= "61883 IICD";
+        break;
 
-        case avdecc_avtp_subtype_mma:
-            s= "MMA";
-            break;
+    case avdecc_avtp_subtype_mma:
+        s= "MMA";
+        break;
 
-        case avdecc_avtp_subtype_aaf:
-            s= "AAF";
-            break;
+    case avdecc_avtp_subtype_aaf:
+        s= "AAF";
+        break;
 
-        case avdecc_avtp_subtype_avf:
-            s= "AVF";
-            break;
+    case avdecc_avtp_subtype_avf:
+        s= "AVF";
+        break;
 
-        case avdecc_avtp_subtype_cs:
-            s= "CS";
-            break;
+    case avdecc_avtp_subtype_cs:
+        s= "CS";
+        break;
 
-        case avdecc_avtp_subtype_adp:
-            s= "ADP";
-            break;
+    case avdecc_avtp_subtype_adp:
+        s= "ADP";
+        break;
 
-        case avdecc_avtp_subtype_aecp:
-            s= "AECP";
-            break;
+    case avdecc_avtp_subtype_aecp:
+        s= "AECP";
+        break;
 
-        case avdecc_avtp_subtype_acmp:
-            s= "ACMP";
-            break;
+    case avdecc_avtp_subtype_acmp:
+        s= "ACMP";
+        break;
 
-        case avdecc_avtp_subtype_mcn:
-            s= "MCN";
-            break;
+    case avdecc_avtp_subtype_mcn:
+        s= "MCN";
+        break;
 
-        case avdecc_avtp_subtype_maap:
-            s= "MAAP";
-            break;
+    case avdecc_avtp_subtype_maap:
+        s= "MAAP";
+        break;
 
-        case avdecc_avtp_subtype_experimental:
-            s= "Experimental";
-            break;
+    case avdecc_avtp_subtype_experimental:
+        s= "Experimental";
+        break;
 
-        default:
-            return avdecc_print ( buf,offset,len, "Unknown (0x%02x)", ( int ) subtype );
-            break;
+    default:
+        return avdecc_print ( buf,offset,len, "Unknown (0x%02x)", ( int ) subtype );
+        break;
     }
 
     return avdecc_print ( buf,offset,len, "%s", s );
@@ -135,20 +135,20 @@ bool avdecc_avtp_sv_print (
     size_t *offset,
     size_t len,
     avdecc_avtp_sv_t v
-)
+    )
 {
     const char *s=0;
 
     switch ( v )
     {
-        case avdecc_avtp_sv_not_valid:
-            s="Not valid";
-            break;
+    case avdecc_avtp_sv_not_valid:
+        s="Not valid";
+        break;
 
-        default:
-        case avdecc_avtp_sv_valid:
-            s="Valid";
-            break;
+    default:
+    case avdecc_avtp_sv_valid:
+        s="Valid";
+        break;
     }
 
     return avdecc_print ( buf,offset,len, "%s", s );
@@ -159,31 +159,31 @@ bool avdecc_avtp_sv_print (
 
 
 bool avdecc_avtp_common_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        const avdecc_avtp_common_t *self
-        )
+    char *buf,
+    size_t *pos,
+    size_t len,
+    const avdecc_avtp_common_t *self
+    )
 {
 
 }
 
 bool avdecc_avtp_stream_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        const avdecc_avtp_stream_t *self
-        )
+    char *buf,
+    size_t *pos,
+    size_t len,
+    const avdecc_avtp_stream_t *self
+    )
 {
 
 }
 
 bool avdecc_avtp_control_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        const avdecc_avtp_control_t *self
-        )
+    char *buf,
+    size_t *pos,
+    size_t len,
+    const avdecc_avtp_control_t *self
+    )
 {
 
 }

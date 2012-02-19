@@ -30,10 +30,10 @@ void avdecc_acmp_init ( avdecc_acmp_t *self )
 
 
 bool avdecc_acmp_read (
-        avdecc_acmp_t *self,
-        const void *pdu,
-        size_t len
-        )
+    avdecc_acmp_t *self,
+    const void *pdu,
+    size_t len
+    )
 {
     bool r=false;
     if( len>=56 )
@@ -67,10 +67,10 @@ bool avdecc_acmp_read (
 
 
 bool avdecc_acmp_write (
-        const avdecc_acmp_t *self,
-        void *pdu,
-        size_t *len
-        )
+    const avdecc_acmp_t *self,
+    void *pdu,
+    size_t *len
+    )
 {
     avdecc_avtp_set_cd(pdu,avdecc_avtp_cd_control);
     avdecc_avtp_set_subtype(pdu,avdecc_avtp_subtype_acmp);

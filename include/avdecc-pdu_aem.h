@@ -27,13 +27,13 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 extern "C" {
 #endif
 
-    /** \addtogroup aem aem */
-    /*@{*/
-    
-    
-    
-    /*@}*/
-    
+/** \addtogroup aem aem */
+/*@{*/
+
+
+
+/*@}*/
+
 #ifdef __cplusplus
 }
 #endif

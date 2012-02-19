@@ -25,24 +25,24 @@ bool avdecc_adp_message_type_print (
     size_t *offset,
     size_t len,
     avdecc_adp_message_type_t v
-)
+    )
 {
     bool r;
     const char *s=0;
 
     switch ( v )
     {
-        case avdecc_adp_message_type_entity_available:
-            s= "Available";
-            break;
+    case avdecc_adp_message_type_entity_available:
+        s= "Available";
+        break;
 
-        case avdecc_adp_message_type_entity_departing:
-            s= "Departing";
-            break;
+    case avdecc_adp_message_type_entity_departing:
+        s= "Departing";
+        break;
 
-        case avdecc_adp_message_type_entity_discover:
-            s= "Discover";
-            break;
+    case avdecc_adp_message_type_entity_discover:
+        s= "Discover";
+        break;
     }
 
     r = avdecc_print ( buf,offset,len,"%s", s );
@@ -55,7 +55,7 @@ bool avdecc_adp_valid_time_print (
     size_t *offset,
     size_t len,
     avdecc_adp_valid_time_t v
-)
+    )
 {
     return avdecc_print ( buf, offset, len, "%d seconds", v*2 );
 }
@@ -65,7 +65,7 @@ bool avdecc_print_adp_control_data_length (
     size_t *offset,
     size_t len,
     avdecc_adp_control_data_length_t control_data_length
-)
+    )
 {
     return avdecc_print ( buf, offset, len, "%d", control_data_length );
 }
@@ -76,7 +76,7 @@ bool avdecc_adp_talker_capabilities_print (
     size_t *offset,
     size_t len,
     const avdecc_adp_talker_capabilities_t *talker_capabilities
-)
+    )
 {
     bool r=true;
     r&=avdecc_print ( buf,offset,len, " [ " );
@@ -131,7 +131,7 @@ bool avdecc_adp_listener_capabilities_print (
     size_t *offset,
     size_t len,
     const avdecc_adp_listener_capabilities_t *listener_capabilities
-)
+    )
 {
     bool r=true;
     r&=avdecc_print ( buf,offset,len, " [ " );
@@ -186,7 +186,7 @@ bool avdecc_adp_controller_capabilities_print (
     size_t *offset,
     size_t len,
     const avdecc_adp_controller_capabilities_t *controller_capabilities
-)
+    )
 {
     bool r=true;
     r&=avdecc_print ( buf,offset,len, " [ " );
@@ -210,7 +210,7 @@ bool avdecc_adp_entity_capabilities_print (
     size_t *offset,
     size_t len,
     const avdecc_adp_entity_capabilities_t *entity_capabilities
-)
+    )
 {
     bool r=true;
     r&=avdecc_print ( buf,offset,len, " [ " );
@@ -266,7 +266,7 @@ bool avdecc_adp_entity_type_print (
     size_t *offset,
     size_t len,
     const avdecc_adp_entity_type_t *entity_type
-)
+    )
 {
     bool r=true;
     r&=avdecc_print ( buf,offset,len, "[ " );
@@ -377,7 +377,7 @@ bool avdecc_adp_print (
     size_t *offset,
     size_t len,
     const avdecc_adp_t *adp
-)
+    )
 {
     bool r=true;
     r&=avdecc_print ( buf,offset,len,"ADP:\n" );

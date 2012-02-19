@@ -26,25 +26,25 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 extern "C" {
 #endif
 
-    /**
+/**
     \addtogroup eui64
     */
-    /* @{ */
-    
-    bool avdecc_eui64_to_text ( const avdecc_eui64_t *eui64, char *buf, int buf_len );
-    bool avdecc_eui64_from_text ( avdecc_eui64_t *eui64, const char *buf );
-    
-    
-    bool avdecc_eui64_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        const avdecc_eui64_t *self
+/* @{ */
+
+bool avdecc_eui64_to_text ( const avdecc_eui64_t *eui64, char *buf, int buf_len );
+bool avdecc_eui64_from_text ( avdecc_eui64_t *eui64, const char *buf );
+
+
+bool avdecc_eui64_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    const avdecc_eui64_t *self
     );
-    
-    
-    /* @} */
-    
+
+
+/* @} */
+
 #ifdef __cplusplus
 }
 #endif

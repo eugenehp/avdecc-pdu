@@ -160,10 +160,10 @@ void avdecc_avtp_common_init ( avdecc_avtp_common_t *self );
      */
 
 bool avdecc_avtp_common_read (
-        avdecc_avtp_common_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_avtp_common_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_avtp_common_write
@@ -176,10 +176,10 @@ bool avdecc_avtp_common_read (
      */
 
 bool avdecc_avtp_common_write (
-        const avdecc_avtp_common_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_avtp_common_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_avtp_stream_t
@@ -227,10 +227,10 @@ void avdecc_avtp_stream_init ( avdecc_avtp_stream_t *self );
      */
 
 bool avdecc_avtp_stream_read (
-        avdecc_avtp_stream_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_avtp_stream_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_avtp_stream_write
@@ -243,10 +243,10 @@ bool avdecc_avtp_stream_read (
      */
 
 bool avdecc_avtp_stream_write (
-        const avdecc_avtp_stream_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_avtp_stream_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_avtp_control_t
@@ -286,10 +286,10 @@ void avdecc_avtp_control_init ( avdecc_avtp_control_t *self );
      */
 
 bool avdecc_avtp_control_read (
-        avdecc_avtp_control_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_avtp_control_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_avtp_control_write
@@ -302,10 +302,10 @@ bool avdecc_avtp_control_read (
      */
 
 bool avdecc_avtp_control_write (
-        const avdecc_avtp_control_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_avtp_control_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 

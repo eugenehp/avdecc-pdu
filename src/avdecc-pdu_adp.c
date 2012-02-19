@@ -32,7 +32,7 @@ bool avdecc_adp_read (
     avdecc_adp_t *self,
     const void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -46,7 +46,7 @@ bool avdecc_adp_write (
     const avdecc_adp_t *self,
     void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     

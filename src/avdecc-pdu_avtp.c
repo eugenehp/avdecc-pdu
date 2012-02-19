@@ -32,7 +32,7 @@ bool avdecc_avtp_common_read (
     avdecc_avtp_common_t *self,
     const void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -46,7 +46,7 @@ bool avdecc_avtp_common_write (
     const avdecc_avtp_common_t *self,
     void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -66,7 +66,7 @@ bool avdecc_avtp_stream_read (
     avdecc_avtp_stream_t *self,
     const void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -80,7 +80,7 @@ bool avdecc_avtp_stream_write (
     const avdecc_avtp_stream_t *self,
     void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -100,7 +100,7 @@ bool avdecc_avtp_control_read (
     avdecc_avtp_control_t *self,
     const void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -114,7 +114,7 @@ bool avdecc_avtp_control_write (
     const avdecc_avtp_control_t *self,
     void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     

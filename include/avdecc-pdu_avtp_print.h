@@ -32,57 +32,57 @@ extern "C" {
 /* @{ */
 
 bool avdecc_avtp_presentation_time_print (
-        char *buf,
-        size_t *offset,
-        size_t len,
-        avdecc_avtp_presentation_time_t v
-        );
+    char *buf,
+    size_t *offset,
+    size_t len,
+    avdecc_avtp_presentation_time_t v
+    );
 
 bool avdecc_presentation_time_offset_print (
-        char *buf,
-        size_t *offset,
-        size_t len,
-        avdecc_avtp_presentation_time_offset_t v
-        );
+    char *buf,
+    size_t *offset,
+    size_t len,
+    avdecc_avtp_presentation_time_offset_t v
+    );
 
 
 bool avdecc_print_subtype_print (
-        char *buf,
-        size_t *offset,
-        size_t len,
-        avdecc_avtp_subtype_t subtype
-        );
+    char *buf,
+    size_t *offset,
+    size_t len,
+    avdecc_avtp_subtype_t subtype
+    );
 
 
 bool avdecc_avtp_sv_print (
-        char *buf,
-        size_t *offset,
-        size_t len,
-        avdecc_avtp_sv_t v
-        );
+    char *buf,
+    size_t *offset,
+    size_t len,
+    avdecc_avtp_sv_t v
+    );
 
 
 
 bool avdecc_avtp_common_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        const avdecc_avtp_common_t *self
-        );
+    char *buf,
+    size_t *pos,
+    size_t len,
+    const avdecc_avtp_common_t *self
+    );
 
 bool avdecc_avtp_stream_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        const avdecc_avtp_stream_t *self
-        );
+    char *buf,
+    size_t *pos,
+    size_t len,
+    const avdecc_avtp_stream_t *self
+    );
 
 bool avdecc_avtp_control_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        const avdecc_avtp_control_t *self
-        );
+    char *buf,
+    size_t *pos,
+    size_t len,
+    const avdecc_avtp_control_t *self
+    );
 
 
 /* @} */

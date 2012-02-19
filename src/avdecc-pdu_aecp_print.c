@@ -23,11 +23,11 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
 bool avdecc_aecp_message_type_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        avdecc_aecp_message_type_t v
-        )
+    char *buf,
+    size_t *pos,
+    size_t len,
+    avdecc_aecp_message_type_t v
+    )
 {
     bool r=false;
     static const char *text[] =
@@ -63,11 +63,11 @@ bool avdecc_aecp_message_type_print (
 }
 
 bool avdecc_aecp_status_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        avdecc_aecp_status_t v
-        )
+    char *buf,
+    size_t *pos,
+    size_t len,
+    avdecc_aecp_status_t v
+    )
 {
     bool r=false;
     static const char *text[] =
@@ -95,7 +95,7 @@ bool avdecc_aecp_print (
     size_t *pos,
     size_t len,
     const avdecc_aecp_t *self
-)
+    )
 {
     bool r=true;
     r&=avdecc_print (buf,pos,len,"AECP:\n");
@@ -124,7 +124,7 @@ bool avdecc_aecp_aem_print (
     size_t *pos,
     size_t len,
     const avdecc_aecp_aem_t *self
-)
+    )
 {
     bool r=true;
     r&=avdecc_print (buf,pos,len, "AECP AEM:\n");
@@ -156,7 +156,7 @@ bool avdecc_aecp_aa_print (
     size_t *pos,
     size_t len,
     const avdecc_aecp_aa_t *self
-)
+    )
 {
     bool r=true;
 
@@ -187,7 +187,7 @@ bool avdecc_aecp_avc_print (
     size_t *pos,
     size_t len,
     const avdecc_aecp_avc_t *self
-)
+    )
 {
     bool r=true;
     
@@ -202,7 +202,7 @@ bool avdecc_aecp_vu_print (
     size_t *pos,
     size_t len,
     const avdecc_aecp_vu_t *self
-)
+    )
 {
     bool r=true;
     

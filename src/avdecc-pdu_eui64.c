@@ -32,7 +32,7 @@ bool avdecc_eui64_read (
     avdecc_eui64_t *self,
     const void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     
@@ -46,7 +46,7 @@ bool avdecc_eui64_write (
     const avdecc_eui64_t *self,
     void *pdu,
     size_t offset
-)
+    )
 {
     bool r=true;
     

@@ -25,7 +25,7 @@ bool avdecc_print (
     size_t len,
     const char *fmt,
     ...
-)
+    )
 {
     bool r = false;
     va_list ap;
@@ -58,7 +58,7 @@ bool avdecc_print_block (
     size_t len,
     const void *packet,
     size_t packet_len
-)
+    )
 {
     bool r=true;
     const uint8_t *data = ( const uint8_t * ) packet;
@@ -70,7 +70,7 @@ bool avdecc_print_block (
     {
         r&=avdecc_print ( buf,offset,len, " %04x:  %02x %02x %02x %02x\n",
                           i, data[i], data[i+1], data[i+2], data[i+3]
-                        );
+                          );
     }
     
     r&=avdecc_print ( buf,offset,len, "\n" );

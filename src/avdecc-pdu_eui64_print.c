@@ -40,10 +40,10 @@ bool avdecc_eui64_to_text ( const avdecc_eui64_t *eui64, char *buf, int buf_len 
         bytes[7] = AVDECC_BITS_GET_OCTET_0 ( v );
         
         snprintf (
-            buf, buf_len,
-            "%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X",
-            bytes[0], bytes[1], bytes[2], bytes[3], bytes[4], bytes[5], bytes[6], bytes[7]
-        );
+                    buf, buf_len,
+                    "%02X-%02X-%02X-%02X-%02X-%02X-%02X-%02X",
+                    bytes[0], bytes[1], bytes[2], bytes[3], bytes[4], bytes[5], bytes[6], bytes[7]
+                    );
         
         r=true;
     }
@@ -73,14 +73,14 @@ bool avdecc_eui64_from_text ( avdecc_eui64_t *eui64, const char *buf )
                  &bytes[5],
                  &bytes[6],
                  &bytes[7]
-               );
-               
+                 );
+
     if ( cnt==8 )
     {
         *eui64 = AVDECC_BITS_MAKE_OCTLET (
-                     bytes[0], bytes[1], bytes[2], bytes[3],
-                     bytes[4], bytes[5], bytes[6], bytes[7]
-                 );
+                    bytes[0], bytes[1], bytes[2], bytes[3],
+                    bytes[4], bytes[5], bytes[6], bytes[7]
+                    );
         r=true;
     }
     
@@ -93,7 +93,7 @@ bool avdecc_eui64_print (
     size_t *offset,
     size_t len,
     const avdecc_eui64_t *eui64
-)
+    )
 {
     bool r=false;
     char s[32];

@@ -146,9 +146,9 @@ void avdecc_command_init ( avdecc_aem_command_t *self );
      */
 
 bool avdecc_command_read (
-        avdecc_aem_command_t *self,
-        const void *pdu
-        );
+    avdecc_aem_command_t *self,
+    const void *pdu
+    );
 
 
 /** avdecc_command_write
@@ -161,9 +161,9 @@ bool avdecc_command_read (
      */
 
 bool avdecc_command_write (
-        const avdecc_aem_command_t *self,
-        void *pdu
-        );
+    const avdecc_aem_command_t *self,
+    void *pdu
+    );
 
 
 /** avdecc_aem_response_t
@@ -192,9 +192,9 @@ void avdecc_response_init ( avdecc_aem_response_t *self );
      */
 
 bool avdecc_response_read (
-        avdecc_aem_response_t *self,
-        const void *pdu
-        );
+    avdecc_aem_response_t *self,
+    const void *pdu
+    );
 
 
 /** avdecc_response_write
@@ -207,9 +207,9 @@ bool avdecc_response_read (
      */
 
 bool avdecc_response_write (
-        const avdecc_aem_response_t *self,
-        void *pdu
-        );
+    const avdecc_aem_response_t *self,
+    void *pdu
+    );
 
 /**
      \addtogroup aem_command_lock_entity lock_entity
@@ -250,9 +250,9 @@ void avdecc_command_lock_entity_init ( avdecc_aem_command_lock_entity_t *self );
      */
 
 bool avdecc_command_lock_entity_read (
-        avdecc_aem_command_lock_entity_t *self,
-        const void *pdu
-        );
+    avdecc_aem_command_lock_entity_t *self,
+    const void *pdu
+    );
 
 
 /** avdecc_command_lock_entity_write
@@ -265,9 +265,9 @@ bool avdecc_command_lock_entity_read (
      */
 
 bool avdecc_command_lock_entity_write (
-        const avdecc_aem_command_lock_entity_t *self,
-        void *pdu
-        );
+    const avdecc_aem_command_lock_entity_t *self,
+    void *pdu
+    );
 
 
 /** avdecc_aem_response_lock_entity_t
@@ -299,9 +299,9 @@ void avdecc_response_lock_entity_init ( avdecc_aem_response_lock_entity_t *self 
      */
 
 bool avdecc_response_lock_entity_read (
-        avdecc_aem_response_lock_entity_t *self,
-        const void *pdu
-        );
+    avdecc_aem_response_lock_entity_t *self,
+    const void *pdu
+    );
 
 
 /** avdecc_response_lock_entity_write
@@ -314,9 +314,9 @@ bool avdecc_response_lock_entity_read (
      */
 
 bool avdecc_response_lock_entity_write (
-        const avdecc_aem_response_lock_entity_t *self,
-        void *pdu
-        );
+    const avdecc_aem_response_lock_entity_t *self,
+    void *pdu
+    );
 
 /* @} */
 /**
@@ -359,10 +359,10 @@ void avdecc_command_read_descriptor_init ( avdecc_aem_command_read_descriptor_t 
      */
 
 bool avdecc_command_read_descriptor_read (
-        avdecc_aem_command_read_descriptor_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_read_descriptor_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_read_descriptor_write
@@ -375,9 +375,9 @@ bool avdecc_command_read_descriptor_read (
      */
 
 bool avdecc_command_read_descriptor_write (
-        const avdecc_aem_command_read_descriptor_t *self,
-        void *pdu
-        );
+    const avdecc_aem_command_read_descriptor_t *self,
+    void *pdu
+    );
 
 
 /** avdecc_aem_response_read_descriptor_t
@@ -413,10 +413,10 @@ void avdecc_response_read_descriptor_init ( avdecc_aem_response_read_descriptor_
      */
 
 bool avdecc_response_read_descriptor_read (
-        avdecc_aem_response_read_descriptor_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_read_descriptor_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_read_descriptor_write
@@ -429,10 +429,10 @@ bool avdecc_response_read_descriptor_read (
      */
 
 bool avdecc_response_read_descriptor_write (
-        const avdecc_aem_response_read_descriptor_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_read_descriptor_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -474,10 +474,10 @@ void avdecc_command_write_descriptor_init ( avdecc_aem_command_write_descriptor_
      */
 
 bool avdecc_command_write_descriptor_read (
-        avdecc_aem_command_write_descriptor_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_write_descriptor_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_write_descriptor_write
@@ -490,10 +490,10 @@ bool avdecc_command_write_descriptor_read (
      */
 
 bool avdecc_command_write_descriptor_write (
-        const avdecc_aem_command_write_descriptor_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_write_descriptor_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_write_descriptor_t
@@ -526,10 +526,10 @@ static inline void avdecc_response_write_descriptor_init ( avdecc_aem_response_w
      */
 
 static inline bool avdecc_response_write_descriptor_read (
-        avdecc_aem_response_write_descriptor_t *self,
-        const void *pdu,
-        size_t offset
-        )
+    avdecc_aem_response_write_descriptor_t *self,
+    const void *pdu,
+    size_t offset
+    )
 {
     return avdecc_command_write_descriptor_read ( self, pdu, offset );
 }
@@ -545,10 +545,10 @@ static inline bool avdecc_response_write_descriptor_read (
      */
 
 static inline bool avdecc_response_write_descriptor_write (
-        const avdecc_aem_response_write_descriptor_t *self,
-        void *pdu,
-        size_t offset
-        )
+    const avdecc_aem_response_write_descriptor_t *self,
+    void *pdu,
+    size_t offset
+    )
 {
     return avdecc_command_write_descriptor_write ( self, pdu, offset );
 }
@@ -594,10 +594,10 @@ void avdecc_command_acquire_entity_init ( avdecc_aem_command_acquire_entity_t *s
      */
 
 bool avdecc_command_acquire_entity_read (
-        avdecc_aem_command_acquire_entity_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_acquire_entity_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_acquire_entity_write
@@ -610,10 +610,10 @@ bool avdecc_command_acquire_entity_read (
      */
 
 bool avdecc_command_acquire_entity_write (
-        const avdecc_aem_command_acquire_entity_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_acquire_entity_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_acquire_entity_t
@@ -647,10 +647,10 @@ static inline void avdecc_response_acquire_entity_init ( avdecc_aem_response_acq
      */
 
 static inline bool avdecc_response_acquire_entity_read (
-        avdecc_aem_response_acquire_entity_t *self,
-        const void *pdu,
-        size_t offset
-        )
+    avdecc_aem_response_acquire_entity_t *self,
+    const void *pdu,
+    size_t offset
+    )
 {
     return avdecc_command_acquire_entity_read ( self, pdu, offset );
 }
@@ -666,10 +666,10 @@ static inline bool avdecc_response_acquire_entity_read (
      */
 
 static inline bool avdecc_response_acquire_entity_write (
-        const avdecc_aem_response_acquire_entity_t *self,
-        void *pdu,
-        size_t offset
-        )
+    const avdecc_aem_response_acquire_entity_t *self,
+    void *pdu,
+    size_t offset
+    )
 {
     return avdecc_command_acquire_entity_write ( self, pdu, offset );
 }
@@ -711,10 +711,10 @@ void avdecc_command_controller_available_init ( avdecc_aem_command_controller_av
      */
 
 bool avdecc_command_controller_available_read (
-        avdecc_aem_command_controller_available_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_controller_available_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_controller_available_write
@@ -727,10 +727,10 @@ bool avdecc_command_controller_available_read (
      */
 
 bool avdecc_command_controller_available_write (
-        const avdecc_aem_command_controller_available_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_controller_available_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_controller_available_t
@@ -764,10 +764,10 @@ void avdecc_response_controller_available_init ( avdecc_aem_response_controller_
      */
 
 bool avdecc_response_controller_available_read (
-        avdecc_aem_response_controller_available_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_controller_available_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_controller_available_write
@@ -780,10 +780,10 @@ bool avdecc_response_controller_available_read (
      */
 
 bool avdecc_response_controller_available_write (
-        const avdecc_aem_response_controller_available_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_controller_available_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -826,10 +826,10 @@ void avdecc_command_set_clock_source_init ( avdecc_aem_command_set_clock_source_
      */
 
 bool avdecc_command_set_clock_source_read (
-        avdecc_aem_command_set_clock_source_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_set_clock_source_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_set_clock_source_write
@@ -842,10 +842,10 @@ bool avdecc_command_set_clock_source_read (
      */
 
 bool avdecc_command_set_clock_source_write (
-        const avdecc_aem_command_set_clock_source_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_set_clock_source_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_set_clock_source_t
@@ -874,10 +874,10 @@ void avdecc_response_set_clock_source_init ( avdecc_aem_response_set_clock_sourc
      */
 
 bool avdecc_response_set_clock_source_read (
-        avdecc_aem_response_set_clock_source_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_set_clock_source_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_set_clock_source_write
@@ -890,10 +890,10 @@ bool avdecc_response_set_clock_source_read (
      */
 
 bool avdecc_response_set_clock_source_write (
-        const avdecc_aem_response_set_clock_source_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_set_clock_source_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -929,10 +929,10 @@ void avdecc_command_get_clock_source_init ( avdecc_aem_command_get_clock_source_
      */
 
 bool avdecc_command_get_clock_source_read (
-        avdecc_aem_command_get_clock_source_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_get_clock_source_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_get_clock_source_write
@@ -945,10 +945,10 @@ bool avdecc_command_get_clock_source_read (
      */
 
 bool avdecc_command_get_clock_source_write (
-        const avdecc_aem_command_get_clock_source_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_get_clock_source_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_get_clock_source_t
@@ -979,10 +979,10 @@ void avdecc_response_get_clock_source_init ( avdecc_aem_response_get_clock_sourc
      */
 
 bool avdecc_response_get_clock_source_read (
-        avdecc_aem_response_get_clock_source_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_get_clock_source_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_get_clock_source_write
@@ -995,10 +995,10 @@ bool avdecc_response_get_clock_source_read (
      */
 
 bool avdecc_response_get_clock_source_write (
-        const avdecc_aem_response_get_clock_source_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_get_clock_source_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -1040,10 +1040,10 @@ void avdecc_command_set_stream_format_init ( avdecc_aem_command_set_stream_forma
      */
 
 bool avdecc_command_set_stream_format_read (
-        avdecc_aem_command_set_stream_format_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_set_stream_format_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_set_stream_format_write
@@ -1056,10 +1056,10 @@ bool avdecc_command_set_stream_format_read (
      */
 
 bool avdecc_command_set_stream_format_write (
-        const avdecc_aem_command_set_stream_format_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_set_stream_format_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_set_stream_format_t
@@ -1090,10 +1090,10 @@ void avdecc_response_set_stream_format_init ( avdecc_aem_response_set_stream_for
      */
 
 bool avdecc_response_set_stream_format_read (
-        avdecc_aem_response_set_stream_format_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_set_stream_format_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_set_stream_format_write
@@ -1106,10 +1106,10 @@ bool avdecc_response_set_stream_format_read (
      */
 
 bool avdecc_response_set_stream_format_write (
-        const avdecc_aem_response_set_stream_format_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_set_stream_format_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -1145,10 +1145,10 @@ void avdecc_command_get_stream_format_init ( avdecc_aem_command_get_stream_forma
      */
 
 bool avdecc_command_get_stream_format_read (
-        avdecc_aem_command_get_stream_format_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_get_stream_format_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_get_stream_format_write
@@ -1161,10 +1161,10 @@ bool avdecc_command_get_stream_format_read (
      */
 
 bool avdecc_command_get_stream_format_write (
-        const avdecc_aem_command_get_stream_format_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_get_stream_format_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_get_stream_format_t
@@ -1195,10 +1195,10 @@ void avdecc_response_get_stream_format_init ( avdecc_aem_response_get_stream_for
      */
 
 bool avdecc_response_get_stream_format_read (
-        avdecc_aem_response_get_stream_format_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_get_stream_format_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_get_stream_format_write
@@ -1211,10 +1211,10 @@ bool avdecc_response_get_stream_format_read (
      */
 
 bool avdecc_response_get_stream_format_write (
-        const avdecc_aem_response_get_stream_format_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_get_stream_format_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -1254,10 +1254,10 @@ void avdecc_command_set_configuration_init ( avdecc_aem_command_set_configuratio
      */
 
 bool avdecc_command_set_configuration_read (
-        avdecc_aem_command_set_configuration_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_set_configuration_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_set_configuration_write
@@ -1270,10 +1270,10 @@ bool avdecc_command_set_configuration_read (
      */
 
 bool avdecc_command_set_configuration_write (
-        const avdecc_aem_command_set_configuration_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_set_configuration_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_set_configuration_t
@@ -1304,10 +1304,10 @@ void avdecc_response_set_configuration_init ( avdecc_aem_response_set_configurat
      */
 
 bool avdecc_response_set_configuration_read (
-        avdecc_aem_response_set_configuration_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_set_configuration_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_set_configuration_write
@@ -1320,10 +1320,10 @@ bool avdecc_response_set_configuration_read (
      */
 
 bool avdecc_response_set_configuration_write (
-        const avdecc_aem_response_set_configuration_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_set_configuration_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -1359,10 +1359,10 @@ void avdecc_command_get_configuration_init ( avdecc_aem_command_get_configuratio
      */
 
 bool avdecc_command_get_configuration_read (
-        avdecc_aem_command_get_configuration_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_get_configuration_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_get_configuration_write
@@ -1375,10 +1375,10 @@ bool avdecc_command_get_configuration_read (
      */
 
 bool avdecc_command_get_configuration_write (
-        const avdecc_aem_command_get_configuration_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_get_configuration_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_get_configuration_t
@@ -1409,10 +1409,10 @@ void avdecc_response_get_configuration_init ( avdecc_aem_response_get_configurat
      */
 
 bool avdecc_response_get_configuration_read (
-        avdecc_aem_response_get_configuration_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_get_configuration_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_get_configuration_write
@@ -1425,10 +1425,10 @@ bool avdecc_response_get_configuration_read (
      */
 
 bool avdecc_response_get_configuration_write (
-        const avdecc_aem_response_get_configuration_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_get_configuration_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -1470,10 +1470,10 @@ void avdecc_command_set_control_value_init ( avdecc_aem_command_set_control_valu
      */
 
 bool avdecc_command_set_control_value_read (
-        avdecc_aem_command_set_control_value_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_set_control_value_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_set_control_value_write
@@ -1486,10 +1486,10 @@ bool avdecc_command_set_control_value_read (
      */
 
 bool avdecc_command_set_control_value_write (
-        const avdecc_aem_command_set_control_value_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_set_control_value_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_set_control_value_t
@@ -1520,10 +1520,10 @@ void avdecc_response_set_control_value_init ( avdecc_aem_response_set_control_va
      */
 
 bool avdecc_response_set_control_value_read (
-        avdecc_aem_response_set_control_value_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_set_control_value_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_set_control_value_write
@@ -1536,10 +1536,10 @@ bool avdecc_response_set_control_value_read (
      */
 
 bool avdecc_response_set_control_value_write (
-        const avdecc_aem_response_set_control_value_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_set_control_value_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -1576,10 +1576,10 @@ void avdecc_command_get_control_value_init ( avdecc_aem_command_get_control_valu
      */
 
 bool avdecc_command_get_control_value_read (
-        avdecc_aem_command_get_control_value_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_get_control_value_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_get_control_value_write
@@ -1592,10 +1592,10 @@ bool avdecc_command_get_control_value_read (
      */
 
 bool avdecc_command_get_control_value_write (
-        const avdecc_aem_command_get_control_value_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_get_control_value_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_get_control_value_t
@@ -1626,10 +1626,10 @@ void avdecc_response_get_control_value_init ( avdecc_aem_response_get_control_va
      */
 
 bool avdecc_response_get_control_value_read (
-        avdecc_aem_response_get_control_value_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_get_control_value_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_get_control_value_write
@@ -1642,10 +1642,10 @@ bool avdecc_response_get_control_value_read (
      */
 
 bool avdecc_response_get_control_value_write (
-        const avdecc_aem_response_get_control_value_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_get_control_value_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -1686,10 +1686,10 @@ void avdecc_command_set_signal_selector_init ( avdecc_aem_command_set_signal_sel
      */
 
 bool avdecc_command_set_signal_selector_read (
-        avdecc_aem_command_set_signal_selector_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_set_signal_selector_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_set_signal_selector_write
@@ -1702,10 +1702,10 @@ bool avdecc_command_set_signal_selector_read (
      */
 
 bool avdecc_command_set_signal_selector_write (
-        const avdecc_aem_command_set_signal_selector_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_set_signal_selector_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_set_signal_selector_t
@@ -1736,10 +1736,10 @@ void avdecc_response_set_signal_selector_init ( avdecc_aem_response_set_signal_s
      */
 
 bool avdecc_response_set_signal_selector_read (
-        avdecc_aem_response_set_signal_selector_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_set_signal_selector_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_set_signal_selector_write
@@ -1752,10 +1752,10 @@ bool avdecc_response_set_signal_selector_read (
      */
 
 bool avdecc_response_set_signal_selector_write (
-        const avdecc_aem_response_set_signal_selector_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_set_signal_selector_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -1791,10 +1791,10 @@ void avdecc_command_get_signal_selector_init ( avdecc_aem_command_get_signal_sel
      */
 
 bool avdecc_command_get_signal_selector_read (
-        avdecc_aem_command_get_signal_selector_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_get_signal_selector_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_get_signal_selector_write
@@ -1807,10 +1807,10 @@ bool avdecc_command_get_signal_selector_read (
      */
 
 bool avdecc_command_get_signal_selector_write (
-        const avdecc_aem_command_get_signal_selector_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_get_signal_selector_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_get_signal_selector_t
@@ -1841,10 +1841,10 @@ void avdecc_response_get_signal_selector_init ( avdecc_aem_response_get_signal_s
      */
 
 bool avdecc_response_get_signal_selector_read (
-        avdecc_aem_response_get_signal_selector_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_get_signal_selector_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_get_signal_selector_write
@@ -1857,10 +1857,10 @@ bool avdecc_response_get_signal_selector_read (
      */
 
 bool avdecc_response_get_signal_selector_write (
-        const avdecc_aem_response_get_signal_selector_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_get_signal_selector_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -1896,10 +1896,10 @@ void avdecc_command_set_mixer_init ( avdecc_aem_command_set_mixer_t *self );
      */
 
 bool avdecc_command_set_mixer_read (
-        avdecc_aem_command_set_mixer_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_set_mixer_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_set_mixer_write
@@ -1912,10 +1912,10 @@ bool avdecc_command_set_mixer_read (
      */
 
 bool avdecc_command_set_mixer_write (
-        const avdecc_aem_command_set_mixer_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_set_mixer_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_set_mixer_t
@@ -1946,10 +1946,10 @@ void avdecc_response_set_mixer_init ( avdecc_aem_response_set_mixer_t *self );
      */
 
 bool avdecc_response_set_mixer_read (
-        avdecc_aem_response_set_mixer_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_set_mixer_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_set_mixer_write
@@ -1962,10 +1962,10 @@ bool avdecc_response_set_mixer_read (
      */
 
 bool avdecc_response_set_mixer_write (
-        const avdecc_aem_response_set_mixer_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_set_mixer_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -2001,10 +2001,10 @@ void avdecc_command_get_mixer_init ( avdecc_aem_command_get_mixer_t *self );
      */
 
 bool avdecc_command_get_mixer_read (
-        avdecc_aem_command_get_mixer_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_get_mixer_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_get_mixer_write
@@ -2017,10 +2017,10 @@ bool avdecc_command_get_mixer_read (
      */
 
 bool avdecc_command_get_mixer_write (
-        const avdecc_aem_command_get_mixer_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_get_mixer_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_get_mixer_t
@@ -2051,10 +2051,10 @@ void avdecc_response_get_mixer_init ( avdecc_aem_response_get_mixer_t *self );
      */
 
 bool avdecc_response_get_mixer_read (
-        avdecc_aem_response_get_mixer_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_get_mixer_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_get_mixer_write
@@ -2067,10 +2067,10 @@ bool avdecc_response_get_mixer_read (
      */
 
 bool avdecc_response_get_mixer_write (
-        const avdecc_aem_response_get_mixer_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_get_mixer_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -2109,10 +2109,10 @@ void avdecc_command_set_matrix_init ( avdecc_aem_command_set_matrix_t *self );
      */
 
 bool avdecc_command_set_matrix_read (
-        avdecc_aem_command_set_matrix_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_set_matrix_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_set_matrix_write
@@ -2125,10 +2125,10 @@ bool avdecc_command_set_matrix_read (
      */
 
 bool avdecc_command_set_matrix_write (
-        const avdecc_aem_command_set_matrix_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_set_matrix_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_set_matrix_t
@@ -2162,10 +2162,10 @@ void avdecc_response_set_matrix_init ( avdecc_aem_response_set_matrix_t *self );
      */
 
 bool avdecc_response_set_matrix_read (
-        avdecc_aem_response_set_matrix_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_set_matrix_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_set_matrix_write
@@ -2178,10 +2178,10 @@ bool avdecc_response_set_matrix_read (
      */
 
 bool avdecc_response_set_matrix_write (
-        const avdecc_aem_response_set_matrix_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_set_matrix_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -2220,10 +2220,10 @@ void avdecc_command_get_matrix_init ( avdecc_aem_command_get_matrix_t *self );
      */
 
 bool avdecc_command_get_matrix_read (
-        avdecc_aem_command_get_matrix_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_get_matrix_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_get_matrix_write
@@ -2236,10 +2236,10 @@ bool avdecc_command_get_matrix_read (
      */
 
 bool avdecc_command_get_matrix_write (
-        const avdecc_aem_command_get_matrix_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_get_matrix_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_get_matrix_t
@@ -2273,10 +2273,10 @@ void avdecc_response_get_matrix_init ( avdecc_aem_response_get_matrix_t *self );
      */
 
 bool avdecc_response_get_matrix_read (
-        avdecc_aem_response_get_matrix_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_get_matrix_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_get_matrix_write
@@ -2289,10 +2289,10 @@ bool avdecc_response_get_matrix_read (
      */
 
 bool avdecc_response_get_matrix_write (
-        const avdecc_aem_response_get_matrix_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_get_matrix_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -2334,10 +2334,10 @@ void avdecc_command_start_streaming_init ( avdecc_aem_command_start_streaming_t 
      */
 
 bool avdecc_command_start_streaming_read (
-        avdecc_aem_command_start_streaming_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_start_streaming_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_start_streaming_write
@@ -2350,10 +2350,10 @@ bool avdecc_command_start_streaming_read (
      */
 
 bool avdecc_command_start_streaming_write (
-        const avdecc_aem_command_start_streaming_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_start_streaming_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_start_streaming_t
@@ -2384,10 +2384,10 @@ void avdecc_response_start_streaming_init ( avdecc_aem_response_start_streaming_
      */
 
 bool avdecc_response_start_streaming_read (
-        avdecc_aem_response_start_streaming_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_start_streaming_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_start_streaming_write
@@ -2400,10 +2400,10 @@ bool avdecc_response_start_streaming_read (
      */
 
 bool avdecc_response_start_streaming_write (
-        const avdecc_aem_response_start_streaming_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_start_streaming_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -2438,10 +2438,10 @@ void avdecc_command_stop_streaming_init ( avdecc_aem_command_stop_streaming_t *s
      */
 
 bool avdecc_command_stop_streaming_read (
-        avdecc_aem_command_stop_streaming_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_stop_streaming_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_stop_streaming_write
@@ -2454,10 +2454,10 @@ bool avdecc_command_stop_streaming_read (
      */
 
 bool avdecc_command_stop_streaming_write (
-        const avdecc_aem_command_stop_streaming_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_stop_streaming_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_stop_streaming_t
@@ -2488,10 +2488,10 @@ void avdecc_response_stop_streaming_init ( avdecc_aem_response_stop_streaming_t 
      */
 
 bool avdecc_response_stop_streaming_read (
-        avdecc_aem_response_stop_streaming_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_stop_streaming_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_stop_streaming_write
@@ -2504,10 +2504,10 @@ bool avdecc_response_stop_streaming_read (
      */
 
 bool avdecc_response_stop_streaming_write (
-        const avdecc_aem_response_stop_streaming_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_stop_streaming_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -2557,10 +2557,10 @@ void avdecc_command_set_stream_info_init ( avdecc_aem_command_set_stream_info_t 
      */
 
 bool avdecc_command_set_stream_info_read (
-        avdecc_aem_command_set_stream_info_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_set_stream_info_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_set_stream_info_write
@@ -2573,10 +2573,10 @@ bool avdecc_command_set_stream_info_read (
      */
 
 bool avdecc_command_set_stream_info_write (
-        const avdecc_aem_command_set_stream_info_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_set_stream_info_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_set_stream_info_t
@@ -2607,10 +2607,10 @@ void avdecc_response_set_stream_info_init ( avdecc_aem_response_set_stream_info_
      */
 
 bool avdecc_response_set_stream_info_read (
-        avdecc_aem_response_set_stream_info_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_set_stream_info_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_set_stream_info_write
@@ -2623,10 +2623,10 @@ bool avdecc_response_set_stream_info_read (
      */
 
 bool avdecc_response_set_stream_info_write (
-        const avdecc_aem_response_set_stream_info_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_set_stream_info_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -2667,10 +2667,10 @@ void avdecc_command_get_stream_info_init ( avdecc_aem_command_get_stream_info_t 
      */
 
 bool avdecc_command_get_stream_info_read (
-        avdecc_aem_command_get_stream_info_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_get_stream_info_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_get_stream_info_write
@@ -2683,10 +2683,10 @@ bool avdecc_command_get_stream_info_read (
      */
 
 bool avdecc_command_get_stream_info_write (
-        const avdecc_aem_command_get_stream_info_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_get_stream_info_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_get_stream_info_t
@@ -2735,10 +2735,10 @@ void avdecc_response_get_stream_info_init ( avdecc_aem_response_get_stream_info_
      */
 
 bool avdecc_response_get_stream_info_read (
-        avdecc_aem_response_get_stream_info_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_get_stream_info_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_get_stream_info_write
@@ -2751,10 +2751,10 @@ bool avdecc_response_get_stream_info_read (
      */
 
 bool avdecc_response_get_stream_info_write (
-        const avdecc_aem_response_get_stream_info_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_get_stream_info_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -2798,10 +2798,10 @@ void avdecc_command_set_name_init ( avdecc_aem_command_set_name_t *self );
      */
 
 bool avdecc_command_set_name_read (
-        avdecc_aem_command_set_name_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_set_name_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_set_name_write
@@ -2814,10 +2814,10 @@ bool avdecc_command_set_name_read (
      */
 
 bool avdecc_command_set_name_write (
-        const avdecc_aem_command_set_name_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_set_name_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_set_name_t
@@ -2848,10 +2848,10 @@ void avdecc_response_set_name_init ( avdecc_aem_response_set_name_t *self );
      */
 
 bool avdecc_response_set_name_read (
-        avdecc_aem_response_set_name_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_set_name_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_set_name_write
@@ -2864,10 +2864,10 @@ bool avdecc_response_set_name_read (
      */
 
 bool avdecc_response_set_name_write (
-        const avdecc_aem_response_set_name_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_set_name_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -2909,10 +2909,10 @@ void avdecc_command_get_name_init ( avdecc_aem_command_get_name_t *self );
      */
 
 bool avdecc_command_get_name_read (
-        avdecc_aem_command_get_name_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_get_name_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_get_name_write
@@ -2925,10 +2925,10 @@ bool avdecc_command_get_name_read (
      */
 
 bool avdecc_command_get_name_write (
-        const avdecc_aem_command_get_name_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_get_name_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_get_name_t
@@ -2966,10 +2966,10 @@ void avdecc_response_get_name_init ( avdecc_aem_response_get_name_t *self );
      */
 
 bool avdecc_response_get_name_read (
-        avdecc_aem_response_get_name_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_get_name_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_get_name_write
@@ -2982,10 +2982,10 @@ bool avdecc_response_get_name_read (
      */
 
 bool avdecc_response_get_name_write (
-        const avdecc_aem_response_get_name_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_get_name_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -3025,10 +3025,10 @@ void avdecc_command_set_association_id_init ( avdecc_aem_command_set_association
      */
 
 bool avdecc_command_set_association_id_read (
-        avdecc_aem_command_set_association_id_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_set_association_id_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_set_association_id_write
@@ -3041,10 +3041,10 @@ bool avdecc_command_set_association_id_read (
      */
 
 bool avdecc_command_set_association_id_write (
-        const avdecc_aem_command_set_association_id_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_set_association_id_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_set_association_id_t
@@ -3075,10 +3075,10 @@ void avdecc_response_set_association_id_init ( avdecc_aem_response_set_associati
      */
 
 bool avdecc_response_set_association_id_read (
-        avdecc_aem_response_set_association_id_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_set_association_id_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_set_association_id_write
@@ -3091,10 +3091,10 @@ bool avdecc_response_set_association_id_read (
      */
 
 bool avdecc_response_set_association_id_write (
-        const avdecc_aem_response_set_association_id_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_set_association_id_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -3131,10 +3131,10 @@ void avdecc_command_get_association_id_init ( avdecc_aem_command_get_association
      */
 
 bool avdecc_command_get_association_id_read (
-        avdecc_aem_command_get_association_id_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_get_association_id_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_get_association_id_write
@@ -3147,10 +3147,10 @@ bool avdecc_command_get_association_id_read (
      */
 
 bool avdecc_command_get_association_id_write (
-        const avdecc_aem_command_get_association_id_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_get_association_id_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_get_association_id_t
@@ -3181,10 +3181,10 @@ void avdecc_response_get_association_id_init ( avdecc_aem_response_get_associati
      */
 
 bool avdecc_response_get_association_id_read (
-        avdecc_aem_response_get_association_id_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_get_association_id_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_get_association_id_write
@@ -3197,10 +3197,10 @@ bool avdecc_response_get_association_id_read (
      */
 
 bool avdecc_response_get_association_id_write (
-        const avdecc_aem_response_get_association_id_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_get_association_id_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -3324,10 +3324,10 @@ void avdecc_command_auth_add_key_init ( avdecc_aem_command_auth_add_key_t *self 
      */
 
 bool avdecc_command_auth_add_key_read (
-        avdecc_aem_command_auth_add_key_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_auth_add_key_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_auth_add_key_write
@@ -3340,10 +3340,10 @@ bool avdecc_command_auth_add_key_read (
      */
 
 bool avdecc_command_auth_add_key_write (
-        const avdecc_aem_command_auth_add_key_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_auth_add_key_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_auth_add_key_t
@@ -3374,10 +3374,10 @@ void avdecc_response_auth_add_key_init ( avdecc_aem_response_auth_add_key_t *sel
      */
 
 bool avdecc_response_auth_add_key_read (
-        avdecc_aem_response_auth_add_key_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_auth_add_key_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_auth_add_key_write
@@ -3390,10 +3390,10 @@ bool avdecc_response_auth_add_key_read (
      */
 
 bool avdecc_response_auth_add_key_write (
-        const avdecc_aem_response_auth_add_key_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_auth_add_key_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -3430,10 +3430,10 @@ void avdecc_command_auth_get_key_init ( avdecc_aem_command_auth_get_key_t *self 
      */
 
 bool avdecc_command_auth_get_key_read (
-        avdecc_aem_command_auth_get_key_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_auth_get_key_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_auth_get_key_write
@@ -3446,10 +3446,10 @@ bool avdecc_command_auth_get_key_read (
      */
 
 bool avdecc_command_auth_get_key_write (
-        const avdecc_aem_command_auth_get_key_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_auth_get_key_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_auth_get_key_t
@@ -3480,10 +3480,10 @@ void avdecc_response_auth_get_key_init ( avdecc_aem_response_auth_get_key_t *sel
      */
 
 bool avdecc_response_auth_get_key_read (
-        avdecc_aem_response_auth_get_key_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_auth_get_key_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_auth_get_key_write
@@ -3496,10 +3496,10 @@ bool avdecc_response_auth_get_key_read (
      */
 
 bool avdecc_response_auth_get_key_write (
-        const avdecc_aem_response_auth_get_key_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_auth_get_key_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -3553,10 +3553,10 @@ void avdecc_command_authenticate_init ( avdecc_aem_command_authenticate_t *self 
      */
 
 bool avdecc_command_authenticate_read (
-        avdecc_aem_command_authenticate_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_authenticate_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_authenticate_write
@@ -3569,10 +3569,10 @@ bool avdecc_command_authenticate_read (
      */
 
 bool avdecc_command_authenticate_write (
-        const avdecc_aem_command_authenticate_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_authenticate_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_authenticate_t
@@ -3603,10 +3603,10 @@ void avdecc_response_authenticate_init ( avdecc_aem_response_authenticate_t *sel
      */
 
 bool avdecc_response_authenticate_read (
-        avdecc_aem_response_authenticate_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_authenticate_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_authenticate_write
@@ -3619,10 +3619,10 @@ bool avdecc_response_authenticate_read (
      */
 
 bool avdecc_response_authenticate_write (
-        const avdecc_aem_response_authenticate_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_authenticate_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -3662,10 +3662,10 @@ void avdecc_command_get_counters_init ( avdecc_aem_command_get_counters_t *self 
      */
 
 bool avdecc_command_get_counters_read (
-        avdecc_aem_command_get_counters_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_get_counters_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_get_counters_write
@@ -3678,10 +3678,10 @@ bool avdecc_command_get_counters_read (
      */
 
 bool avdecc_command_get_counters_write (
-        const avdecc_aem_command_get_counters_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_get_counters_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_get_counters_t
@@ -3778,10 +3778,10 @@ void avdecc_response_get_counters_init ( avdecc_aem_response_get_counters_t *sel
      */
 
 bool avdecc_response_get_counters_read (
-        avdecc_aem_response_get_counters_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_get_counters_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_get_counters_write
@@ -3794,10 +3794,10 @@ bool avdecc_response_get_counters_read (
      */
 
 bool avdecc_response_get_counters_write (
-        const avdecc_aem_response_get_counters_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_get_counters_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -3836,10 +3836,10 @@ void avdecc_command_reboot_init ( avdecc_aem_command_reboot_t *self );
      */
 
 bool avdecc_command_reboot_read (
-        avdecc_aem_command_reboot_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_reboot_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_reboot_write
@@ -3852,10 +3852,10 @@ bool avdecc_command_reboot_read (
      */
 
 bool avdecc_command_reboot_write (
-        const avdecc_aem_command_reboot_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_reboot_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_reboot_t
@@ -3886,10 +3886,10 @@ void avdecc_response_reboot_init ( avdecc_aem_response_reboot_t *self );
      */
 
 bool avdecc_response_reboot_read (
-        avdecc_aem_response_reboot_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_reboot_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_reboot_write
@@ -3902,10 +3902,10 @@ bool avdecc_response_reboot_read (
      */
 
 bool avdecc_response_reboot_write (
-        const avdecc_aem_response_reboot_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_reboot_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -3948,10 +3948,10 @@ void avdecc_command_set_media_format_init ( avdecc_aem_command_set_media_format_
      */
 
 bool avdecc_command_set_media_format_read (
-        avdecc_aem_command_set_media_format_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_set_media_format_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_set_media_format_write
@@ -3964,10 +3964,10 @@ bool avdecc_command_set_media_format_read (
      */
 
 bool avdecc_command_set_media_format_write (
-        const avdecc_aem_command_set_media_format_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_set_media_format_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_set_media_format_t
@@ -3998,10 +3998,10 @@ void avdecc_response_set_media_format_init ( avdecc_aem_response_set_media_forma
      */
 
 bool avdecc_response_set_media_format_read (
-        avdecc_aem_response_set_media_format_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_set_media_format_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_set_media_format_write
@@ -4014,10 +4014,10 @@ bool avdecc_response_set_media_format_read (
      */
 
 bool avdecc_response_set_media_format_write (
-        const avdecc_aem_response_set_media_format_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_set_media_format_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -4053,10 +4053,10 @@ void avdecc_command_get_media_format_init ( avdecc_aem_command_get_media_format_
      */
 
 bool avdecc_command_get_media_format_read (
-        avdecc_aem_command_get_media_format_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_get_media_format_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_get_media_format_write
@@ -4069,10 +4069,10 @@ bool avdecc_command_get_media_format_read (
      */
 
 bool avdecc_command_get_media_format_write (
-        const avdecc_aem_command_get_media_format_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_get_media_format_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_get_media_format_t
@@ -4103,10 +4103,10 @@ void avdecc_response_get_media_format_init ( avdecc_aem_response_get_media_forma
      */
 
 bool avdecc_response_get_media_format_read (
-        avdecc_aem_response_get_media_format_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_get_media_format_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_get_media_format_write
@@ -4119,10 +4119,10 @@ bool avdecc_response_get_media_format_read (
      */
 
 bool avdecc_response_get_media_format_write (
-        const avdecc_aem_response_get_media_format_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_get_media_format_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -4170,10 +4170,10 @@ void avdecc_command_register_state_notification_init ( avdecc_aem_command_regist
      */
 
 bool avdecc_command_register_state_notification_read (
-        avdecc_aem_command_register_state_notification_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_register_state_notification_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_register_state_notification_write
@@ -4186,10 +4186,10 @@ bool avdecc_command_register_state_notification_read (
      */
 
 bool avdecc_command_register_state_notification_write (
-        const avdecc_aem_command_register_state_notification_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_register_state_notification_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_register_state_notification_t
@@ -4220,10 +4220,10 @@ void avdecc_response_register_state_notification_init ( avdecc_aem_response_regi
      */
 
 bool avdecc_response_register_state_notification_read (
-        avdecc_aem_response_register_state_notification_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_register_state_notification_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_register_state_notification_write
@@ -4236,10 +4236,10 @@ bool avdecc_response_register_state_notification_read (
      */
 
 bool avdecc_response_register_state_notification_write (
-        const avdecc_aem_response_register_state_notification_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_register_state_notification_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -4279,10 +4279,10 @@ void avdecc_command_deregister_state_notification_init ( avdecc_aem_command_dere
      */
 
 bool avdecc_command_deregister_state_notification_read (
-        avdecc_aem_command_deregister_state_notification_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_deregister_state_notification_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_deregister_state_notification_write
@@ -4295,10 +4295,10 @@ bool avdecc_command_deregister_state_notification_read (
      */
 
 bool avdecc_command_deregister_state_notification_write (
-        const avdecc_aem_command_deregister_state_notification_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_deregister_state_notification_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_deregister_state_notification_t
@@ -4329,10 +4329,10 @@ void avdecc_response_deregister_state_notification_init ( avdecc_aem_response_de
      */
 
 bool avdecc_response_deregister_state_notification_read (
-        avdecc_aem_response_deregister_state_notification_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_deregister_state_notification_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_deregister_state_notification_write
@@ -4345,10 +4345,10 @@ bool avdecc_response_deregister_state_notification_read (
      */
 
 bool avdecc_response_deregister_state_notification_write (
-        const avdecc_aem_response_deregister_state_notification_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_deregister_state_notification_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -4395,10 +4395,10 @@ void avdecc_command_register_query_notification_init ( avdecc_aem_command_regist
      */
 
 bool avdecc_command_register_query_notification_read (
-        avdecc_aem_command_register_query_notification_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_register_query_notification_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_register_query_notification_write
@@ -4411,10 +4411,10 @@ bool avdecc_command_register_query_notification_read (
      */
 
 bool avdecc_command_register_query_notification_write (
-        const avdecc_aem_command_register_query_notification_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_register_query_notification_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_register_query_notification_t
@@ -4445,10 +4445,10 @@ void avdecc_response_register_query_notification_init ( avdecc_aem_response_regi
      */
 
 bool avdecc_response_register_query_notification_read (
-        avdecc_aem_response_register_query_notification_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_register_query_notification_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_register_query_notification_write
@@ -4461,10 +4461,10 @@ bool avdecc_response_register_query_notification_read (
      */
 
 bool avdecc_response_register_query_notification_write (
-        const avdecc_aem_response_register_query_notification_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_register_query_notification_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -4505,10 +4505,10 @@ void avdecc_command_deregister_query_notification_init ( avdecc_aem_command_dere
      */
 
 bool avdecc_command_deregister_query_notification_read (
-        avdecc_aem_command_deregister_query_notification_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_deregister_query_notification_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_deregister_query_notification_write
@@ -4521,10 +4521,10 @@ bool avdecc_command_deregister_query_notification_read (
      */
 
 bool avdecc_command_deregister_query_notification_write (
-        const avdecc_aem_command_deregister_query_notification_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_deregister_query_notification_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_deregister_query_notification_t
@@ -4555,10 +4555,10 @@ void avdecc_response_deregister_query_notification_init ( avdecc_aem_response_de
      */
 
 bool avdecc_response_deregister_query_notification_read (
-        avdecc_aem_response_deregister_query_notification_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_deregister_query_notification_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_deregister_query_notification_write
@@ -4571,10 +4571,10 @@ bool avdecc_response_deregister_query_notification_read (
      */
 
 bool avdecc_response_deregister_query_notification_write (
-        const avdecc_aem_response_deregister_query_notification_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_deregister_query_notification_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -4617,10 +4617,10 @@ void avdecc_response_identify_notification_init ( avdecc_aem_response_identify_n
      */
 
 bool avdecc_response_identify_notification_read (
-        avdecc_aem_response_identify_notification_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_identify_notification_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_identify_notification_write
@@ -4633,10 +4633,10 @@ bool avdecc_response_identify_notification_read (
      */
 
 bool avdecc_response_identify_notification_write (
-        const avdecc_aem_response_identify_notification_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_identify_notification_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -4677,10 +4677,10 @@ void avdecc_response_state_change_notification_init ( avdecc_aem_response_state_
      */
 
 bool avdecc_response_state_change_notification_read (
-        avdecc_aem_response_state_change_notification_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_state_change_notification_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_state_change_notification_write
@@ -4693,10 +4693,10 @@ bool avdecc_response_state_change_notification_read (
      */
 
 bool avdecc_response_state_change_notification_write (
-        const avdecc_aem_response_state_change_notification_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_state_change_notification_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -4739,10 +4739,10 @@ void avdecc_command_increment_control_value_init ( avdecc_aem_command_increment_
      */
 
 bool avdecc_command_increment_control_value_read (
-        avdecc_aem_command_increment_control_value_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_increment_control_value_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_increment_control_value_write
@@ -4755,10 +4755,10 @@ bool avdecc_command_increment_control_value_read (
      */
 
 bool avdecc_command_increment_control_value_write (
-        const avdecc_aem_command_increment_control_value_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_increment_control_value_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_increment_control_value_t
@@ -4789,10 +4789,10 @@ void avdecc_response_increment_control_value_init ( avdecc_aem_response_incremen
      */
 
 bool avdecc_response_increment_control_value_read (
-        avdecc_aem_response_increment_control_value_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_increment_control_value_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_increment_control_value_write
@@ -4805,10 +4805,10 @@ bool avdecc_response_increment_control_value_read (
      */
 
 bool avdecc_response_increment_control_value_write (
-        const avdecc_aem_response_increment_control_value_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_increment_control_value_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -4844,10 +4844,10 @@ void avdecc_command_decrement_control_value_init ( avdecc_aem_command_decrement_
      */
 
 bool avdecc_command_decrement_control_value_read (
-        avdecc_aem_command_decrement_control_value_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_decrement_control_value_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_decrement_control_value_write
@@ -4860,10 +4860,10 @@ bool avdecc_command_decrement_control_value_read (
      */
 
 bool avdecc_command_decrement_control_value_write (
-        const avdecc_aem_command_decrement_control_value_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_decrement_control_value_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_decrement_control_value_t
@@ -4894,10 +4894,10 @@ void avdecc_response_decrement_control_value_init ( avdecc_aem_response_decremen
      */
 
 bool avdecc_response_decrement_control_value_read (
-        avdecc_aem_response_decrement_control_value_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_decrement_control_value_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_decrement_control_value_write
@@ -4910,10 +4910,10 @@ bool avdecc_response_decrement_control_value_read (
      */
 
 bool avdecc_response_decrement_control_value_write (
-        const avdecc_aem_response_decrement_control_value_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_decrement_control_value_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -4958,10 +4958,10 @@ void avdecc_command_start_operation_init ( avdecc_aem_command_start_operation_t 
      */
 
 bool avdecc_command_start_operation_read (
-        avdecc_aem_command_start_operation_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_start_operation_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_start_operation_write
@@ -4974,10 +4974,10 @@ bool avdecc_command_start_operation_read (
      */
 
 bool avdecc_command_start_operation_write (
-        const avdecc_aem_command_start_operation_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_start_operation_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_start_operation_t
@@ -5008,10 +5008,10 @@ void avdecc_response_start_operation_init ( avdecc_aem_response_start_operation_
      */
 
 bool avdecc_response_start_operation_read (
-        avdecc_aem_response_start_operation_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_start_operation_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_start_operation_write
@@ -5024,10 +5024,10 @@ bool avdecc_response_start_operation_read (
      */
 
 bool avdecc_response_start_operation_write (
-        const avdecc_aem_response_start_operation_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_start_operation_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -5064,10 +5064,10 @@ void avdecc_command_abort_operation_init ( avdecc_aem_command_abort_operation_t 
      */
 
 bool avdecc_command_abort_operation_read (
-        avdecc_aem_command_abort_operation_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_abort_operation_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_abort_operation_write
@@ -5080,10 +5080,10 @@ bool avdecc_command_abort_operation_read (
      */
 
 bool avdecc_command_abort_operation_write (
-        const avdecc_aem_command_abort_operation_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_abort_operation_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_abort_operation_t
@@ -5114,10 +5114,10 @@ void avdecc_response_abort_operation_init ( avdecc_aem_response_abort_operation_
      */
 
 bool avdecc_response_abort_operation_read (
-        avdecc_aem_response_abort_operation_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_abort_operation_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_abort_operation_write
@@ -5130,10 +5130,10 @@ bool avdecc_response_abort_operation_read (
      */
 
 bool avdecc_response_abort_operation_write (
-        const avdecc_aem_response_abort_operation_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_abort_operation_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -5177,10 +5177,10 @@ void avdecc_response_operation_status_init ( avdecc_aem_response_operation_statu
      */
 
 bool avdecc_response_operation_status_read (
-        avdecc_aem_response_operation_status_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_operation_status_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_operation_status_write
@@ -5193,10 +5193,10 @@ bool avdecc_response_operation_status_read (
      */
 
 bool avdecc_response_operation_status_write (
-        const avdecc_aem_response_operation_status_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_operation_status_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -5233,10 +5233,10 @@ void avdecc_command_auth_get_key_count_init ( avdecc_aem_command_auth_get_key_co
      */
 
 bool avdecc_command_auth_get_key_count_read (
-        avdecc_aem_command_auth_get_key_count_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_auth_get_key_count_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_auth_get_key_count_write
@@ -5249,10 +5249,10 @@ bool avdecc_command_auth_get_key_count_read (
      */
 
 bool avdecc_command_auth_get_key_count_write (
-        const avdecc_aem_command_auth_get_key_count_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_auth_get_key_count_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_auth_get_key_count_t
@@ -5283,10 +5283,10 @@ void avdecc_response_auth_get_key_count_init ( avdecc_aem_response_auth_get_key_
      */
 
 bool avdecc_response_auth_get_key_count_read (
-        avdecc_aem_response_auth_get_key_count_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_auth_get_key_count_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_auth_get_key_count_write
@@ -5299,10 +5299,10 @@ bool avdecc_response_auth_get_key_count_read (
      */
 
 bool avdecc_response_auth_get_key_count_write (
-        const avdecc_aem_response_auth_get_key_count_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_auth_get_key_count_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -5343,10 +5343,10 @@ void avdecc_command_get_as_path_init ( avdecc_aem_command_get_as_path_t *self );
      */
 
 bool avdecc_command_get_as_path_read (
-        avdecc_aem_command_get_as_path_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_get_as_path_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_get_as_path_write
@@ -5359,10 +5359,10 @@ bool avdecc_command_get_as_path_read (
      */
 
 bool avdecc_command_get_as_path_write (
-        const avdecc_aem_command_get_as_path_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_get_as_path_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_get_as_path_t
@@ -5399,10 +5399,10 @@ void avdecc_response_get_as_path_init ( avdecc_aem_response_get_as_path_t *self 
      */
 
 bool avdecc_response_get_as_path_read (
-        avdecc_aem_response_get_as_path_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_get_as_path_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_get_as_path_write
@@ -5415,10 +5415,10 @@ bool avdecc_response_get_as_path_read (
      */
 
 bool avdecc_response_get_as_path_write (
-        const avdecc_aem_response_get_as_path_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_get_as_path_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -5456,10 +5456,10 @@ void avdecc_command_deauthenticate_init ( avdecc_aem_command_deauthenticate_t *s
      */
 
 bool avdecc_command_deauthenticate_read (
-        avdecc_aem_command_deauthenticate_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_deauthenticate_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_deauthenticate_write
@@ -5472,10 +5472,10 @@ bool avdecc_command_deauthenticate_read (
      */
 
 bool avdecc_command_deauthenticate_write (
-        const avdecc_aem_command_deauthenticate_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_deauthenticate_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_deauthenticate_t
@@ -5506,10 +5506,10 @@ void avdecc_response_deauthenticate_init ( avdecc_aem_response_deauthenticate_t 
      */
 
 bool avdecc_response_deauthenticate_read (
-        avdecc_aem_response_deauthenticate_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_deauthenticate_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_deauthenticate_write
@@ -5522,10 +5522,10 @@ bool avdecc_response_deauthenticate_read (
      */
 
 bool avdecc_response_deauthenticate_write (
-        const avdecc_aem_response_deauthenticate_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_deauthenticate_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /**
@@ -5563,10 +5563,10 @@ void avdecc_command_auth_revoke_key_init ( avdecc_aem_command_auth_revoke_key_t 
      */
 
 bool avdecc_command_auth_revoke_key_read (
-        avdecc_aem_command_auth_revoke_key_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_command_auth_revoke_key_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_command_auth_revoke_key_write
@@ -5579,10 +5579,10 @@ bool avdecc_command_auth_revoke_key_read (
      */
 
 bool avdecc_command_auth_revoke_key_write (
-        const avdecc_aem_command_auth_revoke_key_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_command_auth_revoke_key_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_aem_response_auth_revoke_key_t
@@ -5613,10 +5613,10 @@ void avdecc_response_auth_revoke_key_init ( avdecc_aem_response_auth_revoke_key_
      */
 
 bool avdecc_response_auth_revoke_key_read (
-        avdecc_aem_response_auth_revoke_key_t *self,
-        const void *pdu,
-        size_t offset
-        );
+    avdecc_aem_response_auth_revoke_key_t *self,
+    const void *pdu,
+    size_t offset
+    );
 
 
 /** avdecc_response_auth_revoke_key_write
@@ -5629,10 +5629,10 @@ bool avdecc_response_auth_revoke_key_read (
      */
 
 bool avdecc_response_auth_revoke_key_write (
-        const avdecc_aem_response_auth_revoke_key_t *self,
-        void *pdu,
-        size_t offset
-        );
+    const avdecc_aem_response_auth_revoke_key_t *self,
+    void *pdu,
+    size_t offset
+    );
 
 /* @} */
 /* @} */

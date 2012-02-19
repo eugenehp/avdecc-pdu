@@ -24,65 +24,65 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 extern "C" {
 #endif
 
-    /**
+/**
     \addtogroup stream
     */
-    /* @{ */
-    
-    
-    /**
+/* @{ */
+
+
+/**
      The possible states for a stream source
      */
-    typedef enum
-    {
-        avdecc_stream_source_state_none,
-        avdecc_stream_source_state_potential,
-        avdecc_stream_source_state_reserved,
-        avdecc_stream_source_state_active
-    }
-    avdecc_stream_source_state_t;
-    
-    /**
+typedef enum
+{
+    avdecc_stream_source_state_none,
+    avdecc_stream_source_state_potential,
+    avdecc_stream_source_state_reserved,
+    avdecc_stream_source_state_active
+}
+avdecc_stream_source_state_t;
+
+/**
      The possible states for a stream sink
      */
-    typedef enum
-    {
-        avdecc_stream_sink_state_inactive,
-        avdecc_stream_sink_state_active,
-        avdecc_stream_sink_state_error
-    } avdecc_stream_sink_state_t;
-    
-    /**
+typedef enum
+{
+    avdecc_stream_sink_state_inactive,
+    avdecc_stream_sink_state_active,
+    avdecc_stream_sink_state_error
+} avdecc_stream_sink_state_t;
+
+/**
      The possible stream classes
      */
-    typedef enum
-    {
-        avdecc_stream_class_a,
-        avdecc_stream_class_b
-    } avdecc_stream_class_t;
-    
-    
-    typedef uint64_t avdecc_stream_id_t;
-    
-    static inline void avdecc_stream_id_init ( avdecc_stream_id_t *self )
-    {
-        *self = 0;
-    }
-    
-    bool avdecc_stream_id_read (
-        avdecc_stream_id_t *self,
-        const void *pdu,
-        size_t offset
+typedef enum
+{
+    avdecc_stream_class_a,
+    avdecc_stream_class_b
+} avdecc_stream_class_t;
+
+
+typedef uint64_t avdecc_stream_id_t;
+
+static inline void avdecc_stream_id_init ( avdecc_stream_id_t *self )
+{
+    *self = 0;
+}
+
+bool avdecc_stream_id_read (
+    avdecc_stream_id_t *self,
+    const void *pdu,
+    size_t offset
     );
-    
-    bool avdecc_stream_id_write (
-        const avdecc_stream_id_t *self,
-        void *pdu,
-        size_t offset
+
+bool avdecc_stream_id_write (
+    const avdecc_stream_id_t *self,
+    void *pdu,
+    size_t offset
     );
-    
-    /* @} */
-    
+
+/* @} */
+
 #ifdef __cplusplus
 }
 #endif

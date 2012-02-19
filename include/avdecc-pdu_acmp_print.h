@@ -26,43 +26,43 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 extern "C" {
 #endif
 
-    /**
+/**
     \addtogroup acmp
     */
-    /* @{ */
-    
-    bool avdecc_acmp_status_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        avdecc_acmp_status_t v
+/* @{ */
+
+bool avdecc_acmp_status_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    avdecc_acmp_status_t v
     );
-    
-    bool avdecc_acmp_message_type_print (
-                                         char *buf,
-                                         size_t *pos,
-                                         size_t len,
-                                         avdecc_acmp_message_type_t v
-                                         );
-    
-    bool avdecc_acmp_flags_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        avdecc_acmp_flags_t v
+
+bool avdecc_acmp_message_type_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    avdecc_acmp_message_type_t v
     );
-    
-    
-    bool avdecc_acmp_print (
-        char *buf,
-        size_t *pos,
-        size_t len,
-        const avdecc_acmp_t *self
+
+bool avdecc_acmp_flags_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    avdecc_acmp_flags_t v
     );
-    
-    
-    /* @} */
-    
+
+
+bool avdecc_acmp_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    const avdecc_acmp_t *self
+    );
+
+
+/* @} */
+
 #ifdef __cplusplus
 }
 #endif
