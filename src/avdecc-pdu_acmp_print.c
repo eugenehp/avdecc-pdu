@@ -67,7 +67,7 @@ int avdecc_acmp_status_print (
 
 }
 
-int avdecc_acmp_message_type_print (
+bool avdecc_acmp_message_type_print (
     char *buf,
     size_t *pos,
     size_t len,
