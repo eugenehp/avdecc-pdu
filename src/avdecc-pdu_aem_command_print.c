@@ -1,5 +1,9 @@
 
 #include "avdecc-pdu_world.h"
+#include "avdecc-pdu_eui64_print.h"
+#include "avdecc-pdu_mac_print.h"
+#include "avdecc-pdu_aecp_print.h"
+#include "avdecc-pdu_aem_print.h"
 #include "avdecc-pdu_aem_command_print.h"
 
 
@@ -20,6 +24,70 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+const char *avdecc_command_type_string( avdecc_aem_command_type_t v )
+{
+    const char *r = "reserved";
+
+    const char *text[] =
+    {
+        "lock_entity",
+        "read_descriptor",
+        "write_descriptor",
+        "acquire_entity",
+        "controller_available",
+        "set_clock_source",
+        "get_clock_source",
+        "set_stream_format",
+        "get_stream_format",
+        "set_configuration",
+        "get_configuration",
+        "set_control_value",
+        "get_control_value",
+        "set_signal_selector",
+        "get_signal_selector",
+        "set_mixer",
+        "get_mixer",
+        "set_matrix",
+        "get_matrix",
+        "start_streaming",
+        "stop_streaming",
+        "set_stream_info",
+        "get_stream_info",
+        "set_name",
+        "get_name",
+        "set_association_id",
+        "get_association_id",
+        "auth_add_key",
+        "auth_get_key",
+        "authenticate",
+        "get_counters",
+        "reboot",
+        "set_media_format",
+        "get_media_format",
+        "register_state_notification",
+        "deregister_state_notification",
+        "register_query_notification",
+        "deregister_query_notification",
+        "identify_notification",
+        "state_change_notification",
+        "increment_control_value",
+        "decrement_control_value",
+        "start_operation",
+        "abort_operation",
+        "operation_status",
+        "auth_get_key_count",
+        "get_as_path",
+        "deauthenticate",
+        "auth_revoke_key"
+    };
+    if ( v<= avdecc_aem_command_auth_revoke_key )
+    {
+        r=text[(int)v];
+    }
+
+    return r;
+}
+
 
 bool avdecc_command_type_print(
         char *buf,
@@ -30,7 +98,7 @@ bool avdecc_command_type_print(
 {
     bool r=true;
 
-    r&=false; /* TODO */
+    r&=avdecc_print( buf, pos, len, "%s", avdecc_command_type_string(command) );
 
     return r;
 }
@@ -42,9 +110,60 @@ bool avdecc_command_status_print(
         avdecc_aem_command_status_t status
         )
 {
-    bool r=true;
+    bool r=false;
+    static const char *text[] =
+    {
+        "success",
+        "not_implemented",
+        "no_such_descriptor",
+        "entity_locked",
+        "entity_acquired",
+        "not_authorized",
+        "insufficient_privileges",
+        "bad_arguments",
+        "no_resources",
+        "in_progress"
+    };
 
-    r&=false; /* TODO */
+    if ( status<= avdecc_aem_status_in_progress )
+    {
+        r = avdecc_print ( buf,pos,len,"%s", text[ ( int ) status ] );
+    }
+    else
+    {
+        r = avdecc_print ( buf,pos,len,"reserved (%d)", ( int ) status );
+    }
+
+    return r;
+}
+
+bool avdecc_command_print (
+        char *buf,
+        size_t *pos,
+        size_t len,
+        const avdecc_aem_command_t *self
+        )
+{
+    bool r=true;
+    r&=avdecc_print (buf,pos,len,"AECP AEM Command:\n");
+    r&=avdecc_print (buf,pos,len,"%-28s","Message Type");
+    r&=avdecc_aecp_message_type_print(buf,pos,len, self->message_type );
+
+    r&=avdecc_print ( buf,pos,len,"\n%-28s", "Status:" );
+    r&=avdecc_command_status_print( buf,pos,len,self->status );
+
+    r&=avdecc_print ( buf,pos,len,"\n%-28s%d", "Control Data Length:", &self->control_data_length );
+
+    r&=avdecc_print ( buf,pos,len,"\n%-28s", "Target GUID:" );
+    r&=avdecc_eui64_print ( buf,pos,len, &self->target_guid );
+
+    r&=avdecc_print ( buf,pos,len,"\n%-28s", "Controller GUID:" );
+    r&=avdecc_eui64_print ( buf,pos,len, &self->controller_guid );
+
+    r&=avdecc_print ( buf,pos,len,"\n%-28s%d", "Sequence ID:", self->sequence_id );
+
+    r&=avdecc_print ( buf,pos,len,"\n%-28s%s", "Unsolicited:",self->unsolicited ? "true" : "false" );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s%s (%d)", "AEM Command:", avdecc_command_type_string(self->command_type), self->command_type );
 
     return r;
 }
@@ -59,8 +178,10 @@ bool avdecc_command_lock_entity_print (
 {
     bool r=true;
     
-    r&=false; /* TODO */
-    
+    r&=avdecc_command_print( buf, pos, len, &self->base );
+    r&=avdecc_print( buf, pos, len, "\n%-28s: 0x%08x", "Lock Entity Flags", self->flags );
+    r&=avdecc_print( buf, pos, len, "\n%-28s:", "Lock Entity Locked guid" );
+
     return r;
 }
 
@@ -72,11 +193,7 @@ bool avdecc_response_lock_entity_print (
     const avdecc_aem_response_lock_entity_t *self
 )
 {
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
-    return r;
+    return avdecc_command_lock_entity_print( buf,pos,len,self);
 }
 
 

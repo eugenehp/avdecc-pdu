@@ -53,7 +53,7 @@ extern "C" {
     
     
     /** See IEEE 1722.1 Clause 8.2.1.6 */
-    typedef enum
+    enum avdecc_acmp_status_e
     {
         avdecc_acmp_status_success = 0,
         avdecc_acmp_status_listener_unknown_id =1,
@@ -74,8 +74,9 @@ extern "C" {
         avdecc_acmp_status_controller_not_authorized=16,
         avdecc_acmp_status_incompatible_request=17,
         avdecc_acmp_status_reserved
-    }
-    avdecc_acmp_status_t;
+    };
+
+    typedef enum avdecc_acmp_status_e avdecc_acmp_status_t;
     
     
     /** See IEEE 1722.1 Clause 8.2.1.17 */
@@ -122,7 +123,7 @@ extern "C" {
     
     
     /** See IEEE 1722.1 Clause 8.2.1.5 */
-    typedef enum
+    enum avdecc_acmp_message_type_e
     {
         avdecc_acmp_message_connect_tx_command = 0,
         avdecc_acmp_message_connect_tx_response = 1,
@@ -139,29 +140,30 @@ extern "C" {
         avdecc_acmp_message_get_tx_connection_command = 12,
         avdecc_acmp_message_get_tx_connection_response = 13,
         avdecc_acmp_message_reserved
-    } avdecc_acmp_message_type_t;
-    
+    } avdecc_acmp_message_type_e;
+
+     typedef enum avdecc_acmp_message_type_e avdecc_acmp_message_type_t;
     
     /* See IEEE 1722.1 Clause 8.2.1 */
     
-    AVDECC_BITS_MAP_OCTET_BIT ( avdecc_acmp, cd, avdecc_avtp_cd_t, 0, 0 );
-    AVDECC_BITS_MAP_OCTET_BITFIELD ( avdecc_acmp, subtype, avdecc_avtp_subtype_t, 0, 1, 7 );
-    AVDECC_BITS_MAP_OCTET_BIT ( avdecc_acmp, sv, avdecc_avtp_sv_t, 1, 0 );
-    AVDECC_BITS_MAP_OCTET_BITFIELD ( avdecc_acmp, version, avdecc_avtp_version_t, 1, 1, 3 );
-    AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_acmp, message_type, avdecc_acmp_message_type_t, 0, 12, 15 );
-    AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_acmp, status, avdecc_acmp_status_t, 0, 16, 20 );
-    AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_acmp, control_data_length, avdecc_avtp_control_data_length_t, 0, 21, 31 );
-    AVDECC_BITS_MAP_OCTLET ( avdecc_acmp, entity_guid, avdecc_eui64_t, 4 );
-    AVDECC_BITS_MAP_OCTLET ( avdecc_acmp, controller_guid, avdecc_eui64_t, 12 );
-    AVDECC_BITS_MAP_OCTLET ( avdecc_acmp, talker_guid, avdecc_eui64_t, 20 );
-    AVDECC_BITS_MAP_OCTLET ( avdecc_acmp, listener_guid, avdecc_eui64_t, 28 );
-    AVDECC_BITS_MAP_DOUBLET ( avdecc_acmp, talker_unique_id, uint16_t, 36 );
-    AVDECC_BITS_MAP_DOUBLET ( avdecc_acmp, listener_unique_id, uint16_t, 38 );
-    AVDECC_BITS_MAP_SEXLET ( avdecc_acmp, dest_mac, avdecc_mac_t, 40 );
-    AVDECC_BITS_MAP_DOUBLET ( avdecc_acmp, connection_count, uint16_t, 46 );
-    AVDECC_BITS_MAP_DOUBLET ( avdecc_acmp, sequence_id, uint16_t, 48 );
-    AVDECC_BITS_MAP_DOUBLET ( avdecc_acmp, flags, uint16_t, 50 );
-    AVDECC_BITS_MAP_QUADLET ( avdecc_acmp, reserved1, uint32_t, 52 );
+    AVDECC_BITS_MAP_OCTET_BIT ( avdecc_acmp, cd, avdecc_avtp_cd_t, 0, 0 )
+    AVDECC_BITS_MAP_OCTET_BITFIELD ( avdecc_acmp, subtype, avdecc_avtp_subtype_t, 0, 1, 7 )
+    AVDECC_BITS_MAP_OCTET_BIT ( avdecc_acmp, sv, avdecc_avtp_sv_t, 1, 0 )
+    AVDECC_BITS_MAP_OCTET_BITFIELD ( avdecc_acmp, version, avdecc_avtp_version_t, 1, 1, 3 )
+    AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_acmp, message_type, avdecc_acmp_message_type_t, 0, 12, 15 )
+    AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_acmp, status, avdecc_acmp_status_t, 0, 16, 20 )
+    AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_acmp, control_data_length, avdecc_avtp_control_data_length_t, 0, 21, 31 )
+    AVDECC_BITS_MAP_OCTLET ( avdecc_acmp, stream_id, avdecc_stream_id_t, 4 )
+    AVDECC_BITS_MAP_OCTLET ( avdecc_acmp, controller_guid, avdecc_eui64_t, 12 )
+    AVDECC_BITS_MAP_OCTLET ( avdecc_acmp, talker_guid, avdecc_eui64_t, 20 )
+    AVDECC_BITS_MAP_OCTLET ( avdecc_acmp, listener_guid, avdecc_eui64_t, 28 )
+    AVDECC_BITS_MAP_DOUBLET ( avdecc_acmp, talker_unique_id, uint16_t, 36 )
+    AVDECC_BITS_MAP_DOUBLET ( avdecc_acmp, listener_unique_id, uint16_t, 38 )
+    AVDECC_BITS_MAP_SEXLET ( avdecc_acmp, dest_mac, avdecc_mac_t, 40 )
+    AVDECC_BITS_MAP_DOUBLET ( avdecc_acmp, connection_count, uint16_t, 46 )
+    AVDECC_BITS_MAP_DOUBLET ( avdecc_acmp, sequence_id, uint16_t, 48 )
+    AVDECC_BITS_MAP_DOUBLET ( avdecc_acmp, flags, uint16_t, 50 )
+    AVDECC_BITS_MAP_QUADLET ( avdecc_acmp, reserved1, uint32_t, 52 )
     
     
     /** avdecc_acmp_t
@@ -174,6 +176,7 @@ extern "C" {
         avdecc_acmp_message_type_t message_type;
         avdecc_acmp_status_t status;
         avdecc_avtp_control_data_length_t control_data_length;
+        avdecc_stream_id_t stream_id;
         avdecc_eui64_t controller_guid;
         avdecc_eui64_t talker_guid;
         avdecc_eui64_t listener_guid;
@@ -206,12 +209,14 @@ extern "C" {
      *  @param self pointer to object to fill
      *  @param pdu pointer to base of pdu to read
      *  @param offset offset from base of pdu in octets to start reading from
+     *  @param len length of packet
+     *  @returns bool true on success
      */
     
     bool avdecc_acmp_read (
         avdecc_acmp_t *self,
         const void *pdu,
-        size_t offset
+        size_t len
     );
     
     
@@ -220,14 +225,16 @@ extern "C" {
      *  write a avdecc_acmp_t into a pdu
      *
      *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
+     *  @param pdu pointer to base of pdu to write to, must be MTU size
      *  @param offset offset from base of pdu in octets to start writing to
+     *  @param len size_t gets filled in with length of pdu generated
+     *  @returns bool true on success
      */
     
     bool avdecc_acmp_write (
         const avdecc_acmp_t *self,
         void *pdu,
-        size_t offset
+        size_t *len
     );
     
     

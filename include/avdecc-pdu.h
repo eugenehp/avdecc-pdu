@@ -2,7 +2,7 @@
 #define AVDECC_PDU_H_
 
 /*
-Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
+Copyright (c) 2012, Jeff Koftinoff <jeff.koftinoff@ieee.org>
 All rights reserved.
 
 Permission to use, copy, modify, and/or distribute this software for any

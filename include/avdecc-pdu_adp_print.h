@@ -26,23 +26,78 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 extern "C" {
 #endif
 
-    /**
+/**
     \addtogroup adp
     */
-    /* @{ */
-    
-    
-    
-    bool avdecc_adp_print (
+/* @{ */
+
+
+bool avdecc_adp_message_type_print (
         char *buf,
-        size_t *pos,
+        size_t *offset,
         size_t len,
-        const avdecc_adp_t *self
-    );
-    
-    
-    /* @} */
-    
+        avdecc_adp_message_type_t v
+        );
+
+bool avdecc_adp_valid_time_print (
+        char *buf,
+        size_t *offset,
+        size_t len,
+        avdecc_adp_valid_time_t v
+        );
+
+bool avdecc_print_adp_control_data_length (
+        char *buf,
+        size_t *offset,
+        size_t len,
+        avdecc_adp_control_data_length_t control_data_length
+        );
+
+
+bool avdecc_adp_talker_capabilities_print (
+        char *buf,
+        size_t *offset,
+        size_t len,
+        const avdecc_adp_talker_capabilities_t *talker_capabilities
+        );
+
+bool avdecc_adp_listener_capabilities_print (
+        char *buf,
+        size_t *offset,
+        size_t len,
+        const avdecc_adp_listener_capabilities_t *listener_capabilities
+        );
+
+bool avdecc_adp_controller_capabilities_print (
+        char *buf,
+        size_t *offset,
+        size_t len,
+        const avdecc_adp_controller_capabilities_t *controller_capabilities
+        );
+
+bool avdecc_adp_entity_capabilities_print (
+        char *buf,
+        size_t *offset,
+        size_t len,
+        const avdecc_adp_entity_capabilities_t *entity_capabilities
+        );
+
+bool avdecc_adp_entity_type_print (
+        char *buf,
+        size_t *offset,
+        size_t len,
+        const avdecc_adp_entity_type_t *entity_type
+        );
+
+bool avdecc_adp_print (
+        char *buf,
+        size_t *offset,
+        size_t len,
+        const avdecc_adp_t *adp
+        );
+
+/* @} */
+
 #ifdef __cplusplus
 }
 #endif
