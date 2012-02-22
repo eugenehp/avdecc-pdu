@@ -158,11 +158,34 @@ bool avdecc_aecp_write (
 
 #define AVDECC_AECP_AEM_MAX_PAYLOAD_SPECIFIC_DATA (AVDECC_AECP_MAX_PAYLOAD_SPECIFIC_DATA-2)
 
+/** \addtogroup AECP Status type */
+/* @{ */
+
+/** See IEEE 1722.1 Clause 7.4 */
+enum avdecc_aecp_aem_status_e
+{
+    avdecc_aem_status_success = 0,
+    avdecc_aem_status_not_implemented = 1,
+    avdecc_aem_status_no_such_descriptor = 2,
+    avdecc_aem_status_entity_locked = 3,
+    avdecc_aem_status_entity_acquired = 4,
+    avdecc_aem_status_not_authorized = 5,
+    avdecc_aem_status_insufficient_privileges = 6,
+    avdecc_aem_status_bad_arguments = 7,
+    avdecc_aem_status_no_resources = 8,
+    avdecc_aem_status_in_progress = 9
+};
+
+typedef enum avdecc_aecp_aem_status_e avdecc_aecp_aem_status_t;
+
+
+/* @} */
 
 /** See IEEE 1722.1 Clause 9.2.1.2 */
 
 AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_aecp_aem, u, bool, 20, 16, 16 )
 AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_aecp_aem, command_type, uint16_t, 20, 17, 31 )
+AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_aecp_aem, status, avdecc_aecp_aem_status_t, 0, 16, 20 )
 
 /** avdecc_aecp_aem_t
     */
@@ -170,7 +193,7 @@ AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_aecp_aem, command_type, uint16_t, 20, 
 typedef struct avdecc_aecp_aem_s
 {
     avdecc_aecp_message_type_t message_type;
-    avdecc_aecp_status_t status;
+    avdecc_aecp_aem_status_t status;
     avdecc_aecp_control_data_length_t control_data_length;
     avdecc_eui64_t target_guid;
     avdecc_eui64_t controller_guid;

@@ -24,7 +24,7 @@ void avdecc_command_init ( avdecc_aem_command_t *self )
 {
     memset ( ( void * ) self, 0, sizeof ( avdecc_aem_command_t ) );
     self->message_type = avdecc_aecp_message_type_aem_command;
-    self->status = avdecc_aecp_status_success;
+    self->status = avdecc_aem_status_success;
 }
 
 bool avdecc_command_read (
@@ -44,7 +44,7 @@ bool avdecc_command_read (
          )
     {
         self->message_type = avdecc_aecp_get_message_type ( base );
-        self->status = avdecc_aecp_get_status ( base );
+        self->status = avdecc_aecp_aem_get_status ( base );
         self->control_data_length = avdecc_aecp_get_control_data_length ( base );
         self->target_guid = avdecc_aecp_get_target_guid ( base );
         self->controller_guid = avdecc_aecp_get_controller_guid ( base );
@@ -70,7 +70,7 @@ bool avdecc_command_write (
     avdecc_aecp_set_sv ( base, avdecc_avtp_sv_not_valid );
     avdecc_aecp_set_version ( base, 0 );
     avdecc_aecp_set_message_type ( base, self->message_type );
-    avdecc_aecp_set_status ( base, self->status );
+    avdecc_aecp_aem_set_status ( base, self->status );
     avdecc_aecp_set_control_data_length ( base, self->control_data_length );
     avdecc_aecp_set_target_guid ( base, self->target_guid );
     avdecc_aecp_set_controller_guid ( base, self->controller_guid );
@@ -85,7 +85,7 @@ void avdecc_response_init ( avdecc_aem_response_t *self )
 {
     memset ( ( void * ) self, 0, sizeof ( avdecc_aem_response_t ) );
     self->message_type = avdecc_aecp_message_type_aem_response;
-    self->status = avdecc_aecp_status_not_implemented;
+    self->status = avdecc_aem_status_not_implemented;
 }
 
 bool avdecc_response_read (
@@ -104,7 +104,7 @@ bool avdecc_response_read (
          )
     {
         self->message_type = avdecc_aecp_get_message_type ( base );
-        self->status = avdecc_aecp_get_status ( base );
+        self->status = avdecc_aecp_aem_get_status ( base );
         self->control_data_length = avdecc_aecp_get_control_data_length ( base );
         self->target_guid = avdecc_aecp_get_target_guid ( base );
         self->controller_guid = avdecc_aecp_get_controller_guid ( base );
@@ -129,7 +129,7 @@ bool avdecc_response_write (
     avdecc_aecp_set_sv ( base, avdecc_avtp_sv_not_valid );
     avdecc_aecp_set_version ( base, 0 );
     avdecc_aecp_set_message_type ( base, self->message_type );
-    avdecc_aecp_set_status ( base, self->status );
+    avdecc_aecp_aem_set_status ( base, self->status );
     avdecc_aecp_set_control_data_length ( base, self->control_data_length );
     avdecc_aecp_set_target_guid ( base, self->target_guid );
     avdecc_aecp_set_controller_guid ( base, self->controller_guid );
@@ -143,7 +143,7 @@ bool avdecc_response_write (
 void avdecc_command_lock_entity_init ( avdecc_aem_command_lock_entity_t *self )
 {
     avdecc_command_init ( &self->base );
-    self->base.message_type = avdecc_aem_command_lock_entity;
+    self->base.command_type = avdecc_aem_command_lock_entity;
     self->flags = 0;
     self->locked_guid = 0;
 }
@@ -195,7 +195,7 @@ bool avdecc_command_lock_entity_write (
 void avdecc_response_lock_entity_init ( avdecc_aem_response_lock_entity_t *self )
 {
     avdecc_response_init ( &self->base );
-    self->base.message_type = avdecc_aem_command_lock_entity;
+    self->base.command_type = avdecc_aem_command_lock_entity;
     self->flags = 0;
     self->locked_guid = 0;
 }
@@ -245,7 +245,7 @@ bool avdecc_response_lock_entity_write (
 void avdecc_command_read_descriptor_init ( avdecc_aem_command_read_descriptor_t *self )
 {
     avdecc_command_init ( &self->base );
-    self->base.message_type = avdecc_aem_command_read_descriptor;
+    self->base.command_type = avdecc_aem_command_read_descriptor;
     self->configuration = 0;
     self->descriptor_index = 0;
     self->descriptor_type = avdecc_aem_descriptor_entity;

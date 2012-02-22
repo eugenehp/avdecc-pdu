@@ -59,6 +59,13 @@ bool avdecc_aecp_print (
      */
 /* @{ */
 
+bool avdecc_aecp_aem_status_print(
+    char *buf,
+    size_t *pos,
+    size_t len,
+    avdecc_aecp_aem_status_t status
+    );
+
 bool avdecc_aecp_aem_print (
     char *buf,
     size_t *pos,

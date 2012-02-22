@@ -92,23 +92,6 @@ enum avdecc_aem_command_type_e
 typedef enum avdecc_aem_command_type_e avdecc_aem_command_type_t;
 
 
-/** See IEEE 1722.1 Clause 7.4 */
-enum avdecc_aem_command_status_e
-{
-    avdecc_aem_status_success = 0,
-    avdecc_aem_status_not_implemented = 1,
-    avdecc_aem_status_no_such_descriptor = 2,
-    avdecc_aem_status_entity_locked = 3,
-    avdecc_aem_status_entity_acquired = 4,
-    avdecc_aem_status_not_authorized = 5,
-    avdecc_aem_status_insufficient_privileges = 6,
-    avdecc_aem_status_bad_arguments = 7,
-    avdecc_aem_status_no_resources = 8,
-    avdecc_aem_status_in_progress = 9
-};
-
-typedef enum avdecc_aem_command_status_e avdecc_aem_command_status_t;
-
 
 /** avdecc_aem_command_t
      */
@@ -116,7 +99,7 @@ typedef enum avdecc_aem_command_status_e avdecc_aem_command_status_t;
 typedef struct avdecc_aem_command_s
 {
     avdecc_aecp_message_type_t message_type;
-    avdecc_aem_command_status_t status;
+    avdecc_aecp_aem_status_t status;
     avdecc_aecp_control_data_length_t control_data_length;
     avdecc_eui64_t target_guid;
     avdecc_eui64_t controller_guid;

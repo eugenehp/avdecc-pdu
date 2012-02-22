@@ -118,6 +118,39 @@ bool avdecc_aecp_print (
     return r;
 }
 
+bool avdecc_aecp_aem_status_print(
+    char *buf,
+    size_t *pos,
+    size_t len,
+    avdecc_aecp_aem_status_t status
+    )
+{
+    bool r=false;
+    static const char *text[] =
+    {
+        "success",
+        "not_implemented",
+        "no_such_descriptor",
+        "entity_locked",
+        "entity_acquired",
+        "not_authorized",
+        "insufficient_privileges",
+        "bad_arguments",
+        "no_resources",
+        "in_progress"
+    };
+
+    if ( status<= avdecc_aem_status_in_progress )
+    {
+        r = avdecc_print ( buf,pos,len,"%s", text[ ( int ) status ] );
+    }
+    else
+    {
+        r = avdecc_print ( buf,pos,len,"reserved (%d)", ( int ) status );
+    }
+
+    return r;
+}
 
 bool avdecc_aecp_aem_print (
     char *buf,
@@ -132,7 +165,7 @@ bool avdecc_aecp_aem_print (
     r&=avdecc_aecp_message_type_print(buf,pos,len, self->message_type );
 
     r&=avdecc_print ( buf,pos,len,"\n%-28s", "Status:" );
-    r&=avdecc_aecp_status_print ( buf,pos,len,self->status );
+    r&=avdecc_aecp_aem_status_print ( buf,pos,len,self->status );
 
     r&=avdecc_print ( buf,pos,len,"\n%-28s%d", "Control Data Length:", &self->control_data_length );
 
