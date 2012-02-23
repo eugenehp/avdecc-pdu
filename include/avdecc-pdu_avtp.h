@@ -22,6 +22,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_world.h"
 #include "avdecc-pdu_bits.h"
 #include "avdecc-pdu_stream.h"
+#include "avdecc-pdu_stream_print.h"
 
 #ifdef __cplusplus
 extern "C" {

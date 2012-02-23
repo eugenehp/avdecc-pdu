@@ -21,27 +21,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
 
-/*
- Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
- All rights reserved.
-
- Permission to use, copy, modify, and/or distribute this software for any
- purpose with or without fee is hereby granted, provided that the above
- copyright notice and this permission notice appear in all copies.
-
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
- WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
- ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
- WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
- ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
- OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- */
-
-#include "avdecc-pdu_world.h"
-#include "avdecc-pdu_avtp_print.h"
-
-
 bool avdecc_avtp_presentation_time_print (
     char *buf,
     size_t *offset,
@@ -53,7 +32,7 @@ bool avdecc_avtp_presentation_time_print (
 }
 
 
-bool avdecc_presentation_time_offset_print (
+bool avdecc_avtp_presentation_time_offset_print (
     char *buf,
     size_t *offset,
     size_t len,
@@ -65,7 +44,7 @@ bool avdecc_presentation_time_offset_print (
 
 
 
-bool avdecc_print_subtype_print (
+bool avdecc_avtp_subtype_print (
     char *buf,
     size_t *offset,
     size_t len,
@@ -129,6 +108,30 @@ bool avdecc_print_subtype_print (
 }
 
 
+bool avdecc_avtp_cd_print (
+                           char *buf,
+                           size_t *offset,
+                           size_t len,
+                           avdecc_avtp_cd_t v
+                           )
+{
+    const char *s=0;
+    
+    switch ( v )
+    {
+        case avdecc_avtp_cd_control:
+            s="Control";
+            break;
+            
+        default:
+        case avdecc_avtp_cd_data:
+            s="Data";
+            break;
+    }
+    
+    return avdecc_print ( buf,offset,len, "%s", s );
+}
+
 
 bool avdecc_avtp_sv_print (
     char *buf,
@@ -165,7 +168,25 @@ bool avdecc_avtp_common_print (
     const avdecc_avtp_common_t *self
     )
 {
-
+    bool r=true;
+    r&=avdecc_print ( buf,pos,len,"AVTP Common:\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "cd:" );
+    r&=avdecc_avtp_cd_print ( buf,pos,len, self->cd );
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "subtype:" );
+    r&=avdecc_avtp_subtype_print(buf, pos, len, self->subtype);
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "sv:" );
+    r&=avdecc_avtp_sv_print(buf, pos, len, self->sv );
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s %d", "version:", self->version );
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s 0x%x", "type_specific_data:", self->type_specific_data );
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "stream_id: " );
+    r&=avdecc_stream_id_print( buf,pos,len,&self->stream_id );
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    return r;
 }
 
 bool avdecc_avtp_stream_print (
@@ -175,7 +196,49 @@ bool avdecc_avtp_stream_print (
     const avdecc_avtp_stream_t *self
     )
 {
+    bool r=true;
+    r&=avdecc_print ( buf,pos,len,"AVTP Stream:\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "cd:" );
+    r&=avdecc_avtp_cd_print ( buf,pos,len, self->cd );
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "subtype:" );
+    r&=avdecc_avtp_subtype_print(buf, pos, len, self->subtype);
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "sv:" );
+    r&=avdecc_avtp_sv_print(buf, pos, len, self->sv );
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s %d", "version:", self->version );
 
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "mr: %d", self->mr );    
+
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "gv: %d", self->gv );    
+
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "tv: %d", self->tv );    
+
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "sequence_num: %d", self->sequence_num );    
+
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "tu: %d", self->tu );    
+
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "stream_id: " );
+    r&=avdecc_stream_id_print( buf,pos,len,&self->stream_id );
+
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "avtp_timestamp: " );
+    r&=avdecc_avtp_presentation_time_print( buf,pos,len,self->avtp_timestamp );
+
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s 0x%x", "gateway_info:", self->gateway_info );
+    
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s 0x%x", "protocol_specific_header:", self->protocol_specific_header );
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    return r;
 }
 
 bool avdecc_avtp_control_print (
@@ -185,6 +248,29 @@ bool avdecc_avtp_control_print (
     const avdecc_avtp_control_t *self
     )
 {
+    bool r=true;
+    r&=avdecc_print ( buf,pos,len,"AVTP Common:\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "cd:" );
+    r&=avdecc_avtp_cd_print ( buf,pos,len, self->cd );
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "subtype:" );
+    r&=avdecc_avtp_subtype_print(buf, pos, len, self->subtype);
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "sv:" );
+    r&=avdecc_avtp_sv_print(buf, pos, len, self->sv );
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s %d", "version:", self->version );
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s 0x%x", "control_data:", self->control_data );
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s 0x%x", "control_status:", self->control_status );
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s %d", "control_data_length:", self->control_data_length );
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    r&=avdecc_print ( buf,pos,len,"%-28s", "stream_id: " );
+    r&=avdecc_stream_id_print( buf,pos,len,&self->stream_id );
+    r&=avdecc_print ( buf,pos,len,"\n" );
+    return r;
 
 }
 
