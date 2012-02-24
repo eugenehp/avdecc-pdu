@@ -35,9 +35,17 @@ bool avdecc_mac_read (
     )
 {
     bool r=true;
-    
-    r&=false; /* TODO */
-    
+    const uint8_t *d=(const uint8_t *)pdu;
+    d+=offset;
+
+    avdecc_mac_t m=0;
+    m = ((uint64_t)d[0]) << 40;
+    m |= ((uint64_t)d[1]) << 32;
+    m |= ((uint64_t)d[2]) << 24;
+    m |= ((uint64_t)d[3]) << 16;
+    m |= ((uint64_t)d[4]) << 8;
+    m |= ((uint64_t)d[5]) << 0;
+    *self = m;
     return r;
 }
 
@@ -49,9 +57,18 @@ bool avdecc_mac_write (
     )
 {
     bool r=true;
-    
-    r&=false; /* TODO */
-    
+    avdecc_mac_t m=*self;
+
+    uint8_t *d=(uint8_t *)pdu;
+    d+=offset;
+
+    d[0] = AVDECC_BITS_GET_OCTET_5 ( m );
+    d[1] = AVDECC_BITS_GET_OCTET_5 ( m );
+    d[2] = AVDECC_BITS_GET_OCTET_5 ( m );
+    d[3] = AVDECC_BITS_GET_OCTET_5 ( m );
+    d[4] = AVDECC_BITS_GET_OCTET_5 ( m );
+    d[5] = AVDECC_BITS_GET_OCTET_5 ( m );
+
     return r;
 }
 
