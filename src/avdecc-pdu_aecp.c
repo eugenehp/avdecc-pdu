@@ -24,7 +24,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 void avdecc_aecp_init ( avdecc_aecp_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aecp_t ) );
+    memset ( ( void * ) self, 0, sizeof ( avdecc_aecp_t ) );
 }
 
 
@@ -58,7 +58,7 @@ bool avdecc_aecp_write (
 
 void avdecc_aecp_aem_init ( avdecc_aecp_aem_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aecp_aem_t ) );
+    memset ( ( void * ) self, 0, sizeof ( avdecc_aecp_aem_t ) );
 }
 
 
@@ -92,7 +92,7 @@ bool avdecc_aecp_aem_write (
 
 void avdecc_aecp_aa_init ( avdecc_aecp_aa_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aecp_aa_t ) );
+    memset ( ( void * ) self, 0, sizeof ( avdecc_aecp_aa_t ) );
 }
 
 
@@ -126,7 +126,7 @@ bool avdecc_aecp_aa_write (
 
 void avdecc_aecp_avc_init ( avdecc_aecp_avc_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aecp_avc_t ) );
+    memset ( ( void * ) self, 0, sizeof ( avdecc_aecp_avc_t ) );
 }
 
 
@@ -160,7 +160,7 @@ bool avdecc_aecp_avc_write (
 
 void avdecc_aecp_vu_init ( avdecc_aecp_vu_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_aecp_vu_t ) );
+    memset ( ( void * ) self, 0, sizeof ( avdecc_aecp_vu_t ) );
 }
 
 

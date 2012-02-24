@@ -24,7 +24,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 void avdecc_mac_init ( avdecc_mac_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_mac_t ) );
+    memset( ( void * ) self, 0, sizeof( avdecc_mac_t ) );
 }
 
 

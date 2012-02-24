@@ -24,7 +24,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 void avdecc_eui64_init ( avdecc_eui64_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_eui64_t ) );
+    memset ( ( void * ) self, 0, sizeof ( avdecc_eui64_t ) );
 }
 
 
