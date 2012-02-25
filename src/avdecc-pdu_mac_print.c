@@ -30,12 +30,12 @@ bool avdecc_mac_to_text ( const avdecc_mac_t *mac, char *buf, int buf_len )
     if ( buf_len>17 )
     {
         uint8_t bytes[6];
-        bytes[0] = AVDECC_BITS_GET_OCTET_7 ( v );
-        bytes[1] = AVDECC_BITS_GET_OCTET_6 ( v );
-        bytes[2] = AVDECC_BITS_GET_OCTET_5 ( v );
-        bytes[3] = AVDECC_BITS_GET_OCTET_4 ( v );
-        bytes[4] = AVDECC_BITS_GET_OCTET_3 ( v );
-        bytes[5] = AVDECC_BITS_GET_OCTET_2 ( v );
+        bytes[0] = AVDECC_BITS_GET_OCTET_5 ( v );
+        bytes[1] = AVDECC_BITS_GET_OCTET_4 ( v );
+        bytes[2] = AVDECC_BITS_GET_OCTET_3 ( v );
+        bytes[3] = AVDECC_BITS_GET_OCTET_2 ( v );
+        bytes[4] = AVDECC_BITS_GET_OCTET_1 ( v );
+        bytes[5] = AVDECC_BITS_GET_OCTET_0 ( v );
         
         snprintf (
                     buf, buf_len,
@@ -74,8 +74,8 @@ bool avdecc_mac_from_text ( avdecc_mac_t *mac, const char *buf )
     if ( cnt==6 )
     {
         *mac = AVDECC_BITS_MAKE_OCTLET (
-                    bytes[0], bytes[1], bytes[2], bytes[3],
-                    bytes[4], bytes[5], 0, 0
+                   0, 0, bytes[0], bytes[1], bytes[2], bytes[3],
+                    bytes[4], bytes[5]
                     );
         r=true;
     }

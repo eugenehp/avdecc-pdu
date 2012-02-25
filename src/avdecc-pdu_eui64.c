@@ -35,9 +35,11 @@ bool avdecc_eui64_read (
     )
 {
     bool r=true;
-    
-    r&=false; /* TODO */
-    
+    const uint8_t *d=(const uint8_t *)pdu;
+    d+=offset;
+
+    avdecc_eui64_t m=AVDECC_BITS_MAKE_OCTLET( d[0],d[1], d[2], d[3], d[4], d[5], d[6], d[7] );
+    *self = m;
     return r;
 }
 
@@ -49,9 +51,20 @@ bool avdecc_eui64_write (
     )
 {
     bool r=true;
-    
-    r&=false; /* TODO */
-    
+    avdecc_eui64_t m=*self;
+
+    uint8_t *d=(uint8_t *)pdu;
+    d+=offset;
+
+    d[0] = AVDECC_BITS_GET_OCTET_7 ( m );
+    d[1] = AVDECC_BITS_GET_OCTET_6 ( m );
+    d[2] = AVDECC_BITS_GET_OCTET_5 ( m );
+    d[3] = AVDECC_BITS_GET_OCTET_4 ( m );
+    d[4] = AVDECC_BITS_GET_OCTET_3 ( m );
+    d[5] = AVDECC_BITS_GET_OCTET_2 ( m );
+    d[6] = AVDECC_BITS_GET_OCTET_1 ( m );
+    d[7] = AVDECC_BITS_GET_OCTET_0 ( m );
+
     return r;
 }
 
