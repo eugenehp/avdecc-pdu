@@ -1,10 +1,10 @@
 PROJECT=avdecc-pdu
 PROJECT_NAME=avdecc-pdu
-PROJECT_VERSION=20121204
+PROJECT_VERSION=20120227
 PROJECT_EMAIL=jeff.koftinoff@ieee.org
 PROJECT_LICENSE=ISC
 PROJECT_MAINTAINER=Jeff Koftinoff <jeff.koftinoff@ieee.org>
-PROJECT_COPYRIGHT=Copyright 2011
+PROJECT_COPYRIGHT=Copyright 2012
 PROJECT_DESCRIPTION=avdecc-pdu
 PROJECT_WEBSITE=http://avdecc-pdu.statusbar.com/
 PROJECT_IDENTIFIER=com.statusbar.avdecc-pdu
