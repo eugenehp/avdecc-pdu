@@ -482,7 +482,10 @@ bool avdecc_command_write_descriptor_write (
 /** avdecc_aem_response_write_descriptor_t
     */
 
-typedef struct avdecc_aem_command_write_descriptor_s avdecc_aem_response_write_descriptor_t;
+typedef struct avdecc_aem_response_write_descriptor_s 
+{
+	avdecc_aem_command_write_descriptor_t base;
+} avdecc_aem_response_write_descriptor_t;
 
 
 /** avdecc_response_write_descriptor_init
@@ -495,7 +498,7 @@ typedef struct avdecc_aem_command_write_descriptor_s avdecc_aem_response_write_d
 
 static inline void avdecc_response_write_descriptor_init ( avdecc_aem_response_write_descriptor_t *self )
 {
-    avdecc_command_write_descriptor_init ( self );
+    avdecc_command_write_descriptor_init ( &self->base );
 }
 
 
@@ -514,7 +517,7 @@ static inline bool avdecc_response_write_descriptor_read (
     size_t offset
     )
 {
-    return avdecc_command_write_descriptor_read ( self, pdu, offset );
+    return avdecc_command_write_descriptor_read ( &self->base, pdu, offset );
 }
 
 
@@ -533,7 +536,7 @@ static inline bool avdecc_response_write_descriptor_write (
     size_t offset
     )
 {
-    return avdecc_command_write_descriptor_write ( self, pdu, offset );
+    return avdecc_command_write_descriptor_write ( &self->base, pdu, offset );
 }
 
 /* @} */
