@@ -71,8 +71,8 @@ extern "C"
 #define AVDECC_BITS_SEXLET_MASK_BIT(bit) ((~AVDECC_BITS_SEXLET_BIT(bit))&0xffffffffffffULL)
 #define AVDECC_BITS_OCTLET_MASK_BIT(bit) ((~AVDECC_BITS_OCTLET_BIT(bit))&0xffffffffffffffffULL)
 
-#define AVDECC_BITS_IS_BITVALUE_SET( value, bit_value ) (((value)&(bit_value))!=0)
-#define AVDECC_BITS_IS_BITVALUE_CLEAR( value, bit_value ) (((value)&(bit_value))==0)
+#define AVDECC_BITS_IS_BITVALUE_SET( value, bit_value ) ((((value)&(bit_value))!=0)?true:false)
+#define AVDECC_BITS_IS_BITVALUE_CLEAR( value, bit_value ) ((((value)&(bit_value))==0)?true:false)
 
 #define AVDECC_BITS_MAP_FROM_OCTET_BIT( value, bit, on, off ) ( AVDECC_BITS_IS_BITVALUE_SET(value,AVDECC_BITS_OCTET_BIT(bit)) ? (on) : (off))
 #define AVDECC_BITS_MAP_FROM_DOUBLET_BIT( value, bit, on, off ) ( AVDECC_BITS_IS_BITVALUE_SET(value,AVDECC_BITS_DOUBLET_BIT(bit)) ? (on) : (off))

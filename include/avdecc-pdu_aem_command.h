@@ -2060,7 +2060,7 @@ bool avdecc_response_get_mixer_write (
 
 typedef struct avdecc_aem_command_set_matrix_s
 {
-    /* TODO */
+    uint32_t todo;
 } avdecc_aem_command_set_matrix_t;
 
 
@@ -2113,7 +2113,7 @@ bool avdecc_command_set_matrix_write (
 
 typedef struct avdecc_aem_response_set_matrix_s
 {
-    /* TODO */
+    uint32_t todo;
 } avdecc_aem_response_set_matrix_t;
 
 
@@ -2171,7 +2171,7 @@ bool avdecc_response_set_matrix_write (
 
 typedef struct avdecc_aem_command_get_matrix_s
 {
-    /* TODO */
+    uint32_t todo;
 } avdecc_aem_command_get_matrix_t;
 
 
@@ -2224,7 +2224,7 @@ bool avdecc_command_get_matrix_write (
 
 typedef struct avdecc_aem_response_get_matrix_s
 {
-    /* TODO */
+    uint32_t todo;
 } avdecc_aem_response_get_matrix_t;
 
 

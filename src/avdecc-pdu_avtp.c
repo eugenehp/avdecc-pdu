@@ -24,7 +24,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 void avdecc_avtp_common_init ( avdecc_avtp_common_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_avtp_common_t ) );
+    memset ( ( void * ) self, 0, sizeof ( avdecc_avtp_common_t ) );
 }
 
 
@@ -58,7 +58,7 @@ bool avdecc_avtp_common_write (
 
 void avdecc_avtp_stream_init ( avdecc_avtp_stream_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_avtp_stream_t ) );
+    memset ( ( void * ) self, 0, sizeof ( avdecc_avtp_stream_t ) );
 }
 
 
@@ -92,7 +92,7 @@ bool avdecc_avtp_stream_write (
 
 void avdecc_avtp_control_init ( avdecc_avtp_control_t *self )
 {
-    bzero ( ( void * ) self, sizeof ( avdecc_avtp_control_t ) );
+    memset ( ( void * ) self, 0, sizeof ( avdecc_avtp_control_t ) );
 }
 
 

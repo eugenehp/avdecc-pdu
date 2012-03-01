@@ -34,11 +34,12 @@ bool avdecc_mac_read (
     size_t offset
     )
 {
+    avdecc_mac_t m;
     bool r=true;
     const uint8_t *d=(const uint8_t *)pdu;
     d+=offset;
 
-    avdecc_mac_t m=AVDECC_BITS_MAKE_SEXLET( d[0],d[1], d[2], d[3], d[4], d[5] );
+    m=AVDECC_BITS_MAKE_SEXLET( d[0],d[1], d[2], d[3], d[4], d[5] );
     *self = m;
     return r;
 }

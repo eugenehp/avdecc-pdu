@@ -183,7 +183,7 @@ typedef enum avdecc_aecp_aem_status_e avdecc_aecp_aem_status_t;
 
 /** See IEEE 1722.1 Clause 9.2.1.2 */
 
-AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_aecp_aem, u, bool, 20, 16, 16 )
+AVDECC_BITS_MAP_QUADLET_BIT ( avdecc_aecp_aem, u, bool, 20, 16 )
 AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_aecp_aem, command_type, uint16_t, 20, 17, 31 )
 AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_aecp_aem, status, avdecc_aecp_aem_status_t, 0, 16, 20 )
 

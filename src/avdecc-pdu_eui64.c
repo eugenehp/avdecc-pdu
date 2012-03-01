@@ -35,10 +35,11 @@ bool avdecc_eui64_read (
     )
 {
     bool r=true;
+    avdecc_eui64_t m;
     const uint8_t *d=(const uint8_t *)pdu;
     d+=offset;
 
-    avdecc_eui64_t m=AVDECC_BITS_MAKE_OCTLET( d[0],d[1], d[2], d[3], d[4], d[5], d[6], d[7] );
+    m=AVDECC_BITS_MAKE_OCTLET( d[0],d[1], d[2], d[3], d[4], d[5], d[6], d[7] );
     *self = m;
     return r;
 }

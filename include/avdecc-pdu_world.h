@@ -62,6 +62,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #if defined( _MSC_VER )
 # pragma warning( disable : 4267 )
+# define snprintf _snprintf
 #endif
 
 
