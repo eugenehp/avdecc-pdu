@@ -70,7 +70,7 @@ static inline bool avdecc_entity_guid_print (
     const avdecc_entity_guid_t *self
     )
 {
-    return avdecc_eui64_guid_print( buf, pos, len, &self->value );
+    return avdecc_eui64_print( buf, pos, len, &self->value );
 }
 
 
@@ -101,7 +101,7 @@ static inline bool avdecc_vendor_model_guid_print (
     const avdecc_vendor_model_guid_t *self
     )
 {
-    return avdecc_eui64_guid_print( buf, pos, len, &self->value );
+    return avdecc_eui64_print( buf, pos, len, &self->value );
 }
 
 
