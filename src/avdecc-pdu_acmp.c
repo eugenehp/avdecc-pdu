@@ -26,6 +26,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 void avdecc_acmp_init ( avdecc_acmp_t *self )
 {
     memset( (void *)self, 0, sizeof( avdecc_acmp_t ));
+    self->control_data_length = AVDECC_ACMP_CONTROL_DATA_LENGTH;
 }
 
 
