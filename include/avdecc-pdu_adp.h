@@ -408,27 +408,27 @@ typedef avdecc_avtp_control_data_length_t avdecc_adp_control_data_length_t;
 
 /* See IEEE 1722.1 Clause 6.2.1 */
 
-AVDECC_BITS_MAP_OCTET_BIT ( avdecc_adp, cd, avdecc_avtp_cd_t, 0, 0 );
-AVDECC_BITS_MAP_OCTET_BITFIELD ( avdecc_adp, subtype, avdecc_avtp_subtype_t, 0, 1, 7 );
-AVDECC_BITS_MAP_OCTET_BIT ( avdecc_adp, sv, avdecc_avtp_sv_t, 1, 0 );
-AVDECC_BITS_MAP_OCTET_BITFIELD ( avdecc_adp, version, avdecc_avtp_version_t, 1, 1, 3 );
-AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_adp, message_type, avdecc_adp_message_type_t, 0, 12, 15 );
-AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_adp, valid_time, avdecc_adp_valid_time_t, 0, 16, 20 );
-AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_adp, control_data_length, avdecc_adp_control_data_length_t, 0, 21, 31 );
-AVDECC_BITS_MAP_OCTLET ( avdecc_adp, entity_guid, avdecc_eui64_t, 4 );
-AVDECC_BITS_MAP_OCTLET ( avdecc_adp, vendor_model_id, avdecc_eui64_t, 12 );
-AVDECC_BITS_MAP_QUADLET ( avdecc_adp, entity_capabilities, uint32_t, 20 );
-AVDECC_BITS_MAP_DOUBLET ( avdecc_adp, talker_streasources, uint16_t, 24 );
-AVDECC_BITS_MAP_DOUBLET ( avdecc_adp, talker_capabilities, uint16_t, 26 );
-AVDECC_BITS_MAP_DOUBLET ( avdecc_adp, listener_streasources, uint16_t, 28 );
-AVDECC_BITS_MAP_DOUBLET ( avdecc_adp, listener_capabilities, uint16_t, 30 );
-AVDECC_BITS_MAP_QUADLET ( avdecc_adp, controller_capabilities, uint32_t, 32 );
-AVDECC_BITS_MAP_QUADLET ( avdecc_adp, available_index, uint32_t, 36 );
-AVDECC_BITS_MAP_OCTLET ( avdecc_adp, as_grandmaster_id, avdecc_eui64_t, 40 );
-AVDECC_BITS_MAP_QUADLET ( avdecc_adp, reserved1, uint32_t, 48 );
-AVDECC_BITS_MAP_QUADLET ( avdecc_adp, reserved2, uint32_t, 52 );
-AVDECC_BITS_MAP_OCTLET ( avdecc_adp, association_id, avdecc_eui64_t, 56 );
-AVDECC_BITS_MAP_QUADLET ( avdecc_adp, entity_type, uint32_t, 64 );
+AVDECC_BITS_MAP_OCTET_BIT ( avdecc_adp, cd, avdecc_avtp_cd_t, 0, 0 )
+AVDECC_BITS_MAP_OCTET_BITFIELD ( avdecc_adp, subtype, avdecc_avtp_subtype_t, 0, 1, 7 )
+AVDECC_BITS_MAP_OCTET_BIT ( avdecc_adp, sv, avdecc_avtp_sv_t, 1, 0 )
+AVDECC_BITS_MAP_OCTET_BITFIELD ( avdecc_adp, version, avdecc_avtp_version_t, 1, 1, 3 )
+AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_adp, message_type, avdecc_adp_message_type_t, 0, 12, 15 )
+AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_adp, valid_time, avdecc_adp_valid_time_t, 0, 16, 20 )
+AVDECC_BITS_MAP_QUADLET_BITFIELD ( avdecc_adp, control_data_length, avdecc_adp_control_data_length_t, 0, 21, 31 )
+AVDECC_BITS_MAP_OCTLET ( avdecc_adp, entity_guid, avdecc_eui64_t, 4 )
+AVDECC_BITS_MAP_OCTLET ( avdecc_adp, vendor_model_id, avdecc_eui64_t, 12 )
+AVDECC_BITS_MAP_QUADLET ( avdecc_adp, entity_capabilities, uint32_t, 20 )
+AVDECC_BITS_MAP_DOUBLET ( avdecc_adp, talker_streasources, uint16_t, 24 )
+AVDECC_BITS_MAP_DOUBLET ( avdecc_adp, talker_capabilities, uint16_t, 26 )
+AVDECC_BITS_MAP_DOUBLET ( avdecc_adp, listener_streasources, uint16_t, 28 )
+AVDECC_BITS_MAP_DOUBLET ( avdecc_adp, listener_capabilities, uint16_t, 30 )
+AVDECC_BITS_MAP_QUADLET ( avdecc_adp, controller_capabilities, uint32_t, 32 )
+AVDECC_BITS_MAP_QUADLET ( avdecc_adp, available_index, uint32_t, 36 )
+AVDECC_BITS_MAP_OCTLET ( avdecc_adp, as_grandmaster_id, avdecc_eui64_t, 40 )
+AVDECC_BITS_MAP_QUADLET ( avdecc_adp, reserved1, uint32_t, 48 )
+AVDECC_BITS_MAP_QUADLET ( avdecc_adp, reserved2, uint32_t, 52 )
+AVDECC_BITS_MAP_OCTLET ( avdecc_adp, association_id, avdecc_eui64_t, 56 )
+AVDECC_BITS_MAP_QUADLET ( avdecc_adp, entity_type, uint32_t, 64 )
 
 /** avdecc_adp_t
     */
