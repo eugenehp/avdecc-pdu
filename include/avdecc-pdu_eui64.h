@@ -25,63 +25,136 @@ extern "C" {
 #endif
 
 /**
-    \addtogroup eui64
-    */
+\addtogroup eui64
+*/
 /* @{ */
 
 
-/** avdecc_eui64_t
-    */
+/** avdecc_eui64_t */
 
 typedef uint64_t avdecc_eui64_t;
 
 
 
 /** avdecc_eui64_init
-     *
-     *  Initialize a avdecc_eui64_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
+ *
+ *  Initialize a avdecc_eui64_t
+ *
+ *  @param self pointer to object to initialize
+ *  @returns void
+ */
 
 void avdecc_eui64_init ( avdecc_eui64_t *self );
 
 
 /** avdecc_eui64_read
-     *
-     *  Read a avdecc_eui64_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
+ *
+ *  Read a avdecc_eui64_t from a PDU
+ *
+ *  @param self pointer to object to fill
+ *  @param pdu pointer to base of pdu to read
+ *  @param offset offset from base of pdu in octets to start reading from
+ *  @returns bool true on success
+ */
 
 bool avdecc_eui64_read (
-    avdecc_eui64_t *self,
-    const void *pdu,
-    size_t offset
-    );
+        avdecc_eui64_t *self,
+        const void *pdu,
+        size_t offset
+        );
 
 
 /** avdecc_eui64_write
-     *
-     *  write a avdecc_eui64_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
+ *
+ *  write a avdecc_eui64_t into a pdu
+ *
+ *  @param self pointer to object to store into pdu
+ *  @param pdu pointer to base of pdu to write to
+ *  @param offset offset from base of pdu in octets to start writing to
+ *  @returns bool true on success
+ */
 
 bool avdecc_eui64_write (
-    const avdecc_eui64_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
+        const avdecc_eui64_t *self,
+        void *pdu,
+        size_t offset
+        );
 
 /* @} */
+
+/**
+ * \addtogroup entity_guid
+ */
+
+/* @{ */
+
+typedef struct avdecc_entity_guid_s
+{
+    avdecc_eui64_t value;
+} avdecc_entity_guid_t;
+
+static inline void avdecc_entity_guid_init ( avdecc_entity_guid_t *self )
+{
+    avdecc_eui64_init( &self->value );
+}
+
+static inline bool avdecc_entity_guid_read (
+        avdecc_entity_guid_t *self,
+        const void *pdu,
+        size_t offset
+        )
+{
+    return avdecc_eui64_read( &self->value, pdu, offset );
+}
+
+static inline bool avdecc_entity_guid_write (
+        const avdecc_entity_guid_t *self,
+        void *pdu,
+        size_t offset
+        )
+{
+    return avdecc_eui64_write( &self->value, pdu, offset );
+}
+
+/* @} */
+
+
+/**
+ * \addtogroup vendor_model_guid
+ */
+
+/* @{ */
+
+typedef struct avdecc_vendor_model_guid_s
+{
+    avdecc_eui64_t value;
+} avdecc_vendor_model_guid_t;
+
+static inline void avdecc_vendor_model_guid_init ( avdecc_vendor_model_guid_t *self )
+{
+    avdecc_eui64_init( &self->value );
+}
+
+static inline bool avdecc_vendor_model_guid_read (
+        avdecc_vendor_model_guid_t *self,
+        const void *pdu,
+        size_t offset
+        )
+{
+    return avdecc_eui64_read( &self->value, pdu, offset );
+}
+
+static inline bool avdecc_vendor_model_guid_write (
+        const avdecc_vendor_model_guid_t *self,
+        void *pdu,
+        size_t offset
+        )
+{
+    return avdecc_eui64_write( &self->value, pdu, offset );
+}
+
+/* @} */
+
 
 #ifdef __cplusplus
 }
