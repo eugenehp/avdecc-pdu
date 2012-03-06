@@ -140,7 +140,7 @@ enum avdecc_acmp_message_type_e
     avdecc_acmp_message_get_tx_connection_command = 12,
     avdecc_acmp_message_get_tx_connection_response = 13,
     avdecc_acmp_message_reserved
-} avdecc_acmp_message_type_e;
+};
 
 typedef enum avdecc_acmp_message_type_e avdecc_acmp_message_type_t;
 
