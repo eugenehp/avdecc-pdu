@@ -45,6 +45,69 @@ bool avdecc_eui64_print (
 
 /* @} */
 
+
+/**
+ * \addtogroup entity_guid
+ */
+
+/* @{ */
+
+static inline bool avdecc_entity_guid_to_text ( const avdecc_entity_guid_t *self, char *buf, int buf_len )
+{
+    return avdecc_eui64_to_text( &self->value, buf, buf_len );
+}
+
+static inline bool avdecc_entity_guid_from_text ( avdecc_entity_guid_t *self, const char *buf )
+{
+    return avdecc_eui64_from_text( &self->value, buf );
+}
+
+
+static inline bool avdecc_entity_guid_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    const avdecc_entity_guid_t *self
+    )
+{
+    return avdecc_eui64_print( buf, pos, len, &self->value );
+}
+
+
+/* @} */
+
+
+/**
+ * \addtogroup vendor_model_guid
+ */
+
+/* @{ */
+
+static inline bool avdecc_vendor_model_guid_to_text ( const avdecc_vendor_model_guid_t *self, char *buf, int buf_len )
+{
+    return avdecc_eui64_to_text( &self->value, buf, buf_len );
+}
+
+static inline bool avdecc_vendor_model_guid_from_text ( avdecc_vendor_model_guid_t *self, const char *buf )
+{
+    return avdecc_eui64_from_text( &self->value, buf );
+}
+
+
+static inline bool avdecc_vendor_model_guid_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    const avdecc_vendor_model_guid_t *self
+    )
+{
+    return avdecc_eui64_print( buf, pos, len, &self->value );
+}
+
+
+/* @} */
+
+
 #ifdef __cplusplus
 }
 #endif
