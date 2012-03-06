@@ -39,16 +39,16 @@
     <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_commands.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_commands_print.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_command_print.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_descriptors.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_descriptor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_descriptors_print.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_descriptor_print.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_print.h">
@@ -116,16 +116,16 @@
     <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_commands.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_command.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_commands_print.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_command_print.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_descriptors.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_descriptor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_descriptors_print.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_descriptor_print.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_print.c">
