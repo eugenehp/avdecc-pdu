@@ -68,8 +68,11 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
 #if defined(AVDECC_PDU_CONFIG_WIN32)
+
+#ifndef __cplusplus
 #ifndef inline
 #define inline __inline
+#endif
 #endif
 
 
