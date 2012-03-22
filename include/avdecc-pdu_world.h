@@ -93,7 +93,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 typedef long ssize_t;
 
-#if !defined(_STDINT_H)
+#if !defined(_STDINT_H) && !defined(_STDINT)
 typedef long long int64_t;
 typedef unsigned long long uint64_t;
 typedef int int32_t;
