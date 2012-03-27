@@ -270,8 +270,31 @@ static inline uint32_t avdecc_adp_controller_capabilities_write ( const avdecc_a
 
 /* @} */
 
+/** \addtogroup ADP class vlan_id fields */
+/* @{ */
+typedef struct avdecc_adp_vlan_id_s
+{
+    unsigned pcp:3;
+    unsigned dei:1;
+    unsigned vid:12;
+} avdecc_adp_vlan_id_t;
 
+static inline void avdecc_adp_vlan_id_read( avdecc_adp_vlan_id_t *self, uint16_t v )
+{
+    self->pcp = AVDECC_BITS_GET_DOUBLET_BITFIELD(v,0,2);
+    self->dei = AVDECC_BITS_GET_DOUBLET_BITFIELD(v,3,3);
+    self->vid = AVDECC_BITS_GET_DOUBLET_BITFIELD(v,4,15);
+}
 
+static inline uint16_t avdecc_adp_vlan_id_write( const avdecc_adp_vlan_id_t *self )
+{
+    uint16_t v = 0;
+    v = AVDECC_BITS_SET_DOUBLET_BITFIELD( v, 0, 3, self->pcp );
+    v = AVDECC_BITS_SET_DOUBLET_BITFIELD( v, 3, 3, self->dei );
+    v = AVDECC_BITS_SET_DOUBLET_BITFIELD( v, 4, 15, self->vid );
+}
+
+/* @} */
 
 
 /** \addtogroup ADP Entity type bit field values */
@@ -425,8 +448,7 @@ AVDECC_BITS_MAP_DOUBLET ( avdecc_adp, listener_capabilities, uint16_t, 30 )
 AVDECC_BITS_MAP_QUADLET ( avdecc_adp, controller_capabilities, uint32_t, 32 )
 AVDECC_BITS_MAP_QUADLET ( avdecc_adp, available_index, uint32_t, 36 )
 AVDECC_BITS_MAP_OCTLET ( avdecc_adp, as_grandmaster_id, avdecc_eui64_t, 40 )
-AVDECC_BITS_MAP_QUADLET ( avdecc_adp, reserved1, uint32_t, 48 )
-AVDECC_BITS_MAP_QUADLET ( avdecc_adp, reserved2, uint32_t, 52 )
+AVDECC_BITS_MAP_QUADLET ( avdecc_adp, reserved1, uint32_t, 52 )
 AVDECC_BITS_MAP_OCTLET ( avdecc_adp, association_id, avdecc_eui64_t, 56 )
 AVDECC_BITS_MAP_QUADLET ( avdecc_adp, entity_type, uint32_t, 64 )
 
@@ -448,8 +470,9 @@ typedef struct avdecc_adp_s
     uint32_t available_index;
     avdecc_eui64_t as_grandmaster_id;
     avdecc_eui64_t association_id;
+    avdecc_adp_vlan_id_t class_a_vlan_tci;
+    avdecc_adp_vlan_id_t class_b_valn_tci;
     uint32_t reserved1;
-    uint32_t reserved2;
     avdecc_adp_entity_type_t entity_type;
 } avdecc_adp_t;
 
