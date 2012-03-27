@@ -44,7 +44,8 @@ bool avdecc_adp_read (
          avdecc_avtp_get_version ( pdu ) ==0
          )
     {
-        if ( avdecc_avtp_get_control_data_length ( pdu ) >= AVDECC_ADP_CONTROL_DATA_LENGTH )
+        if ( avdecc_avtp_get_control_data_length ( pdu ) >= AVDECC_ADP_CONTROL_DATA_LENGTH
+             || avdecc_avtp_get_control_data_length ( pdu ) >= 0x28 ) // Hack for today only
         {
             self->message_type = avdecc_adp_get_message_type ( pdu );
             self->valid_time = avdecc_adp_get_valid_time ( pdu );
@@ -62,8 +63,9 @@ bool avdecc_adp_read (
 
             self->as_grandmaster_id = avdecc_adp_get_as_grandmaster_id ( pdu );
 
+            avdecc_adp_vlan_id_read( &self->class_a_vlan_tci, avdecc_bits_get_doublet( pdu,48));
+            avdecc_adp_vlan_id_read( &self->class_b_vlan_tci, avdecc_bits_get_doublet( pdu,50));
             self->reserved1 = avdecc_adp_get_reserved1 ( pdu );
-            self->reserved2 = avdecc_adp_get_reserved2 ( pdu );
             self->association_id = avdecc_adp_get_association_id ( pdu );
             avdecc_adp_entity_type_read ( &self->entity_type, avdecc_bits_get_quadlet ( pdu, 64 ) );
             r=true;
@@ -111,10 +113,10 @@ bool avdecc_adp_write (
         avdecc_bits_set_doublet ( pdu, 30, avdecc_adp_listener_capabilities_write ( &self->listener_capabilities ) );
         avdecc_bits_set_quadlet ( pdu, 32, avdecc_adp_controller_capabilities_write ( &self->controller_capabilities ) );
         avdecc_bits_set_quadlet ( pdu, 36, self->available_index );
-
         avdecc_adp_set_as_grandmaster_id ( pdu, self->as_grandmaster_id );
+        avdecc_bits_set_doublet( pdu, 48, avdecc_adp_vlan_id_write(&self->class_a_vlan_tci));
+        avdecc_bits_set_doublet( pdu, 50, avdecc_adp_vlan_id_write(&self->class_b_vlan_tci));
         avdecc_adp_set_reserved1 ( pdu, self->reserved1 );
-        avdecc_adp_set_reserved2 ( pdu, self->reserved2 );
         avdecc_adp_set_association_id ( pdu, self->association_id );
         avdecc_bits_set_quadlet ( pdu, 64, avdecc_adp_entity_type_write ( &self->entity_type ) );
         r=true;
