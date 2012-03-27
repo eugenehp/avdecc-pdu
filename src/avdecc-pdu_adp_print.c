@@ -404,8 +404,9 @@ bool avdecc_adp_print (
     r&=avdecc_eui64_print ( buf,offset,len, &adp->as_grandmaster_id );
     r&=avdecc_print ( buf,offset,len,"\n%-28s", "Association ID:" );
     r&=avdecc_eui64_print ( buf,offset,len, &adp->association_id );
+	r&=avdecc_print ( buf,offset,len,"\n%-28s PCP:%d DEI:%d VID:%d", "Class A VLAN ID", adp->class_a_vlan_tci.pcp, adp->class_a_vlan_tci.dei, adp->class_a_vlan_tci.vid );
+	r&=avdecc_print ( buf,offset,len,"\n%-28s PCP:%d DEI:%d VID:%d", "Class B VLAN ID", adp->class_b_vlan_tci.pcp, adp->class_b_vlan_tci.dei, adp->class_b_vlan_tci.vid );
     r&=avdecc_print ( buf,offset,len,"\n%-28s0x%08x", "reserved1:", adp->reserved1 );
-    r&=avdecc_print ( buf,offset,len,"\n%-28s0x%08x", "reserved2:", adp->reserved2 );
     r&=avdecc_print ( buf,offset,len,"\n%-28s", "Entity Type:" );
     r&=avdecc_adp_entity_type_print ( buf,offset,len, &adp->entity_type );
     r&=avdecc_print ( buf,offset,len,"\n" );

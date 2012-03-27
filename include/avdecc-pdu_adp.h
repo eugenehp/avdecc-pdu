@@ -292,6 +292,7 @@ static inline uint16_t avdecc_adp_vlan_id_write( const avdecc_adp_vlan_id_t *sel
     v = AVDECC_BITS_SET_DOUBLET_BITFIELD( v, 0, 3, self->pcp );
     v = AVDECC_BITS_SET_DOUBLET_BITFIELD( v, 3, 3, self->dei );
     v = AVDECC_BITS_SET_DOUBLET_BITFIELD( v, 4, 15, self->vid );
+	return v;
 }
 
 /* @} */
@@ -471,7 +472,7 @@ typedef struct avdecc_adp_s
     avdecc_eui64_t as_grandmaster_id;
     avdecc_eui64_t association_id;
     avdecc_adp_vlan_id_t class_a_vlan_tci;
-    avdecc_adp_vlan_id_t class_b_valn_tci;
+    avdecc_adp_vlan_id_t class_b_vlan_tci;
     uint32_t reserved1;
     avdecc_adp_entity_type_t entity_type;
 } avdecc_adp_t;
