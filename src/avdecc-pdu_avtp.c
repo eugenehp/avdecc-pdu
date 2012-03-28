@@ -99,7 +99,7 @@ void avdecc_avtp_control_init ( avdecc_avtp_control_t *self )
 bool avdecc_avtp_control_read (
     avdecc_avtp_control_t *self,
     const void *pdu,
-    size_t offset
+    size_t len
     )
 {
     bool r=true;
@@ -113,7 +113,7 @@ bool avdecc_avtp_control_read (
 bool avdecc_avtp_control_write (
     const avdecc_avtp_control_t *self,
     void *pdu,
-    size_t offset
+    size_t *len
     )
 {
     bool r=true;

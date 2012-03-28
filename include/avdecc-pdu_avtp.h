@@ -283,13 +283,12 @@ void avdecc_avtp_control_init ( avdecc_avtp_control_t *self );
      *
      *  @param self pointer to object to fill
      *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
      */
 
 bool avdecc_avtp_control_read (
     avdecc_avtp_control_t *self,
     const void *pdu,
-    size_t offset
+    size_t len
     );
 
 
@@ -299,13 +298,12 @@ bool avdecc_avtp_control_read (
      *
      *  @param self pointer to object to store into pdu
      *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
      */
 
 bool avdecc_avtp_control_write (
     const avdecc_avtp_control_t *self,
     void *pdu,
-    size_t offset
+    size_t *len
     );
 
 
