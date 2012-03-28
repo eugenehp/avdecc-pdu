@@ -157,6 +157,9 @@ int avdecc_acmp_print (
 
     r&=avdecc_print ( buf,pos,len,"\n%-28s %d", "Control Data Length", acmp->control_data_length );
 
+    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Stream ID" );
+    r&=avdecc_stream_id_print( buf,pos,len, &acmp->stream_id );
+
     r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Controller GUID" );
     r&=avdecc_eui64_print ( buf,pos,len, &acmp->controller_guid );
 
