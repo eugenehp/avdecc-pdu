@@ -27,7 +27,9 @@ void avdecc_ip_init ( avdecc_ip_t *self )
 bool avdecc_ip_read (
     avdecc_ip_t *self,
     const void *pdu,
-    size_t len
+    size_t len,
+    uint8_t **inner_payload,
+    size_t *inner_payload_len
     )
 {
     bool r=false;
@@ -37,8 +39,8 @@ bool avdecc_ip_read (
         self->udp_msg_type = avdecc_ip_get_msg_type( pdu );
         self->reserved = avdecc_ip_get_reserved( pdu );
         self->udp_msg_eui64 = avdecc_ip_get_msg_eui64(pdu);
-        self->payload = avdecc_ip_get_msg_payload_read( pdu );
-        self->payload_length = len - AVDECC_IP_MIN_DATAGRAM_SIZE;
+        *inner_payload = (uint8_t *)avdecc_ip_get_msg_payload_read( pdu );
+        *inner_payload_len = len - AVDECC_IP_MIN_DATAGRAM_SIZE;
         r=true;
     }
 
@@ -48,7 +50,9 @@ bool avdecc_ip_read (
 bool avdecc_ip_write (
     const avdecc_ip_t *self,
     void *pdu,
-    size_t *len
+    size_t *len,
+    const void *inner_payload,
+    size_t inner_payload_len
     )
 {
     bool r=false;
@@ -59,7 +63,7 @@ bool avdecc_ip_write (
         avdecc_ip_set_msg_type(pdu,self->udp_msg_type);
         avdecc_ip_set_reserved(pdu,self->reserved);
         avdecc_ip_set_msg_eui64(pdu,self->udp_msg_eui64);
-        memcpy( avdecc_ip_get_msg_payload_write(pdu), self->payload, self->payload_length );
+        memcpy( avdecc_ip_get_msg_payload_write(pdu), inner_payload, inner_payload_len );
         r=true;
     }
 

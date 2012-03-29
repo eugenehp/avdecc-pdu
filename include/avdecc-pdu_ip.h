@@ -76,7 +76,7 @@ static inline const void *avdecc_ip_get_msg_payload_read( const void *pdu )
     return (const void *)(base+12);
 }
 
-static inline const void *avdecc_ip_get_msg_payload_write( void *pdu )
+static inline void *avdecc_ip_get_msg_payload_write( void *pdu )
 {
     uint8_t *base = (uint8_t *)pdu;
     return base+12;
@@ -104,7 +104,9 @@ void avdecc_ip_init ( avdecc_ip_t *self );
 bool avdecc_ip_read (
     avdecc_ip_t *self,
     const void *pdu,
-    size_t len
+    size_t len,
+    uint8_t **inner_payload,
+    size_t *inner_payload_len
     );
 
 
@@ -117,7 +119,9 @@ bool avdecc_ip_read (
 bool avdecc_ip_write (
     const avdecc_ip_t *self,
     void *dest_pdu,
-    size_t *len
+    size_t *len,
+    const void *inner_payload,
+    size_t inner_payload_len
     );
 
 
