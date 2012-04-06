@@ -18,54 +18,32 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-
-void avdecc_ip_init ( avdecc_ip_t *self )
+	
+void avdecc_app_init ( avdecc_app_pdu_t *self )
 {
-    memset ( ( void * ) self, 0, sizeof ( avdecc_ip_t ) );
+    memset ( ( void * ) self, 0, sizeof ( avdecc_app_pdu_t ) );
 }
 
-bool avdecc_ip_read (
-    avdecc_ip_t *self,
+bool avdecc_app_read (
+    avdecc_app_pdu_t *self,
     const void *pdu,
-    size_t len,
-    uint8_t **inner_payload,
-    size_t *inner_payload_len
+    size_t len
     )
 {
     bool r=false;
 
-    if( len>=AVDECC_IP_MIN_DATAGRAM_SIZE )
-    {
-        self->udp_msg_type = avdecc_ip_get_msg_type( pdu );
-        self->reserved = avdecc_ip_get_reserved( pdu );
-        self->udp_msg_eui64 = avdecc_ip_get_msg_eui64(pdu);
-        *inner_payload = (uint8_t *)avdecc_ip_get_msg_payload_read( pdu );
-        *inner_payload_len = len - AVDECC_IP_MIN_DATAGRAM_SIZE;
-        r=true;
-    }
 
     return r;
 }
 
-bool avdecc_ip_write (
-    const avdecc_ip_t *self,
-    void *pdu,
-    size_t *len,
-    const void *inner_payload,
-    size_t inner_payload_len
+bool avdecc_app_write (
+    const avdecc_app_pdu_t *self,
+    void *dest_pdu,
+    size_t *len
     )
 {
     bool r=false;
 
-    size_t total_size = self->payload_length + AVDECC_IP_MIN_DATAGRAM_SIZE;
-    if( total_size<=1024 && *len >= total_size )
-    {
-        avdecc_ip_set_msg_type(pdu,self->udp_msg_type);
-        avdecc_ip_set_reserved(pdu,self->reserved);
-        avdecc_ip_set_msg_eui64(pdu,self->udp_msg_eui64);
-        memcpy( avdecc_ip_get_msg_payload_write(pdu), inner_payload, inner_payload_len );
-        r=true;
-    }
 
     return r;
 }
