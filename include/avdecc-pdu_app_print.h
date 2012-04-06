@@ -1,5 +1,6 @@
-#include "avdecc-pdu_world.h"
-#include "avdecc-pdu_ip.h"
+#ifndef AVDECC_PDU_ACMP_PRINT_H_
+#define AVDECC_PDU_ACMP_PRINT_H_
+
 
 /*
 Copyright (c) 2012, Jeff Koftinoff <jeff.koftinoff@ieee.org>
@@ -18,3 +19,38 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#include "avdecc-pdu_world.h"
+#include "avdecc-pdu_app.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/**
+    \addtogroup app
+    */
+/* @{ */
+
+
+bool avdecc_app_message_type_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    avdecc_app_message_type_t v
+    );
+
+bool avdecc_app_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    const avdecc_app_t *self
+    );
+
+
+/* @} */
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif
