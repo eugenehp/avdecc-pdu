@@ -32,6 +32,13 @@ extern "C" {
 /* @{ */
 
 
+bool avdecc_app_status_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    avdecc_app_status_t v
+    );
+
 bool avdecc_app_message_type_print (
     char *buf,
     size_t *pos,

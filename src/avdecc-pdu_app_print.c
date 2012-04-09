@@ -33,12 +33,12 @@ bool avdecc_app_message_type_print (
     bool r=false;
     static const char *text[] =
     {
+        "nop",
+        "hello",
+        "upgrade",
         "starttls",
-        "auth",
-        "active",
-        "inactive",
-        "port_state_up",
-        "port_state_down",
+        "authenticate",
+        "port_status",
         "avdecc",
         "join_group",
         "leave_group",
@@ -61,6 +61,43 @@ bool avdecc_app_message_type_print (
     return r;
 }
 
+bool avdecc_app_status_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    avdecc_app_status_t v
+    )
+{
+    bool r=false;
+    static const char *text[] =
+    {
+        "success",
+        "invalid_header"
+        "unsupported_version",
+        "not_implemented",
+        "invalid_status",
+        "invalid_message_type",
+        "invalid_destination",
+        "invalid_source",
+        "invalid_payload_length",
+        "invalid_payload",
+        "authentication_required",
+        "authentication_failed",
+        "tls_required",
+        "reserved"
+    };
+
+    if ( v<=avdecc_app_status_reserved )
+    {
+        r = avdecc_print ( buf,pos,len,"%s", text[ ( int ) v ] );
+    }
+    else
+    {
+        r = avdecc_print ( buf,pos,len,"reserved (%d)", ( int ) v );
+    }
+
+    return r;
+}
 
 int avdecc_app_print (
     char *buf,
@@ -71,14 +108,29 @@ int avdecc_app_print (
 {
     bool r=true;
     r&=avdecc_print ( buf,pos,len,"APP:\n" );
-    r&=avdecc_print ( buf,pos,len,"\n%-28s %d", "Version", self->app_version );
-    r&=avdecc_print ( buf,pos,len,"%-28s ", "Message Type" );
-    r&=avdecc_app_message_type_print ( buf,pos,len, self->app_msg_type );
-    r&=avdecc_print ( buf,pos,len,"\n%-28s %d", "Payload Length", self->payload_length );
-    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Source" );
+
+    r&=avdecc_print ( buf,pos,len,"\n%-28s %d", "Version:", self->version );
+
+    r&=avdecc_print ( buf,pos,len,"%-28s ", "Status:" );
+    r&=avdecc_app_message_type_print ( buf,pos,len, self->status );
+
+    r&=avdecc_print ( buf,pos,len,"\n%-28s %s", "Unsolicited:", self->unsolicited ? "true" : "false" );
+
+    r&=avdecc_print ( buf,pos,len,"%-28s ", "Message Type:" );
+    r&=avdecc_app_message_type_print ( buf,pos,len, self->message_type );
+
+    r&=avdecc_print ( buf,pos,len,"\n%-28s %s (%d)", "rc:", self->rc ? "response" : "command", self->rc );
+
+    r&=avdecc_print ( buf,pos,len,"\n%-28s %d", "Payload Length:", self->payload_length );
+
+    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Source:" );
     r&=avdecc_mac_print(buf,pos,len, &self->source );
-    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Destination" );
+
+    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Destination:" );
     r&=avdecc_mac_print(buf,pos,len, &self->destination );
+
+    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Payload: " );
+    r&=avdecc_print_block( buf, pos, len, self->payload, self->payload_length );
 
     return r;
 }

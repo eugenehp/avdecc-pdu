@@ -18,6 +18,85 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+bool avdecc_app_get_frame_size(
+        uint8_t *buf,
+        size_t offset,
+        size_t buf_size,
+        size_t *frame_size
+        )
+{
+    bool r=false;
+    if( (buf_size-offset)>=AVDECC_APP_PDU_MIN_PDU_SIZE)
+    {
+        uint8_t *pdu = buf+offset;
+        uint8_t version = avdecc_app_get_version(pdu);
+
+        if( version==AVDECC_APP_VERSION )
+        {
+            if( avdecc_app_status_is_valid(
+                        avdecc_app_get_status(pdu) ) )
+            {
+                if( avdecc_app_message_type_is_valid(
+                            avdecc_app_get_message_type(pdu),
+                            version ) )
+                {
+                    uint16_t payload_length = avdecc_app_get_payload_length(pdu);
+
+                    if( avdecc_app_payload_length_is_valid(
+                                payload_length,
+                                0,
+                                version ) )
+                    {
+                        r=true;
+                        *frame_size = payload_length+AVDECC_APP_PDU_MIN_PDU_SIZE;
+                    }
+                }
+            }
+        }
+    }
+    return r;
+}
+
+bool avdecc_app_status_is_valid( avdecc_app_status_t v, uint8_t version )
+{
+    bool r=false;
+    if( version==AVDECC_APP_VERSION )
+    {
+        if( (v>=avdecc_app_status_success && v<avdecc_app_status_reserved) )
+        {
+            r=true;
+        }
+    }
+    return r;
+}
+
+bool avdecc_app_payload_length_is_valid( uint16_t payload_length, uint8_t version )
+{
+    bool r=false;
+    if( version==AVDECC_APP_VERSION )
+    {
+        if( payload_length <= AVDECC_APP_PDU_MAX_PAYLOAD )
+        {
+            r=true;
+        }
+    }
+    return r;
+}
+
+
+bool avdecc_app_message_type_is_valid( avdecc_app_message_type_t v, uint8_t version )
+{
+    bool r=false;
+    if( version==AVDECC_APP_VERSION )
+    {
+        if( (v>=avdecc_app_message_nop && v<avdecc_app_message_reserved)
+                || (v==avdecc_app_message_vendor ))
+        {
+            r=true;
+        }
+    }
+    return r;
+}
 
 void avdecc_app_init ( avdecc_app_t *self )
 {
@@ -27,7 +106,8 @@ void avdecc_app_init ( avdecc_app_t *self )
 bool avdecc_app_read (
     avdecc_app_t *self,
     const void *pdu,
-    size_t len
+    size_t len,
+    avdecc_app_status_t *status_code
     )
 {
     bool r=false;
@@ -35,33 +115,66 @@ bool avdecc_app_read (
     avdecc_app_init( self );
     if( len>=AVDECC_APP_PDU_MIN_PDU_SIZE )
     {
-        self->app_version = avdecc_app_get_version(pdu);
+        self->version = avdecc_app_get_version(pdu);
 
-        if( self->app_version == 0 )
+        if( self->version == AVDECC_APP_VERSION )
         {
-            self->app_msg_type = avdecc_app_get_msg_type(pdu);
-            self->payload_length = avdecc_app_get_payload_length(pdu);
-            self->source = avdecc_app_get_source(pdu);
-            self->destination = avdecc_app_get_destination(pdu);
-            if( self->app_msg_type == avdecc_app_message_type_vendor ||
-                    self->app_msg_type < avdecc_app_message_type_reserved )
+            self->status = avdecc_app_get_status(pdu);
+            if( avdecc_app_status_is_valid(self->status,self->version) )
             {
-                if( self->payload_length==0 )
+                self->sequence_id = avdecc_app_get_sequence_id(pdu);
+                self->unsolicited = avdecc_app_get_u(pdu);
+                self->message_type = avdecc_app_get_message_type(pdu);
+                self->rc = avdecc_app_get_rc(pdu);
+
+                if( avdecc_app_message_type_is_valid(self->message_type,self->version))
                 {
-                    r=true;
+                    self->payload_length = avdecc_app_get_payload_length(pdu);
+                    self->destination = avdecc_app_get_destination(pdu);
+                    self->source = avdecc_app_get_source(pdu);
+
+                    if( avdecc_payload_length_is_valid(self->payload_length,len,self->version) )
+                    {
+                        if( buf_len == (payload_length + AVDECC_APP_PDU_MIN_PDU_SIZE) )
+                        {
+                            if( self->payload_length==0 )
+                            {
+                                r=true;
+                            }
+                            else
+                            {
+
+                                memcpy( self->payload,
+                                        ((uint8_t *)pdu)+ AVDECC_APP_PDU_MIN_PDU_SIZE,
+                                        self->payload_length
+                                        );
+                                r=true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        *status_code = avdecc_app_status_invalid_payload_length;
+                    }
                 }
                 else
                 {
-                    if( self->payload_length <= AVDECC_APP_PDU_MAX_PAYLOAD
-                            && len >= (self->payload_length + AVDECC_APP_PDU_MIN_PDU_SIZE) )
-                    {
-                        memcpy( self->payload, ((uint8_t *)pdu)+ AVDECC_APP_PDU_MIN_PDU_SIZE, self->payload_length );
-                        r=true;
-                    }
+                    *status_code = avdecc_app_status_invalid_message_type;
                 }
             }
+            else
+            {
+                *status_code = avdecc_app_status_invalid_status;
+            }
         }
-
+        else
+        {
+            *status_code = avdecc_app_status_unsupported_version;
+        }
+    }
+    else
+    {
+        *status_code = avdecc_app_status_invalid_header;
     }
     return r;
 }
@@ -76,9 +189,15 @@ bool avdecc_app_write (
 
     if( *len >= avdecc_app_pdu_size(self) )
     {
-        avdecc_app_set_version(dest_pdu,self->app_version);
-        avdecc_app_set_msg_type(dest_pdu,self->app_msg_type );
+        avdecc_app_set_version(dest_pdu,self->version);
+        avdecc_app_set_status(dest_pdu,self->status);
+        avdecc_app_set_sequence_id(dest_pdu,self->sequence_id);
+        avdecc_app_set_u( dest_pdu, self->unsolicited );
+        avdecc_app_set_message_type(dest_pdu,self->message_type );
+        avdecc_app_set_rc( dest_pdu, self->rc );
         avdecc_app_set_payload_length(dest_pdu,self->payload_length);
+        avdecc_app_set_destination( dest_pdu, self->destination );
+        avdecc_app_set_source( dest_pdu, self->source );
         if( self->payload_length==0 )
         {
             r=true;
