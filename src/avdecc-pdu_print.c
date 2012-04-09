@@ -63,17 +63,15 @@ bool avdecc_print_block (
     bool r=true;
     const uint8_t *data = ( const uint8_t * ) packet;
     size_t i;
-    
-    r&=avdecc_print ( buf,offset,len,"ADP:\n" );
-    
-    for ( i=0; i<packet_len; i+=4 )
-    {
-        r&=avdecc_print ( buf,offset,len, " %04x:  %02x %02x %02x %02x\n",
-                          i, data[i], data[i+1], data[i+2], data[i+3]
-                          );
+
+    r&=avdecc_print ( buf,offset,len, "[ " );
+
+    for ( i=0; i<packet_len; i++ )
+    {        
+        r&=avdecc_print ( buf,offset,len, " %02x", data );
     }
     
-    r&=avdecc_print ( buf,offset,len, "\n" );
+    r&=avdecc_print ( buf,offset,len, " ]\n" );
     
     return r;
 }
