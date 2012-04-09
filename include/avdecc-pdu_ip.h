@@ -30,14 +30,10 @@ extern "C" {
     */
 /* @{ */
 
-#define AVDECC_IP_DNSSD_PROXY_TCP_SERVICE "_avdecc-proxy._tcp."
-#define AVDECC_IP_DNSSD_AVDECC_UDP_SERVICE "_avdecc._udp."
+#define AVDECC_IP_DNSSD_AVDECC_SERVICE "_avdecc._tcp."
 
-#define AVDECC_IP_MULTICAST_IPV4 "224.0.0.251"
-#define AVDECC_IP_MULTICAST_IPV6 "ff02::fb"
-
-#define AVDECC_IP_MULTICAST_PORT "17221"
-#define AVDECC_IP_MULTICAST_PORT_NUM (17221)
+#define AVDECC_IP_PORT "17221"
+#define AVDECC_IP_PORT_NUM (17221)
 
 /* @} */
 
