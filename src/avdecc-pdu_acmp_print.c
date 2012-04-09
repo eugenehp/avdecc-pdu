@@ -149,36 +149,36 @@ int avdecc_acmp_print (
 {
     bool r=true;
     r&=avdecc_print ( buf,pos,len,"ACMP:\n" );
-    r&=avdecc_print ( buf,pos,len,"%-28s ", "Message Type" );
+    r&=avdecc_print ( buf,pos,len,"%-28s ", "Message Type:" );
     r&=avdecc_acmp_message_type_print ( buf,pos,len, acmp->message_type );
 
-    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Status" );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Status:" );
     r&=avdecc_acmp_status_print ( buf,pos,len,acmp->status );
 
-    r&=avdecc_print ( buf,pos,len,"\n%-28s %d", "Control Data Length", acmp->control_data_length );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s %d", "Control Data Length:", acmp->control_data_length );
 
-    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Stream ID" );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Stream ID:" );
     r&=avdecc_stream_id_print( buf,pos,len, &acmp->stream_id );
 
-    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Controller GUID" );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Controller GUID:" );
     r&=avdecc_eui64_print ( buf,pos,len, &acmp->controller_guid );
 
-    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Talker GUID" );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Talker GUID:" );
     r&=avdecc_eui64_print ( buf,pos,len, &acmp->talker_guid );
 
-    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Listener GUID" );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Listener GUID:" );
     r&=avdecc_eui64_print ( buf,pos,len, &acmp->listener_guid );
 
-    r&=avdecc_print ( buf,pos,len,"\n%-28s 0x%04x", "Talker Unique ID", acmp->talker_unique_id );
-    r&=avdecc_print ( buf,pos,len,"\n%-28s 0x%04x", "Listener Unique ID", acmp->listener_unique_id );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s 0x%04x", "Talker Unique ID:", acmp->talker_unique_id );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s 0x%04x", "Listener Unique ID:", acmp->listener_unique_id );
 
-    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Destination MAC" );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Destination MAC:" );
     r&=avdecc_mac_print ( buf,pos,len, &acmp->dest_mac );
 
-    r&=avdecc_print ( buf,pos,len,"\n%-28s 0x%04x", "Connection Count", acmp->connection_count );
-    r&=avdecc_print ( buf,pos,len,"\n%-28s 0x%04x", "Sequence ID", acmp->sequence_id );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s 0x%04x", "Connection Count:", acmp->connection_count );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s 0x%04x", "Sequence ID:", acmp->sequence_id );
 
-    r&=avdecc_print ( buf,pos,len,"\n%-28s", "Flags" );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s", "Flags:" );
     r&=avdecc_acmp_flags_print ( buf,pos,len, acmp->flags );
 
     return r;
