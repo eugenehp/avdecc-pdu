@@ -237,7 +237,7 @@ typedef struct avdecc_aem_descriptor_entity_s
     uint32_t available_index;
     avdecc_eui64_t as_grandmaster_id;
     avdecc_eui64_t association_id;
-    avdecc_adp_entity_type_t entity_type;
+    uint32_t entity_type;
     avdecc_string64_t entity_name;
     avdecc_aem_localized_string_ref_t vendor_name_string;
     avdecc_aem_localized_string_ref_t model_name_string;

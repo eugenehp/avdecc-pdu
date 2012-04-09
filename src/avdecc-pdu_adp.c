@@ -67,18 +67,8 @@ bool avdecc_adp_read (
             avdecc_adp_vlan_id_read( &self->class_b_vlan_tci, avdecc_bits_get_doublet( pdu,50));
             self->reserved1 = avdecc_adp_get_reserved1 ( pdu );
             self->association_id = avdecc_adp_get_association_id ( pdu );
-            avdecc_adp_entity_type_read ( &self->entity_type, avdecc_bits_get_quadlet ( pdu, 64 ) );
+            self->entity_type = avdecc_adp_get_entity_type( pdu );
             r=true;
-        }
-        else
-        {
-#if 1
-            avdecc_log_error (
-                "adp control data length (%d) < %d",
-                avdecc_avtp_get_control_data_length ( pdu ),
-                AVDECC_ADP_CONTROL_DATA_LENGTH
-            );
-#endif
         }
     }
     return r;
@@ -118,7 +108,7 @@ bool avdecc_adp_write (
         avdecc_bits_set_doublet( pdu, 50, avdecc_adp_vlan_id_write(&self->class_b_vlan_tci));
         avdecc_adp_set_reserved1 ( pdu, self->reserved1 );
         avdecc_adp_set_association_id ( pdu, self->association_id );
-        avdecc_bits_set_quadlet ( pdu, 64, avdecc_adp_entity_type_write ( &self->entity_type ) );
+        avdecc_adp_set_entity_type( pdu, self->entity_type );
         r=true;
     }
     return r;

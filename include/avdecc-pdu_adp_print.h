@@ -82,13 +82,6 @@ bool avdecc_adp_entity_capabilities_print (
     const avdecc_adp_entity_capabilities_t *entity_capabilities
     );
 
-bool avdecc_adp_entity_type_print (
-    char *buf,
-    size_t *offset,
-    size_t len,
-    const avdecc_adp_entity_type_t *entity_type
-    );
-
 bool avdecc_adp_print (
     char *buf,
     size_t *offset,

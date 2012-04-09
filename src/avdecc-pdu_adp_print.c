@@ -261,116 +261,6 @@ bool avdecc_adp_entity_capabilities_print (
 
 
 
-bool avdecc_adp_entity_type_print (
-    char *buf,
-    size_t *offset,
-    size_t len,
-    const avdecc_adp_entity_type_t *entity_type
-    )
-{
-    bool r=true;
-    r&=avdecc_print ( buf,offset,len, "[ " );
-
-    if ( entity_type->other )
-    {
-        r&=avdecc_print ( buf,offset,len, "OTHER " );
-    }
-
-    if ( entity_type->multifunction )
-    {
-        r&=avdecc_print ( buf,offset,len, "MULTIFUNCTION " );
-    }
-
-    if ( entity_type->loudspeaker )
-    {
-        r&=avdecc_print ( buf,offset,len, "LOUDSPEAKER " );
-    }
-
-    if ( entity_type->microphone )
-    {
-        r&=avdecc_print ( buf,offset,len, "MICROPHONE " );
-    }
-
-    if ( entity_type->audio_amplifier )
-    {
-        r&=avdecc_print ( buf,offset,len, "AUDIO_AMPLIFIER " );
-    }
-
-    if ( entity_type->audio_source )
-    {
-        r&=avdecc_print ( buf,offset,len, "AUDIO_SOURCE " );
-    }
-
-    if ( entity_type->audio_processor )
-    {
-        r&=avdecc_print ( buf,offset,len, "AUDIO_PROCESSOR " );
-    }
-
-    if ( entity_type->audio_mixer )
-    {
-        r&=avdecc_print ( buf,offset,len, "AUDIO_MIXER " );
-    }
-
-    if ( entity_type->headset )
-    {
-        r&=avdecc_print ( buf,offset,len, "HEADSET " );
-    }
-
-    if ( entity_type->computer )
-    {
-        r&=avdecc_print ( buf,offset,len, "COMPUTER " );
-    }
-
-    if ( entity_type->musical_instrument )
-    {
-        r&=avdecc_print ( buf,offset,len, "MUSICAL_INSTRUMENT " );
-    }
-
-    if ( entity_type->midi_device )
-    {
-        r&=avdecc_print ( buf,offset,len, "MIDI_DEVICE " );
-    }
-
-    if ( entity_type->media_server )
-    {
-        r&=avdecc_print ( buf,offset,len, "MEDIA_SERVER " );
-    }
-
-    if ( entity_type->media_recorder )
-    {
-        r&=avdecc_print ( buf,offset,len, "MEDIA_RECORDER " );
-    }
-
-    if ( entity_type->video_source )
-    {
-        r&=avdecc_print ( buf,offset,len, "VIDEO_SOURCE " );
-    }
-
-    if ( entity_type->video_display )
-    {
-        r&=avdecc_print ( buf,offset,len, "VIDEO_DISPLAY " );
-    }
-
-    if ( entity_type->video_processor )
-    {
-        r&=avdecc_print ( buf,offset,len, "VIDEO_PROCESSOR " );
-    }
-
-    if ( entity_type->video_mixer )
-    {
-        r&=avdecc_print ( buf,offset,len, "VIDEO_MIXER " );
-    }
-
-    if ( entity_type->timing_device )
-    {
-        r&=avdecc_print ( buf,offset,len, "TIMING DEVICE " );
-    }
-
-    r&=avdecc_print ( buf,offset,len, "]" );
-    return r;
-
-}
-
 
 bool avdecc_adp_print (
     char *buf,
@@ -407,8 +297,7 @@ bool avdecc_adp_print (
 	r&=avdecc_print ( buf,offset,len,"\n%-28s PCP:%d DEI:%d VID:%d", "Class A VLAN ID:", adp->class_a_vlan_tci.pcp, adp->class_a_vlan_tci.dei, adp->class_a_vlan_tci.vid );
 	r&=avdecc_print ( buf,offset,len,"\n%-28s PCP:%d DEI:%d VID:%d", "Class B VLAN ID:", adp->class_b_vlan_tci.pcp, adp->class_b_vlan_tci.dei, adp->class_b_vlan_tci.vid );
     r&=avdecc_print ( buf,offset,len,"\n%-28s 0x%08x", "reserved1:", adp->reserved1 );
-    r&=avdecc_print ( buf,offset,len,"\n%-28s ", "Entity Type:" );
-    r&=avdecc_adp_entity_type_print ( buf,offset,len, &adp->entity_type );
+    r&=avdecc_print ( buf,offset,len,"\n%-28s 0x%08x", "Entity Type:", adp->entity_type );
     r&=avdecc_print ( buf,offset,len,"\n" );
     return r;
 }
