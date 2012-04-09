@@ -45,11 +45,11 @@ bool avdecc_app_message_type_print (
         "reserved"
     };
 
-    if ( v<=avdecc_app_message_type_reserved )
+    if ( v<=avdecc_app_message_reserved )
     {
         r = avdecc_print ( buf,pos,len,"%s", text[ ( int ) v ] );
     }
-    else if( v==avdecc_app_message_type_vendor )
+    else if( v==avdecc_app_message_vendor )
     {
         r = avdecc_print ( buf,pos,len,"vendor" );
     }

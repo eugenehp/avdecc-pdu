@@ -34,7 +34,7 @@ bool avdecc_app_get_frame_size(
         if( version==AVDECC_APP_VERSION )
         {
             if( avdecc_app_status_is_valid(
-                        avdecc_app_get_status(pdu) ) )
+                        avdecc_app_get_status(pdu), version ) )
             {
                 if( avdecc_app_message_type_is_valid(
                             avdecc_app_get_message_type(pdu),
@@ -44,7 +44,6 @@ bool avdecc_app_get_frame_size(
 
                     if( avdecc_app_payload_length_is_valid(
                                 payload_length,
-                                0,
                                 version ) )
                     {
                         r=true;
@@ -133,9 +132,9 @@ bool avdecc_app_read (
                     self->destination = avdecc_app_get_destination(pdu);
                     self->source = avdecc_app_get_source(pdu);
 
-                    if( avdecc_payload_length_is_valid(self->payload_length,len,self->version) )
+                    if( avdecc_app_payload_length_is_valid(self->payload_length,self->version) )
                     {
-                        if( buf_len == (payload_length + AVDECC_APP_PDU_MIN_PDU_SIZE) )
+                        if( len == (self->payload_length + AVDECC_APP_PDU_MIN_PDU_SIZE) )
                         {
                             if( self->payload_length==0 )
                             {
