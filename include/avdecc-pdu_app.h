@@ -78,9 +78,9 @@ struct avdecc_app_s
     uint8_t version;
     avdecc_app_status_t status;
     uint16_t sequence_id;
-    unsigned unsolicited:1;
+    unsigned unsolicited;
     avdecc_app_message_type_t message_type;
-    unsigned rc:1;
+    unsigned rc;
     uint16_t payload_length;
     avdecc_mac_t network_port;
     avdecc_mac_t destination;
@@ -94,9 +94,9 @@ typedef struct avdecc_app_s avdecc_app_t;
 AVDECC_BITS_MAP_OCTET(avdecc_app, version, uint8_t, 0)
 AVDECC_BITS_MAP_OCTET(avdecc_app, status, avdecc_app_status_t, 1 )
 AVDECC_BITS_MAP_DOUBLET(avdecc_app, sequence_id, uint16_t, 2 )
-AVDECC_BITS_MAP_DOUBLET_BITFIELD(avdecc_app, u, bool, 4, 0, 0 )
+AVDECC_BITS_MAP_DOUBLET_BITFIELD(avdecc_app, u, unsigned, 4, 0, 0 )
 AVDECC_BITS_MAP_DOUBLET_BITFIELD(avdecc_app, message_type, avdecc_app_message_type_t, 4, 1, 14 )
-AVDECC_BITS_MAP_DOUBLET_BITFIELD(avdecc_app, rc, bool, 4, 15, 15 )
+AVDECC_BITS_MAP_DOUBLET_BITFIELD(avdecc_app, rc, unsigned, 4, 15, 15 )
 AVDECC_BITS_MAP_DOUBLET(avdecc_app, payload_length, uint16_t, 6 )
 AVDECC_BITS_MAP_SEXLET(avdecc_app, network_port, avdecc_mac_t, 8)
 AVDECC_BITS_MAP_SEXLET(avdecc_app, destination, avdecc_mac_t, 14)
