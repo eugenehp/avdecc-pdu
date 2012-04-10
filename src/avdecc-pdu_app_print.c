@@ -37,7 +37,7 @@ bool avdecc_app_hello_capabilities_print (
         r&=avdecc_print ( buf,offset,len, "TLS_SUPPORTED " );
     }
 
-    if ( c->tls_required )s
+    if ( c->tls_required )
     {
         r&=avdecc_print ( buf,offset,len, "TLS_REQUIRED " );
     }
@@ -47,7 +47,7 @@ bool avdecc_app_hello_capabilities_print (
         r&=avdecc_print ( buf,offset,len, "AUTHENTICATION_SUPPORTED " );
     }
 
-    if ( c->authentication_required )s
+    if ( c->authentication_required )
     {
         r&=avdecc_print ( buf,offset,len, "AUTHENTICATION_REQUIRED " );
     }

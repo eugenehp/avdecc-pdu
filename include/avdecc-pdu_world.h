@@ -213,7 +213,7 @@ bool avdecc_print_utf8 (
     char *buf,
     size_t *offset,
     size_t len,
-    uint8_t *s,
+    const uint8_t *s,
     size_t s_len
     );
 
