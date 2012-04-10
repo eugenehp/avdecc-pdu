@@ -56,7 +56,7 @@ enum avdecc_app_message_type_e
     avdecc_app_message_nop=0,
     avdecc_app_message_hello=1,
     avdecc_app_message_upgrade=2,
-    avdecc_app_message_starttls=3,
+    avdecc_app_message_start_tls=3,
     avdecc_app_message_authenticate=4,
     avdecc_app_message_port_status=5,
     avdecc_app_message_avdecc=6,
