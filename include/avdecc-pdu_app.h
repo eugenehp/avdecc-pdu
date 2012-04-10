@@ -97,6 +97,15 @@ AVDECC_BITS_MAP_DOUBLET(avdecc_app, payload_length, uint16_t, 6 )
 AVDECC_BITS_MAP_SEXLET(avdecc_app, destination, uint64_t, 8)
 AVDECC_BITS_MAP_SEXLET(avdecc_app, source, uint64_t, 14)
 
+#define AVDECC_APP_HELLO_TLS_SUPPORTED              (0x00000001L)
+#define AVDECC_APP_HELLO_TLS_REQUIRED               (0x00000002L)
+#define AVDECC_APP_HELLO_AUTHENTICATION_SUPPORTED   (0x00000004L)
+#define AVDECC_APP_HELLO_AUTHENTICATION_REQUIRED    (0x00000008L)
+#define AVDECC_APP_HELLO_UPGRADE_SUPPORTED          (0x00000010L)
+#define AVDECC_APP_HELLO_GROUP_SUPPORTED            (0x00000020L)
+
+AVDECC_BITS_MAP_QUADLET(avdecc_app_hello, capabilities, uint32_t, 0 )
+
 /**
 */
 
