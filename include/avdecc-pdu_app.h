@@ -18,7 +18,7 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "avdecc-pdu_eui64.h"
+#include "avdecc-pdu_mac.h"
 #include "avdecc-pdu_bits.h"
 #include "avdecc-pdu_ip.h"
 
@@ -39,14 +39,16 @@ enum avdecc_app_status_e
     avdecc_app_status_not_implemented=3,
     avdecc_app_status_invalid_status=4,
     avdecc_app_status_invalid_message_type=5,
-    avdecc_app_status_invalid_destination=6,
-    avdecc_app_status_invalid_source=7,
-    avdecc_app_status_invalid_payload_length=8,
-    avdecc_app_status_invalid_payload=0x9,
-    avdecc_app_status_authentication_required=0xa,
-    avdecc_app_status_authentication_failed=0xb,
-    avdecc_app_status_tls_required=0xc,
-    avdecc_app_status_reserved=0xd
+    avdecc_app_status_invalid_network_port=6,
+    avdecc_app_status_invalid_destination=7,
+    avdecc_app_status_invalid_source=8,
+    avdecc_app_status_invalid_extension=9,
+    avdecc_app_status_invalid_payload_length=0xa,
+    avdecc_app_status_invalid_payload=0xb,
+    avdecc_app_status_authentication_required=0xc,
+    avdecc_app_status_authentication_failed=0xd,
+    avdecc_app_status_tls_required=0xe,
+    avdecc_app_status_reserved=0xf
 };
 
 typedef enum avdecc_app_status_e avdecc_app_status_t;
@@ -68,8 +70,8 @@ enum avdecc_app_message_type_e
 
 typedef enum avdecc_app_message_type_e avdecc_app_message_type_t;
 #define AVDECC_APP_VERSION (0)
-#define AVDECC_APP_PDU_MIN_PDU_SIZE (20)
-#define AVDECC_APP_PDU_MAX_PAYLOAD (1004)
+#define AVDECC_APP_PDU_MIN_PDU_SIZE (28)
+#define AVDECC_APP_PDU_MAX_PAYLOAD (AVDECC_PDU_MAX_PAYLOAD_SIZE)
 
 struct avdecc_app_s
 {
@@ -80,8 +82,10 @@ struct avdecc_app_s
     avdecc_app_message_type_t message_type;
     bool rc;
     uint16_t payload_length;
-    uint64_t destination;
-    uint64_t source;
+    avdecc_mac_t network_port;
+    avdecc_mac_t destination;
+    avdecc_mac_t source;
+    uint16_t extension;
     uint8_t payload[AVDECC_APP_PDU_MAX_PAYLOAD];
 };
 
@@ -94,17 +98,45 @@ AVDECC_BITS_MAP_DOUBLET_BITFIELD(avdecc_app, u, bool, 4, 0, 0 )
 AVDECC_BITS_MAP_DOUBLET_BITFIELD(avdecc_app, message_type, avdecc_app_message_type_t, 4, 1, 14 )
 AVDECC_BITS_MAP_DOUBLET_BITFIELD(avdecc_app, rc, bool, 4, 15, 15 )
 AVDECC_BITS_MAP_DOUBLET(avdecc_app, payload_length, uint16_t, 6 )
-AVDECC_BITS_MAP_SEXLET(avdecc_app, destination, uint64_t, 8)
-AVDECC_BITS_MAP_SEXLET(avdecc_app, source, uint64_t, 14)
+AVDECC_BITS_MAP_SEXLET(avdecc_app, network_port, avdecc_mac_t, 8)
+AVDECC_BITS_MAP_SEXLET(avdecc_app, destination, avdecc_mac_t, 14)
+AVDECC_BITS_MAP_SEXLET(avdecc_app, source, avdecc_mac_t, 20)
+AVDECC_BITS_MAP_DOUBLET(avdecc_app, extension, uint16_t, 26 )
 
-#define AVDECC_APP_HELLO_TLS_SUPPORTED              (0x00000001L)
-#define AVDECC_APP_HELLO_TLS_REQUIRED               (0x00000002L)
-#define AVDECC_APP_HELLO_AUTHENTICATION_SUPPORTED   (0x00000004L)
-#define AVDECC_APP_HELLO_AUTHENTICATION_REQUIRED    (0x00000008L)
-#define AVDECC_APP_HELLO_UPGRADE_SUPPORTED          (0x00000010L)
-#define AVDECC_APP_HELLO_GROUP_SUPPORTED            (0x00000020L)
+#define AVDECC_APP_HELLO_TLS_SUPPORTED_BIT              (15)
+#define AVDECC_APP_HELLO_TLS_SUPPORTED                  (0x0001L)
+#define AVDECC_APP_HELLO_TLS_REQUIRED_BIT               (14)
+#define AVDECC_APP_HELLO_TLS_REQUIRED                   (0x0002L)
+#define AVDECC_APP_HELLO_AUTHENTICATION_SUPPORTED_BIT   (13)
+#define AVDECC_APP_HELLO_AUTHENTICATION_SUPPORTED       (0x0004L)
+#define AVDECC_APP_HELLO_AUTHENTICATION_REQUIRED_BIT    (12)
+#define AVDECC_APP_HELLO_AUTHENTICATION_REQUIRED        (0x0008L)
+#define AVDECC_APP_HELLO_UPGRADE_SUPPORTED_BIT          (11)
+#define AVDECC_APP_HELLO_UPGRADE_SUPPORTED              (0x0010L)
+#define AVDECC_APP_HELLO_GROUP_SUPPORTED_BIT            (10)
+#define AVDECC_APP_HELLO_GROUP_SUPPORTED                (0x0020L)
 
-AVDECC_BITS_MAP_QUADLET(avdecc_app_hello, capabilities, uint32_t, 0 )
+struct avdecc_app_hello_capabilities_s
+{
+    unsigned tls_supported:1;
+    unsigned tls_required:1;
+    unsigned authentication_supported:1;
+    unsigned authentication_required:1;
+    unsigned upgrade_supported:1;
+    unsigned group_supported:1;
+};
+
+typedef struct avdecc_app_hello_capabilities_s avdecc_app_hello_capabilities_t;
+
+void avdecc_app_hello_capabilities_read(
+        avdecc_app_hello_capabilities_t *cap,
+        uint16_t extension
+        );
+
+uint16_t avdecc_app_hello_capabilities_write(
+        const avdecc_app_hello_capabilities_t *cap
+        );
+
 
 /**
 */

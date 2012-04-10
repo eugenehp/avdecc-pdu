@@ -209,6 +209,14 @@ bool avdecc_print_block (
     size_t packet_len
     );
 
+bool avdecc_print_utf8 (
+    char *buf,
+    size_t *offset,
+    size_t len,
+    uint8_t *s,
+    size_t s_len
+    );
+
 typedef struct avdecc_string64_s
 {
     char buf[65];

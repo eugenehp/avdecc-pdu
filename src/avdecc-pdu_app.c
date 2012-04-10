@@ -18,6 +18,34 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+void avdecc_app_hello_capabilities_read(
+        avdecc_app_hello_capabilities_t *cap,
+        uint16_t extension
+        )
+{
+    cap->upgrade_supported = AVDECC_BITS_IS_BITVALUE_SET(extension,AVDECC_APP_HELLO_UPGRADE_SUPPORTED);
+    cap->authentication_supported = AVDECC_BITS_IS_BITVALUE_SET(extension,AVDECC_APP_HELLO_AUTHENTICATION_SUPPORTED);
+    cap->authentication_required = AVDECC_BITS_IS_BITVALUE_SET(extension,AVDECC_APP_HELLO_AUTHENTICATION_REQUIRED);
+    cap->tls_supported = AVDECC_BITS_IS_BITVALUE_SET(extension,AVDECC_APP_HELLO_TLS_SUPPORTED);
+    cap->tls_required = AVDECC_BITS_IS_BITVALUE_SET(extension,AVDECC_APP_HELLO_TLS_REQUIRED);
+    cap->group_supported = AVDECC_BITS_IS_BITVALUE_SET(extension,AVDECC_APP_HELLO_GROUP_SUPPORTED);
+}
+
+uint16_t avdecc_app_hello_capabilities_write(
+        const avdecc_app_hello_capabilities_t *cap
+        )
+{
+    uint16_t v=0;
+
+    v = AVDECC_BITS_SET_DOUBLET_BIT_IF(v,AVDECC_APP_HELLO_UPGRADE_SUPPORTED_BIT, cap->upgrade_supported );
+    v = AVDECC_BITS_SET_DOUBLET_BIT_IF(v,AVDECC_APP_HELLO_AUTHENTICATION_SUPPORTED_BIT, cap->authentication_supported);
+    v = AVDECC_BITS_SET_DOUBLET_BIT_IF(v,AVDECC_APP_HELLO_AUTHENTICATION_REQUIRED_BIT, cap->authentication_required);
+    v = AVDECC_BITS_SET_DOUBLET_BIT_IF(v,AVDECC_APP_HELLO_TLS_SUPPORTED_BIT, cap->tls_supported);
+    v = AVDECC_BITS_SET_DOUBLET_BIT_IF(v,AVDECC_APP_HELLO_TLS_REQUIRED_BIT, cap->tls_required);
+    v = AVDECC_BITS_SET_DOUBLET_BIT_IF(v,AVDECC_APP_HELLO_GROUP_SUPPORTED_BIT, cap->group_supported);
+    return v;
+}
+
 bool avdecc_app_get_frame_size(
         uint8_t *buf,
         size_t offset,

@@ -76,3 +76,21 @@ bool avdecc_print_block (
     return r;
 }
 
+bool avdecc_print_utf8 (
+        char *buf,
+        size_t *offset,
+        size_t len,
+        uint8_t *s,
+        size_t s_len
+        )
+{
+    bool r=true;
+    size_t i;
+
+    for ( i=0; i<s_len; i++ )
+    {
+        r&=avdecc_print ( buf,offset,len, "%c", s[i] );
+    }
+
+    return r;
+}
