@@ -78,9 +78,9 @@ struct avdecc_app_s
     uint8_t version;
     avdecc_app_status_t status;
     uint16_t sequence_id;
-    bool unsolicited;
+    unsigned unsolicited:1;
     avdecc_app_message_type_t message_type;
-    bool rc;
+    unsigned rc:1;
     uint16_t payload_length;
     avdecc_mac_t network_port;
     avdecc_mac_t destination;
