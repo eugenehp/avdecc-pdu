@@ -68,7 +68,7 @@ bool avdecc_print_block (
 
     for ( i=0; i<packet_len; i++ )
     {        
-        r&=avdecc_print ( buf,offset,len, " %02x", data );
+        r&=avdecc_print ( buf,offset,len, " %02x", data[i] );
     }
     
     r&=avdecc_print ( buf,offset,len, " ]\n" );

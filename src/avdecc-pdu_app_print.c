@@ -157,7 +157,7 @@ int avdecc_app_print (
     r&=avdecc_print ( buf,pos,len,"\n%-28s %d", "Version:", self->version );
 
     r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Status:" );
-    r&=avdecc_app_message_type_print ( buf,pos,len, self->status );
+    r&=avdecc_app_status_print ( buf,pos,len, self->status );
 
     r&=avdecc_print ( buf,pos,len,"\n%-28s %s", "Unsolicited:", self->unsolicited ? "true" : "false" );
 
