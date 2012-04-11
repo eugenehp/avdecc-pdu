@@ -157,8 +157,10 @@ bool avdecc_app_read (
                 if( avdecc_app_message_type_is_valid(self->message_type,self->version))
                 {
                     self->payload_length = avdecc_app_get_payload_length(pdu);
+                    self->network_port = avdecc_app_get_network_port(pdu);
                     self->destination = avdecc_app_get_destination(pdu);
                     self->source = avdecc_app_get_source(pdu);
+                    self->extension = avdecc_app_get_extension(pdu);
 
                     if( avdecc_app_payload_length_is_valid(self->payload_length,self->version) )
                     {
@@ -223,8 +225,10 @@ bool avdecc_app_write (
         avdecc_app_set_message_type(dest_pdu,self->message_type );
         avdecc_app_set_rc( dest_pdu, self->rc );
         avdecc_app_set_payload_length(dest_pdu,self->payload_length);
+        avdecc_app_set_network_port( dest_pdu, self->network_port);
         avdecc_app_set_destination( dest_pdu, self->destination );
         avdecc_app_set_source( dest_pdu, self->source );
+        avdecc_app_set_extension( dest_pdu, self->extension );
         if( self->payload_length==0 )
         {
             r=true;
