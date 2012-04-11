@@ -30,7 +30,7 @@ extern "C" {
     */
 /* @{ */
 
-#define AVDECC_IP_DNSSD_AVDECC_SERVICE "_avdecc._tcp."
+#define AVDECC_IP_DNSSD_AVDECC_TCP_SERVICE "_avdecc._tcp."
 
 #define AVDECC_IP_PORT "17221"
 #define AVDECC_IP_PORT_NUM (17221)
