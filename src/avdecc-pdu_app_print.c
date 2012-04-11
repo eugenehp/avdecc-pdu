@@ -182,17 +182,21 @@ int avdecc_app_print (
     switch( self->message_type )
     {
     case avdecc_app_message_hello:
-        r&=avdecc_print ( buf,pos,len,"\n%-28s 0x%04x", "Extension:", self->extension );
+      {
         avdecc_app_hello_capabilities_t caps;
+        r&=avdecc_print ( buf,pos,len,"\n%-28s 0x%04x", "Extension:", self->extension );
         avdecc_app_hello_capabilities_read( &caps, self->extension );
         avdecc_app_hello_capabilities_print(buf,pos,len,&caps);
         r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Payload: " );
         r&=avdecc_print_utf8( buf, pos, len, self->payload, self->payload_length );
+      }
         break;
     default:
+      {
         r&=avdecc_print ( buf,pos,len,"\n%-28s 0x%04x", "Extension:", self->extension );
         r&=avdecc_print ( buf,pos,len,"\n%-28s ", "Payload: " );
         r&=avdecc_print_block( buf, pos, len, self->payload, self->payload_length );
+      }
         break;
     }
 
