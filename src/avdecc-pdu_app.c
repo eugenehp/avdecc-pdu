@@ -235,6 +235,7 @@ bool avdecc_app_write (
             if( self->payload_length <= AVDECC_APP_PDU_MAX_PAYLOAD )
             {
                 memcpy( ((uint8_t *)dest_pdu)+ AVDECC_APP_PDU_MIN_PDU_SIZE, self->payload, self->payload_length );
+                *len=AVDECC_APP_PDU_MIN_PDU_SIZE + self->payload_length;
                 r=true;
             }
         }
