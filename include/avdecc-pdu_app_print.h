@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_ACMP_PRINT_H_
-#define AVDECC_PDU_ACMP_PRINT_H_
+#ifndef AVDECC_PDU_APP_PRINT_H_
+#define AVDECC_PDU_APP_PRINT_H_
 
 
 /*
