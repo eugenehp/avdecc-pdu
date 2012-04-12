@@ -93,7 +93,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 typedef long ssize_t;
 
-#if _MSC_VER >= 1700
+#if _MSC_VER >= 1600
 #include <stdint.h>
 #else
 typedef long long int64_t;
