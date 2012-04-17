@@ -144,7 +144,7 @@ bool avdecc_app_status_print (
     return r;
 }
 
-int avdecc_app_print (
+bool avdecc_app_print (
     char *buf,
     size_t *pos,
     size_t len,

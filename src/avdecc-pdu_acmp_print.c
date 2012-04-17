@@ -24,7 +24,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
 
-int avdecc_acmp_status_print (
+bool avdecc_acmp_status_print (
     char *buf,
     size_t *pos,
     size_t len,
@@ -105,7 +105,7 @@ bool avdecc_acmp_message_type_print (
     return r;
 }
 
-int avdecc_acmp_flags_print (
+bool avdecc_acmp_flags_print (
     char *buf,
     size_t *pos,
     size_t len,
@@ -140,7 +140,7 @@ int avdecc_acmp_flags_print (
     return r;
 }
 
-int avdecc_acmp_print (
+bool avdecc_acmp_print (
     char *buf,
     size_t *pos,
     size_t len,
