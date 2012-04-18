@@ -119,7 +119,7 @@ bool avdecc_command_print (
     r&=avdecc_print ( buf,pos,len,"\n%-28s", "Status:" );
     r&=avdecc_aecp_aem_status_print( buf,pos,len,self->status );
 
-    r&=avdecc_print ( buf,pos,len,"\n%-28s%d", "Control Data Length:", &self->control_data_length );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s%d", "Control Data Length:", self->control_data_length );
 
     r&=avdecc_print ( buf,pos,len,"\n%-28s", "Target GUID:" );
     r&=avdecc_eui64_print ( buf,pos,len, &self->target_guid );
@@ -130,6 +130,7 @@ bool avdecc_command_print (
     r&=avdecc_print ( buf,pos,len,"\n%-28s%d", "Sequence ID:", self->sequence_id );
 
     r&=avdecc_print ( buf,pos,len,"\n%-28s%s", "Unsolicited:",self->unsolicited ? "true" : "false" );
+    
     r&=avdecc_print ( buf,pos,len,"\n%-28s%s (%d)", "AEM Command:", avdecc_command_type_string(self->command_type), self->command_type );
 
     return r;
