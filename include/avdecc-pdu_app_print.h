@@ -45,6 +45,14 @@ bool avdecc_app_message_type_print (
     size_t len,
     avdecc_app_message_type_t v
     );
+    
+bool avdecc_app_hello_capabilities_print (
+    char *buf,
+    size_t *offset,
+    size_t len,
+    const avdecc_app_hello_capabilities_t *c
+    );
+    
 
 bool avdecc_app_print (
     char *buf,
