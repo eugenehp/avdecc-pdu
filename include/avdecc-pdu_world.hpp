@@ -67,11 +67,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
 
-#if defined(AVDECC_PDU_CONFIG_WIN32)
-
-#endif
-#endif
-
+#if defined(_WIN32)
 
 # include <winsock2.h>
 # include <ws2tcpip.h>
