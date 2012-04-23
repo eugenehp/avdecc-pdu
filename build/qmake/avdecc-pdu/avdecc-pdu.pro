@@ -12,8 +12,8 @@ CONFIG += staticlib
 
 
 LIBS += 
-SOURCES += $$TOPDIR/src/*.c 
-HEADERS += $$TOPDIR/include/*.h 
+SOURCES += $$TOPDIR/src/*.cpp
+HEADERS += $$TOPDIR/include/*.hpp 
 
 mac {
   CONFIG -= app_bundle
