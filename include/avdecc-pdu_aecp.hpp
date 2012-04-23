@@ -196,7 +196,7 @@ typedef struct avdecc_aecp_aem_s
     avdecc_eui64_t controller_guid;
     avdecc_aecp_sequence_id_t sequence_id;
     bool unsolicited;
-    uint16_t command_type:15;
+    unsigned command_type:15;
     uint8_t payload_specific_data[AVDECC_AECP_AEM_MAX_PAYLOAD_SPECIFIC_DATA];
 } avdecc_aecp_aem_t;
 
