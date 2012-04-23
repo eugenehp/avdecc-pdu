@@ -128,7 +128,7 @@ bool test_avdecc_macs ( void )
     bool r = true;
     avdecc_mac_t mac;
     START_TEST();
-    mac=0x123456789abc;
+    mac= 0x123456789abcLL;
     r &= test_avdecc_mac ( &mac, "12:34:56:78:9a:bc" );
     END_TEST ( r );
     return r;
@@ -139,7 +139,7 @@ bool test_avdecc_eui64s ( void )
     bool r = true;
     avdecc_eui64_t eui64;
     START_TEST();
-    eui64 = 0x123456789abcdef0;
+    eui64 = 0x123456789abcdef0LL;
     r &= test_avdecc_eui64 ( &eui64, "12:34:56:78:9a:bc:de:f0" );
     END_TEST ( r );
     return r;
@@ -150,7 +150,7 @@ bool test_avdecc_stream_ids ( void )
     bool r = true;
     avdecc_stream_id_t sid;
     START_TEST();
-    sid = 0x123456789abcface;
+    sid = 0x123456789abcfaceLL;
     r &= test_avdecc_stream_id ( &sid, "12:34:56:78:9a:bc:fa:ce" );
     END_TEST ( r );
     return r;
