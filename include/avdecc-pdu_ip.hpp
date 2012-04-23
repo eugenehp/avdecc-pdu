@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_IP_H_
-#define AVDECC_PDU_IP_H_
+#ifndef AVDECC_PDU_IP_HPP_
+#define AVDECC_PDU_IP_HPP_
 
 /*
 Copyright (c) 2012, Jeff Koftinoff <jeff.koftinoff@ieee.org>
@@ -21,9 +21,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_eui64.hpp"
 #include "avdecc-pdu_bits.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**
     \addtogroup ip
@@ -37,8 +34,5 @@ extern "C" {
 
 /* @} */
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

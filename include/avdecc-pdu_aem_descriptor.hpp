@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_AEM_DESCRIPTOR_H_XXX
-#define AVDECC_PDU_AEM_DESCRIPTOR_H_XXX
+#ifndef AVDECC_PDU_AEM_DESCRIPTOR_HPP_XXX
+#define AVDECC_PDU_AEM_DESCRIPTOR_HPP_XXX
 
 
 /*
@@ -26,9 +26,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_avtp.hpp"
 #include "avdecc-pdu_adp.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**
     \addtogroup aem_descriptor AEM Descriptor
@@ -5344,8 +5341,5 @@ bool avdecc_descriptor_memory_object_write (
 
 /* @} */
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

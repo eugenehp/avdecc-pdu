@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_BITS_H_
-#define AVDECC_PDU_BITS_H_
+#ifndef AVDECC_PDU_BITS_HPP_
+#define AVDECC_PDU_BITS_HPP_
 
 /*
 Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
@@ -48,9 +48,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 /*@{*/
 
-#ifdef __cplusplus
-extern "C"
-{
 #endif
 
 
@@ -602,9 +599,6 @@ void avdecc_bits_set_octlet_bit ( void *base, uint16_t offset, uint16_t bit, boo
     avdecc_bits_set_octlet ( base, offset, v );
 }
 
-#ifdef __cplusplus
-}
-#endif
 
 /*@}*/
 

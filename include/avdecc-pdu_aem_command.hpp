@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_AEM_COMMAND_H_
-#define AVDECC_PDU_AEM_COMMAND_H_
+#ifndef AVDECC_PDU_AEM_COMMAND_HPP_
+#define AVDECC_PDU_AEM_COMMAND_HPP_
 
 
 /*
@@ -26,9 +26,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**
     \addtogroup aem_command AEM Command
@@ -5614,8 +5611,5 @@ bool avdecc_response_auth_revoke_key_write (
 /* @} */
 /* @} */
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

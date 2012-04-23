@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_STREAM_H_
-#define AVDECC_PDU_STREAM_H_
+#ifndef AVDECC_PDU_STREAM_HPP_
+#define AVDECC_PDU_STREAM_HPP_
 
 
 /*
@@ -20,9 +20,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**
     \addtogroup stream
@@ -83,8 +80,5 @@ bool avdecc_stream_id_write (
 
 /* @} */
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

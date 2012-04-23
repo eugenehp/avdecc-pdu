@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_MAC_H_
-#define AVDECC_PDU_MAC_H_
+#ifndef AVDECC_PDU_MAC_HPP_
+#define AVDECC_PDU_MAC_HPP_
 
 
 /*
@@ -20,9 +20,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**
     \addtogroup mac
@@ -140,8 +137,5 @@ static inline void avdecc_mac_set_multicast ( avdecc_mac_t *self, bool multicast
 
 /* @} */
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

@@ -1,5 +1,5 @@
-#ifndef AVDECC_ADP_AEM_PRINT_H_
-#define AVDECC_ADP_AEM_PRINT_H_
+#ifndef AVDECC_ADP_AEM_PRINT_HPP_
+#define AVDECC_ADP_AEM_PRINT_HPP_
 
 /*
  Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
@@ -21,9 +21,6 @@
 #include "avdecc-pdu_world.hpp"
 #include "avdecc-pdu_aem.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /** \addtogroup AEM AEM */
 /*@{*/
@@ -31,9 +28,6 @@ extern "C" {
 
 /*@}*/
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif
 

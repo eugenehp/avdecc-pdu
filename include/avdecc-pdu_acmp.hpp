@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_ACMP_H_
-#define AVDECC_PDU_ACMP_H_
+#ifndef AVDECC_PDU_ACMP_HPP_
+#define AVDECC_PDU_ACMP_HPP_
 
 
 /*
@@ -26,9 +26,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_avtp.hpp"
 #include "avdecc-pdu_adp.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**
     \addtogroup acmp
@@ -241,8 +238,5 @@ bool avdecc_acmp_write (
 
 /* @} */
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

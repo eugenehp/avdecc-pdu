@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_AECP_PRINT_H_
-#define AVDECC_PDU_AECP_PRINT_H_
+#ifndef AVDECC_PDU_AECP_PRINT_HPP_
+#define AVDECC_PDU_AECP_PRINT_HPP_
 
 
 /*
@@ -22,9 +22,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include "avdecc-pdu_aecp.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**
     \addtogroup aecp
@@ -114,8 +111,5 @@ bool avdecc_aecp_vu_print (
 
 /* @} */
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

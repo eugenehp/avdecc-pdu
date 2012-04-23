@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_WORLD_H_
-#define AVDECC_PDU_WORLD_H_
+#ifndef AVDECC_PDU_WORLD_HPP_
+#define AVDECC_PDU_WORLD_HPP_
 
 /*
 Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
@@ -69,9 +69,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #if defined(AVDECC_PDU_CONFIG_WIN32)
 
-#ifndef __cplusplus
-#ifndef inline
-#define inline __inline
 #endif
 #endif
 
@@ -160,32 +157,6 @@ typedef unsigned char uint8_t;
 #endif
 
 
-#ifndef __cplusplus
-# if __STDC_VERSION__ >= 199901L
-#  include <stdbool.h>
-# else
-#  if !defined(bool) && (defined(BOOLEAN) || defined(_WIN32))
-#   define bool BOOLEAN
-#  endif
-#  if !defined(true) && defined(TRUE)
-#   define true TRUE
-#  endif
-#  if !defined(false) && defined(FALSE)
-#   define false FALSE
-#  endif
-#  if !defined(bool)
-#   define bool int
-#  endif
-#  if !defined(true)
-#   define true (1)
-#  endif
-#  if !defined(false)
-#   define false (0)
-#  endif
-# endif
-#endif
-
-
 #include "avdecc-pdu_bits.hpp"
 
 #define AVDECC_PDU_COUNTOF(x) (sizeof(x)/sizeof(x[0]))
@@ -202,9 +173,6 @@ typedef unsigned char uint8_t;
 #define AVDECC_PDU_HEADER_SIZE (12) /* See IEEE 1722-2011 Section 5.2 */
 #define AVDECC_PDU_MAX_PAYLOAD_SIZE (536) /* See IEEE 1722.1 Clause 9.2.1.1.7 */
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 bool avdecc_print (
     char *buf,
@@ -252,9 +220,6 @@ typedef struct avdecc_string32_s
 #define avdecc_log_warning(...)
 #endif
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif
 

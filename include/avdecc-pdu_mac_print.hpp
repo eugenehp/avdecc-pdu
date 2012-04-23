@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_MAC_PRINT_H_
-#define AVDECC_PDU_MAC_PRINT_H_
+#ifndef AVDECC_PDU_MAC_PRINT_HPP_
+#define AVDECC_PDU_MAC_PRINT_HPP_
 
 
 /*
@@ -22,9 +22,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include "avdecc-pdu_mac.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**
     \addtogroup mac
@@ -45,8 +42,5 @@ bool avdecc_mac_print (
 
 /* @} */
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

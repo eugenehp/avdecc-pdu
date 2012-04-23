@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_H_
-#define AVDECC_PDU_H_
+#ifndef AVDECC_PDU_HPP_
+#define AVDECC_PDU_HPP_
 
 /*
 Copyright (c) 2012, Jeff Koftinoff <jeff.koftinoff@ieee.org>

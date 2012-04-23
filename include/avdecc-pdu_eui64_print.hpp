@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_EUI64_PRINT_H_
-#define AVDECC_PDU_EUI64_PRINT_H_
+#ifndef AVDECC_PDU_EUI64_PRINT_HPP_
+#define AVDECC_PDU_EUI64_PRINT_HPP_
 
 
 /*
@@ -22,9 +22,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include "avdecc-pdu_eui64.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**
     \addtogroup eui64
@@ -108,8 +105,5 @@ static inline bool avdecc_vendor_model_guid_print (
 /* @} */
 
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_TESTHARNESS_H_
-#define AVDECC_PDU_TESTHARNESS_H_
+#ifndef AVDECC_PDU_TESTHARNESS_HPP_
+#define AVDECC_PDU_TESTHARNESS_HPP_
 
 /*
 Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
@@ -23,13 +23,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #define START_TEST()
 #define END_TEST(r)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif
 

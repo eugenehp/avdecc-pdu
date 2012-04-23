@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_APP_PRINT_H_
-#define AVDECC_PDU_APP_PRINT_H_
+#ifndef AVDECC_PDU_APP_PRINT_HPP_
+#define AVDECC_PDU_APP_PRINT_HPP_
 
 
 /*
@@ -22,9 +22,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_world.hpp"
 #include "avdecc-pdu_app.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**
     \addtogroup app
@@ -64,8 +61,5 @@ bool avdecc_app_print (
 
 /* @} */
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

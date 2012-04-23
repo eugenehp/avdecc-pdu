@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_AEM_DESCRIPTOR_PRINT_H_
-#define AVDECC_PDU_AEM_DESCRIPTOR_PRINT_H_
+#ifndef AVDECC_PDU_AEM_DESCRIPTOR_PRINT_HPP_
+#define AVDECC_PDU_AEM_DESCRIPTOR_PRINT_HPP_
 
 
 /*
@@ -22,9 +22,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include "avdecc-pdu_aem_descriptor.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**
     \addtogroup aem_descriptor
@@ -596,8 +593,5 @@ bool avdecc_descriptor_memory_object_print (
 
 /* @} */
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_ADP_H_
-#define AVDECC_PDU_ADP_H_
+#ifndef AVDECC_PDU_ADP_HPP_
+#define AVDECC_PDU_ADP_HPP_
 
 
 /*
@@ -23,9 +23,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_eui64.hpp"
 #include "avdecc-pdu_avtp.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**
     \addtogroup adp
@@ -398,8 +395,5 @@ bool avdecc_adp_write (
 
 /* @} */
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

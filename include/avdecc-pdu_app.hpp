@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_APP_H_
-#define AVDECC_PDU_APP_H_
+#ifndef AVDECC_PDU_APP_HPP_
+#define AVDECC_PDU_APP_HPP_
 
 /*
 Copyright (c) 2012, Jeff Koftinoff <jeff.koftinoff@ieee.org>
@@ -22,9 +22,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_bits.hpp"
 #include "avdecc-pdu_ip.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**
     \addtogroup app
@@ -193,8 +190,5 @@ bool avdecc_app_write (
 
 /* @} */
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

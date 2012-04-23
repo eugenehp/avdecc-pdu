@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_AVTP_PRINT_H_
-#define AVDECC_PDU_AVTP_PRINT_H_
+#ifndef AVDECC_PDU_AVTP_PRINT_HPP_
+#define AVDECC_PDU_AVTP_PRINT_HPP_
 
 
 /*
@@ -22,9 +22,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include "avdecc-pdu_avtp.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**
     \addtogroup avtp
@@ -93,8 +90,5 @@ bool avdecc_avtp_control_print (
 
 /* @} */
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif

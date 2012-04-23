@@ -1,5 +1,5 @@
-#ifndef AVDECC_PDU_AEM_H_
-#define AVDECC_PDU_AEM_H_
+#ifndef AVDECC_PDU_AEM_HPP_
+#define AVDECC_PDU_AEM_HPP_
 
 /*
 Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
@@ -23,9 +23,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_aem_descriptor.hpp"
 #include "avdecc-pdu_aem_command.hpp"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /** \addtogroup aem aem */
 /*@{*/
@@ -34,9 +31,6 @@ extern "C" {
 
 /*@}*/
 
-#ifdef __cplusplus
-}
-#endif
 
 
 
