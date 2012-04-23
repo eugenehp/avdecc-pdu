@@ -15,13 +15,13 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "avdecc-pdu_world.h"
-#include "avdecc-pdu_avtp.h"
-#include "avdecc-pdu_testharness.h"
-#include "avdecc-pdu_mac_print.h"
-#include "avdecc-pdu_eui64_print.h"
-#include "avdecc-pdu_avtp_print.h"
-#include "avdecc-pdu_stream_print.h"
+#include "avdecc-pdu_world.hpp"
+#include "avdecc-pdu_avtp.hpp"
+#include "avdecc-pdu_testharness.hpp"
+#include "avdecc-pdu_mac_print.hpp"
+#include "avdecc-pdu_eui64_print.hpp"
+#include "avdecc-pdu_avtp_print.hpp"
+#include "avdecc-pdu_stream_print.hpp"
 
 bool test_avdecc_mac ( avdecc_mac_t *mac, const char *mac_as_text );
 bool test_avdecc_stream_id ( avdecc_stream_id_t *mac, const char *stream_id_as_text );

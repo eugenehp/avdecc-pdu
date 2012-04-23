@@ -1,5 +1,9 @@
+#ifndef AVDECC_PDU_MAC_PRINT_H_
+#define AVDECC_PDU_MAC_PRINT_H_
+
+
 /*
-Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
+Copyright (c) 2012, Jeff Koftinoff <jeff.koftinoff@ieee.org>
 All rights reserved.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -15,24 +19,34 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "avdecc-pdu_world.hpp"
-#include "avdecc-pdu_testharness.hpp"
 
-int main ( int argc, char **argv )
-{
-    bool r = true;
-    START_TEST();
-    
-    END_TEST ( r );
-    
-    if ( r )
-    {
-        return 0;
-    }
-    
-    else
-    {
-        return 1;
-    }
+#include "avdecc-pdu_mac.hpp"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/**
+    \addtogroup mac
+    */
+/* @{ */
+
+bool avdecc_mac_to_text ( const avdecc_mac_t *mac, char *buf, int buf_len );
+bool avdecc_mac_from_text ( avdecc_mac_t *mac, const char *buf );
+
+
+bool avdecc_mac_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    const avdecc_mac_t *self
+    );
+
+
+/* @} */
+
+#ifdef __cplusplus
 }
+#endif
 
+#endif

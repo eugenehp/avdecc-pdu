@@ -1,5 +1,9 @@
+#ifndef AVDECC_PDU_ACMP_PRINT_H_
+#define AVDECC_PDU_ACMP_PRINT_H_
+
+
 /*
-Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
+Copyright (c) 2012, Jeff Koftinoff <jeff.koftinoff@ieee.org>
 All rights reserved.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -16,23 +20,51 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
 #include "avdecc-pdu_world.hpp"
-#include "avdecc-pdu_testharness.hpp"
+#include "avdecc-pdu_acmp.hpp"
 
-int main ( int argc, char **argv )
-{
-    bool r = true;
-    START_TEST();
-    
-    END_TEST ( r );
-    
-    if ( r )
-    {
-        return 0;
-    }
-    
-    else
-    {
-        return 1;
-    }
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/**
+    \addtogroup acmp
+    */
+/* @{ */
+
+bool avdecc_acmp_status_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    avdecc_acmp_status_t v
+    );
+
+bool avdecc_acmp_message_type_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    avdecc_acmp_message_type_t v
+    );
+
+bool avdecc_acmp_flags_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    avdecc_acmp_flags_t v
+    );
+
+
+bool avdecc_acmp_print (
+    char *buf,
+    size_t *pos,
+    size_t len,
+    const avdecc_acmp_t *self
+    );
+
+
+/* @} */
+
+#ifdef __cplusplus
 }
+#endif
 
+#endif

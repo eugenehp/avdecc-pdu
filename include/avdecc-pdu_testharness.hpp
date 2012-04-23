@@ -1,3 +1,6 @@
+#ifndef AVDECC_PDU_TESTHARNESS_H_
+#define AVDECC_PDU_TESTHARNESS_H_
+
 /*
 Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
 All rights reserved.
@@ -16,23 +19,17 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
 #include "avdecc-pdu_world.hpp"
-#include "avdecc-pdu_testharness.hpp"
 
-int main ( int argc, char **argv )
-{
-    bool r = true;
-    START_TEST();
-    
-    END_TEST ( r );
-    
-    if ( r )
-    {
-        return 0;
-    }
-    
-    else
-    {
-        return 1;
-    }
+#define START_TEST()
+#define END_TEST(r)
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef __cplusplus
 }
+#endif
+
+#endif
 

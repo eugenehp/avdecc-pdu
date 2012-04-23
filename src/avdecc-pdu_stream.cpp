@@ -1,5 +1,10 @@
+
+#include "avdecc-pdu_world.hpp"
+#include "avdecc-pdu_stream.hpp"
+
+
 /*
-Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
+Copyright (c) 2012, Jeff Koftinoff <jeff.koftinoff@ieee.org>
 All rights reserved.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -15,24 +20,34 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "avdecc-pdu_world.hpp"
-#include "avdecc-pdu_testharness.hpp"
 
-int main ( int argc, char **argv )
+
+bool avdecc_stream_id_read (
+    avdecc_stream_id_t *self,
+    const void *pdu,
+    size_t offset
+    )
 {
-    bool r = true;
-    START_TEST();
+    bool r=true;
     
-    END_TEST ( r );
+    r&=false; /* TODO */
     
-    if ( r )
-    {
-        return 0;
-    }
-    
-    else
-    {
-        return 1;
-    }
+    return r;
 }
+
+
+bool avdecc_stream_id_write (
+    const avdecc_stream_id_t *self,
+    void *pdu,
+    size_t offset
+    )
+{
+    bool r=true;
+    
+    r&=false; /* TODO */
+    
+    return r;
+}
+
+
 

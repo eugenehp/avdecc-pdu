@@ -18,21 +18,3 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "avdecc-pdu_world.hpp"
 #include "avdecc-pdu_testharness.hpp"
 
-int main ( int argc, char **argv )
-{
-    bool r = true;
-    START_TEST();
-    
-    END_TEST ( r );
-    
-    if ( r )
-    {
-        return 0;
-    }
-    
-    else
-    {
-        return 1;
-    }
-}
-

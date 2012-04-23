@@ -15,8 +15,8 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#include "avdecc-pdu_world.h"
-#include "avdecc-pdu_print.h"
+#include "avdecc-pdu_world.hpp"
+#include "avdecc-pdu_print.hpp"
 
 int main()
 {

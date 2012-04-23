@@ -1,5 +1,8 @@
+#include "avdecc-pdu_world.hpp"
+#include "avdecc-pdu_ip.hpp"
+
 /*
-Copyright (c) 2011, Jeff Koftinoff <jeff.koftinoff@ieee.org>
+Copyright (c) 2012, Jeff Koftinoff <jeff.koftinoff@ieee.org>
 All rights reserved.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -14,25 +17,4 @@ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
-
-#include "avdecc-pdu_world.hpp"
-#include "avdecc-pdu_testharness.hpp"
-
-int main ( int argc, char **argv )
-{
-    bool r = true;
-    START_TEST();
-    
-    END_TEST ( r );
-    
-    if ( r )
-    {
-        return 0;
-    }
-    
-    else
-    {
-        return 1;
-    }
-}
 
