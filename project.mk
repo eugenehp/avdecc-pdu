@@ -12,9 +12,9 @@ TOP_LIB_DIRS+=.
 CONFIG_TOOLS+=
 PKGCONFIG_PACKAGES+=
 ENABLE_PRECOMPILED_HEADERS?=1
-PRECOMPILED_HEADER=$(TOP)/include/avdecc-pdu_world.h
+PRECOMPILED_HEADER=$(TOP)/include/avdecc-pdu_world.hpp
 
 COMPILE_FLAGS+=-Wall -Wunused -Wno-variadic-macros
-CFLAGS+=-std=c99
+CFLAGS+=
 
 
