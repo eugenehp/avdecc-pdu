@@ -50,7 +50,7 @@ bool avdecc_command_read (
         self->controller_guid = avdecc_aecp_get_controller_guid ( base );
         self->sequence_id = avdecc_aecp_get_sequence_id ( base );
         self->unsolicited = avdecc_aecp_aem_get_u ( base );
-        self->command_type = avdecc_aecp_aem_get_command_type ( base );
+        self->command_type = (avdecc_aem_command_type_t)avdecc_aecp_aem_get_command_type ( base );
         r=true;
     }
     
@@ -110,7 +110,7 @@ bool avdecc_response_read (
         self->controller_guid = avdecc_aecp_get_controller_guid ( base );
         self->sequence_id = avdecc_aecp_get_sequence_id ( base );
         self->unsolicited = avdecc_aecp_aem_get_u ( base );
-        self->command_type = avdecc_aecp_aem_get_command_type ( base );
+        self->command_type = (avdecc_aem_command_type_t)avdecc_aecp_aem_get_command_type ( base );
         r=true;
     }
     

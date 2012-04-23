@@ -178,7 +178,11 @@ bool avdecc_aecp_aem_print (
     r&=avdecc_print ( buf,pos,len,"\n%-28s%d", "Sequence ID:", self->sequence_id );
 
     r&=avdecc_print ( buf,pos,len,"\n%-28s%s", "Unsolicited:",self->unsolicited ? "true" : "false" );
-    r&=avdecc_print ( buf,pos,len,"\n%-28s%s (%d)", "AEM Command:", avdecc_command_type_string(self->command_type), self->command_type );
+
+	{
+		avdecc_aem_command_type_t cmd = (avdecc_aem_command_type_t)self->command_type;
+    	r&=avdecc_print ( buf,pos,len,"\n%-28s%s (%d)", "AEM Command:", avdecc_command_type_string(cmd), cmd );
+	}
 
     return r;
 }

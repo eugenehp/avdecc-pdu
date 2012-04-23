@@ -48,8 +48,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 /*@{*/
 
-#endif
-
 
 
 /** \addtogtoup bit_util bit utilities */
