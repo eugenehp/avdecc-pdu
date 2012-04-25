@@ -900,7 +900,8 @@ bool avdecc_command_set_control_value_read (
             const uint8_t *base = ( const uint8_t * ) pdu;
             self->descriptor_type = (avdecc_aem_descriptor_type_t)avdecc_bits_get_doublet( base, 24 );
             self->descriptor_index = avdecc_bits_get_doublet( base, 26 );
-            memcpy( &self->values, base + 28, offset );    
+            if( self->base.control_data_length > 16 )
+              memcpy( &self->values, base + 28, self->base.control_data_length - 16 );
             r = true;
         }
     }
