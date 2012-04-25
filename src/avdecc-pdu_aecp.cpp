@@ -30,28 +30,61 @@ void avdecc_aecp_init ( avdecc_aecp_t *self )
 
 bool avdecc_aecp_read (
     avdecc_aecp_t *self,
-    const void *pdu,
-    size_t offset
+    const void *pdu
     )
 {
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
+    bool r=false;
+    const uint8_t *base = ( uint8_t * ) pdu;
+
+    if ( avdecc_aecp_get_cd ( base ) == avdecc_avtp_cd_control  &&
+         avdecc_aecp_get_subtype ( base ) == avdecc_avtp_subtype_aecp  &&
+         avdecc_aecp_get_sv ( base ) ==avdecc_avtp_sv_not_valid  &&
+         avdecc_aecp_get_version ( base ) ==0
+         )
+    {
+        self->message_type = avdecc_aecp_get_message_type ( base );
+        self->status = avdecc_aecp_get_status ( base );
+        self->control_data_length = avdecc_aecp_get_control_data_length ( base );
+        self->target_guid = avdecc_aecp_get_target_guid ( base );
+        self->controller_guid = avdecc_aecp_get_controller_guid ( base );
+        self->sequence_id = avdecc_aecp_get_sequence_id ( base );
+        memcpy( self->payload_specific_data, &base[22], self->control_data_length-10 );
+        r=true;
+    }
+
     return r;
 }
+
+
 
 
 bool avdecc_aecp_write (
     const avdecc_aecp_t *self,
     void *pdu,
-    size_t offset
+    size_t len
     )
 {
     bool r=true;
     
-    r&=false; /* TODO */
-    
+    if( len>=(self->control_data_length + 12) )
+    {
+        avdecc_avtp_set_cd(pdu,avdecc_avtp_cd_control);
+        avdecc_avtp_set_subtype(pdu,avdecc_avtp_subtype_acmp);
+        avdecc_avtp_set_sv(pdu,avdecc_avtp_sv_not_valid);
+        avdecc_avtp_set_version(pdu,0);
+        avdecc_aecp_set_message_type(pdu, self->message_type );
+        avdecc_aecp_set_status(pdu,self->status);
+        avdecc_aecp_set_control_data_length(pdu,self->control_data_length);
+        avdecc_aecp_set_target_guid(pdu,self->target_guid );
+        avdecc_aecp_set_controller_guid(pdu,self->controller_guid);
+        avdecc_aecp_set_sequence_id(pdu,self->sequence_id);
+
+        if( len>=(self->control_data_length-22) )
+        {
+            memcpy( ((uint8_t *)pdu)+22, self->payload_specific_data, self->control_data_length-22 );
+        }
+        r=true;
+    }
     return r;
 }
 
@@ -65,7 +98,7 @@ void avdecc_aecp_aem_init ( avdecc_aecp_aem_t *self )
 bool avdecc_aecp_aem_read (
     avdecc_aecp_aem_t *self,
     const void *pdu,
-    size_t offset
+    size_t len
     )
 {
     bool r=true;
@@ -79,7 +112,7 @@ bool avdecc_aecp_aem_read (
 bool avdecc_aecp_aem_write (
     const avdecc_aecp_aem_t *self,
     void *pdu,
-    size_t offset
+    size_t len
     )
 {
     bool r=true;
@@ -99,7 +132,7 @@ void avdecc_aecp_aa_init ( avdecc_aecp_aa_t *self )
 bool avdecc_aecp_aa_read (
     avdecc_aecp_aa_t *self,
     const void *pdu,
-    size_t offset
+    size_t len
     )
 {
     bool r=true;
@@ -113,7 +146,7 @@ bool avdecc_aecp_aa_read (
 bool avdecc_aecp_aa_write (
     const avdecc_aecp_aa_t *self,
     void *pdu,
-    size_t offset
+    size_t len
     )
 {
     bool r=true;
@@ -133,7 +166,7 @@ void avdecc_aecp_avc_init ( avdecc_aecp_avc_t *self )
 bool avdecc_aecp_avc_read (
     avdecc_aecp_avc_t *self,
     const void *pdu,
-    size_t offset
+    size_t len
     )
 {
     bool r=true;
@@ -147,7 +180,7 @@ bool avdecc_aecp_avc_read (
 bool avdecc_aecp_avc_write (
     const avdecc_aecp_avc_t *self,
     void *pdu,
-    size_t offset
+    size_t len
     )
 {
     bool r=true;
@@ -167,7 +200,7 @@ void avdecc_aecp_vu_init ( avdecc_aecp_vu_t *self )
 bool avdecc_aecp_vu_read (
     avdecc_aecp_vu_t *self,
     const void *pdu,
-    size_t offset
+    size_t len
     )
 {
     bool r=true;
@@ -181,7 +214,7 @@ bool avdecc_aecp_vu_read (
 bool avdecc_aecp_vu_write (
     const avdecc_aecp_vu_t *self,
     void *pdu,
-    size_t offset
+    size_t len
     )
 {
     bool r=true;
