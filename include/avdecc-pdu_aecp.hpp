@@ -114,6 +114,30 @@ typedef struct avdecc_aecp_s
 
 void avdecc_aecp_init ( avdecc_aecp_t *self );
 
+inline bool avdecc_aecp_set_payload( avdecc_aecp_t *self, const void *payload, size_t len )
+{
+    bool r=false;
+    if( len<=AVDECC_AECP_MAX_PAYLOAD_SPECIFIC_DATA )
+    {
+        memcpy( self->payload_specific_data, payload, len );
+        self->control_data_length = len+22;
+        r=true;
+    }
+    return r;
+}
+
+inline bool avdecc_aecp_get_payload( avdecc_aecp_t const *self, void *payload, size_t *len )
+{
+    bool r=false;
+
+    if( self->control_data_length <= *len+22 )
+    {
+        memcpy( payload, self->payload_specific_data, self->control_data_length-22 );
+        r=true;
+    }
+
+    return r;
+}
 
 /** avdecc_aecp_read
      *
@@ -127,7 +151,7 @@ void avdecc_aecp_init ( avdecc_aecp_t *self );
 bool avdecc_aecp_read (
     avdecc_aecp_t *self,
     const void *pdu,
-    size_t offset
+    size_t len
     );
 
 
@@ -143,7 +167,7 @@ bool avdecc_aecp_read (
 bool avdecc_aecp_write (
     const avdecc_aecp_t *self,
     void *pdu,
-    size_t offset
+    size_t len
     );
 
 /* @} */
@@ -225,7 +249,7 @@ void avdecc_aecp_aem_init ( avdecc_aecp_aem_t *self );
 bool avdecc_aecp_aem_read (
     avdecc_aecp_aem_t *self,
     const void *pdu,
-    size_t offset
+    size_t len
     );
 
 
@@ -241,7 +265,7 @@ bool avdecc_aecp_aem_read (
 bool avdecc_aecp_aem_write (
     const avdecc_aecp_aem_t *self,
     void *pdu,
-    size_t offset
+    size_t len
     );
 
 /* @} */
@@ -302,7 +326,7 @@ void avdecc_aecp_aa_init ( avdecc_aecp_aa_t *self );
 bool avdecc_aecp_aa_read (
     avdecc_aecp_aa_t *self,
     const void *pdu,
-    size_t offset
+    size_t len
     );
 
 
@@ -318,7 +342,7 @@ bool avdecc_aecp_aa_read (
 bool avdecc_aecp_aa_write (
     const avdecc_aecp_aa_t *self,
     void *pdu,
-    size_t offset
+    size_t len
     );
 
 /* @} */
@@ -369,7 +393,7 @@ void avdecc_aecp_avc_init ( avdecc_aecp_avc_t *self );
 bool avdecc_aecp_avc_read (
     avdecc_aecp_avc_t *self,
     const void *pdu,
-    size_t offset
+    size_t len
     );
 
 
@@ -437,7 +461,7 @@ void avdecc_aecp_vu_init ( avdecc_aecp_vu_t *self );
 bool avdecc_aecp_vu_read (
     avdecc_aecp_vu_t *self,
     const void *pdu,
-    size_t offset
+    size_t len
     );
 
 
@@ -453,7 +477,7 @@ bool avdecc_aecp_vu_read (
 bool avdecc_aecp_vu_write (
     const avdecc_aecp_vu_t *self,
     void *pdu,
-    size_t offset
+    size_t len
     );
 
 
