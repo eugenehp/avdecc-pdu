@@ -146,13 +146,6 @@ typedef unsigned char uint8_t;
 #include <math.h>
 #include <stdarg.h>
 
-#if AVDECC_ENABLE_LWIP_STACK
-# include "lwip/opt.h"
-# include "lwip/arch.h"
-# include "lwip/api.h"
-#endif
-
-
 #include "avdecc-pdu_bits.hpp"
 
 #define AVDECC_PDU_COUNTOF(x) (sizeof(x)/sizeof(x[0]))
