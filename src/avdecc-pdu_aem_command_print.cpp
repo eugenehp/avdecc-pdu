@@ -472,7 +472,7 @@ bool avdecc_command_set_control_value_print (
     const avdecc_aem_command_set_control_value_t *self
     )
 {
-    bool r=avdecc_command_print(buf,pos,len,&self->base);;
+    bool r=avdecc_command_print(buf,pos,len,&self->base);
     //TODO print control specific parts.
     //r&=false; /* TODO */
     
@@ -502,10 +502,9 @@ bool avdecc_command_get_control_value_print (
     const avdecc_aem_command_get_control_value_t *self
     )
 {
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
+    bool r=avdecc_command_print(buf,pos,len,&self->base);;
+    //TODO print control specific parts.
+
     return r;
 }
 
