@@ -966,10 +966,15 @@ bool avdecc_response_set_control_value_write (
     size_t offset
     )
 {
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
+    bool r=false;
+    if ( avdecc_command_write ( &self->base, pdu ) )
+    {
+        uint8_t *base = ( uint8_t * ) pdu;
+        avdecc_bits_set_doublet ( base,24,(uint16_t)self->descriptor_type );
+        avdecc_bits_set_doublet ( base,26,self->descriptor_index );
+        memcpy( base + 28, &self->values, offset );
+        r = true;
+    }
     return r;
 }
 
@@ -979,7 +984,7 @@ void avdecc_command_get_control_value_init ( avdecc_aem_command_get_control_valu
     memset ( ( void * ) self, 0, sizeof ( avdecc_aem_command_get_control_value_t ) );
     avdecc_command_init(&self->base);
     self->descriptor_type = avdecc_aem_descriptor_control;
-    self->base.command_type = avdecc_aem_command_set_control_value;
+    self->base.command_type = avdecc_aem_command_get_control_value;
 }
 
 
@@ -1037,10 +1042,19 @@ bool avdecc_response_get_control_value_read (
     size_t offset
     )
 {
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
+    bool r=false;
+    if (avdecc_response_read( &self->base, pdu ) )
+    {
+        if ( self->base.command_type == avdecc_aem_command_get_control_value )
+        {
+            const uint8_t *base = ( const uint8_t * ) pdu;
+            self->descriptor_type = (avdecc_aem_descriptor_type_t)avdecc_bits_get_doublet( base, 24 );
+            self->descriptor_index = avdecc_bits_get_doublet( base, 26 );
+            if( self->base.control_data_length > 16 )
+              memcpy( &self->values, base + 28, self->base.control_data_length - 16 );
+            r = true;
+        }
+    }
     return r;
 }
 
@@ -1051,10 +1065,15 @@ bool avdecc_response_get_control_value_write (
     size_t offset
     )
 {
-    bool r=true;
-    
-    r&=false; /* TODO */
-    
+    bool r=false;
+    if ( avdecc_command_write ( &self->base, pdu ) )
+    {
+        uint8_t *base = ( uint8_t * ) pdu;
+        avdecc_bits_set_doublet ( base,24,(uint16_t)self->descriptor_type );
+        avdecc_bits_set_doublet ( base,26,self->descriptor_index );
+        memcpy( base + 28, &self->values, offset );
+        r = true;
+    }
     return r;
 }
 
