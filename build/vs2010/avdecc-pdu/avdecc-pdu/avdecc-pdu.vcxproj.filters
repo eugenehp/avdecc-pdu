@@ -15,156 +15,174 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_acmp.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_acmp.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_acmp_print.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_acmp_print.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_adp.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_adp.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_adp_print.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_adp_print.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aecp.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aecp.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aecp_print.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aecp_print.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_command.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_command.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_command_print.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_command_print.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_descriptor.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_descriptor.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_descriptor_print.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_descriptor_print.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_print.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_aem_print.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_avtp.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_app.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_avtp_print.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_app_print.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_bits.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_avtp.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_eui64.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_avtp_print.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_eui64_print.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_bits.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_mac.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_eui64.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_mac_print.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_eui64_print.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_print.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_ip.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_stream.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_mac.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_stream_print.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_mac_print.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_testharness.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_print.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\include\avdecc-pdu_world.h">
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_stream.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_stream_print.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_testharness.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\include\avdecc-pdu_world.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_acmp.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_acmp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_acmp_print.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_acmp_print.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_adp.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_adp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_adp_print.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_adp_print.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aecp.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aecp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aecp_print.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aecp_print.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_command.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_command.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_command_print.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_command_print.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_descriptor.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_descriptor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_descriptor_print.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_descriptor_print.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_print.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_aem_print.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_avtp.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_app.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_avtp_print.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_app_print.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_bits.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_avtp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_eui64.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_avtp_print.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_eui64_print.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_bits.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_mac.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_eui64.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_mac_print.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_eui64_print.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_print.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_ip.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_stream.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_mac.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_stream_print.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_mac_print.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_testharness.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_print.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\src\avdecc-pdu_world.c">
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_stream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_stream_print.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_testharness.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\avdecc-pdu_world.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
