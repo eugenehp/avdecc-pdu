@@ -68,9 +68,10 @@ typedef enum avdecc_aecp_status_e avdecc_aecp_status_t;
 /** See IEEE 1722.1 Clause 9.2.1.1.7 */
 typedef avdecc_avtp_control_data_length_t avdecc_aecp_control_data_length_t;
 
+#define AVDECC_AECP_HEADER_SIZE (10) /** See IEEE 1722.1 Clause 9.2.1.1 */
 #define AVDECC_AECP_MAX_CONTROL_DATA_LENGTH ((avdecc_aecp_control_data_length_t)(524)) /** See IEEE 1722.1 Clause 9.2.1.1.7 */
 
-#define AVDECC_AECP_MAX_PAYLOAD_SPECIFIC_DATA (AVDECC_AECP_MAX_CONTROL_DATA_LENGTH-10) /** See IEEE 1722.1 Clause 9.2.1.1.7 */
+#define AVDECC_AECP_MAX_PAYLOAD_SPECIFIC_DATA (AVDECC_AECP_MAX_CONTROL_DATA_LENGTH-AVDECC_AECP_HEADER_SIZE) /** See IEEE 1722.1 Clause 9.2.1.1.7 */
 
 /** See IEEE 1722.1 Clause 9.2.1.1.8 */
 typedef uint16_t avdecc_aecp_sequence_id_t;
@@ -120,7 +121,7 @@ inline bool avdecc_aecp_set_payload( avdecc_aecp_t *self, const void *payload, s
     if( len<=AVDECC_AECP_MAX_PAYLOAD_SPECIFIC_DATA )
     {
         memcpy( self->payload_specific_data, payload, len );
-        self->control_data_length = len+22;
+        self->control_data_length = len+AVDECC_AECP_HEADER_SIZE;
         r=true;
     }
     return r;
@@ -130,9 +131,9 @@ inline bool avdecc_aecp_get_payload( avdecc_aecp_t const *self, void *payload, s
 {
     bool r=false;
 
-    if( self->control_data_length <= *len+22 )
+    if( self->control_data_length <= *len+AVDECC_AECP_HEADER_SIZE )
     {
-        memcpy( payload, self->payload_specific_data, self->control_data_length-22 );
+        memcpy( payload, self->payload_specific_data, self->control_data_length-AVDECC_AECP_HEADER_SIZE );
         r=true;
     }
 
@@ -176,8 +177,8 @@ bool avdecc_aecp_write (
      */
 /* @{ */
 
-
-#define AVDECC_AECP_AEM_MAX_PAYLOAD_SPECIFIC_DATA (AVDECC_AECP_MAX_PAYLOAD_SPECIFIC_DATA-2)
+#define AVDECC_AECP_AEM_HEADER_SIZE (12)
+#define AVDECC_AECP_AEM_MAX_PAYLOAD_SPECIFIC_DATA (AVDECC_AECP_MAX_CONTROL_DATA_LENGTH-AVDECC_AECP_AEM_HEADER_SIZE)
 
 /** \addtogroup AECP Status type */
 /* @{ */
@@ -274,7 +275,8 @@ bool avdecc_aecp_aem_write (
      */
 /* @{ */
 
-#define AVDECC_AECP_AA_MAX_PAYLOAD_SPECIFIC_DATA (AVDECC_AECP_MAX_PAYLOAD_SPECIFIC_DATA-2)
+#define AVDECC_AECP_AA_HEADER_SIZE (12) /** See IEEE 1722.1 Clause 9.2.1.3 */
+#define AVDECC_AECP_AA_MAX_PAYLOAD_SPECIFIC_DATA (AVDECC_AECP_MAX_CONTROL_DATA_LENGTH-AVDECC_AECP_AA_HEADER_SIZE)
 #define AVDECC_AECP_AA_MAX_TLV_COUNT (16) /* <<NOTE:CAPTURE>> */
 
 /** avdecc_aecp_aa_tlv_t
@@ -351,7 +353,8 @@ bool avdecc_aecp_aa_write (
      */
 /* @{ */
 
-#define AVDECC_AECP_AVC_MAX_PAYLOAD_SPECIFIC_DATA (AVDECC_AECP_MAX_PAYLOAD_SPECIFIC_DATA-2)
+#define AVDECC_AECP_AVC_HEADER_SIZE (12) /** See IEEE 1722.1 Clause 9.2.1.3 */
+#define AVDECC_AECP_AVC_MAX_PAYLOAD_SPECIFIC_DATA (AVDECC_AECP_MAX_CONTROL_DATA_LENGTH-AVDECC_AECP_AVC_HEADER_SIZE)
 
 /** avdecc_aecp_avc_t
     */
@@ -418,7 +421,8 @@ bool avdecc_aecp_avc_write (
      */
 /* @{ */
 
-#define AVDECC_AECP_VU_MAX_PAYLOAD_SPECIFIC_DATA (AVDECC_AECP_MAX_PAYLOAD_SPECIFIC_DATA-6)
+#define AVDECC_AECP_VU_HEADER_SIZE (16) /** See IEEE 1722.1 Clause 9.2.1.5 */
+#define AVDECC_AECP_VU_MAX_PAYLOAD_SPECIFIC_DATA (AVDECC_AECP_MAX_CONTROL_DATA_LENGTH-AVDECC_AECP_VU_HEADER_SIZE)
 
 
 /** avdecc_aecp_vu_t

@@ -39,7 +39,8 @@ bool avdecc_aecp_read (
     if ( avdecc_aecp_get_cd ( base ) == avdecc_avtp_cd_control  &&
          avdecc_aecp_get_subtype ( base ) == avdecc_avtp_subtype_aecp  &&
          avdecc_aecp_get_sv ( base ) ==avdecc_avtp_sv_not_valid  &&
-         avdecc_aecp_get_version ( base ) ==0
+         avdecc_aecp_get_version ( base ) ==0 &&
+		 avdecc_aecp_get_control_data_length( base ) >= AVDECC_AECP_HEADER_SIZE
          )
     {
         self->message_type = avdecc_aecp_get_message_type ( base );
@@ -48,7 +49,7 @@ bool avdecc_aecp_read (
         self->target_guid = avdecc_aecp_get_target_guid ( base );
         self->controller_guid = avdecc_aecp_get_controller_guid ( base );
         self->sequence_id = avdecc_aecp_get_sequence_id ( base );
-        memcpy( self->payload_specific_data, &base[22], self->control_data_length-10 );
+		memcpy( self->payload_specific_data, &base[AVDECC_PDU_HEADER_SIZE + AVDECC_AECP_HEADER_SIZE], self->control_data_length-AVDECC_AECP_HEADER_SIZE );
         r=true;
     }
 
@@ -66,7 +67,7 @@ bool avdecc_aecp_write (
 {
     bool r=true;
     
-    if( len>=(self->control_data_length + 12) )
+    if( len>=(size_t)(self->control_data_length + AVDECC_PDU_HEADER_SIZE + AVDECC_AECP_HEADER_SIZE) )
     {
         avdecc_avtp_set_cd(pdu,avdecc_avtp_cd_control);
         avdecc_avtp_set_subtype(pdu,avdecc_avtp_subtype_acmp);
@@ -79,9 +80,9 @@ bool avdecc_aecp_write (
         avdecc_aecp_set_controller_guid(pdu,self->controller_guid);
         avdecc_aecp_set_sequence_id(pdu,self->sequence_id);
 
-        if( len>=(self->control_data_length-22) )
+        if( len>=self->control_data_length )
         {
-            memcpy( ((uint8_t *)pdu)+22, self->payload_specific_data, self->control_data_length-22 );
+            memcpy( ((uint8_t *)pdu)+(AVDECC_PDU_HEADER_SIZE + AVDECC_AECP_HEADER_SIZE), self->payload_specific_data, (self->control_data_length-AVDECC_AECP_HEADER_SIZE) );
         }
         r=true;
     }
