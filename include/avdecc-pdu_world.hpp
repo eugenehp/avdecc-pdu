@@ -154,7 +154,7 @@ typedef unsigned char uint8_t;
 #elif defined(__GNUC__)
 # define AVDECC_PDU_UNUSED(x) AVDECC_PDU_UNUSED_ ## x __attribute__((unused))
 #else
-# define AVDECC_PDU_UNUSED(x) AVDECC_PDU_UNUSED_ ## x
+# define AVDECC_PDU_UNUSED(x) //AVDECC_PDU_UNUSED_ ## x
 #endif
 
 #define AVDECC_AVTP_ETHERTYPE ((uint16_t)0x22f0)
