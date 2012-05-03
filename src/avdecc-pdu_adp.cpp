@@ -44,8 +44,8 @@ bool avdecc_adp_read (
          avdecc_avtp_get_version ( pdu ) ==0
          )
     {
-        if ( avdecc_avtp_get_control_data_length ( pdu ) >= AVDECC_ADP_CONTROL_DATA_LENGTH
-             || avdecc_avtp_get_control_data_length ( pdu ) >= 0x28 ) // Hack for today only
+		if ( len>=(AVDECC_PDU_HEADER_SIZE + AVDECC_ADP_CONTROL_DATA_LENGTH)
+			&& avdecc_avtp_get_control_data_length ( pdu ) >= AVDECC_ADP_CONTROL_DATA_LENGTH )
         {
             self->message_type = avdecc_adp_get_message_type ( pdu );
             self->valid_time = avdecc_adp_get_valid_time ( pdu );
