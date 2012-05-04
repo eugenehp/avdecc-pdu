@@ -1418,7 +1418,7 @@ typedef struct avdecc_aem_command_set_control_value_s
     avdecc_aem_command_t base;
     avdecc_aem_descriptor_type_t descriptor_type;
     uint16_t descriptor_index;
-    avdecc_aem_control_value_format_union_t values;
+    avdecc_aem_control_value_union_t values;
 } avdecc_aem_command_set_control_value_t;
 
 
