@@ -4563,8 +4563,8 @@ typedef union avdecc_aem_control_value_format_union_s
     avdecc_aem_control_value_type_linear_format_uint16_t linear_uint16;
     avdecc_aem_control_value_type_linear_format_int32_t linear_int32;
     avdecc_aem_control_value_type_linear_format_uint32_t linear_uint32;
-    avdecc_aem_control_value_type_linear_format_int32_t linear_int64;
-    avdecc_aem_control_value_type_linear_format_uint32_t linear_uint64;
+    avdecc_aem_control_value_type_linear_format_int64_t linear_int64;
+    avdecc_aem_control_value_type_linear_format_uint64_t linear_uint64;
     avdecc_aem_control_value_type_linear_format_float_t linear_float;
     avdecc_aem_control_value_type_linear_format_double_t linear_double;
 
@@ -4576,8 +4576,8 @@ typedef union avdecc_aem_control_value_format_union_s
     avdecc_aem_control_value_type_selector_format_uint16_t selector_uint16;
     avdecc_aem_control_value_type_selector_format_int32_t selector_int32;
     avdecc_aem_control_value_type_selector_format_uint32_t selector_uint32;
-    avdecc_aem_control_value_type_selector_format_int32_t selector_int64;
-    avdecc_aem_control_value_type_selector_format_uint32_t selector_uint64;
+    avdecc_aem_control_value_type_selector_format_int64_t selector_int64;
+    avdecc_aem_control_value_type_selector_format_uint64_t selector_uint64;
     avdecc_aem_control_value_type_selector_format_float_t selector_float;
     avdecc_aem_control_value_type_selector_format_double_t selector_double;
 
@@ -4596,6 +4596,48 @@ typedef union avdecc_aem_control_value_format_union_s
 
     avdecc_aem_control_value_type_vendor_format_t vendor;
 } avdecc_aem_control_value_format_union_t;
+
+
+typedef union avdecc_aem_control_value_union_s
+{
+    int8_t linear_int8;
+    uint8_t linear_uint8;
+    int16_t linear_int16;
+    uint16_t linear_uint16;
+    int32_t linear_int32;
+    uint32_t linear_uint32;
+    int64_t linear_int64;
+    uint64_t linear_uint64;
+    float linear_float;
+    double linear_double;
+
+    avdecc_aem_control_value_type_bode_plot_entry_t bode_plot[ AVDECC_PDU_AEM_CONTROL_BODE_PLOT_MAX_ITEMS ];
+
+    int8_t selector_int8[ AVDECC_PDU_AEM_CONTROL_SELECTOR_INT8_MAX_OPTIONS ];
+    uint8_t selector_uint8[ AVDECC_PDU_AEM_CONTROL_SELECTOR_UINT8_MAX_OPTIONS ];
+    int16_t selector_int16[ AVDECC_PDU_AEM_CONTROL_SELECTOR_INT16_MAX_OPTIONS ];
+    uint16_t selector_uint16[ AVDECC_PDU_AEM_CONTROL_SELECTOR_UINT16_MAX_OPTIONS ];
+    int32_t selector_int32[ AVDECC_PDU_AEM_CONTROL_SELECTOR_INT32_MAX_OPTIONS ];
+    uint32_t selector_uint32[ AVDECC_PDU_AEM_CONTROL_SELECTOR_UINT32_MAX_OPTIONS ];
+    int64_t selector_int64[ AVDECC_PDU_AEM_CONTROL_SELECTOR_INT64_MAX_OPTIONS ];
+    uint64_t selector_uint64[ AVDECC_PDU_AEM_CONTROL_SELECTOR_UINT64_MAX_OPTIONS ];
+    float selector_float[ AVDECC_PDU_AEM_CONTROL_SELECTOR_FLOAT_MAX_OPTIONS ];
+    double selector_double[ AVDECC_PDU_AEM_CONTROL_SELECTOR_DOUBLE_MAX_OPTIONS ];
+
+    int8_t array_int8[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT8_MAX_ITEMS ];
+    uint8_t array_uint8[ AVDECC_PDU_AEM_CONTROL_ARRAY_UINT8_MAX_ITEMS ];
+    int16_t array_int16[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT16_MAX_ITEMS ];
+    uint16_t array_uint16[ AVDECC_PDU_AEM_CONTROL_ARRAY_UINT16_MAX_ITEMS ];
+    int32_t array_int32[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT32_MAX_ITEMS ];
+    uint32_t array_uint32[ AVDECC_PDU_AEM_CONTROL_ARRAY_UINT32_MAX_ITEMS ];
+    int64_t array_int64[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT64_MAX_ITEMS ];
+    uint64_t array_uint64[ AVDECC_PDU_AEM_CONTROL_ARRAY_UINT64_MAX_ITEMS ];
+    float array_float[ AVDECC_PDU_AEM_CONTROL_ARRAY_FLOAT_MAX_ITEMS ];
+    double array_double[ AVDECC_PDU_AEM_CONTROL_ARRAY_DOUBLE_MAX_ITEMS ];
+
+    uint16_t selector_string[ AVDECC_PDU_AEM_CONTROL_SELECTOR_STRING_MAX_OPTIONS ]; 
+    uint8_t vendor[ AVDECC_PDU_AEM_CONTROL_VENDOR_FORMAT_MAX_BLOB ];
+} avdecc_aem_control_value_union_t;
 
 
 /** avdecc_aem_descriptor_control_t
