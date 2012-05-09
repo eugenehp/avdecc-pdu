@@ -172,12 +172,12 @@ void avdecc_localized_string_ref_init ( avdecc_aem_localized_string_ref_t *self 
      *  Test if the string reference is empty
      *
      *  @param self pointer to object to test
-     *  @returns bool true if string ref is NO_STRING (Clause 7.3.5)
+     *  @returns bool true if string ref is NO_STRING (Clause 7.3.5) or any variant where bottom 3 bits are set
      */
 
 static inline bool avdecc_localized_string_ref_is_empty ( const avdecc_aem_localized_string_ref_t *self )
 {
-    return self->m_offset==0 && self->m_index==7;
+    return self->m_index==7;
 }
 
 /** avdecc_localized_string_ref_read
