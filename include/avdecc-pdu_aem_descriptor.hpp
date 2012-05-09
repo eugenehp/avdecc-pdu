@@ -75,8 +75,8 @@ avdecc_aem_descriptor_type_t;
 
 typedef struct
 {
-    avdecc_aem_descriptor_type_t descriptor_type;
-    uint16_t descriptor_index;
+    avdecc_aem_descriptor_type_t m_descriptor_type;
+    uint16_t m_descriptor_index;
 } avdecc_aem_descriptor_list_item_t;
 
 
@@ -98,9 +98,9 @@ bool avdecc_aem_descriptor_type_read (
 
 typedef struct avdecc_aem_descriptor_s
 {
-    avdecc_aem_descriptor_type_t descriptor_type;
-    uint16_t descriptor_index;
-    uint8_t padding[ AVDECC_PDU_AEM_DESCRIPTOR_MAX_CONTENT_SIZE ];
+    avdecc_aem_descriptor_type_t m_descriptor_type;
+    uint16_t m_descriptor_index;
+    uint8_t m_padding[ AVDECC_PDU_AEM_DESCRIPTOR_MAX_CONTENT_SIZE ];
 } avdecc_aem_descriptor_t;
 
 
@@ -153,8 +153,8 @@ bool avdecc_descriptor_write (
 
 typedef struct avdecc_aem_localized_string_ref_s
 {
-    uint16_t offset:13;
-    uint16_t index:3;
+    uint16_t m_offset:13;
+    uint16_t m_index:3;
 } avdecc_aem_localized_string_ref_t;
 
 /** avdecc_localized_string_ref_init
@@ -177,7 +177,7 @@ void avdecc_localized_string_ref_init ( avdecc_aem_localized_string_ref_t *self 
 
 static inline bool avdecc_localized_string_ref_is_empty ( const avdecc_aem_localized_string_ref_t *self )
 {
-    return self->offset==0 && self->index==7;
+    return self->m_offset==0 && self->m_index==7;
 }
 
 /** avdecc_localized_string_ref_read
@@ -221,28 +221,28 @@ bool avdecc_localized_string_ref_write (
 
 typedef struct avdecc_aem_descriptor_entity_s
 {
-    avdecc_aem_descriptor_type_t descriptor_type;
-    uint16_t descriptor_index;
-    avdecc_eui64_t entity_guid;
-    avdecc_eui64_t vendor_model_id;
-    avdecc_adp_entity_capabilities_t entity_capabilities;
-    uint16_t talker_stream_sources;
-    avdecc_adp_talker_capabilities_t talker_capabilities;
-    uint16_t listener_stream_sinks;
-    avdecc_adp_listener_capabilities_t listener_capabilities;
-    avdecc_adp_controller_capabilities_t controller_capabilities;
-    uint32_t available_index;
-    avdecc_eui64_t as_grandmaster_id;
-    avdecc_eui64_t association_id;
-    uint32_t entity_type;
-    avdecc_string64_t entity_name;
-    avdecc_aem_localized_string_ref_t vendor_name_string;
-    avdecc_aem_localized_string_ref_t model_name_string;
-    avdecc_string64_t firmware_version;
-    avdecc_string64_t group_name;
-    avdecc_string64_t serial_number;
-    uint16_t configurations_count;
-    uint16_t current_configuration;
+    avdecc_aem_descriptor_type_t m_descriptor_type;
+    uint16_t m_descriptor_index;
+    avdecc_eui64_t m_entity_guid;
+    avdecc_eui64_t m_vendor_model_id;
+    avdecc_adp_entity_capabilities_t m_entity_capabilities;
+    uint16_t m_talker_stream_sources;
+    avdecc_adp_talker_capabilities_t m_talker_capabilities;
+    uint16_t m_listener_stream_sinks;
+    avdecc_adp_listener_capabilities_t m_listener_capabilities;
+    avdecc_adp_controller_capabilities_t m_controller_capabilities;
+    uint32_t m_available_index;
+    avdecc_eui64_t m_as_grandmaster_id;
+    avdecc_eui64_t m_association_id;
+    uint32_t m_entity_type;
+    avdecc_string64_t m_entity_name;
+    avdecc_aem_localized_string_ref_t m_vendor_name_string;
+    avdecc_aem_localized_string_ref_t m_model_name_string;
+    avdecc_string64_t m_firmware_version;
+    avdecc_string64_t m_group_name;
+    avdecc_string64_t m_serial_number;
+    uint16_t m_configurations_count;
+    uint16_t m_current_configuration;
 } avdecc_aem_descriptor_entity_t;
 
 
@@ -302,8 +302,8 @@ bool avdecc_descriptor_entity_write (
 /** See IEEE 1722.1 Clause 7.2.2.1 */
 typedef struct avdecc_aem_descriptor_configuration_counts_s
 {
-    avdecc_aem_descriptor_type_t descriptor_type;
-    uint16_t descriptor_count;
+    avdecc_aem_descriptor_type_t m_descriptor_type;
+    uint16_t m_descriptor_count;
 } avdecc_aem_descriptor_configuration_counts_t;
 
 
@@ -359,12 +359,12 @@ bool avdecc_descriptor_configuration_counts_write (
 /** See IEEE 1722.1 Clause 7.2.2 */
 typedef struct avdecc_aem_descriptor_configuration_s
 {
-    avdecc_aem_descriptor_type_t descriptor_type;
-    uint16_t descriptor_index;
-    avdecc_string64_t configuration_name;
-    avdecc_aem_localized_string_ref_t configuration_name_string;
-    uint16_t descriptor_counts_count;
-    avdecc_aem_descriptor_configuration_counts_t descriptor_counts[AVDECC_PDU_AEM_DESCRIPTOR_CONFIGURATION_MAX_COUNTS];
+    avdecc_aem_descriptor_type_t m_descriptor_type;
+    uint16_t m_descriptor_index;
+    avdecc_string64_t m_configuration_name;
+    avdecc_aem_localized_string_ref_t m_configuration_name_string;
+    uint16_t m_descriptor_counts_count;
+    avdecc_aem_descriptor_configuration_counts_t m_descriptor_counts[AVDECC_PDU_AEM_DESCRIPTOR_CONFIGURATION_MAX_COUNTS];
 } avdecc_aem_descriptor_configuration_t;
 
 
@@ -484,8 +484,8 @@ bool avdecc_audio_pull_write (
 
 typedef struct avdecc_aem_audio_sample_rate_s
 {
-    uint32_t base_frequency;
-    avdecc_aem_audio_pull_t pull;
+    uint32_t m_base_frequency;
+    avdecc_aem_audio_pull_t m_pull;
 } avdecc_aem_audio_sample_rate_t;
 
 
@@ -542,34 +542,34 @@ bool avdecc_audio_sample_rate_write (
 /** See IEEE 1722.1 Clause 7.2.3 */
 typedef struct avdecc_aem_descriptor_audio_unit_s
 {
-    avdecc_aem_descriptor_type_t descriptor_type;
-    uint16_t descriptor_index;
-    uint16_t number_of_stream_input_ports;
-    uint16_t base_stream_input_port;
-    uint16_t number_of_stream_output_ports;
-    uint16_t base_stream_output_port;
-    uint16_t number_of_external_input_ports;
-    uint16_t base_external_input_port;
-    uint16_t number_of_external_output_ports;
-    uint16_t base_external_output_port;
-    uint16_t number_of_internal_input_ports;
-    uint16_t base_internal_input_port;
-    uint16_t number_of_internal_output_ports;
-    uint16_t base_internal_output_port;
-    uint16_t clock_source_index;
-    uint16_t number_of_controls;
-    uint16_t base_control;
-    avdecc_string64_t unit_name;
-    avdecc_aem_localized_string_ref_t unit_name_string;
-    uint16_t number_of_signal_selectors;
-    uint16_t base_signal_selector;
-    uint16_t number_of_mixers;
-    uint16_t base_mixer;
-    uint16_t number_of_matrices;
-    uint16_t base_matrix;
-    avdecc_aem_audio_sample_rate_t current_sample_rate;
-    uint16_t sample_rates_count;
-    avdecc_aem_audio_sample_rate_t sample_rates[AVDECC_PDU_AEM_DESCRIPTOR_AUDIO_MAX_SAMPLE_RATES];
+    avdecc_aem_descriptor_type_t m_descriptor_type;
+    uint16_t m_descriptor_index;
+    uint16_t m_number_of_stream_input_ports;
+    uint16_t m_base_stream_input_port;
+    uint16_t m_number_of_stream_output_ports;
+    uint16_t m_base_stream_output_port;
+    uint16_t m_number_of_external_input_ports;
+    uint16_t m_base_external_input_port;
+    uint16_t m_number_of_external_output_ports;
+    uint16_t m_base_external_output_port;
+    uint16_t m_number_of_internal_input_ports;
+    uint16_t m_base_internal_input_port;
+    uint16_t m_number_of_internal_output_ports;
+    uint16_t m_base_internal_output_port;
+    uint16_t m_clock_source_index;
+    uint16_t m_number_of_controls;
+    uint16_t m_base_control;
+    avdecc_string64_t m_unit_name;
+    avdecc_aem_localized_string_ref_t m_unit_name_string;
+    uint16_t m_number_of_signal_selectors;
+    uint16_t m_base_signal_selector;
+    uint16_t m_number_of_mixers;
+    uint16_t m_base_mixer;
+    uint16_t m_number_of_matrices;
+    uint16_t m_base_matrix;
+    avdecc_aem_audio_sample_rate_t m_current_sample_rate;
+    uint16_t m_sample_rates_count;
+    avdecc_aem_audio_sample_rate_t m_sample_rates[AVDECC_PDU_AEM_DESCRIPTOR_AUDIO_MAX_SAMPLE_RATES];
 } avdecc_aem_descriptor_audio_unit_t;
 
 
@@ -2192,72 +2192,72 @@ bool avdecc_control_type_write (
 /** See IEEE 1722.1 Clause 7.3.3 */
 typedef enum
 {
-    avdecc_aem_units_none=0x00, /*!< "", "Unitless" */
-    avdecc_aem_units_inc_count =0x01, /*!< "", "Incrementing Count" */
-    avdecc_aem_units_percentage =0x02, /*!< "%", "Percentage" */
-    avdecc_aem_units_fstop =0x03, /*!< "", "fstop" */
-    avdecc_aem_units_time_seconds=0x08, /*!< "s", "Time in seconds" */
-    avdecc_aem_units_time_minutes=0x09, /*!< "m", "Time in minutes" */
-    avdecc_aem_units_time_hours =0x0a, /*!< "h", "Time in hours" */
-    avdecc_aem_units_time_days =0x0b, /*!< "d", "Time in days" */
-    avdecc_aem_units_time_months =0x0c, /*!< "M", "Time in months" */
-    avdecc_aem_units_time_years =0x0d, /*!< "Y", "Time in years" */
-    avdecc_aem_units_time_samples =0x0e, /*!< "samples", "Time in audio samples" */
-    avdecc_aem_units_time_frames =0x0f, /*!< "f", "Time in video/film frames" */
-    avdecc_aem_units_freq_hz =0x10, /*!< "Hz", "Frequency in Hertz" */
-    avdecc_aem_units_freq_note =0x11, /*!< "Note", "Frequency in MIDI note value (semitones)" */
-    avdecc_aem_units_freq_cents =0x12, /*!< "Cent", "Frequency in Cents" */
-    avdecc_aem_units_freq_octaves =0x13, /*!< "Octave", "Frequency in Octaves" */
-    avdecc_aem_units_distance_meteres =0x18, /*!< "m", "Distance in metres" */
-    avdecc_aem_units_temperature_kelvin =0x20, /*!< "K", "Temperature in kelvin" */
-    avdecc_aem_units_voltage_volts =0x30, /*!< "V", "Voltage in volts" */
-    avdecc_aem_units_voltage_dbv =0x31, /*!< "dBV", "Voltage in dBV" */
-    avdecc_aem_units_voltage_dbu =0x32, /*!< "dBu", "Voltage in dBu" */
-    avdecc_aem_units_current_amperes =0x38, /*!< "A", "Electric current in amperes" */
-    avdecc_aem_units_power_watts =0x40, /*!< "W", "Electric power in watts" */
-    avdecc_aem_units_power_dbm =0x41, /*!< "dBm", "Signal power in dBm" */
-    avdecc_aem_units_power_dbw =0x42, /*!< "dBW", "Signal power in dBW" */
-    avdecc_aem_units_pressure_pascals =0x48, /*!< "Pa", "Pressure in pascals" */
-    avdecc_aem_units_mem_bits =0x50, /*!< "b", "Bit count" */
-    avdecc_aem_units_mem_bytes =0x51, /*!< "B", "Byte count" */
-    avdecc_aem_units_mem_kibibytes =0x52, /*!< "KiB", "Kibibyte count" */
-    avdecc_aem_units_mem_mebibytes =0x53, /*!< "MiB", "Mebibyte count" */
-    avdecc_aem_units_mem_gibibytes =0x54, /*!< "GiB", "Gibibyte count" */
-    avdecc_aem_units_mem_tebibytes =0x55, /*!< "TiB", "Tebibyte count" */
-    avdecc_aem_units_bw_bits_per_second =0x58, /*!< "b/s", "Bits per second" */
-    avdecc_aem_units_bw_bytes_per_second =0x59, /*!< "B/s", "Bytes per second" */
-    avdecc_aem_units_bw_kibibytes_per_second =0x5a, /*!< "KiB/s", "Kibibytes per second" */
-    avdecc_aem_units_bw_mebibytes_per_second =0x5b, /*!< "MiB/s", "Mebibytes per second" */
-    avdecc_aem_units_bw_gibibytes_per_second =0x5c, /*!< "GiB/s", "Gibibytes per second" */
-    avdecc_aem_units_bw_tebibytes_per_second =0x5d, /*!< "TiB/s", "Tebibytes per second" */
-    avdecc_aem_units_luminosity_candela =0x60, /*!< "cd", "Candela" */
-    avdecc_aem_units_energy_joules =0x68, /*!< "J", "Joules" */
-    avdecc_aem_units_angle_radians =0x70, /*!< "rad", "Radians" */
-    avdecc_aem_units_force_newtons =0x78, /*!< "N", "Newtons" */
-    avdecc_aem_units_resistance_ohms =0x80, /*!< "Ω", "Ohms" */
-    avdecc_aem_units_velocity_metres_per_second =0x88, /*!< "m/s", "Meters per second" */
-    avdecc_aem_units_angular_velocity_radians_per_second =0x89, /*!< "rad/s", "Angular velocity in radians per second" */
-    avdecc_aem_units_acceleration_metres_per_second_per_second  =0x90, /* "m/s·s", "Meters per second per second" */
-    avdecc_aem_units_acceleration_rad_per_second_per_second  =0x91, /* "rad/s·s", "Radians per second per second" */
-    avdecc_aem_units_area_metres_squared =0xa0, /*!< "m·m", "Meters squared" */
-    avdecc_aem_units_volume_metres_cubed =0xa8, /*!< "m·m·m", "Meters cubed" */
-    avdecc_aem_units_volume_litres =0xa9, /*!< "l", "Litres" */
-    avdecc_aem_units_mass_grams =0xb0, /*!< "gram", "Grams" */
-    avdecc_aem_units_magnetic_flux_tesla =0xb8, /*!< "T", "Tesla" */
-    avdecc_aem_units_level_db =0xc0, /*!< "dB", "Level or gain in decibels" */
-    avdecc_aem_units_level_db_peak =0xc1, /*!< "dB (Peak)", "'Peak' level or gain in decibels */
-    avdecc_aem_units_level_db_rms =0xc2, /*!< "dB (RMS)", "'RMS' level in decibels */
-    avdecc_aem_units_level_dbfs =0xc3, /*!< "dBFS", "Full scale level in decibels" */
-    avdecc_aem_units_level_dbfs_peak =0xc4, /*!< "dBFS (Peak)", "Full scale 'peak' level in decibels" */
-    avdecc_aem_units_level_dbfs_rms =0xc5, /*!< "dBFS (RMS)", "Full scale 'RMS' level in decibels" */
-    avdecc_aem_units_level_dbtp =0xc6, /*!< "dBTP", "True peak level in decibels" */
-    avdecc_aem_units_level_dba =0xc7, /*!< "dB(A)", "A-weighted level in decibels" */
-    avdecc_aem_units_level_dbb =0xc8, /*!< "dB(B)", "B-weighted level in decibels" */
-    avdecc_aem_units_level_dbc =0xc9, /*!< "dB(C)", "C-weighted level in decibels" */
-    avdecc_aem_units_level_dbspl =0xca, /*!< "dB(SPL)", "Sound pressure level in decibels" */
-    avdecc_aem_units_level_lu =0xcb, /*!< "LU", "ITU-R. BS. 1770-2 loudness level" */
-    avdecc_aem_units_level_lufs =0xcc /*!< "LUFS", "ITU-R. BS. 1770-2 full scale loudness level" */
-} avdecc_aem_units_t;
+    avdecc_aem_unit_none=0x00, /*!< "", "Unitless" */
+    avdecc_aem_unit_inc_count =0x01, /*!< "", "Incrementing Count" */
+    avdecc_aem_unit_percentage =0x02, /*!< "%", "Percentage" */
+    avdecc_aem_unit_fstop =0x03, /*!< "", "fstop" */
+    avdecc_aem_unit_time_seconds=0x08, /*!< "s", "Time in seconds" */
+    avdecc_aem_unit_time_minutes=0x09, /*!< "m", "Time in minutes" */
+    avdecc_aem_unit_time_hours =0x0a, /*!< "h", "Time in hours" */
+    avdecc_aem_unit_time_days =0x0b, /*!< "d", "Time in days" */
+    avdecc_aem_unit_time_months =0x0c, /*!< "M", "Time in months" */
+    avdecc_aem_unit_time_years =0x0d, /*!< "Y", "Time in years" */
+    avdecc_aem_unit_time_samples =0x0e, /*!< "samples", "Time in audio samples" */
+    avdecc_aem_unit_time_frames =0x0f, /*!< "f", "Time in video/film frames" */
+    avdecc_aem_unit_freq_hz =0x10, /*!< "Hz", "Frequency in Hertz" */
+    avdecc_aem_unit_freq_note =0x11, /*!< "Note", "Frequency in MIDI note value (semitones)" */
+    avdecc_aem_unit_freq_cents =0x12, /*!< "Cent", "Frequency in Cents" */
+    avdecc_aem_unit_freq_octaves =0x13, /*!< "Octave", "Frequency in Octaves" */
+    avdecc_aem_unit_distance_meteres =0x18, /*!< "m", "Distance in metres" */
+    avdecc_aem_unit_temperature_kelvin =0x20, /*!< "K", "Temperature in kelvin" */
+    avdecc_aem_unit_voltage_volts =0x30, /*!< "V", "Voltage in volts" */
+    avdecc_aem_unit_voltage_dbv =0x31, /*!< "dBV", "Voltage in dBV" */
+    avdecc_aem_unit_voltage_dbu =0x32, /*!< "dBu", "Voltage in dBu" */
+    avdecc_aem_unit_current_amperes =0x38, /*!< "A", "Electric current in amperes" */
+    avdecc_aem_unit_power_watts =0x40, /*!< "W", "Electric power in watts" */
+    avdecc_aem_unit_power_dbm =0x41, /*!< "dBm", "Signal power in dBm" */
+    avdecc_aem_unit_power_dbw =0x42, /*!< "dBW", "Signal power in dBW" */
+    avdecc_aem_unit_pressure_pascals =0x48, /*!< "Pa", "Pressure in pascals" */
+    avdecc_aem_unit_mem_bits =0x50, /*!< "b", "Bit count" */
+    avdecc_aem_unit_mem_bytes =0x51, /*!< "B", "Byte count" */
+    avdecc_aem_unit_mem_kibibytes =0x52, /*!< "KiB", "Kibibyte count" */
+    avdecc_aem_unit_mem_mebibytes =0x53, /*!< "MiB", "Mebibyte count" */
+    avdecc_aem_unit_mem_gibibytes =0x54, /*!< "GiB", "Gibibyte count" */
+    avdecc_aem_unit_mem_tebibytes =0x55, /*!< "TiB", "Tebibyte count" */
+    avdecc_aem_unit_bw_bits_per_second =0x58, /*!< "b/s", "Bits per second" */
+    avdecc_aem_unit_bw_bytes_per_second =0x59, /*!< "B/s", "Bytes per second" */
+    avdecc_aem_unit_bw_kibibytes_per_second =0x5a, /*!< "KiB/s", "Kibibytes per second" */
+    avdecc_aem_unit_bw_mebibytes_per_second =0x5b, /*!< "MiB/s", "Mebibytes per second" */
+    avdecc_aem_unit_bw_gibibytes_per_second =0x5c, /*!< "GiB/s", "Gibibytes per second" */
+    avdecc_aem_unit_bw_tebibytes_per_second =0x5d, /*!< "TiB/s", "Tebibytes per second" */
+    avdecc_aem_unit_luminosity_candela =0x60, /*!< "cd", "Candela" */
+    avdecc_aem_unit_energy_joules =0x68, /*!< "J", "Joules" */
+    avdecc_aem_unit_angle_radians =0x70, /*!< "rad", "Radians" */
+    avdecc_aem_unit_force_newtons =0x78, /*!< "N", "Newtons" */
+    avdecc_aem_unit_resistance_ohms =0x80, /*!< "Ω", "Ohms" */
+    avdecc_aem_unit_velocity_metres_per_second =0x88, /*!< "m/s", "Meters per second" */
+    avdecc_aem_unit_angular_velocity_radians_per_second =0x89, /*!< "rad/s", "Angular velocity in radians per second" */
+    avdecc_aem_unit_acceleration_metres_per_second_per_second  =0x90, /* "m/s·s", "Meters per second per second" */
+    avdecc_aem_unit_acceleration_rad_per_second_per_second  =0x91, /* "rad/s·s", "Radians per second per second" */
+    avdecc_aem_unit_area_metres_squared =0xa0, /*!< "m·m", "Meters squared" */
+    avdecc_aem_unit_volume_metres_cubed =0xa8, /*!< "m·m·m", "Meters cubed" */
+    avdecc_aem_unit_volume_litres =0xa9, /*!< "l", "Litres" */
+    avdecc_aem_unit_mass_grams =0xb0, /*!< "gram", "Grams" */
+    avdecc_aem_unit_magnetic_flux_tesla =0xb8, /*!< "T", "Tesla" */
+    avdecc_aem_unit_level_db =0xc0, /*!< "dB", "Level or gain in decibels" */
+    avdecc_aem_unit_level_db_peak =0xc1, /*!< "dB (Peak)", "'Peak' level or gain in decibels */
+    avdecc_aem_unit_level_db_rms =0xc2, /*!< "dB (RMS)", "'RMS' level in decibels */
+    avdecc_aem_unit_level_dbfs =0xc3, /*!< "dBFS", "Full scale level in decibels" */
+    avdecc_aem_unit_level_dbfs_peak =0xc4, /*!< "dBFS (Peak)", "Full scale 'peak' level in decibels" */
+    avdecc_aem_unit_level_dbfs_rms =0xc5, /*!< "dBFS (RMS)", "Full scale 'RMS' level in decibels" */
+    avdecc_aem_unit_level_dbtp =0xc6, /*!< "dBTP", "True peak level in decibels" */
+    avdecc_aem_unit_level_dba =0xc7, /*!< "dB(A)", "A-weighted level in decibels" */
+    avdecc_aem_unit_level_dbb =0xc8, /*!< "dB(B)", "B-weighted level in decibels" */
+    avdecc_aem_unit_level_dbc =0xc9, /*!< "dB(C)", "C-weighted level in decibels" */
+    avdecc_aem_unit_level_dbspl =0xca, /*!< "dB(SPL)", "Sound pressure level in decibels" */
+    avdecc_aem_unit_level_lu =0xcb, /*!< "LU", "ITU-R. BS. 1770-2 loudness level" */
+    avdecc_aem_unit_level_lufs =0xcc /*!< "LUFS", "ITU-R. BS. 1770-2 full scale loudness level" */
+} avdecc_aem_unit_t;
 
 extern const char *avdecc_aem_units_symbol[256];
 
@@ -2270,7 +2270,7 @@ extern const char *avdecc_aem_units_symbol[256];
      *  @returns void
      */
 
-void avdecc_units_init ( avdecc_aem_units_t *self );
+void avdecc_units_init ( avdecc_aem_unit_t *self );
 
 
 /** avdecc_units_read
@@ -2283,7 +2283,7 @@ void avdecc_units_init ( avdecc_aem_units_t *self );
      */
 
 bool avdecc_units_read (
-    avdecc_aem_units_t *self,
+    avdecc_aem_unit_t *self,
     const void *pdu,
     size_t offset
     );
@@ -2299,7 +2299,7 @@ bool avdecc_units_read (
      */
 
 bool avdecc_units_write (
-    const avdecc_aem_units_t *self,
+    const avdecc_aem_unit_t *self,
     void *pdu,
     size_t offset
     );
@@ -2397,1201 +2397,83 @@ bool avdecc_control_value_type_write (
     */
 
 /** See IEEE 1722.1 Clause 7.2.17.2.1 */
-typedef struct avdecc_aem_control_value_type_linear_format_int8_s
+
+template <typename T>
+struct avdecc_aem_control_value_type_linear_format_t
 {
-    int8_t minimum_value;
-    int8_t maximum_value;
-    int8_t step;
-    int8_t default_value;
-    int8_t current_value;
-    avdecc_aem_units_t units;
-    uint16_t string_id;
-} avdecc_aem_control_value_type_linear_format_int8_t;
+    typedef T value_type;
+
+    bool read( const void *pdu, size_t offset );
+    bool write( const void *pdu, size_t offset );
+
+    T m_minimum;
+    T m_maximum;
+    T m_step;
+    T m_default;
+    T m_current;
+    avdecc_aem_unit_t m_unit;
+    int8_t m_multiplier;
+    uint16_t m_string;
+};
+
+typedef avdecc_aem_control_value_type_linear_format_t<int8_t> avdecc_aem_control_value_type_linear_format_int8_t;
+typedef avdecc_aem_control_value_type_linear_format_t<uint8_t> avdecc_aem_control_value_type_linear_format_uint8_t;
+typedef avdecc_aem_control_value_type_linear_format_t<int16_t> avdecc_aem_control_value_type_linear_format_int16_t;
+typedef avdecc_aem_control_value_type_linear_format_t<uint16_t> avdecc_aem_control_value_type_linear_format_uint16_t;
+typedef avdecc_aem_control_value_type_linear_format_t<int32_t> avdecc_aem_control_value_type_linear_format_int32_t;
+typedef avdecc_aem_control_value_type_linear_format_t<uint32_t> avdecc_aem_control_value_type_linear_format_uint32_t;
+typedef avdecc_aem_control_value_type_linear_format_t<int64_t> avdecc_aem_control_value_type_linear_format_int64_t;
+typedef avdecc_aem_control_value_type_linear_format_t<uint64_t> avdecc_aem_control_value_type_linear_format_uint64_t;
+typedef avdecc_aem_control_value_type_linear_format_t<float> avdecc_aem_control_value_type_linear_format_float_t;
+typedef avdecc_aem_control_value_type_linear_format_t<double> avdecc_aem_control_value_type_linear_format_double_t;
 
 
-
-/** avdecc_control_value_type_linear_format_int8_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_linear_format_int8_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_linear_format_int8_init ( avdecc_aem_control_value_type_linear_format_int8_t *self );
-
-
-/** avdecc_control_value_type_linear_format_int8_read
-     *
-     *  Read a avdecc_aem_control_value_type_linear_format_int8_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_linear_format_int8_read (
-    avdecc_aem_control_value_type_linear_format_int8_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_linear_format_int8_write
-     *
-     *  write a avdecc_aem_control_value_type_linear_format_int8_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_linear_format_int8_write (
-    const avdecc_aem_control_value_type_linear_format_int8_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_linear_format_uint8_t
-    */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.1 */
-typedef struct avdecc_aem_control_value_type_linear_format_uint8_s
-{
-    uint8_t minimum_value;
-    uint8_t maximum_value;
-    uint8_t step;
-    uint8_t default_value;
-    uint8_t current_value;
-    avdecc_aem_units_t units;
-    uint16_t string_id;
-} avdecc_aem_control_value_type_linear_format_uint8_t;
-
-
-
-
-/** avdecc_control_value_type_linear_format_uint8_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_linear_format_uint8_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_linear_format_uint8_init ( avdecc_aem_control_value_type_linear_format_uint8_t *self );
-
-
-/** avdecc_control_value_type_linear_format_uint8_read
-     *
-     *  Read a avdecc_aem_control_value_type_linear_format_uint8_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_linear_format_uint8_read (
-    avdecc_aem_control_value_type_linear_format_uint8_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_linear_format_uint8_write
-     *
-     *  write a avdecc_aem_control_value_type_linear_format_uint8_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_linear_format_uint8_write (
-    const avdecc_aem_control_value_type_linear_format_uint8_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_linear_format_int16_t
-    */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.1 */
-typedef struct avdecc_aem_control_value_type_linear_format_int16_s
-{
-    int16_t minimum_value;
-    int16_t maximum_value;
-    int16_t step;
-    int16_t default_value;
-    int16_t current_value;
-    avdecc_aem_units_t units;
-    uint16_t string_id;
-} avdecc_aem_control_value_type_linear_format_int16_t;
-
-
-/** avdecc_control_value_type_linear_format_int16_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_linear_format_int16_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_linear_format_int16_init ( avdecc_aem_control_value_type_linear_format_int16_t *self );
-
-
-/** avdecc_control_value_type_linear_format_int16_read
-     *
-     *  Read a avdecc_aem_control_value_type_linear_format_int16_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_linear_format_int16_read (
-    avdecc_aem_control_value_type_linear_format_int16_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_linear_format_int16_write
-     *
-     *  write a avdecc_aem_control_value_type_linear_format_int16_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_linear_format_int16_write (
-    const avdecc_aem_control_value_type_linear_format_int16_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_linear_format_uint16_t
-    */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.1 */
-typedef struct avdecc_aem_avdecc_aem_control_value_type_linear_format_uint16_s
-{
-    uint16_t minimum_value;
-    uint16_t maximum_value;
-    uint16_t step;
-    uint16_t default_value;
-    uint16_t current_value;
-    avdecc_aem_units_t units;
-    uint16_t string_id;
-} avdecc_aem_control_value_type_linear_format_uint16_t;
-
-
-/** avdecc_control_value_type_linear_format_uint16_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_linear_format_uint16_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_linear_format_uint16_init ( avdecc_aem_control_value_type_linear_format_uint16_t *self );
-
-
-/** avdecc_control_value_type_linear_format_uint16_read
-     *
-     *  Read a avdecc_aem_control_value_type_linear_format_uint16_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_linear_format_uint16_read (
-    avdecc_aem_control_value_type_linear_format_uint16_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_linear_format_uint16_write
-     *
-     *  write a avdecc_aem_control_value_type_linear_format_uint16_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_linear_format_uint16_write (
-    const avdecc_aem_control_value_type_linear_format_uint16_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_linear_format_int32_t
-    */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.1 */
-typedef struct avdecc_aem_control_value_type_linear_format_int32_s
-{
-    int32_t minimum_value;
-    int32_t maximum_value;
-    int32_t step;
-    int32_t default_value;
-    int32_t current_value;
-    avdecc_aem_units_t units;
-    uint16_t string_id;
-} avdecc_aem_control_value_type_linear_format_int32_t;
-
-
-
-/** avdecc_control_value_type_linear_format_int32_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_linear_format_int32_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_linear_format_int32_init ( avdecc_aem_control_value_type_linear_format_int32_t *self );
-
-
-/** avdecc_control_value_type_linear_format_int32_read
-     *
-     *  Read a avdecc_aem_control_value_type_linear_format_int32_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_linear_format_int32_read (
-    avdecc_aem_control_value_type_linear_format_int32_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_linear_format_int32_write
-     *
-     *  write a avdecc_aem_control_value_type_linear_format_int32_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_linear_format_int32_write (
-    const avdecc_aem_control_value_type_linear_format_int32_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_linear_format_uint32_t
-    */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.1 */
-typedef struct avdecc_aem_control_value_type_linear_format_uint32_s
-{
-    uint32_t minimum_value;
-    uint32_t maximum_value;
-    uint32_t step;
-    uint32_t default_value;
-    uint32_t current_value;
-    avdecc_aem_units_t units;
-    uint16_t string_id;
-} avdecc_aem_control_value_type_linear_format_uint32_t;
-
-
-/** avdecc_control_value_type_linear_format_uint32_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_linear_format_uint32_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_linear_format_uint32_init ( avdecc_aem_control_value_type_linear_format_uint32_t *self );
-
-
-/** avdecc_control_value_type_linear_format_uint32_read
-     *
-     *  Read a avdecc_aem_control_value_type_linear_format_uint32_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_linear_format_uint32_read (
-    avdecc_aem_control_value_type_linear_format_uint32_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_linear_format_uint32_write
-     *
-     *  write a avdecc_aem_control_value_type_linear_format_uint32_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_linear_format_uint32_write (
-    const avdecc_aem_control_value_type_linear_format_uint32_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_linear_format_int64_t
-    */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.1 */
-typedef struct avdecc_aem_control_value_type_linear_format_int64_s
-{
-    int64_t minimum_value;
-    int64_t maximum_value;
-    int64_t step;
-    int64_t default_value;
-    int64_t current_value;
-    avdecc_aem_units_t units;
-    uint16_t string_id;
-} avdecc_aem_control_value_type_linear_format_int64_t;
-
-
-/** avdecc_control_value_type_linear_format_int64_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_linear_format_int64_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_linear_format_int64_init ( avdecc_aem_control_value_type_linear_format_int64_t *self );
-
-
-/** avdecc_control_value_type_linear_format_int64_read
-     *
-     *  Read a avdecc_aem_control_value_type_linear_format_int64_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_linear_format_int64_read (
-    avdecc_aem_control_value_type_linear_format_int64_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_linear_format_int64_write
-     *
-     *  write a avdecc_aem_control_value_type_linear_format_int64_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_linear_format_int64_write (
-    const avdecc_aem_control_value_type_linear_format_int64_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_linear_format_uint64_t
-    */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.1 */
-typedef struct avdecc_aem_control_value_type_linear_format_uint64_s
-{
-    uint64_t minimum_value;
-    uint64_t maximum_value;
-    uint64_t step;
-    uint64_t default_value;
-    uint64_t current_value;
-    avdecc_aem_units_t units;
-    uint16_t string_id;
-} avdecc_aem_control_value_type_linear_format_uint64_t;
-
-
-/** avdecc_control_value_type_linear_format_uint64_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_linear_format_uint64_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_linear_format_uint64_init ( avdecc_aem_control_value_type_linear_format_uint64_t *self );
-
-
-/** avdecc_control_value_type_linear_format_uint64_read
-     *
-     *  Read a avdecc_aem_control_value_type_linear_format_uint64_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_linear_format_uint64_read (
-    avdecc_aem_control_value_type_linear_format_uint64_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_linear_format_uint64_write
-     *
-     *  write a avdecc_aem_control_value_type_linear_format_uint64_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_linear_format_uint64_write (
-    const avdecc_aem_control_value_type_linear_format_uint64_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_linear_format_float_t
-    */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.1 */
-typedef struct avdecc_aem_control_value_type_linear_format_float_s
-{
-    float minimum_value;
-    float maximum_value;
-    float step;
-    float default_value;
-    float current_value;
-    avdecc_aem_units_t units;
-    uint16_t string_id;
-} avdecc_aem_control_value_type_linear_format_float_t;
-
-
-/** avdecc_control_value_type_linear_format_float_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_linear_format_float_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_linear_format_float_init ( avdecc_aem_control_value_type_linear_format_float_t *self );
-
-
-/** avdecc_control_value_type_linear_format_float_read
-     *
-     *  Read a avdecc_aem_control_value_type_linear_format_float_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_linear_format_float_read (
-    avdecc_aem_control_value_type_linear_format_float_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_linear_format_float_write
-     *
-     *  write a avdecc_aem_control_value_type_linear_format_float_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_linear_format_float_write (
-    const avdecc_aem_control_value_type_linear_format_float_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_linear_format_double_t
-    */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.1 */
-typedef struct avdecc_aem_control_value_type_linear_format_double_s
-{
-    double minimum_value;
-    double maximum_value;
-    double step;
-    double default_value;
-    double current_value;
-    avdecc_aem_units_t units;
-    uint16_t string_id;
-} avdecc_aem_control_value_type_linear_format_double_t;
-
-
-/** avdecc_control_value_type_linear_format_double_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_linear_format_double_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_linear_format_double_init ( avdecc_aem_control_value_type_linear_format_double_t *self );
-
-
-/** avdecc_control_value_type_linear_format_double_read
-     *
-     *  Read a avdecc_aem_control_value_type_linear_format_double_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_linear_format_double_read (
-    avdecc_aem_control_value_type_linear_format_double_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_linear_format_double_write
-     *
-     *  write a avdecc_aem_control_value_type_linear_format_double_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_linear_format_double_write (
-    const avdecc_aem_control_value_type_linear_format_double_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_selector_format_int8_t
-    */
 
 #define AVDECC_PDU_AEM_CONTROL_SELECTOR_MAX_OPTIONS(item_size) \
     (((AVDECC_PDU_AEM_CONTROL_DESCRIPTOR_MAX_PAYLOAD_SIZE) - (2+(2*(item_size))))/(item_size)) /*!< See IEEE 1722.1 Clause 7.2.17.2.1 */
 
-#define AVDECC_PDU_AEM_CONTROL_SELECTOR_INT8_MAX_OPTIONS AVDECC_PDU_AEM_CONTROL_SELECTOR_MAX_OPTIONS(1) /*!< See IEEE 1722.1 Clause 7.2.17.2.1 */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.2 */
-
-typedef struct avdecc_aem_control_value_type_selector_format_int8_s
+template <typename T>
+struct avdecc_aem_control_value_type_selector_traits
 {
-    int8_t current_value;
-    int8_t default_value;
-    uint16_t number_of_options;
-    int8_t option[ AVDECC_PDU_AEM_CONTROL_SELECTOR_INT8_MAX_OPTIONS ];
-    avdecc_aem_units_t unit;
-} avdecc_aem_control_value_type_selector_format_int8_t;
+    enum { max_options = AVDECC_PDU_AEM_CONTROL_SELECTOR_MAX_OPTIONS(sizeof(T)) };
+};
 
-
-
-/** avdecc_control_value_type_selector_format_int8_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_selector_format_int8_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_selector_format_int8_init ( avdecc_aem_control_value_type_selector_format_int8_t *self );
-
-
-/** avdecc_control_value_type_selector_format_int8_read
-     *
-     *  Read a avdecc_aem_control_value_type_selector_format_int8_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_selector_format_int8_read (
-    avdecc_aem_control_value_type_selector_format_int8_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_selector_format_int8_write
-     *
-     *  write a avdecc_aem_control_value_type_selector_format_int8_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_selector_format_int8_write (
-    const avdecc_aem_control_value_type_selector_format_int8_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_selector_format_uint8_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_SELECTOR_UINT8_MAX_OPTIONS AVDECC_PDU_AEM_CONTROL_SELECTOR_MAX_OPTIONS(1) /*!< See IEEE 1722.1 Clause 7.2.17.2.1 */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.2 */
-
-typedef struct avdecc_aem_control_value_type_selector_format_uint8_s
+template <>
+struct avdecc_aem_control_value_type_selector_traits< avdecc_aem_localized_string_ref_t >
 {
-    uint8_t current_value;
-    uint8_t default_value;
-    uint16_t number_of_options;
-    uint8_t option[ AVDECC_PDU_AEM_CONTROL_SELECTOR_UINT8_MAX_OPTIONS ];
-    avdecc_aem_units_t unit;
-} avdecc_aem_control_value_type_selector_format_uint8_t;
+    enum { max_options = AVDECC_PDU_AEM_CONTROL_SELECTOR_MAX_OPTIONS(sizeof(uint16_t)) };
+};
 
 
-/** avdecc_control_value_type_selector_format_uint8_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_selector_format_uint8_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
 
-void avdecc_control_value_type_selector_format_uint8_init ( avdecc_aem_control_value_type_selector_format_uint8_t *self );
-
-
-/** avdecc_control_value_type_selector_format_uint8_read
-     *
-     *  Read a avdecc_aem_control_value_type_selector_format_uint8_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_selector_format_uint8_read (
-    avdecc_aem_control_value_type_selector_format_uint8_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_selector_format_uint8_write
-     *
-     *  write a avdecc_aem_control_value_type_selector_format_uint8_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_selector_format_uint8_write (
-    const avdecc_aem_control_value_type_selector_format_uint8_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_selector_format_int16_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_SELECTOR_INT16_MAX_OPTIONS AVDECC_PDU_AEM_CONTROL_SELECTOR_MAX_OPTIONS(2) /*!< See IEEE 1722.1 Clause 7.2.17.2.1 */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.2 */
-
-typedef struct avdecc_aem_control_value_type_selector_format_int16_s
+template <typename T>
+struct avdecc_aem_control_value_type_selector_format_t
 {
-    int16_t current_value;
-    int16_t default_value;
-    uint16_t number_of_options;
-    int16_t option[ AVDECC_PDU_AEM_CONTROL_SELECTOR_INT16_MAX_OPTIONS ];
-    avdecc_aem_units_t unit;
-} avdecc_aem_control_value_type_selector_format_int16_t;
-
-
-/** avdecc_control_value_type_selector_format_int16_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_selector_format_int16_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_selector_format_int16_init ( avdecc_aem_control_value_type_selector_format_int16_t *self );
-
-
-/** avdecc_control_value_type_selector_format_int16_read
-     *
-     *  Read a avdecc_aem_control_value_type_selector_format_int16_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_selector_format_int16_read (
-    avdecc_aem_control_value_type_selector_format_int16_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_selector_format_int16_write
-     *
-     *  write a avdecc_aem_control_value_type_selector_format_int16_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_selector_format_int16_write (
-    const avdecc_aem_control_value_type_selector_format_int16_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_selector_format_uint16_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_SELECTOR_UINT16_MAX_OPTIONS AVDECC_PDU_AEM_CONTROL_SELECTOR_MAX_OPTIONS(2) /*!< See IEEE 1722.1 Clause 7.2.17.2.1 */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.2 */
-
-typedef struct avdecc_aem_control_value_type_selector_format_uint16_s
-{
-    uint16_t current_value;
-    uint16_t default_value;
-    uint16_t number_of_options;
-    uint16_t option[ AVDECC_PDU_AEM_CONTROL_SELECTOR_UINT16_MAX_OPTIONS ];
-    avdecc_aem_units_t unit;
-} avdecc_aem_control_value_type_selector_format_uint16_t;
-
-
-/** avdecc_control_value_type_selector_format_uint16_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_selector_format_uint16_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_selector_format_uint16_init ( avdecc_aem_control_value_type_selector_format_uint16_t *self );
-
-
-/** avdecc_control_value_type_selector_format_uint16_read
-     *
-     *  Read a avdecc_aem_control_value_type_selector_format_uint16_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_selector_format_uint16_read (
-    avdecc_aem_control_value_type_selector_format_uint16_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_selector_format_uint16_write
-     *
-     *  write a avdecc_aem_control_value_type_selector_format_uint16_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_selector_format_uint16_write (
-    const avdecc_aem_control_value_type_selector_format_uint16_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_selector_format_int32_t
-    */
-
-
-#define AVDECC_PDU_AEM_CONTROL_SELECTOR_INT32_MAX_OPTIONS AVDECC_PDU_AEM_CONTROL_SELECTOR_MAX_OPTIONS(4) /*!< See IEEE 1722.1 Clause 7.2.17.2.1 */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.2 */
-
-typedef struct avdecc_aem_control_value_type_selector_format_int32_s
-{
-    int32_t current_value;
-    int32_t default_value;
-    uint16_t number_of_options;
-    int32_t option[ AVDECC_PDU_AEM_CONTROL_SELECTOR_INT32_MAX_OPTIONS ];
-    avdecc_aem_units_t unit;
-} avdecc_aem_control_value_type_selector_format_int32_t;
-
-
-/** avdecc_control_value_type_selector_format_int32_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_selector_format_int32_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_selector_format_int32_init ( avdecc_aem_control_value_type_selector_format_int32_t *self );
-
-
-/** avdecc_control_value_type_selector_format_int32_read
-     *
-     *  Read a avdecc_aem_control_value_type_selector_format_int32_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_selector_format_int32_read (
-    avdecc_aem_control_value_type_selector_format_int32_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_selector_format_int32_write
-     *
-     *  write a avdecc_aem_control_value_type_selector_format_int32_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_selector_format_int32_write (
-    const avdecc_aem_control_value_type_selector_format_int32_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_selector_format_uint32_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_SELECTOR_UINT32_MAX_OPTIONS AVDECC_PDU_AEM_CONTROL_SELECTOR_MAX_OPTIONS(4) /*!< See IEEE 1722.1 Clause 7.2.17.2.1 */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.2 */
-
-typedef struct avdecc_aem_control_value_type_selector_format_uint32_s
-{
-    uint32_t current_value;
-    uint32_t default_value;
-    uint16_t number_of_options;
-    uint32_t option[ AVDECC_PDU_AEM_CONTROL_SELECTOR_UINT32_MAX_OPTIONS ];
-    avdecc_aem_units_t unit;
-} avdecc_aem_control_value_type_selector_format_uint32_t;
-
-
-
-/** avdecc_control_value_type_selector_format_uint32_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_selector_format_uint32_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_selector_format_uint32_init ( avdecc_aem_control_value_type_selector_format_uint32_t *self );
-
-
-/** avdecc_control_value_type_selector_format_uint32_read
-     *
-     *  Read a avdecc_aem_control_value_type_selector_format_uint32_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_selector_format_uint32_read (
-    avdecc_aem_control_value_type_selector_format_uint32_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_selector_format_uint32_write
-     *
-     *  write a avdecc_aem_control_value_type_selector_format_uint32_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_selector_format_uint32_write (
-    const avdecc_aem_control_value_type_selector_format_uint32_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_selector_format_int64_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_SELECTOR_INT64_MAX_OPTIONS AVDECC_PDU_AEM_CONTROL_SELECTOR_MAX_OPTIONS(8) /*!< See IEEE 1722.1 Clause 7.2.17.2.1 */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.2 */
-
-typedef struct avdecc_aem_control_value_type_selector_format_int64_s
-{
-    int64_t current_value;
-    int64_t default_value;
-    uint16_t number_of_options;
-    int64_t option[ AVDECC_PDU_AEM_CONTROL_SELECTOR_INT64_MAX_OPTIONS ];
-    avdecc_aem_units_t unit;
-} avdecc_aem_control_value_type_selector_format_int64_t;
-
-
-/** avdecc_control_value_type_selector_format_int64_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_selector_format_int64_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_selector_format_int64_init ( avdecc_aem_control_value_type_selector_format_int64_t *self );
-
-
-/** avdecc_control_value_type_selector_format_int64_read
-     *
-     *  Read a avdecc_aem_control_value_type_selector_format_int64_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_selector_format_int64_read (
-    avdecc_aem_control_value_type_selector_format_int64_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_selector_format_int64_write
-     *
-     *  write a avdecc_aem_control_value_type_selector_format_int64_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_selector_format_int64_write (
-    const avdecc_aem_control_value_type_selector_format_int64_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_selector_format_uint64_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_SELECTOR_UINT64_MAX_OPTIONS AVDECC_PDU_AEM_CONTROL_SELECTOR_MAX_OPTIONS(8) /*!< See IEEE 1722.1 Clause 7.2.17.2.1 */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.2 */
-
-typedef struct avdecc_aem_control_value_type_selector_format_uint64_s
-{
-    uint64_t current_value;
-    uint64_t default_value;
-    uint16_t number_of_options;
-    uint64_t option[ AVDECC_PDU_AEM_CONTROL_SELECTOR_UINT64_MAX_OPTIONS ];
-    avdecc_aem_units_t unit;
-} avdecc_aem_control_value_type_selector_format_uint64_t;
-
-
-
-
-/** avdecc_control_value_type_selector_format_uint64_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_selector_format_uint64_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_selector_format_uint64_init ( avdecc_aem_control_value_type_selector_format_uint64_t *self );
-
-
-/** avdecc_control_value_type_selector_format_uint64_read
-     *
-     *  Read a avdecc_aem_control_value_type_selector_format_uint64_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_selector_format_uint64_read (
-    avdecc_aem_control_value_type_selector_format_uint64_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_selector_format_uint64_write
-     *
-     *  write a avdecc_aem_control_value_type_selector_format_uint64_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_selector_format_uint64_write (
-    const avdecc_aem_control_value_type_selector_format_uint64_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_selector_format_float_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_SELECTOR_FLOAT_MAX_OPTIONS AVDECC_PDU_AEM_CONTROL_SELECTOR_MAX_OPTIONS(4) /*!< See IEEE 1722.1 Clause 7.2.17.2.1 */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.2 */
-
-typedef struct avdecc_aem_control_value_type_selector_format_float_s
-{
-    float current_value;
-    float default_value;
-    uint16_t number_of_options;
-    float option[ AVDECC_PDU_AEM_CONTROL_SELECTOR_FLOAT_MAX_OPTIONS ];
-    avdecc_aem_units_t unit;
-} avdecc_aem_control_value_type_selector_format_float_t;
-
-
-/** avdecc_control_value_type_selector_format_float_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_selector_format_float_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_selector_format_float_init ( avdecc_aem_control_value_type_selector_format_float_t *self );
-
-
-/** avdecc_control_value_type_selector_format_float_read
-     *
-     *  Read a avdecc_aem_control_value_type_selector_format_float_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_selector_format_float_read (
-    avdecc_aem_control_value_type_selector_format_float_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_selector_format_float_write
-     *
-     *  write a avdecc_aem_control_value_type_selector_format_float_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_selector_format_float_write (
-    const avdecc_aem_control_value_type_selector_format_float_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_selector_format_double_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_SELECTOR_DOUBLE_MAX_OPTIONS AVDECC_PDU_AEM_CONTROL_SELECTOR_MAX_OPTIONS(8) /*!< See IEEE 1722.1 Clause 7.2.17.2.1 */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.2 */
-
-typedef struct avdecc_aem_control_value_type_selector_format_double_s
-{
-    double current_value;
-    double default_value;
-    uint16_t number_of_options;
-    double option[ AVDECC_PDU_AEM_CONTROL_SELECTOR_DOUBLE_MAX_OPTIONS ];
-    avdecc_aem_units_t unit;
-} avdecc_aem_control_value_type_selector_format_double_t;
-
-/** avdecc_control_value_type_selector_format_double_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_selector_format_double_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_selector_format_double_init ( avdecc_aem_control_value_type_selector_format_double_t *self );
-
-
-/** avdecc_control_value_type_selector_format_double_read
-     *
-     *  Read a avdecc_aem_control_value_type_selector_format_double_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_selector_format_double_read (
-    avdecc_aem_control_value_type_selector_format_double_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_selector_format_double_write
-     *
-     *  write a avdecc_aem_control_value_type_selector_format_double_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_selector_format_double_write (
-    const avdecc_aem_control_value_type_selector_format_double_t *self,
-    void *pdu,
-    size_t offset
-    );
+    typedef T value_type;
+
+    bool read( const void *pdu, size_t offset );
+    bool write( const void *pdu, size_t offset );
+
+    T m_current;
+    T m_default;
+    uint16_t m_number_of_options;
+    T m_option[ avdecc_aem_control_value_type_selector_traits<T>::max_options ];
+    avdecc_aem_unit_t m_unit;
+    int8_t m_multiplier;
+};
+
+
+typedef avdecc_aem_control_value_type_selector_format_t<int8_t> avdecc_aem_control_value_type_selector_format_int8_t;
+typedef avdecc_aem_control_value_type_selector_format_t<uint8_t> avdecc_aem_control_value_type_selector_format_uint8_t;
+typedef avdecc_aem_control_value_type_selector_format_t<int16_t> avdecc_aem_control_value_type_selector_format_int16_t;
+typedef avdecc_aem_control_value_type_selector_format_t<uint16_t> avdecc_aem_control_value_type_selector_format_uint16_t;
+typedef avdecc_aem_control_value_type_selector_format_t<int32_t> avdecc_aem_control_value_type_selector_format_int32_t;
+typedef avdecc_aem_control_value_type_selector_format_t<uint32_t> avdecc_aem_control_value_type_selector_format_uint32_t;
+typedef avdecc_aem_control_value_type_selector_format_t<int64_t> avdecc_aem_control_value_type_selector_format_int64_t;
+typedef avdecc_aem_control_value_type_selector_format_t<uint64_t> avdecc_aem_control_value_type_selector_format_uint64_t;
+typedef avdecc_aem_control_value_type_selector_format_t<float> avdecc_aem_control_value_type_selector_format_float_t;
+typedef avdecc_aem_control_value_type_selector_format_t<double> avdecc_aem_control_value_type_selector_format_double_t;
+typedef avdecc_aem_control_value_type_selector_format_t<avdecc_aem_localized_string_ref_t> avdecc_aem_control_value_type_selector_format_string_t;
 
 
 /** avdecc_aem_control_value_type_utf8_format_t
@@ -3601,56 +2483,22 @@ bool avdecc_control_value_type_selector_format_double_write (
 
 /** See IEEE 1722.1 Clause 7.2.17.2.3 */
 
-typedef struct avdecc_aem_control_value_type_utf8_format_s
+struct avdecc_aem_control_value_type_utf8_format_t
 {
-    int16_t length;
-    char string_value[ AVDECC_PDU_AEM_CONTROL_UTF_MAX_LEN ];
-} avdecc_aem_control_value_type_utf8_format_t;
+    avdecc_aem_control_value_type_utf8_format_t()
+        :
+          m_length(0)
+    {
+        memset(m_string,0,sizeof(m_string));
+    }
 
+    bool read( const void *pdu, size_t offset );
+    bool write( const void *pdu, size_t offset );
 
+    int16_t m_length;
+    char m_string[ AVDECC_PDU_AEM_CONTROL_UTF_MAX_LEN ];
+};
 
-
-/** avdecc_control_value_type_utf8_format_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_utf8_format_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_utf8_format_init ( avdecc_aem_control_value_type_utf8_format_t *self );
-
-
-/** avdecc_control_value_type_utf8_format_read
-     *
-     *  Read a avdecc_aem_control_value_type_utf8_format_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_utf8_format_read (
-    avdecc_aem_control_value_type_utf8_format_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_utf8_format_write
-     *
-     *  write a avdecc_aem_control_value_type_utf8_format_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_utf8_format_write (
-    const avdecc_aem_control_value_type_utf8_format_t *self,
-    void *pdu,
-    size_t offset
-    );
 
 
 /** avdecc_aem_control_value_type_bode_plot_limits_t
@@ -3658,58 +2506,16 @@ bool avdecc_control_value_type_utf8_format_write (
 
 /** See IEEE 1722.1 Clause 7.2.17.2.4 */
 
-typedef struct avdecc_aem_control_value_type_bode_plot_limits_s
+struct avdecc_aem_control_value_type_bode_plot_limits_t
 {
-    float minimum_value;
-    float maximum_value;
-    float step;
-    float default_value;
-} avdecc_aem_control_value_type_bode_plot_limits_t;
+    bool read( const void *pdu, size_t offset );
+    bool write( const void *pdu, size_t offset );
 
-
-
-
-/** avdecc_control_value_type_bode_plot_limits_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_bode_plot_limits_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_bode_plot_limits_init ( avdecc_aem_control_value_type_bode_plot_limits_t *self );
-
-
-/** avdecc_control_value_type_bode_plot_limits_read
-     *
-     *  Read a avdecc_aem_control_value_type_bode_plot_limits_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_bode_plot_limits_read (
-    avdecc_aem_control_value_type_bode_plot_limits_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_bode_plot_limits_write
-     *
-     *  write a avdecc_aem_control_value_type_bode_plot_limits_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_bode_plot_limits_write (
-    const avdecc_aem_control_value_type_bode_plot_limits_t *self,
-    void *pdu,
-    size_t offset
-    );
+    float m_minimum;
+    float m_maximum;
+    float m_step;
+    float m_default;
+};
 
 
 /** avdecc_aem_control_value_type_bode_plot_entry_t
@@ -3717,56 +2523,15 @@ bool avdecc_control_value_type_bode_plot_limits_write (
 
 /** See IEEE 1722.1 Clause 7.2.17.2.4 */
 
-typedef struct avdecc_aem_control_value_type_bode_plot_entry_s
+struct avdecc_aem_control_value_type_bode_plot_entry_t
 {
-    float frequency_value;
-    float mag_value;
-    float phase_value;
-} avdecc_aem_control_value_type_bode_plot_entry_t;
+    bool read( const void *pdu, size_t offset );
+    bool write( const void *pdu, size_t offset );
 
-
-
-/** avdecc_control_value_type_bode_plot_entry_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_bode_plot_entry_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_bode_plot_entry_init ( avdecc_aem_control_value_type_bode_plot_entry_t *self );
-
-
-/** avdecc_control_value_type_bode_plot_entry_read
-     *
-     *  Read a avdecc_aem_control_value_type_bode_plot_entry_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_bode_plot_entry_read (
-    avdecc_aem_control_value_type_bode_plot_entry_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_bode_plot_entry_write
-     *
-     *  write a avdecc_aem_control_value_type_bode_plot_entry_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_bode_plot_entry_write (
-    const avdecc_aem_control_value_type_bode_plot_entry_t *self,
-    void *pdu,
-    size_t offset
-    );
+    float m_frequency;
+    float m_mag;
+    float m_phase;
+};
 
 
 /** avdecc_aem_control_value_type_bode_plot_format_t
@@ -3774,725 +2539,59 @@ bool avdecc_control_value_type_bode_plot_entry_write (
 
 #define AVDECC_PDU_AEM_CONTROL_BODE_PLOT_MAX_ITEMS ((AVDECC_PDU_AEM_CONTROL_DESCRIPTOR_MAX_PAYLOAD_SIZE - (3*4*4))/(3*4))
 
-typedef struct avdecc_aem_control_value_type_bode_plot_format_s
+struct avdecc_aem_control_value_type_bode_plot_format_t
 {
-    avdecc_aem_control_value_type_bode_plot_limits_t frequency;
-    avdecc_aem_control_value_type_bode_plot_limits_t magnitude;
-    avdecc_aem_control_value_type_bode_plot_limits_t phase;
-    uint16_t number_of_items;
-    avdecc_aem_control_value_type_bode_plot_entry_t current[ AVDECC_PDU_AEM_CONTROL_BODE_PLOT_MAX_ITEMS ];
-} avdecc_aem_control_value_type_bode_plot_format_t;
+    bool read( const void *pdu, size_t offset );
+    bool write( const void *pdu, size_t offset );
+
+    avdecc_aem_control_value_type_bode_plot_limits_t m_frequency;
+    avdecc_aem_control_value_type_bode_plot_limits_t m_magnitude;
+    avdecc_aem_control_value_type_bode_plot_limits_t m_phase;
+    uint16_t m_number_of_items;
+    avdecc_aem_control_value_type_bode_plot_entry_t m_current[ AVDECC_PDU_AEM_CONTROL_BODE_PLOT_MAX_ITEMS ];
+};
 
 
-/** avdecc_control_value_type_bode_plot_format_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_bode_plot_format_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_bode_plot_format_init ( avdecc_aem_control_value_type_bode_plot_format_t *self );
-
-
-/** avdecc_control_value_type_bode_plot_format_read
-     *
-     *  Read a avdecc_aem_control_value_type_bode_plot_format_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_bode_plot_format_read (
-    avdecc_aem_control_value_type_bode_plot_format_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_bode_plot_format_write
-     *
-     *  write a avdecc_aem_control_value_type_bode_plot_format_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_bode_plot_format_write (
-    const avdecc_aem_control_value_type_bode_plot_format_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_array_format_int8_t
-    */
 
 #define AVDECC_PDU_AEM_CONTROL_ARRAY_MAX_ITEMS(item_size) \
     (((AVDECC_PDU_AEM_CONTROL_DESCRIPTOR_MAX_PAYLOAD_SIZE) - (4+(3*(item_size))))/(item_size)) /** See IEEE 1722.1 Clause 7.2.17.2.5 */
 
-#define AVDECC_PDU_AEM_CONTROL_ARRAY_INT8_MAX_ITEMS (AVDECC_PDU_AEM_CONTROL_ARRAY_MAX_ITEMS(1))
+template <typename T>
+struct avdecc_aem_control_value_type_array_traits
+{
+    enum { max_items = AVDECC_PDU_AEM_CONTROL_ARRAY_MAX_ITEMS(sizeof(T)) };
+};
 
 /** See IEEE 1722.1 Clause 7.2.17.2.5 */
 
-typedef struct avdecc_aem_control_value_type_array_format_int8_s
+template <typename T>
+struct avdecc_aem_control_value_type_array_format_t
 {
-    uint16_t array_size;
-    int8_t minimum_value;
-    int8_t maximum_value;
-    int8_t step;
-    int8_t default_value;
-    avdecc_aem_units_t unit;
-    int8_t current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT8_MAX_ITEMS ];
-} avdecc_aem_control_value_type_array_format_int8_t;
-
-
-/** avdecc_control_value_type_array_format_int8_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_array_format_int8_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_array_format_int8_init ( avdecc_aem_control_value_type_array_format_int8_t *self );
-
-
-/** avdecc_control_value_type_array_format_int8_read
-     *
-     *  Read a avdecc_aem_control_value_type_array_format_int8_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_array_format_int8_read (
-    avdecc_aem_control_value_type_array_format_int8_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_array_format_int8_write
-     *
-     *  write a avdecc_aem_control_value_type_array_format_int8_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_array_format_int8_write (
-    const avdecc_aem_control_value_type_array_format_int8_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_array_format_uint8_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_ARRAY_UINT8_MAX_ITEMS (AVDECC_PDU_AEM_CONTROL_ARRAY_MAX_ITEMS(1))
-
-typedef struct avdecc_aem_control_value_type_array_format_uint8_s
-{
-    uint16_t array_size;
-    uint8_t minimum_value;
-    uint8_t maximum_value;
-    uint8_t step;
-    uint8_t default_value;
-    avdecc_aem_units_t unit;
-    uint8_t current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_UINT8_MAX_ITEMS ];
-} avdecc_aem_control_value_type_array_format_uint8_t;
-
-
-
-/** avdecc_control_value_type_array_format_uint8_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_array_format_uint8_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_array_format_uint8_init ( avdecc_aem_control_value_type_array_format_uint8_t *self );
-
-
-/** avdecc_control_value_type_array_format_uint8_read
-     *
-     *  Read a avdecc_aem_control_value_type_array_format_uint8_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_array_format_uint8_read (
-    avdecc_aem_control_value_type_array_format_uint8_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_array_format_uint8_write
-     *
-     *  write a avdecc_aem_control_value_type_array_format_uint8_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_array_format_uint8_write (
-    const avdecc_aem_control_value_type_array_format_uint8_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_array_format_int16_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_ARRAY_INT16_MAX_ITEMS (AVDECC_PDU_AEM_CONTROL_ARRAY_MAX_ITEMS(2))
-
-typedef struct avdecc_aem_control_value_type_array_format_int16_s
-{
-    uint16_t array_size;
-    int16_t minimum_value;
-    int16_t maximum_value;
-    int16_t step;
-    int16_t default_value;
-    avdecc_aem_units_t unit;
-    int16_t current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT16_MAX_ITEMS ];
-} avdecc_aem_control_value_type_array_format_int16_t;
-
-
-
-/** avdecc_control_value_type_array_format_int16_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_array_format_int16_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_array_format_int16_init ( avdecc_aem_control_value_type_array_format_int16_t *self );
-
-
-/** avdecc_control_value_type_array_format_int16_read
-     *
-     *  Read a avdecc_aem_control_value_type_array_format_int16_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_array_format_int16_read (
-    avdecc_aem_control_value_type_array_format_int16_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_array_format_int16_write
-     *
-     *  write a avdecc_aem_control_value_type_array_format_int16_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_array_format_int16_write (
-    const avdecc_aem_control_value_type_array_format_int16_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_array_format_uint16_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_ARRAY_UINT16_MAX_ITEMS (AVDECC_PDU_AEM_CONTROL_ARRAY_MAX_ITEMS(2))
-
-typedef struct avdecc_aem_control_value_type_array_format_uint16_s
-{
-    uint16_t array_size;
-    uint16_t minimum_value;
-    uint16_t maximum_value;
-    uint16_t step;
-    uint16_t default_value;
-    avdecc_aem_units_t unit;
-    uint16_t current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_UINT16_MAX_ITEMS ];
-} avdecc_aem_control_value_type_array_format_uint16_t;
-
-
-/** avdecc_control_value_type_array_format_uint16_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_array_format_uint16_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_array_format_uint16_init ( avdecc_aem_control_value_type_array_format_uint16_t *self );
-
-
-/** avdecc_control_value_type_array_format_uint16_read
-     *
-     *  Read a avdecc_aem_control_value_type_array_format_uint16_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_array_format_uint16_read (
-    avdecc_aem_control_value_type_array_format_uint16_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_array_format_uint16_write
-     *
-     *  write a avdecc_aem_control_value_type_array_format_uint16_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_array_format_uint16_write (
-    const avdecc_aem_control_value_type_array_format_uint16_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_array_format_int32_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_ARRAY_INT32_MAX_ITEMS (AVDECC_PDU_AEM_CONTROL_ARRAY_MAX_ITEMS(4))
-
-typedef struct avdecc_aem_control_value_type_array_format_int32_s
-{
-    uint16_t array_size;
-    int32_t minimum_value;
-    int32_t maximum_value;
-    int32_t step;
-    int32_t default_value;
-    avdecc_aem_units_t unit;
-    int32_t current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT32_MAX_ITEMS ];
-} avdecc_aem_control_value_type_array_format_int32_t;
-
-
-/** avdecc_control_value_type_array_format_int32_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_array_format_int32_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_array_format_int32_init ( avdecc_aem_control_value_type_array_format_int32_t *self );
-
-
-/** avdecc_control_value_type_array_format_int32_read
-     *
-     *  Read a avdecc_aem_control_value_type_array_format_int32_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_array_format_int32_read (
-    avdecc_aem_control_value_type_array_format_int32_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_array_format_int32_write
-     *
-     *  write a avdecc_aem_control_value_type_array_format_int32_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_array_format_int32_write (
-    const avdecc_aem_control_value_type_array_format_int32_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_array_format_uint32_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_ARRAY_UINT32_MAX_ITEMS (AVDECC_PDU_AEM_CONTROL_ARRAY_MAX_ITEMS(4))
-
-typedef struct avdecc_aem_control_value_type_array_format_uint32_s
-{
-    uint16_t array_size;
-    uint32_t minimum_value;
-    uint32_t maximum_value;
-    uint32_t step;
-    uint32_t default_value;
-    avdecc_aem_units_t unit;
-    uint32_t current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_UINT32_MAX_ITEMS ];
-} avdecc_aem_control_value_type_array_format_uint32_t;
-
-
-/** avdecc_control_value_type_array_format_uint32_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_array_format_uint32_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_array_format_uint32_init ( avdecc_aem_control_value_type_array_format_uint32_t *self );
-
-
-/** avdecc_control_value_type_array_format_uint32_read
-     *
-     *  Read a avdecc_aem_control_value_type_array_format_uint32_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_array_format_uint32_read (
-    avdecc_aem_control_value_type_array_format_uint32_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_array_format_uint32_write
-     *
-     *  write a avdecc_aem_control_value_type_array_format_uint32_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_array_format_uint32_write (
-    const avdecc_aem_control_value_type_array_format_uint32_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_array_format_int64_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_ARRAY_INT64_MAX_ITEMS (AVDECC_PDU_AEM_CONTROL_ARRAY_MAX_ITEMS(8))
-
-typedef struct avdecc_aem_control_value_type_array_format_int64_s
-{
-    uint16_t array_size;
-    int64_t minimum_value;
-    int64_t maximum_value;
-    int64_t step;
-    int64_t default_value;
-    avdecc_aem_units_t unit;
-    int64_t current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT64_MAX_ITEMS ];
-} avdecc_aem_control_value_type_array_format_int64_t;
-
-
-/** avdecc_control_value_type_array_format_int64_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_array_format_int64_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_array_format_int64_init ( avdecc_aem_control_value_type_array_format_int64_t *self );
-
-
-/** avdecc_control_value_type_array_format_int64_read
-     *
-     *  Read a avdecc_aem_control_value_type_array_format_int64_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_array_format_int64_read (
-    avdecc_aem_control_value_type_array_format_int64_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_array_format_int64_write
-     *
-     *  write a avdecc_aem_control_value_type_array_format_int64_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_array_format_int64_write (
-    const avdecc_aem_control_value_type_array_format_int64_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_array_format_uint64_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_ARRAY_UINT64_MAX_ITEMS (AVDECC_PDU_AEM_CONTROL_ARRAY_MAX_ITEMS(8))
-
-typedef struct avdecc_aem_control_value_type_array_format_uint64_s
-{
-    uint16_t array_size;
-    uint64_t minimum_value;
-    uint64_t maximum_value;
-    uint64_t step;
-    uint64_t default_value;
-    avdecc_aem_units_t unit;
-    uint64_t current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT64_MAX_ITEMS ];
-} avdecc_aem_control_value_type_array_format_uint64_t;
-
-
-
-/** avdecc_control_value_type_array_format_uint64_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_array_format_uint64_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_array_format_uint64_init ( avdecc_aem_control_value_type_array_format_uint64_t *self );
-
-
-/** avdecc_control_value_type_array_format_uint64_read
-     *
-     *  Read a avdecc_aem_control_value_type_array_format_uint64_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_array_format_uint64_read (
-    avdecc_aem_control_value_type_array_format_uint64_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_array_format_uint64_write
-     *
-     *  write a avdecc_aem_control_value_type_array_format_uint64_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_array_format_uint64_write (
-    const avdecc_aem_control_value_type_array_format_uint64_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_array_format_float_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_ARRAY_FLOAT_MAX_ITEMS (AVDECC_PDU_AEM_CONTROL_ARRAY_MAX_ITEMS(4))
-
-typedef struct avdecc_aem_control_value_type_array_format_float_s
-{
-    uint16_t array_size;
-    float minimum_value;
-    float maximum_value;
-    float step;
-    float default_value;
-    avdecc_aem_units_t unit;
-    float current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_FLOAT_MAX_ITEMS ];
-} avdecc_aem_control_value_type_array_format_float_t;
-
-
-/** avdecc_control_value_type_array_format_float_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_array_format_float_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_array_format_float_init ( avdecc_aem_control_value_type_array_format_float_t *self );
-
-
-/** avdecc_control_value_type_array_format_float_read
-     *
-     *  Read a avdecc_aem_control_value_type_array_format_float_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_array_format_float_read (
-    avdecc_aem_control_value_type_array_format_float_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_array_format_float_write
-     *
-     *  write a avdecc_aem_control_value_type_array_format_float_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_array_format_float_write (
-    const avdecc_aem_control_value_type_array_format_float_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_array_format_double_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_ARRAY_DOUBLE_MAX_ITEMS (AVDECC_PDU_AEM_CONTROL_ARRAY_MAX_ITEMS(8))
-
-typedef struct avdecc_aem_control_value_type_array_format_double_s
-{
-    uint16_t array_size;
-    double minimum_value;
-    double maximum_value;
-    double step;
-    double default_value;
-    avdecc_aem_units_t unit;
-    double current_value[ AVDECC_PDU_AEM_CONTROL_ARRAY_DOUBLE_MAX_ITEMS ];
-} avdecc_aem_control_value_type_array_format_double_t;
-
-
-/** avdecc_control_value_type_array_format_double_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_array_format_double_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_array_format_double_init ( avdecc_aem_control_value_type_array_format_double_t *self );
-
-
-/** avdecc_control_value_type_array_format_double_read
-     *
-     *  Read a avdecc_aem_control_value_type_array_format_double_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_array_format_double_read (
-    avdecc_aem_control_value_type_array_format_double_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_array_format_double_write
-     *
-     *  write a avdecc_aem_control_value_type_array_format_double_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_array_format_double_write (
-    const avdecc_aem_control_value_type_array_format_double_t *self,
-    void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_aem_control_value_type_selector_format_string_t
-    */
-
-#define AVDECC_PDU_AEM_CONTROL_SELECTOR_STRING_MAX_OPTIONS AVDECC_PDU_AEM_CONTROL_SELECTOR_MAX_OPTIONS(2) /*!< See IEEE 1722.1 Clause 7.2.17.2.2 */
-
-/** See IEEE 1722.1 Clause 7.2.17.2.2 */
-
-typedef struct avdecc_aem_control_value_type_selector_format_string_s
-{
-    uint16_t current_value;
-    uint16_t default_value;
-    uint16_t number_of_options;
-    uint16_t option[ AVDECC_PDU_AEM_CONTROL_SELECTOR_STRING_MAX_OPTIONS ];
-    avdecc_aem_units_t unit;
-} avdecc_aem_control_value_type_selector_format_string_t;
-
-
-/** avdecc_control_value_type_selector_format_string_init
-     *
-     *  Initialize a avdecc_aem_control_value_type_selector_format_string_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_control_value_type_selector_format_string_init ( avdecc_aem_control_value_type_selector_format_string_t *self );
-
-
-/** avdecc_control_value_type_selector_format_string_read
-     *
-     *  Read a avdecc_aem_control_value_type_selector_format_string_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_control_value_type_selector_format_string_read (
-    avdecc_aem_control_value_type_selector_format_string_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_control_value_type_selector_format_string_write
-     *
-     *  write a avdecc_aem_control_value_type_selector_format_string_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_control_value_type_selector_format_string_write (
-    const avdecc_aem_control_value_type_selector_format_string_t *self,
-    void *pdu,
-    size_t offset
-    );
+    typedef T value_type;
+
+    bool read( const void *pdu, size_t offset );
+    bool write( const void *pdu, size_t offset );
+
+    uint16_t m_array_size;
+    T m_minimum;
+    T m_maximum;
+    T m_step;
+    T m_default;
+    avdecc_aem_unit_t m_unit;
+    T m_current[ avdecc_aem_control_value_type_array_traits<T>::max_items ];
+};
+
+
+typedef avdecc_aem_control_value_type_array_format_t<int8_t> avdecc_aem_control_value_type_array_format_int8_t;
+typedef avdecc_aem_control_value_type_array_format_t<uint8_t> avdecc_aem_control_value_type_array_format_uint8_t;
+typedef avdecc_aem_control_value_type_array_format_t<int16_t> avdecc_aem_control_value_type_array_format_int16_t;
+typedef avdecc_aem_control_value_type_array_format_t<uint16_t> avdecc_aem_control_value_type_array_format_uint16_t;
+typedef avdecc_aem_control_value_type_array_format_t<int32_t> avdecc_aem_control_value_type_array_format_int32_t;
+typedef avdecc_aem_control_value_type_array_format_t<uint32_t> avdecc_aem_control_value_type_array_format_uint32_t;
+typedef avdecc_aem_control_value_type_array_format_t<int64_t> avdecc_aem_control_value_type_array_format_int64_t;
+typedef avdecc_aem_control_value_type_array_format_t<uint64_t> avdecc_aem_control_value_type_array_format_uint64_t;
+typedef avdecc_aem_control_value_type_array_format_t<float> avdecc_aem_control_value_type_array_format_float_t;
+typedef avdecc_aem_control_value_type_array_format_t<double> avdecc_aem_control_value_type_array_format_double_t;
 
 
 /** avdecc_aem_control_value_type_vendor_format_t
@@ -4613,29 +2712,29 @@ typedef union avdecc_aem_control_value_union_s
 
     avdecc_aem_control_value_type_bode_plot_entry_t bode_plot[ AVDECC_PDU_AEM_CONTROL_BODE_PLOT_MAX_ITEMS ];
 
-    int8_t selector_int8[ AVDECC_PDU_AEM_CONTROL_SELECTOR_INT8_MAX_OPTIONS ];
-    uint8_t selector_uint8[ AVDECC_PDU_AEM_CONTROL_SELECTOR_UINT8_MAX_OPTIONS ];
-    int16_t selector_int16[ AVDECC_PDU_AEM_CONTROL_SELECTOR_INT16_MAX_OPTIONS ];
-    uint16_t selector_uint16[ AVDECC_PDU_AEM_CONTROL_SELECTOR_UINT16_MAX_OPTIONS ];
-    int32_t selector_int32[ AVDECC_PDU_AEM_CONTROL_SELECTOR_INT32_MAX_OPTIONS ];
-    uint32_t selector_uint32[ AVDECC_PDU_AEM_CONTROL_SELECTOR_UINT32_MAX_OPTIONS ];
-    int64_t selector_int64[ AVDECC_PDU_AEM_CONTROL_SELECTOR_INT64_MAX_OPTIONS ];
-    uint64_t selector_uint64[ AVDECC_PDU_AEM_CONTROL_SELECTOR_UINT64_MAX_OPTIONS ];
-    float selector_float[ AVDECC_PDU_AEM_CONTROL_SELECTOR_FLOAT_MAX_OPTIONS ];
-    double selector_double[ AVDECC_PDU_AEM_CONTROL_SELECTOR_DOUBLE_MAX_OPTIONS ];
+    int8_t selector_int8[ avdecc_aem_control_value_type_selector_traits<int8_t>::max_options ];
+    uint8_t selector_uint8[ avdecc_aem_control_value_type_selector_traits<uint8_t>::max_options ];
+    int16_t selector_int16[ avdecc_aem_control_value_type_selector_traits<int16_t>::max_options ];
+    uint16_t selector_uint16[ avdecc_aem_control_value_type_selector_traits<uint16_t>::max_options ];
+    int32_t selector_int32[ avdecc_aem_control_value_type_selector_traits<int32_t>::max_options ];
+    uint32_t selector_uint32[ avdecc_aem_control_value_type_selector_traits<uint32_t>::max_options ];
+    int64_t selector_int64[ avdecc_aem_control_value_type_selector_traits<int64_t>::max_options ];
+    uint64_t selector_uint64[ avdecc_aem_control_value_type_selector_traits<uint64_t>::max_options ];
+    float selector_float[ avdecc_aem_control_value_type_selector_traits<float>::max_options ];
+    double selector_double[ avdecc_aem_control_value_type_selector_traits<double>::max_options ];
 
-    int8_t array_int8[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT8_MAX_ITEMS ];
-    uint8_t array_uint8[ AVDECC_PDU_AEM_CONTROL_ARRAY_UINT8_MAX_ITEMS ];
-    int16_t array_int16[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT16_MAX_ITEMS ];
-    uint16_t array_uint16[ AVDECC_PDU_AEM_CONTROL_ARRAY_UINT16_MAX_ITEMS ];
-    int32_t array_int32[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT32_MAX_ITEMS ];
-    uint32_t array_uint32[ AVDECC_PDU_AEM_CONTROL_ARRAY_UINT32_MAX_ITEMS ];
-    int64_t array_int64[ AVDECC_PDU_AEM_CONTROL_ARRAY_INT64_MAX_ITEMS ];
-    uint64_t array_uint64[ AVDECC_PDU_AEM_CONTROL_ARRAY_UINT64_MAX_ITEMS ];
-    float array_float[ AVDECC_PDU_AEM_CONTROL_ARRAY_FLOAT_MAX_ITEMS ];
-    double array_double[ AVDECC_PDU_AEM_CONTROL_ARRAY_DOUBLE_MAX_ITEMS ];
+    int8_t array_int8[ avdecc_aem_control_value_type_array_traits<int8_t>::max_items ];
+    uint8_t array_uint8[ avdecc_aem_control_value_type_array_traits<uint8_t>::max_items ];
+    int16_t array_int16[ avdecc_aem_control_value_type_array_traits<int16_t>::max_items ];
+    uint16_t array_uint16[ avdecc_aem_control_value_type_array_traits<uint16_t>::max_items ];
+    int32_t array_int32[ avdecc_aem_control_value_type_array_traits<int32_t>::max_items ];
+    uint32_t array_uint32[ avdecc_aem_control_value_type_array_traits<uint32_t>::max_items ];
+    int64_t array_int64[ avdecc_aem_control_value_type_array_traits<int64_t>::max_items ];
+    uint64_t array_uint64[ avdecc_aem_control_value_type_array_traits<uint64_t>::max_items ];
+    float array_float[ avdecc_aem_control_value_type_array_traits<float>::max_items ];
+    double array_double[ avdecc_aem_control_value_type_array_traits<double>::max_items ];
 
-    uint16_t selector_string[ AVDECC_PDU_AEM_CONTROL_SELECTOR_STRING_MAX_OPTIONS ]; 
+    uint16_t selector_string[ avdecc_aem_control_value_type_selector_traits<avdecc_aem_localized_string_ref_t>::max_options ];
     uint8_t vendor[ AVDECC_PDU_AEM_CONTROL_VENDOR_FORMAT_MAX_BLOB ];
 } avdecc_aem_control_value_union_t;
 
@@ -4645,68 +2744,47 @@ typedef union avdecc_aem_control_value_union_s
 
 /** See IEEE 1722.1 Clause 7.2.17 */
 
-typedef struct avdecc_aem_descriptor_control_s
+struct avdecc_aem_descriptor_control_t
 {
-    avdecc_aem_descriptor_type_t descriptor_type;
-    uint16_t descriptor_index;
-    bool read_only;
-    bool unknown_value;
-    avdecc_aem_control_type_t control_type;
-    uint16_t control_location_id;
-    avdecc_aem_control_value_type_t control_value_type;
-    uint16_t control_domain;
-    avdecc_string64_t control_name;
-    avdecc_aem_localized_string_ref_t control_name_string;
-    uint16_t number_of_values;
-    avdecc_aem_descriptor_type_t source_type;
-    uint16_t source_index;
-    uint32_t block_latency;
-    uint32_t control_latency;
-    avdecc_aem_control_value_format_union_t format;
-} avdecc_aem_descriptor_control_t;
+    avdecc_aem_descriptor_control_t()
+        : m_descriptor_type(avdecc_aem_descriptor_control),
+          m_descriptor_index(0),
+          m_read_only(false),
+          m_unknown_value(false),
+          m_control_type(avdecc_aem_control_type_enable),
+          m_control_location_id(0),
+          m_control_value_type(avdecc_aem_control_linear_uint8),
+          m_control_domain(0),
+          m_control_name(),
+          m_control_name_string(),
+          m_number_of_values(1),
+          m_source_type(avdecc_aem_descriptor_entity),
+          m_source_index(0),
+          m_block_latency(0),
+          m_control_latency(0)
+    {
+    }
 
+    bool read( const void *pdu, size_t offset );
+    bool write( const void *pdu, size_t offset );
 
-/** avdecc_descriptor_control_init
-     *
-     *  Initialize a avdecc_aem_descriptor_control_t
-     *
-     *  @param self pointer to object to initialize
-     *  @returns void
-     */
-
-void avdecc_descriptor_control_init ( avdecc_aem_descriptor_control_t *self );
-
-
-/** avdecc_descriptor_control_read
-     *
-     *  Read a avdecc_aem_descriptor_control_t from a PDU
-     *
-     *  @param self pointer to object to fill
-     *  @param pdu pointer to base of pdu to read
-     *  @param offset offset from base of pdu in octets to start reading from
-     */
-
-bool avdecc_descriptor_control_read (
-    avdecc_aem_descriptor_control_t *self,
-    const void *pdu,
-    size_t offset
-    );
-
-
-/** avdecc_descriptor_control_write
-     *
-     *  write a avdecc_aem_descriptor_control_t into a pdu
-     *
-     *  @param self pointer to object to store into pdu
-     *  @param pdu pointer to base of pdu to write to
-     *  @param offset offset from base of pdu in octets to start writing to
-     */
-
-bool avdecc_descriptor_control_write (
-    const avdecc_aem_descriptor_control_t *self,
-    void *pdu,
-    size_t offset
-    );
+    avdecc_aem_descriptor_type_t m_descriptor_type;
+    uint16_t m_descriptor_index;
+    bool m_read_only;
+    bool m_unknown_value;
+    avdecc_aem_control_type_t m_control_type;
+    uint16_t m_control_location_id;
+    avdecc_aem_control_value_type_t m_control_value_type;
+    uint16_t m_control_domain;
+    avdecc_string64_t m_control_name;
+    avdecc_aem_localized_string_ref_t m_control_name_string;
+    uint16_t m_number_of_values;
+    avdecc_aem_descriptor_type_t m_source_type;
+    uint16_t m_source_index;
+    uint32_t m_block_latency;
+    uint32_t m_control_latency;
+    avdecc_aem_control_value_format_union_t m_format;
+};
 
 
 /** avdecc_aem_sources_t

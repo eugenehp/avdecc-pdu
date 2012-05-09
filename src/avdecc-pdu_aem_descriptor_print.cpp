@@ -476,7 +476,7 @@ bool avdecc_units_print (
     char *buf,
     size_t *pos,
     size_t len,
-    const avdecc_aem_units_t *self
+    const avdecc_aem_unit_t *self
     )
 {
     bool r=true;

@@ -1042,14 +1042,14 @@ bool avdecc_control_type_write (
 }
 
 
-void avdecc_units_init ( avdecc_aem_units_t *self )
+void avdecc_units_init ( avdecc_aem_unit_t *self )
 {
-    memset ( ( void * ) self, 0, sizeof ( avdecc_aem_units_t ) );
+    memset ( ( void * ) self, 0, sizeof ( avdecc_aem_unit_t ) );
 }
 
 
 bool avdecc_units_read (
-    avdecc_aem_units_t *self,
+    avdecc_aem_unit_t *self,
     const void *pdu,
     size_t offset
     )
@@ -1063,7 +1063,7 @@ bool avdecc_units_read (
 
 
 bool avdecc_units_write (
-    const avdecc_aem_units_t *self,
+    const avdecc_aem_unit_t *self,
     void *pdu,
     size_t offset
     )
