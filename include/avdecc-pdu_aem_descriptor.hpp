@@ -2579,6 +2579,7 @@ struct avdecc_aem_control_value_type_array_format_t
     T m_default;
     avdecc_aem_unit_t m_unit;
     T m_current[ avdecc_aem_control_value_type_array_traits<T>::max_items ];
+    int8_t m_multiplier;
 };
 
 
