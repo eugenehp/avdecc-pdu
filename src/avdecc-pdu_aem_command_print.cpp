@@ -473,8 +473,11 @@ bool avdecc_command_set_control_value_print (
     )
 {
     bool r=avdecc_command_print(buf,pos,len,&self->base);
-    //TODO print control specific parts.
-    //r&=false; /* TODO */
+
+    r&=avdecc_print ( buf,pos,len,"\n%-28s%d", "Descriptor type:", self->descriptor_type );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s%d", "Descriptor Index:", self->descriptor_index );
+    r&=avdecc_print ( buf,pos,len,"\n%-28s", "Data:" );
+    r&=avdecc_print_block( buf, pos, len, &self->values, self->base.control_data_length -16 );
     
     return r;
 }
