@@ -2189,13 +2189,15 @@ bool avdecc_control_type_write (
 /** avdecc_aem_units_t
     */
 
-/** See IEEE 1722.1 Clause 7.3.3 */
-typedef enum
+/** See IEEE 1722.1 D19 Clause 7.3.3 */
+enum avdecc_aem_unit_t;
 {
+    // Unitless - See 7.3.3.1
     avdecc_aem_unit_none=0x00, /*!< "", "Unitless" */
     avdecc_aem_unit_inc_count =0x01, /*!< "", "Incrementing Count" */
     avdecc_aem_unit_percentage =0x02, /*!< "%", "Percentage" */
     avdecc_aem_unit_fstop =0x03, /*!< "", "fstop" */
+    // Time - See 7.3.3.2
     avdecc_aem_unit_time_seconds=0x08, /*!< "s", "Time in seconds" */
     avdecc_aem_unit_time_minutes=0x09, /*!< "m", "Time in minutes" */
     avdecc_aem_unit_time_hours =0x0a, /*!< "h", "Time in hours" */
@@ -2204,60 +2206,81 @@ typedef enum
     avdecc_aem_unit_time_years =0x0d, /*!< "Y", "Time in years" */
     avdecc_aem_unit_time_samples =0x0e, /*!< "samples", "Time in audio samples" */
     avdecc_aem_unit_time_frames =0x0f, /*!< "f", "Time in video/film frames" */
+    // Frequency - See 7.3.3.3
     avdecc_aem_unit_freq_hz =0x10, /*!< "Hz", "Frequency in Hertz" */
     avdecc_aem_unit_freq_note =0x11, /*!< "Note", "Frequency in MIDI note value (semitones)" */
     avdecc_aem_unit_freq_cents =0x12, /*!< "Cent", "Frequency in Cents" */
     avdecc_aem_unit_freq_octaves =0x13, /*!< "Octave", "Frequency in Octaves" */
+    // Distance - See 7.3.3.4
     avdecc_aem_unit_distance_meteres =0x18, /*!< "m", "Distance in metres" */
+    // Temperature - See 7.3.3.5
     avdecc_aem_unit_temperature_kelvin =0x20, /*!< "K", "Temperature in kelvin" */
+    // Mass - See 7.3.3.6
+    avdecc_aem_unit_mass_grams =0x28, /*!< "gram", "Grams" */
+    // Voltage - See 7.3.3.7
     avdecc_aem_unit_voltage_volts =0x30, /*!< "V", "Voltage in volts" */
     avdecc_aem_unit_voltage_dbv =0x31, /*!< "dBV", "Voltage in dBV" */
     avdecc_aem_unit_voltage_dbu =0x32, /*!< "dBu", "Voltage in dBu" */
+    // Current - See 7.3.3.8
     avdecc_aem_unit_current_amperes =0x38, /*!< "A", "Electric current in amperes" */
+    // Power - See 7.3.3.9
     avdecc_aem_unit_power_watts =0x40, /*!< "W", "Electric power in watts" */
     avdecc_aem_unit_power_dbm =0x41, /*!< "dBm", "Signal power in dBm" */
     avdecc_aem_unit_power_dbw =0x42, /*!< "dBW", "Signal power in dBW" */
+    // Pressure - See 7.3.3.10
     avdecc_aem_unit_pressure_pascals =0x48, /*!< "Pa", "Pressure in pascals" */
+    // Memory - See 7.3.3.11
     avdecc_aem_unit_mem_bits =0x50, /*!< "b", "Bit count" */
     avdecc_aem_unit_mem_bytes =0x51, /*!< "B", "Byte count" */
     avdecc_aem_unit_mem_kibibytes =0x52, /*!< "KiB", "Kibibyte count" */
     avdecc_aem_unit_mem_mebibytes =0x53, /*!< "MiB", "Mebibyte count" */
     avdecc_aem_unit_mem_gibibytes =0x54, /*!< "GiB", "Gibibyte count" */
     avdecc_aem_unit_mem_tebibytes =0x55, /*!< "TiB", "Tebibyte count" */
+    // Bandwidth - See 7.3.3.12
     avdecc_aem_unit_bw_bits_per_second =0x58, /*!< "b/s", "Bits per second" */
     avdecc_aem_unit_bw_bytes_per_second =0x59, /*!< "B/s", "Bytes per second" */
     avdecc_aem_unit_bw_kibibytes_per_second =0x5a, /*!< "KiB/s", "Kibibytes per second" */
     avdecc_aem_unit_bw_mebibytes_per_second =0x5b, /*!< "MiB/s", "Mebibytes per second" */
     avdecc_aem_unit_bw_gibibytes_per_second =0x5c, /*!< "GiB/s", "Gibibytes per second" */
     avdecc_aem_unit_bw_tebibytes_per_second =0x5d, /*!< "TiB/s", "Tebibytes per second" */
+    // Luminosity - See 7.3.3.13
     avdecc_aem_unit_luminosity_candela =0x60, /*!< "cd", "Candela" */
+    // Energy - See 7.3.3.14
     avdecc_aem_unit_energy_joules =0x68, /*!< "J", "Joules" */
+    // Angle - See 7.3.3.15
     avdecc_aem_unit_angle_radians =0x70, /*!< "rad", "Radians" */
+    // Force - See 7.3.3.16
     avdecc_aem_unit_force_newtons =0x78, /*!< "N", "Newtons" */
+    // Resistance - See 7.3.3.17
     avdecc_aem_unit_resistance_ohms =0x80, /*!< "Ω", "Ohms" */
+    // Velocity - See 7.3.3.18
     avdecc_aem_unit_velocity_metres_per_second =0x88, /*!< "m/s", "Meters per second" */
     avdecc_aem_unit_angular_velocity_radians_per_second =0x89, /*!< "rad/s", "Angular velocity in radians per second" */
+    // Acceleration - See 7.3.3.19
     avdecc_aem_unit_acceleration_metres_per_second_per_second  =0x90, /* "m/s·s", "Meters per second per second" */
     avdecc_aem_unit_acceleration_rad_per_second_per_second  =0x91, /* "rad/s·s", "Radians per second per second" */
+    // Magnetic Flux - See 7.3.3.20
+    avdecc_aem_unit_magnetic_flux_tesla =0x98, /*!< "T", "Tesla" */
+    // Area - See 7.3.3.21
     avdecc_aem_unit_area_metres_squared =0xa0, /*!< "m·m", "Meters squared" */
+    // Volume - See 7.3.3.22
     avdecc_aem_unit_volume_metres_cubed =0xa8, /*!< "m·m·m", "Meters cubed" */
     avdecc_aem_unit_volume_litres =0xa9, /*!< "l", "Litres" */
-    avdecc_aem_unit_mass_grams =0xb0, /*!< "gram", "Grams" */
-    avdecc_aem_unit_magnetic_flux_tesla =0xb8, /*!< "T", "Tesla" */
-    avdecc_aem_unit_level_db =0xc0, /*!< "dB", "Level or gain in decibels" */
-    avdecc_aem_unit_level_db_peak =0xc1, /*!< "dB (Peak)", "'Peak' level or gain in decibels */
-    avdecc_aem_unit_level_db_rms =0xc2, /*!< "dB (RMS)", "'RMS' level in decibels */
-    avdecc_aem_unit_level_dbfs =0xc3, /*!< "dBFS", "Full scale level in decibels" */
-    avdecc_aem_unit_level_dbfs_peak =0xc4, /*!< "dBFS (Peak)", "Full scale 'peak' level in decibels" */
-    avdecc_aem_unit_level_dbfs_rms =0xc5, /*!< "dBFS (RMS)", "Full scale 'RMS' level in decibels" */
-    avdecc_aem_unit_level_dbtp =0xc6, /*!< "dBTP", "True peak level in decibels" */
-    avdecc_aem_unit_level_dba =0xc7, /*!< "dB(A)", "A-weighted level in decibels" */
-    avdecc_aem_unit_level_dbb =0xc8, /*!< "dB(B)", "B-weighted level in decibels" */
-    avdecc_aem_unit_level_dbc =0xc9, /*!< "dB(C)", "C-weighted level in decibels" */
-    avdecc_aem_unit_level_dbspl =0xca, /*!< "dB(SPL)", "Sound pressure level in decibels" */
-    avdecc_aem_unit_level_lu =0xcb, /*!< "LU", "ITU-R. BS. 1770-2 loudness level" */
-    avdecc_aem_unit_level_lufs =0xcc /*!< "LUFS", "ITU-R. BS. 1770-2 full scale loudness level" */
-} avdecc_aem_unit_t;
+    // Levels and Loudness - See 7.3.3.23
+    avdecc_aem_unit_level_db =0xb0, /*!< "dB", "Level or gain in decibels" */
+    avdecc_aem_unit_level_db_peak =0xb1, /*!< "dB (Peak)", "'Peak' level or gain in decibels */
+    avdecc_aem_unit_level_db_rms =0xb2, /*!< "dB (RMS)", "'RMS' level in decibels */
+    avdecc_aem_unit_level_dbfs =0xb3, /*!< "dBFS", "Full scale level in decibels" */
+    avdecc_aem_unit_level_dbfs_peak =0xb4, /*!< "dBFS (Peak)", "Full scale 'peak' level in decibels" */
+    avdecc_aem_unit_level_dbfs_rms =0xb5, /*!< "dBFS (RMS)", "Full scale 'RMS' level in decibels" */
+    avdecc_aem_unit_level_dbtp =0xb6, /*!< "dBTP", "True peak level in decibels" */
+    avdecc_aem_unit_level_dba =0xb7, /*!< "dB(A)", "A-weighted level in decibels" */
+    avdecc_aem_unit_level_dbb =0xb8, /*!< "dB(B)", "B-weighted level in decibels" */
+    avdecc_aem_unit_level_dbc =0xb9, /*!< "dB(C)", "C-weighted level in decibels" */
+    avdecc_aem_unit_level_dbspl =0xba, /*!< "dB(SPL)", "Sound pressure level in decibels" */
+    avdecc_aem_unit_level_lu =0xbb, /*!< "LU", "ITU-R. BS. 1770-2 loudness level" */
+    avdecc_aem_unit_level_lufs =0xbc /*!< "LUFS", "ITU-R. BS. 1770-2 full scale loudness level" */
+};
 
 extern const char *avdecc_aem_units_symbol[256];
 
