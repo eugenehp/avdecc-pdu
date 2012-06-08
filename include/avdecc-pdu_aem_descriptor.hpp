@@ -2084,64 +2084,61 @@ bool avdecc_descriptor_audio_cluster_write (
 
 #define AVDECC_PDU_AEM_CONTROL_DESCRIPTOR_MAX_PAYLOAD_SIZE (406) /** See IEEE 1722.1 Clause 7.2.17 */
 
-/** See IEEE 1722.1 Clause 7.3.4 */
-typedef enum
-{
-    avdecc_aem_control_type_enable = 0x00000, /*!< enable or disable the unit or entity. */
-    avdecc_aem_control_type_delay = 0x00001, /*!< apply a delay to the signal. */
-    avdecc_aem_control_type_pow_line_freq = 0x00002, /*!< power line frequency. */
-    avdecc_aem_control_type_orientation_abs = 0x00003, /*!< orientation absolute. */
-    avdecc_aem_control_type_orientation_rel = 0x00004, /*!< orientation relative. */
-    avdecc_aem_control_type_identify = 0x00005, /*!< identify the entity. */
-    avdecc_aem_control_type_power_status = 0x00006, /*!< system power supply status. */
-    avdecc_aem_control_type_fan_status = 0x00007, /*!< system fan status. */
-    avdecc_aem_control_type_temperature = 0x00008, /*!< temperature setting. */
-    avdecc_aem_control_type_temperature_sensor = 0x00009, /*!< temperature sensor. */
-    avdecc_aem_control_type_altitude = 0x0000a, /*!< altitude. */
-    avdecc_aem_control_type_humidity = 0x0000b, /*!< humidity. */
-    avdecc_aem_control_type_invert = 0x1000c, /*!< invert the signal polarity. */
-    avdecc_aem_control_type_accelerate_abs = 0x1000d, /*!< Accelerate absolute */
-    avdecc_aem_control_type_accelerate_rel = 0x1000e, /*!< Accelerate relative */
-    avdecc_aem_control_type_velocity_abs = 0x1000f, /*!< Velocity absolute */
-    avdecc_aem_control_type_velocity_rel = 0x10010, /*!< Velocity relative */
-    avdecc_aem_control_type_mute = 0x10000, /*!< mute the audio. */
-    avdecc_aem_control_type_volume = 0x10001, /*!< adjust the volume. */
-    avdecc_aem_control_type_panpot = 0x10002, /*!< stereo pan position. */
-    avdecc_aem_control_type_position = 0x10003, /*!< set three dimensional position. */
-    avdecc_aem_control_type_phantom = 0x10004, /*!< set phantom power for analog or digital microphones. */
-    avdecc_aem_control_type_audio_scale = 0x10005, /*!< select analog audio scale. */
-    avdecc_aem_control_type_audio_metres = 0x10006, /*!< audio meter values. */
-    avdecc_aem_control_type_audio_spectrum = 0x10007, /*!< audio signal spectrum values. */
-    avdecc_aem_control_type_filter_response = 0x10008, /*!< filter response bode plot values. */
-    avdecc_aem_control_type_scanning_mode = 0x20000, /*!< video scanning mode. */
-    avdecc_aem_control_type_auto_exp_mode = 0x20001, /*!< auto-exposure mode. */
-    avdecc_aem_control_type_auto_exp_prio = 0x20002, /*!< auto-exposure priority */
-    avdecc_aem_control_type_exp_time_abs = 0x20003, /*!< exposure time absolute */
-    avdecc_aem_control_type_exp_time_rel = 0x20004, /*!< exposure time relative */
-    avdecc_aem_control_type_focus_abs = 0x20005, /*!< focus absolute. */
-    avdecc_aem_control_type_focus_rel = 0x20006, /*!< focus relative. */
-    avdecc_aem_control_type_focus_auto = 0x20007, /*!< focus automatic. */
-    avdecc_aem_control_type_iris_abs = 0x20008, /*!< iris absolute. */
-    avdecc_aem_control_type_iris_rel = 0x20009, /*!< iris relative. */
-    avdecc_aem_control_type_zoom_abs = 0x2000a, /*!< zoom absolute. */
-    avdecc_aem_control_type_zoom_rel = 0x2000b, /*!< zoom relative. */
-    avdecc_aem_control_type_privacy = 0x2000c, /*!< privacy. */
-    avdecc_aem_control_type_backlight = 0x2000d, /*!< backlight compensation. */
-    avdecc_aem_control_type_brightness = 0x2000e, /*!< brightness. */
-    avdecc_aem_control_type_contrast = 0x2000f, /*!< contrast. */
-    avdecc_aem_control_type_gain = 0x20010, /*!< gain */
-    avdecc_aem_control_type_hue = 0x20011, /*!< hue */
-    avdecc_aem_control_type_saturation = 0x20012, /*!< saturation. */
-    avdecc_aem_control_type_sharpness = 0x20013, /*!< sharpness */
-    avdecc_aem_control_type_gamma = 0x20014, /*!< gamma. */
-    avdecc_aem_control_type_white_bal_temp = 0x20015, /*!< white balance temperature. */
-    avdecc_aem_control_type_white_bal_temp_auto = 0x20016, /*!< white balance temperature auto. */
-    avdecc_aem_control_type_white_bal_comp = 0x20017, /*!< white balance components. */
-    avdecc_aem_control_type_white_bal_comp_auto = 0x20018, /*!< white balance components auto. */
-    avdecc_aem_control_type_digital_zoom = 0x20019 /*!< digital zoom. */
-} avdecc_aem_control_type_t;
+/** See IEEE 1722.1 D19 Clause 7.3.4 */
+static const uint64_t avdecc_aem_control_type_enable = 0x90e0f00000000ULL; /*!< enable or disable the unit or entity. */
+static const uint64_t avdecc_aem_control_type_delay = 0x90e0f00000001ULL; /*!< apply a delay to the signal. */
+static const uint64_t avdecc_aem_control_type_pow_line_freq = 0x90e0f00000002ULL; /*!< power line frequency. */
+static const uint64_t avdecc_aem_control_type_orientation_abs = 0x90e0f00000003ULL; /*!< orientation absolute. */
+static const uint64_t avdecc_aem_control_type_orientation_rel = 0x90e0f00000004ULL; /*!< orientation relative. */
 
+static const uint64_t avdecc_aem_control_type_power_status = 0x90e0f00000006ULL; /*!< system power supply status. */
+static const uint64_t avdecc_aem_control_type_fan_status = 0x90e0f00000007ULL; /*!< system fan status. */
+static const uint64_t avdecc_aem_control_type_temperature = 0x90e0f00000008ULL; /*!< temperature setting. */
+static const uint64_t avdecc_aem_control_type_temperature_sensor = 0x90e0f00000009ULL; /*!< temperature sensor. */
+static const uint64_t avdecc_aem_control_type_altitude = 0x90e0f0000000aULL; /*!< altitude. */
+static const uint64_t avdecc_aem_control_type_humidity = 0x90e0f0000000bULL; /*!< humidity. */
+static const uint64_t avdecc_aem_control_type_invert = 0x90e0f0001000cULL; /*!< invert the signal polarity. */
+static const uint64_t avdecc_aem_control_type_accelerate_abs = 0x90e0f0001000dULL; /*!< Accelerate absolute */
+static const uint64_t avdecc_aem_control_type_accelerate_rel = 0x90e0f0001000eULL; /*!< Accelerate relative */
+static const uint64_t avdecc_aem_control_type_velocity_abs = 0x90e0f0001000fULL; /*!< Velocity absolute */
+static const uint64_t avdecc_aem_control_type_velocity_rel = 0x90e0f00010010ULL; /*!< Velocity relative */
+static const uint64_t avdecc_aem_control_type_mute = 0x90e0f00010000ULL; /*!< mute the audio. */
+static const uint64_t avdecc_aem_control_type_volume = 0x90e0f00010001ULL; /*!< adjust the volume. */
+static const uint64_t avdecc_aem_control_type_panpot = 0x90e0f00010002ULL; /*!< stereo pan position. */
+static const uint64_t avdecc_aem_control_type_position = 0x90e0f00010003ULL; /*!< set three dimensional position. */
+static const uint64_t avdecc_aem_control_type_phantom = 0x90e0f00010004ULL; /*!< set phantom power for analog or digital microphones. */
+static const uint64_t avdecc_aem_control_type_audio_scale = 0x90e0f00010005ULL; /*!< select analog audio scale. */
+static const uint64_t avdecc_aem_control_type_audio_metres = 0x90e0f00010006ULL; /*!< audio meter values. */
+static const uint64_t avdecc_aem_control_type_audio_spectrum = 0x90e0f00010007ULL; /*!< audio signal spectrum values. */
+static const uint64_t avdecc_aem_control_type_filter_response = 0x90e0f00010008ULL; /*!< filter response bode plot values. */
+static const uint64_t avdecc_aem_control_type_scanning_mode = 0x90e0f00020000ULL; /*!< video scanning mode. */
+static const uint64_t avdecc_aem_control_type_auto_exp_mode = 0x90e0f00020001ULL; /*!< auto-exposure mode. */
+static const uint64_t avdecc_aem_control_type_auto_exp_prio = 0x90e0f00020002ULL; /*!< auto-exposure priority */
+static const uint64_t avdecc_aem_control_type_exp_time_abs = 0x90e0f00020003ULL; /*!< exposure time absolute */
+static const uint64_t avdecc_aem_control_type_exp_time_rel = 0x90e0f00020004ULL; /*!< exposure time relative */
+static const uint64_t avdecc_aem_control_type_focus_abs = 0x90e0f00020005ULL; /*!< focus absolute. */
+static const uint64_t avdecc_aem_control_type_focus_rel = 0x90e0f00020006ULL; /*!< focus relative. */
+static const uint64_t avdecc_aem_control_type_focus_auto = 0x90e0f00020007ULL; /*!< focus automatic. */
+static const uint64_t avdecc_aem_control_type_iris_abs = 0x90e0f00020008ULL; /*!< iris absolute. */
+static const uint64_t avdecc_aem_control_type_iris_rel = 0x90e0f00020009ULL; /*!< iris relative. */
+static const uint64_t avdecc_aem_control_type_zoom_abs = 0x90e0f0002000aULL; /*!< zoom absolute. */
+static const uint64_t avdecc_aem_control_type_zoom_rel = 0x90e0f0002000bULL; /*!< zoom relative. */
+static const uint64_t avdecc_aem_control_type_privacy = 0x90e0f0002000cULL; /*!< privacy. */
+static const uint64_t avdecc_aem_control_type_backlight = 0x90e0f0002000dULL; /*!< backlight compensation. */
+static const uint64_t avdecc_aem_control_type_brightness = 0x90e0f0002000eULL; /*!< brightness. */
+static const uint64_t avdecc_aem_control_type_contrast = 0x90e0f0002000fULL; /*!< contrast. */
+static const uint64_t avdecc_aem_control_type_gain = 0x90e0f00020010ULL; /*!< gain */
+static const uint64_t avdecc_aem_control_type_hue = 0x90e0f00020011ULL; /*!< hue */
+static const uint64_t avdecc_aem_control_type_saturation = 0x90e0f00020012ULL; /*!< saturation. */
+static const uint64_t avdecc_aem_control_type_sharpness = 0x90e0f00020013ULL; /*!< sharpness */
+static const uint64_t avdecc_aem_control_type_gamma = 0x90e0f00020014ULL; /*!< gamma. */
+static const uint64_t avdecc_aem_control_type_white_bal_temp = 0x90e0f00020015ULL; /*!< white balance temperature. */
+static const uint64_t avdecc_aem_control_type_white_bal_temp_auto = 0x90e0f00020016ULL; /*!< white balance temperature auto. */
+static const uint64_t avdecc_aem_control_type_white_bal_comp = 0x90e0f00020017ULL; /*!< white balance components. */
+static const uint64_t avdecc_aem_control_type_white_bal_comp_auto = 0x90e0f00020018ULL; /*!< white balance components auto. */
+static const uint64_t avdecc_aem_control_type_digital_zoom = 0x90e0f00020019ULL;/*!< digital zoom. */
 
+typedef uint64_t avdecc_aem_control_type_t;
 
 /** avdecc_control_type_init
      *
@@ -2190,7 +2187,7 @@ bool avdecc_control_type_write (
     */
 
 /** See IEEE 1722.1 D19 Clause 7.3.3 */
-enum avdecc_aem_unit_t;
+enum avdecc_aem_unit_t
 {
     // Unitless - See 7.3.3.1
     avdecc_aem_unit_none=0x00, /*!< "", "Unitless" */
